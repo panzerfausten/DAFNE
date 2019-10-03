@@ -20,11 +20,18 @@ const DB_USERNAME  = config.get('Database.username');
 const DB_DATABASE  = config.get('Database.database');
 const DB_PORT      = config.get('Database.port');
 
+//validators
+var validateEmail = function(email) {
+  var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return re.test(email);
+};
 
 var db = mongoose.connect(
   `mongodb://${DB_USERNAME}:${DB_PASSWORD}@${DB_URL}:${DB_PORT}/${DB_DATABASE}`,
   {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+
   }
 );
 
@@ -70,7 +77,9 @@ var usersSchema = new mongoose.Schema(
     },
     email:
     {
+      required:true,
       type: String,
+      validate:[validateEmail,"E-mail is not valid"],
       index:
       {
         unique: true,

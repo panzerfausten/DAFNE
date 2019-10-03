@@ -4,7 +4,7 @@
  * Written by Darien Miranda <dmiranda@eipcm.org>, October 2019
  */
 var _Cookies         = require('cookies');
-var User             = require('../schemas/Users.js');
+var Users            = require('../schemas/Users.js');
 var Cookies          = require("../schemas/Cookies");
 var RESPONSE_ERROR_SERVICE_NA        = {"success":true,"error":"Service not available","preUser":null};
 var RESPONSE_INVALID_AUTH            = {"success":false,"error":"Invalid Auth"};
@@ -100,4 +100,17 @@ exports.login = function(req,res,next){
     }
   }
   _User.login(_email,_pwd,login_result);
+}
+
+/*
+ * Sanitation process for a given string.
+ *
+ * @params String string
+ *
+ * @returns String | null
+ */
+let sanitizeString = function (string) {
+  string = (string === undefined) ? "" : string
+  string = string.toString().trim()
+  return (string === "") ? null : string
 }

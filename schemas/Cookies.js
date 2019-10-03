@@ -17,11 +17,11 @@ const DB_USERNAME  = config.get('Database.username');
 const DB_DATABASE  = config.get('Database.database');
 const DB_PORT      = config.get('Database.port');
 
-
 var db = mongoose.connect(
   `mongodb://${DB_USERNAME}:${DB_PASSWORD}@${DB_URL}:${DB_PORT}/${DB_DATABASE}`,
   {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
   }
 );
 

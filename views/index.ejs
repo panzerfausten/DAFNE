@@ -5,7 +5,15 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <form method="post" action="/users/create">
+      <input type="text" name="name" placeholder="name"/>
+      <br>
+      <input type="text" name="last_name" placeholder="last_name"/>
+      <br>
+      <input type="password" name="password" placeholder="password"/>
+      <br>
+      <input type="text" name="email" placeholder="email" value="dmiranda@eipcm.org"/>
+      <input type="submit" value="Create"></input>
+    </form>
   </body>
 </html>

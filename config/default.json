@@ -1,0 +1,14 @@
+{
+  "Database":{
+    "password":"e!2YqM*qbOMKzS5Z",
+    "url":"h2823152.stratoserver.net",
+    "username":"dafne-dev",
+    "database":"dafne-dev",
+    "port":"27017"
+  },
+  "App":{
+      "httpPort":"3000",
+      "httpsPort":"3001",
+      "mode":"DEVELOPMENT"
+  }
+}
