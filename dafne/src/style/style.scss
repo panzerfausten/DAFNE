@@ -1,0 +1,56 @@
+@import "variables.scss";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+html,body,#root{
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+
+}
+.login{
+  background-color: $bronze;
+  font-family: 'Open Sans', sans-serif;
+}
+.dafne_form{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  min-width: 300px;
+  min-height: 200px;
+  max-width: 100%;
+  align-items: center;
+}
+.dafne_content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f1f1;
+  height: 100%;
+}
+input{
+  height: 30px;
+  font-size: 30px;
+  max-width: 300px;
+  background-color: #fbfcfc;
+  border: 1px solid #c5c5c5;
+}
+.inputLabel{
+  font-size: 13px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+.spacer{
+  height: 40px;
+}
+.dafne_button{
+  background: #fff;
+  color: red;
+  border: 2px solid red;
+  border-radius: 3px;
+  padding: 5px 10px;
+  text-transform: uppercase;
+}
+.login_buttons{
+  margin-top:5px;
+  display: flex;
+  justify-content: flex-end;
+}

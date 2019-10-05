@@ -74,9 +74,9 @@ exports.create = function(req,res,next){
  */
 exports.login = function(req,res,next){
   var cookies    = new _Cookies( req, res);
-  let _email = req.body.email;
-  let _pwd   = req.body.password;
-  let _User = new User({email:_email});
+  let _email     = req.body.email;
+  let _pwd       = req.body.password;
+  let _User      = new Users({email:_email});
   function login_result(r){
     if(r.success){
       let cookie = new Cookies({token:r.token, uid:r.user.uid});

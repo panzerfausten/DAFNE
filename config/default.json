@@ -6,6 +6,9 @@
     "database":"dafne-dev",
     "port":"27017"
   },
+  "Cors":{
+    "origins":["http://localhost:3000","http://localhost:3001","http://localhost:3002"]
+  },
   "App":{
       "httpPort":"3000",
       "httpsPort":"3001",

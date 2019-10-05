@@ -1,0 +1,6 @@
+darkblue #1b75bc
+darkgray #bcbec0
+beige    #f5e9d5
+bronze   #c68717
+grass    #d4e6e4
+darkgreen #197c70  
