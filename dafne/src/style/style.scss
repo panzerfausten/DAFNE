@@ -3,7 +3,18 @@
 html,body,#root{
   height: 100%;
   font-family: 'Open Sans', sans-serif;
-
+}
+.container-fluid{
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  // margin-left: 0px !important;
+  // margin-right: 0px !important;
+  // padding-right: 0px !important;
+  // padding-left: 0px !important;
+}
+.dafne_area{
+  flex: 1;
 }
 .login{
   background-color: $bronze;
@@ -53,4 +64,26 @@ input{
   margin-top:5px;
   display: flex;
   justify-content: flex-end;
+}
+.navbar-brand img{
+  height:50px;
+}
+.nav-link{
+  font-size: 20px;
+  font-family: 'Open Sans', sans-serif;
+}
+.navbar-selected{
+  color:black !important;
+}
+.filters_area{
+  height: 70px;
+  background-color: $gray;
+}
+.widget_title{
+  background-color: $blue;
+  color:white;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
