@@ -11,6 +11,7 @@ import {
         Col
 
 } from 'react-bootstrap';
+import DafnePlot from "../components/DafnePlot";
 class CreatePerspective extends React.Component {
   constructor (props) {
     super(props);
@@ -45,6 +46,7 @@ class CreatePerspective extends React.Component {
                   </div>
                   <div className="filters_area">
                   </div>
+                  <DafnePlot></DafnePlot>
                 </div>
               </div>
             </Col>
