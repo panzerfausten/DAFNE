@@ -53,7 +53,7 @@ class DafneView extends React.Component {
   }
   render(){
     return (
-      <div className="container-fluid">
+      <div className="container-fluid flex">
         <Navbar  expand="lg">
           <Navbar.Brand href="#home"><img src={DafneLogo}></img></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

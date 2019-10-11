@@ -7,7 +7,7 @@
     "port":"27017"
   },
   "Cors":{
-    "origins":["http://localhost:3000","http://localhost:3001","http://localhost:3002"]
+    "origins":["http://localhost:3000","http://localhost:3001","http://localhost:3002","http://h2823152.stratoserver.net:8081/","http://h2823152.stratoserver.net:8081"]
   },
   "App":{
       "httpPort":"3000",

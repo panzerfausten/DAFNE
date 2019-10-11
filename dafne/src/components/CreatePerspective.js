@@ -21,11 +21,10 @@ class CreatePerspective extends React.Component {
   }
   render(){
     return (
-        <div className="dafne_area">
+        <div className="flex">
           <div className="filters_area">
           </div>
-          <Row>
-            <Col sm={4} className="h-100">
+          <div className="flex-row">
               <div className="widget">
                 <div className="widget_title">
                   Solution Pathways
@@ -35,8 +34,6 @@ class CreatePerspective extends React.Component {
                   </div>
                 </div>
               </div>
-            </Col>
-            <Col sm={8}>
               <div className="widget">
                 <div className="widget_title">
                   Indicators
@@ -49,12 +46,12 @@ class CreatePerspective extends React.Component {
                   <DafnePlot></DafnePlot>
                 </div>
               </div>
-            </Col>
-          </Row>
+          </div>
         </div>
     )
   }
 
 }
-
+//
+//
 export default CreatePerspective;
