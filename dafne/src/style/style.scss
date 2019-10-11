@@ -41,7 +41,8 @@ input{
   font-size: 30px;
   max-width: 300px;
   background-color: #fbfcfc;
-  border: 1px solid #c5c5c5;
+  border: 1.5px solid $blue;
+  border-radius: 5px;
 }
 .inputLabel{
   font-size: 13px;
@@ -86,4 +87,51 @@ input{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.h100{
+  height:100%;
+}
+.f100{
+  flex:1;
+}
+.fcenter{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bg_a{
+  background-image: url("../img/bg_a.png");
+  background-size: cover;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow:hidden;
+}
+.bg_b{
+  background-image: url("../img/bg_b.png");
+  background-size: cover;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow:hidden;
+}
+.bg_text{
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: large;
+  background-color: #0000009c;
+  color: white;
+  min-height: 150px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.eu_logo{
+  width: 80%;
+}
+.welcome_center_area{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }

@@ -101,7 +101,25 @@ exports.login = function(req,res,next){
   }
   _User.login(_email,_pwd,login_result);
 }
+exports.logout = function(req,res,next){
+  var cookies = new _Cookies( req, res);
+  var idToken = cookies.get( "token" );
 
+  function validate_cookie(result){
+    cookies.set( "token","", { httpOnly: false,expires: new Date() } )
+    if(result.valid_token){
+      function logout_callback(){
+        return res.status(201).json({"success":true,"error":null});
+      }
+      let _C = new Cookies({uid:-1});
+      _C.invalidateToken(idToken,logout_callback)
+    }else{
+      return res.status(401).json({"success":false,"error":"Invalid auth"});
+    }
+  }
+  let _C = new Cookies({uid:-1});
+  _C.validateToken(idToken,validate_cookie);
+}
 /*
  * Sanitation process for a given string.
  *

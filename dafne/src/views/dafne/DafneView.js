@@ -39,6 +39,18 @@ class DafneView extends React.Component {
 
     }
   }
+  redirectHome(){
+    this.props.history.push('/');
+  }
+  logout(){
+    DafneApi.logout().then((res) => {
+      if(res.success){
+        this.redirectHome();
+      }else{
+        alert('There was a problem trying to log you out')
+      }
+    });
+  }
   render(){
     return (
       <div className="container-fluid">
@@ -51,7 +63,7 @@ class DafneView extends React.Component {
               <Nav.Link onClick={() => this.changeIndex(1)} className={this.state.selectedIndex === 1 ? 'navbar-selected' : null}>Compare perspectives</Nav.Link>
             </Nav>
             <NavDropdown title="Account" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Log out</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => this.logout()}>Log out</NavDropdown.Item>
             </NavDropdown>
           </Navbar.Collapse>
         </Navbar>

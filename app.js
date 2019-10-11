@@ -10,7 +10,7 @@ var usersRouter = require('./routes/users');
 var app = express();
 //Config files
 
-const CORS_ORIGINS  = config.get('Database.port');
+const CORS_ORIGINS  = config.get('Cors.origins');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

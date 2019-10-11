@@ -1,6 +1,22 @@
 var dafneApi = {
   API_URL: process.env.REACT_APP_API_URL,
   /*
+   * Gets current logged in user
+   */
+  getMe(){
+    return fetch(dafneApi.API_URL+'/users/me',{
+      method:"GET",
+      credentials:"include"
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      return response;
+    })
+    .catch((error) =>{
+      return error;
+    });
+  },
+  /*
    * Creates a login request
    */
   login(email,password){
@@ -28,6 +44,22 @@ var dafneApi = {
       return responseJson;
     })
     .catch((error) => {
+      return error;
+    });
+  },
+  /*
+   * Logouts the current user
+   */
+  logout(){
+    return fetch(dafneApi.API_URL+'/users/logout',{
+      method:"GET",
+      credentials:"include"
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      return response;
+    })
+    .catch((error) =>{
       return error;
     });
   },
