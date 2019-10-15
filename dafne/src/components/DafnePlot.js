@@ -1,16 +1,4 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import {
-        Nav,
-        NavDropdown,
-        Form,
-        FormControl,
-        Navbar,
-        Button,
-        Row,
-        Col
-
-} from 'react-bootstrap';
 import * as d3 from "d3";
 import ReactResizeDetector from 'react-resize-detector';
 class DafnePlot extends React.Component {

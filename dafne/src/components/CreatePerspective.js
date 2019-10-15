@@ -1,21 +1,7 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import {
-        Nav,
-        NavDropdown,
-        Form,
-        FormControl,
-        Navbar,
-        Button,
-        Row,
-        Col
 
-} from 'react-bootstrap';
 import DafnePlot from "../components/DafnePlot";
 class CreatePerspective extends React.Component {
-  constructor (props) {
-    super(props);
-  }
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
   }
