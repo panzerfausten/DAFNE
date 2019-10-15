@@ -1,13 +1,6 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import "../../style/style.scss";
 import Button from 'react-bootstrap/Button';
-import {
-  Container,
-        Row,
-        Col
-
-} from 'react-bootstrap';
 import DafneApi from '../../api/DafneApi.js';
 import DafneLogo from "../../img/dafne_logo.png";
 import EU_logo from "../../img/EU_note.png";
@@ -63,7 +56,7 @@ class LoginView extends React.Component {
           </div>
           <div className="f100 welcome_center_area">
             <div className="fcenter">
-              <img className="lg_logo" src={DafneLogo}></img>
+              <img className="lg_logo" src={DafneLogo} alt=""></img>
             </div>
             <div className="dafne_form">
               <div className="form">
@@ -82,7 +75,7 @@ class LoginView extends React.Component {
               </div>
             </div>
             <div className="fcenter">
-              <img className="eu_logo" src={EU_logo}></img>
+              <img className="eu_logo" src={EU_logo} alt=""></img>
             </div>
           </div>
           <div className="f100 bg_b" >

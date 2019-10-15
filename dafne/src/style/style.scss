@@ -68,7 +68,7 @@ input{
   color:black !important;
 }
 .filters_area{
-  height: 70px;
+  min-height: 70px;
   background-color: $gray;
 }
 .widget_title{
@@ -152,4 +152,63 @@ input{
 #dafne_plot{
   height: 100%;
   max-height: 400px;
+}
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+  stroke-width: 100px;
+}
+.it_widget{
+  padding: 10px;
+  border: 1px solid $darkgray;
+}
+.gray{
+  background-color: $darkgray;
+}
+.it_area{
+  display: flex;
+  flex-direction: row;
+}
+.it_label{
+  font-weight: bold;
+  font-size: 14px;
+}
+.it_row{
+  display: flex;
+  flex-direction: row;
+  min-height: 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+.it_area_a{
+  flex:1;
+  margin-right: 50px;
+}
+.it_area_b{
+  border-left: 1px solid $darkgray;
+  flex:.2;
+  margin-top:10px;
+
+}
+.circular_button{
+  margin-top:10px;
+  width:70px;
+  height: 70px;
+  color:white;
+  border-radius: 50px;
+  background-color: $darkblue;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px 1px #888888;
+}
+.circular_button:hover{
+  background-color: #0d5288;
 }

@@ -1,16 +1,9 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import "../../style/style.scss";
 import {
         Nav,
         NavDropdown,
-        Form,
-        FormControl,
         Navbar,
-        Button,
-        Row,
-        Col
-
 } from 'react-bootstrap';
 import DafneApi from '../../api/DafneApi.js';
 import DafneLogo from "../../img/dafne_logo.png";
@@ -55,7 +48,7 @@ class DafneView extends React.Component {
     return (
       <div className="container-fluid flex">
         <Navbar  expand="lg">
-          <Navbar.Brand href="#home"><img src={DafneLogo}></img></Navbar.Brand>
+          <Navbar.Brand href="#home"><img src={DafneLogo} alt=""></img></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">

@@ -1,28 +1,18 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import {
-        Nav,
-        NavDropdown,
-        Form,
-        FormControl,
-        Navbar,
-        Button,
-        Row,
-        Col
-
-} from 'react-bootstrap';
 import * as d3 from "d3";
 import ReactResizeDetector from 'react-resize-detector';
 class DafnePlot extends React.Component {
   constructor (props) {
     super(props);
-    this.margin = {top: 10, right: 50, bottom: 30, left: 50};
+    this.margin = {top: 70, right: 50, bottom: 50, left: 50};
     this.svgW   = 0;
     this.svgH   = 0;
     this.width  = 0;
     this.height = 0;
     this.svg    = null;
     this.renderPlot = this.renderPlot.bind(this);
+    this.drawAxis = this.drawAxis.bind(this);
+    this.data = [0.9,0.1,0.2,0.3,0.2,0.9];
   }
   componentDidMount(){
     this.dafnePlot.addEventListener('resize', (event) => console.log(event.detail));
@@ -35,7 +25,7 @@ class DafnePlot extends React.Component {
     this.clear();
     //re-set the size
     this.width  = this.svgW - 90;
-    this.height = this.svgH;
+    this.height = this.svgH - this.margin.bottom - this.margin.top;
     // append the svg object to the body of the page
     this.svg = d3.select("#dafne_plot")
     .append("svg")
@@ -47,49 +37,88 @@ class DafnePlot extends React.Component {
     //------------------------------------------------------------------------//
 
     // let _this = this;
-    var data = [10,3];
+    let domain = ["A","B","C","D","E","F"];
+    var lineData = [
+      {"name":"A","value":0.9,"unit":"Tw/H","color":"#e6dd9b","label":"Indicator 1"},
+      {"name":"B","value":0.1,"unit":"Tw/H","color":"#c0d7b4","label":"Indicator 2"},
+      {"name":"C","value":0.2,"unit":"Tw/H","color":"#c0d7b4","label":"Indicator 3"},
+      {"name":"D","value":0.3,"unit":"Tw/H","color":"#c0d7b4","label":"Indicator 4"},
+      {"name":"E","value":0.2,"unit":"Tw/H","color":"#91b3ce","label":"Indicator 5"},
+      {"name":"F","value":0.9,"unit":"Tw/H","color":"#91b3ce","label":"Indicator 6"},
+    ]
     var x = d3.scalePoint()
-              .domain(["A","B","C"])
+              .domain(domain)
               .range([0,this.width]);
     var y = d3.scaleLinear()
-              .domain([0,10])
+              .domain([0,1])
               .range([0,this.height]);
-    this.svg.append("circle")
-        .attr("cx",x("B"))
-        .attr("cy",this.height - this.margin.bottom)
-        .attr("r",8)
-    this.svg.append("circle")
-        .attr("cx",x("A"))
-        .attr("cy",((this.height / 2) - this.margin.bottom))
-        .attr("r",8)
-    // var x = d3.scaleLinear()
-    //   .domain([ 0 , 10 ])
-    //   .range([ 0 , 10]);
-    // // Add Y axis
-    // var y = d3.scaleLinear()
-    //   .domain([0, 10])
-    //   .range([ this.height - this.margin.bottom, 0 ]);
-    //
-    // //draw axis
-    // this.svg.append("g")
-    //   .call(d3.axisLeft(y));
-    this.svg.append("g")
-      .attr("transform", `translate(${0}, 0)`)
-      .call(d3.axisLeft(y));
-    this.svg.append("g")
-      .attr("transform", `translate(${this.width / 2 }, 0)`)
-      .call(d3.axisLeft(y));
-    // // draw the line
-    // this.svg.append("path")
-    //  .datum(data)
-    //  .attr("fill", "none")
-    //  .attr("stroke", "steelblue")
-    //  .attr("stroke-width", 1.5)
-    //  .attr("d", d3.line()
-    //    .x(function(d) { return x(d) })
-    //    .y(function(d) { return y(d) })
-    //  )
+              var line = d3.line()
+              	.x(function(d){ return x(d.name)})
+              	.y(function(d){ return y(d.value)});
 
+                this.svg.append("path")
+                	.attr("d", line(lineData))
+                	.attr("stroke", "teal")
+                	.attr("stroke-width", "2")
+                	.attr("fill", "none")
+                  .attr("transform", `translate(6, 0)`);
+
+
+    for (var i = 0; i < this.data.length; i++) {
+      let d = lineData[i];
+      this.drawAxis(this,this.svg,i,x(domain[i]),d);
+
+      this.svg.append("circle")
+          .attr("cx",x(domain[i]))
+          .attr("cy",y(this.data[i]))
+          .attr("r",8)
+          .attr("transform", `translate(6, 0)`)
+
+
+      this.svg.append("g")
+        .attr("transform", `translate(${x(domain[i]) + 6}, 0)`)
+        .call(d3.axisLeft(y))
+        .selectAll("line")
+            .attr("x2","-12")
+            .attr("transform", `translate(6, 0)`)
+    }
+  }
+  drawAxis(t,svg,i,x,data){
+    let width = 80;
+    let topOffset = -30;
+    let height = t.svgH - this.margin.top ;
+    let labelContainerHeight = this.margin.top +  (topOffset / 2);
+    svg.append('rect')
+       .attr("width",width)
+       .attr("height",labelContainerHeight )
+        .attr("x",x - 40)
+       .attr("fill",data.color)
+       .attr("transform",
+             `translate(0,${this.margin.top * - 1})`);
+    svg.append('rect')
+       .attr("width",width)
+       .attr("height",height )
+       .attr("x",x - 40)
+       .attr("fill","#c9ced1a3")
+       .attr("transform",
+             `translate(0,${topOffset})`);
+
+    svg.append("text")
+      .text(data.unit)
+      .attr("x",x)
+      .attr("text-anchor","middle")
+      .style("font-size", "12px")
+      .attr("transform",
+            `translate(0,-18)`);
+
+    svg.append("text")
+      .text(data.label)
+      .attr("x",x)
+      .attr("text-anchor","middle")
+      .style("font-size", "12px")
+      .style("font-weight", "bold")
+      .attr("transform",
+            `translate(0,-${labelContainerHeight})`);
 
   }
   onResize = (w,h) => {
