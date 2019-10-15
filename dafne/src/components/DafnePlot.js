@@ -87,8 +87,6 @@ class DafnePlot extends React.Component {
     let width = 80;
     let topOffset = -30;
     let height = t.svgH - this.margin.top ;
-    let mLeft = width * i;
-
     let labelContainerHeight = this.margin.top +  (topOffset / 2);
     svg.append('rect')
        .attr("width",width)
