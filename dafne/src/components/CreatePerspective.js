@@ -20,7 +20,7 @@ class CreatePerspective extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="widget">
+              <div className="widget" style={{flex:2}}>
                 <div className="widget_title">
                   Indicators
                 </div>
