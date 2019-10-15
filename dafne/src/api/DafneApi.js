@@ -1,5 +1,5 @@
 var dafneApi = {
-  API_URL: process.env.REACT_APP_API_URL,
+  API_URL: "http://h2823152.stratoserver.net:3001",
   /*
    * Gets current logged in user
    */
