@@ -10,7 +10,7 @@
     "origins":["http://localhost:3000","http://localhost:3001","http://localhost:3002","http://h2823152.stratoserver.net:8081/","http://h2823152.stratoserver.net:8081"]
   },
   "App":{
-      "httpPort":"3000",
+      "httpPort":"3001",
       "httpsPort":"3001",
       "mode":"DEVELOPMENT"
   }
