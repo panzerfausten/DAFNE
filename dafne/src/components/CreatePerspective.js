@@ -1,6 +1,7 @@
 import React from 'react';
 import DafnePlot from "../components/DafnePlot";
 import IndicatorTools from '../components/IndicatorTools';
+import PathwaysList from '../components/PathwaysList';
 
 class CreatePerspective extends React.Component {
   handleChange(event) {
@@ -19,6 +20,7 @@ class CreatePerspective extends React.Component {
                 <div className="widget_content">
                   <div className="filters_area">
                   </div>
+                  <PathwaysList></PathwaysList>
                 </div>
               </div>
               <div className="widget" style={{flex:2,paddingLeft: 50}}>

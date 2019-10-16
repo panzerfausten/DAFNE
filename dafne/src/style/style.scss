@@ -212,3 +212,11 @@ input{
 .circular_button:hover{
   background-color: #0d5288;
 }
+
+.arrow-right {
+width: 0;
+height: 0;
+border-top: 12px solid transparent;
+border-bottom: 12px solid transparent;
+border-left: 12px solid #bcbec0;;
+}
