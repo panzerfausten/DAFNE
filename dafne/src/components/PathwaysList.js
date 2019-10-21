@@ -4,13 +4,13 @@ class PathwaysList extends React.Component {
   constructor(){
     super();
     this.state = {
-      pathways : [1,2,3,4,5]
+      pathways : [1,2,3]
     }
   }
   render(){
     const pathways = this.state.pathways;
     return (
-        <div>
+        <div style={{maxHeight:300,overflow:"auto",paddingLeft:"1%",paddingRight:"1%"}}>
         {
           pathways.map((item,index) => (
             <Pathway item={item} key={index}></Pathway>

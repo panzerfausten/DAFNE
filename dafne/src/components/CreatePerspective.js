@@ -6,6 +6,7 @@ import 'rc-checkbox/assets/index.css';
 import Checkbox  from 'rc-checkbox';
 import GraphA from "../img/icons/graph_a.png";
 import GraphC from "../img/icons/graph_c.png";
+import Info from "../img/icons/info.png";
 
 
 class CreatePerspective extends React.Component {
@@ -37,7 +38,7 @@ class CreatePerspective extends React.Component {
                         Show favourite pathways
                       </label>
                       <div><img src={GraphA} style={{height:25}}></img></div>
-                      <div>i</div>
+                      <div><img src={Info} style={{height:25}}></img></div>
 
                     </div>
                     <div className="filter_row">
@@ -50,8 +51,8 @@ class CreatePerspective extends React.Component {
                         Show average alternatives
                       </label>
                       <div><img src={GraphC} style={{height:25}}></img></div>
+                      <div><img src={Info} style={{height:25}}></img></div>
 
-                      <div>i</div>
                     </div>
                   </div>
                 </div>

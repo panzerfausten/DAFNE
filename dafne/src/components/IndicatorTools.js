@@ -36,8 +36,8 @@ class IndicatorTools extends React.Component {
             <div className="it_area_a">
                 <div className="it_row">
                   <div className="it_label" style={{width:180}}>Your indicator sets:</div>
-                  <div><select style={{width:180}}></select></div>
-                  <Button size="sm" onClick={() => {}}>Upload a new set</Button>
+                  <div><select style={{width:290}}></select></div>
+                  <Button size="sm" onClick={() => {}} style={{width: 200}}>Upload a new set</Button>
                 </div>
                 <div className="it_row" >
                   <div className="it_label" style={{width:180}}>Values of the <br></br> Indicators:</div>

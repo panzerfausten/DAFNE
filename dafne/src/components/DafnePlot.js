@@ -4,7 +4,7 @@ import ReactResizeDetector from 'react-resize-detector';
 class DafnePlot extends React.Component {
   constructor (props) {
     super(props);
-    this.margin = {top: 70, right: 50, bottom: 50, left: 50};
+    this.margin = {top: 70, right: 50, bottom: 30, left: 50};
     this.svgW   = 0;
     this.svgH   = 0;
     this.width  = 0;
@@ -12,7 +12,7 @@ class DafnePlot extends React.Component {
     this.svg    = null;
     this.renderPlot = this.renderPlot.bind(this);
     this.drawAxis = this.drawAxis.bind(this);
-    this.data = [0.9,0.1,0.2,0.3,0.2,0.9];
+    this.data = [1,0.1,0.2,0.3,0.2,0.9,0.1,0];
   }
   componentDidMount(){
     this.dafnePlot.addEventListener('resize', (event) => console.log(event.detail));
@@ -24,7 +24,7 @@ class DafnePlot extends React.Component {
   renderPlot(){
     this.clear();
     //re-set the size
-    this.width  = this.svgW - 90;
+    this.width  = this.svgW - this.margin.right - this.margin.left;
     this.height = this.svgH - this.margin.bottom - this.margin.top;
     // append the svg object to the body of the page
     this.svg = d3.select("#dafne_plot")
@@ -37,21 +37,24 @@ class DafnePlot extends React.Component {
     //------------------------------------------------------------------------//
 
     // let _this = this;
-    let domain = ["A","B","C","D","E","F"];
+    let domain = ["A","B","C","D","E","F","G","H"];
     var lineData = [
-      {"name":"A","value":0.9,"unit":"Tw/H","color":"#e6dd9b","label":"Indicator 1"},
+      {"name":"A","value":1,"unit":"Tw/H","color":"#e6dd9b","label":"Indicator 1"},
       {"name":"B","value":0.1,"unit":"Tw/H","color":"#c0d7b4","label":"Indicator 2"},
       {"name":"C","value":0.2,"unit":"Tw/H","color":"#c0d7b4","label":"Indicator 3"},
       {"name":"D","value":0.3,"unit":"Tw/H","color":"#c0d7b4","label":"Indicator 4"},
       {"name":"E","value":0.2,"unit":"Tw/H","color":"#91b3ce","label":"Indicator 5"},
       {"name":"F","value":0.9,"unit":"Tw/H","color":"#91b3ce","label":"Indicator 6"},
+      {"name":"G","value":0.1,"unit":"Tw/H","color":"#91b3ce","label":"Indicator 7"},
+      {"name":"H","value":0,"unit":"Tw/H","color":"#91b3ce","label":"Indicator 8"},
+
     ]
     var x = d3.scalePoint()
               .domain(domain)
               .range([0,this.width]);
     var y = d3.scaleLinear()
               .domain([0,1])
-              .range([0,this.height]);
+              .range([0,this.height - this.margin.bottom - this.margin.top]);
               var line = d3.line()
               	.x(function(d){ return x(d.name)})
               	.y(function(d){ return y(d.value)});
@@ -86,7 +89,7 @@ class DafnePlot extends React.Component {
   drawAxis(t,svg,i,x,data){
     let width = 80;
     let topOffset = -30;
-    let height = t.svgH - this.margin.top ;
+    let height = t.svgH - this.margin.top - this.margin.bottom;
     let labelContainerHeight = this.margin.top +  (topOffset / 2);
     svg.append('rect')
        .attr("width",width)
@@ -97,7 +100,7 @@ class DafnePlot extends React.Component {
              `translate(0,${this.margin.top * - 1})`);
     svg.append('rect')
        .attr("width",width)
-       .attr("height",height )
+       .attr("height",height - labelContainerHeight )
        .attr("x",x - 40)
        .attr("fill","#c9ced1a3")
        .attr("transform",
