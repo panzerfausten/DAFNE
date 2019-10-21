@@ -18,7 +18,7 @@ class CreatePerspective extends React.Component {
           <div className="filters_area">
           </div>
           <div className="flex-row">
-              <div className="widget">
+              <div className="widget" style={{maxWidth:400}}>
                 <div className="widget_title">
                   Solution Pathways
                 </div>
@@ -60,16 +60,9 @@ class CreatePerspective extends React.Component {
                   <PathwaysList></PathwaysList>
                 </div>
               </div>
-              <div className="widget" style={{flex:2,paddingLeft: 50}}>
-                <div className="widget_title">
-                  Indicators
-                </div>
-                <div className="widget_content">
-                  <div className="filters_area" style={{marginBottom:30}}>
-                    <IndicatorTools></IndicatorTools>
-                  </div>
-                  <DafnePlot></DafnePlot>
-                </div>
+              <div className="widget" >
+                <IndicatorTools></IndicatorTools>
+                <DafnePlot></DafnePlot>
               </div>
           </div>
         </div>
