@@ -317,3 +317,49 @@ label{
 .m-b-5{
   margin-bottom: 5px;
 }
+.m-b-15{
+  margin-bottom:15px;
+}
+.p-l-15{
+  padding-left:15px;
+}
+/**********************
+----- Pathway
+***********************/
+.pathway{
+  display:flex;
+  flex-direction:row;
+}
+.pathway_wrapper_img{
+  height: 24px;
+  width:35px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.pathway_header{
+  height:24px;
+  display: flex;
+  flex-direction: row;
+}
+.pathway_header_title{
+  display: flex;
+  flex:1;
+  align-items: center;
+  font-size:12px;
+  font-weight:bold;
+  background-color:#bcbec0;
+
+}
+.pathway_wrapper_content{
+  flex:1;
+  display:flex;
+  flex-direction: column;
+}
+.arrow-filler{
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:#bcbec0;
+}

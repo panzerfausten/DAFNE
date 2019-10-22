@@ -1,25 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "../style/style.scss";
 import EyeImg from "../img/icons/eye.png";
+import { Collapse } from 'react-bootstrap';
+
 class Pathway extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      isCollapseOpen:false
+    }
+    this.setOpen = this.setOpen.bind(this);
+  }
+
+  setOpen(value){
+    this.setState({isCollapseOpen:value});
+  }
+
   render(){
+    const isCollapseOpen = this.state.isCollapseOpen;
+
     return (
-      <div style={{alignItems:"center",marginBottom:15,height:30,display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
-        <div style={{width:35,display:"flex",justifyContent:"center",alignItems:"center"}}>
+      <div className='pathway m-b-15'>
+        <div className='pathway_wrapper_img'>
           <img src={EyeImg}></img>
         </div>
-        <div style={{flex:1,display:"flex",alignItems:"center",height:24,backgroundColor:"#bcbec0",paddingLeft:15,fontSize:12,fontWeight:"bold"}}>
-          {`Solution pathway ${this.props.item}`}
-        </div>
-        <div className="arrow-filler" style={{
-                                              backgroundColor:"#bcbec0",
-                                              height:24,
-                                              display:"flex",
-                                              alignItems:"center"}}>
-          <div className="arrow-down">
+        <div className='pathway_wrapper_content'>
+          <div className='pathway_header'>
+            <div className='pathway_header_title p-l-15'>{`Solution pathway ${this.props.item}`}</div>
+            <div className="arrow-filler" onClick={() => this.setOpen(!isCollapseOpen)}>
+              <div className="arrow-down"></div>
+            </div>
+            <div className="arrow-right"></div>
           </div>
-        </div>
-        <div className="arrow-right">
+          <Collapse in={isCollapseOpen}>
+            <div id="collapse_div">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+              terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
+              labore wes anderson cred nesciunt sapiente ea proident.
+            </div>
+          </Collapse>
+
         </div>
       </div>
 
