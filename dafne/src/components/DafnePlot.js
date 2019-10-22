@@ -1,6 +1,10 @@
 import React from 'react';
 import * as d3 from "d3";
 import ReactResizeDetector from 'react-resize-detector';
+import cancelButton from "../img/icons/cancel.png";
+import pinButton from "../img/icons/pin.png";
+import PropTypes from 'prop-types';
+
 class DafnePlot extends React.Component {
   constructor (props) {
     super(props);
@@ -14,19 +18,27 @@ class DafnePlot extends React.Component {
     this.drawAxis = this.drawAxis.bind(this);
     this.convertPathwayDataToDomain = this.convertPathwayDataToDomain.bind(this);
     this.highlightPathways = this.highlightPathways.bind(this);
+    this.filterIndicators = this.filterIndicators.bind(this);
+    this.getFilteredPathwaysData = this.getFilteredPathwaysData.bind(this);
+
+
 
     this.state = {
       data: [],
-      highlightedPathways: []
+      highlightedPathways: [],
+      filteredIndicators: [],
+
     }
     this.domain = ["A","B","C","D","E","F","G","H"];
-
+    this.data = []; //we keep a copy so react doesn't mess up
   }
   componentDidMount(){
     this.dafnePlot.addEventListener('resize', (event) => console.log(event.detail));
     this.setState({
-      data:this.props.data
+      data:this.props.data,
+      filteredIndicators: this.props.filteredIndicators
     });
+    this.data = this.props.data;
   }
   clear(){
     d3.select("svg").remove();
@@ -36,6 +48,11 @@ class DafnePlot extends React.Component {
       highlightedPathways : pathways
     }, () => this.renderPlot());
 
+  }
+  filterIndicators(indicators){
+    this.setState({
+      filteredIndicators : indicators,
+    }, () => this.renderPlot());
   }
   renderPlot(){
     this.clear();
@@ -59,9 +76,13 @@ class DafnePlot extends React.Component {
     var y = d3.scaleLinear()
               .domain([1,0])
               .range([0,this.height - this.margin.bottom - this.margin.top]);
+    let plotIndicators = this.state.data.indicators;
+    let mapFilterIndicators = this.state.filteredIndicators.map(i => i.label);
 
-    for (var i = 0; i < this.state.data.indicators.length; i++) {
-      let d = this.state.data.indicators[i];
+    plotIndicators = plotIndicators.filter(i => !mapFilterIndicators.includes(i.label));
+
+    for (var i = 0; i < plotIndicators.length; i++) {
+      let d = plotIndicators[i];
       this.drawAxis(this,this.svg,i,x(this.domain[i]),d);
       this.svg.append("g")
         .attr("transform", `translate(${x(this.domain[i]) + 6}, 0)`)
@@ -76,24 +97,57 @@ class DafnePlot extends React.Component {
       //     .attr("transform", `translate(6, 0)`)
     }
     let mappedHighlightedPathways = this.state.highlightedPathways.map(p => p.name);
-    for (var i = 0; i < this.state.data.pathways.length; i++) {
+    let lineData = this.getFilteredPathwaysData();
+    for (var i = 0; i < lineData.length; i++) {
       let data = this.convertPathwayDataToDomain(
-          this.state.data.pathways[i].data
+          lineData[i].data
         );
       let lineWidth = "2";
-      if(mappedHighlightedPathways.includes(this.state.data.pathways[i].name)){
+      if(mappedHighlightedPathways.includes(lineData[i].name)){
         lineWidth = "4";
       }
+
       var line = d3.line()
         .x(function(d){ return x(d.domain)})
         .y(function(d){ return y(d.value)});
         this.svg.append("path")
           .attr("d", line(data))
-          .attr("stroke", this.state.data.pathways[i].color)
+          .attr("stroke", lineData[i].color)
           .attr("stroke-width", lineWidth)
           .attr("fill", "none")
           .attr("transform", `translate(6, 0)`);
     }
+  }
+  getFilteredPathwaysData(){
+    let pathways = this.data.pathways.slice();
+    let indicators = this.state.data.indicators.slice();
+    let filteredIndicatorsPositions = [];
+    for (var i = 0; i < this.state.filteredIndicators.length; i++) {
+      let indicator = this.state.filteredIndicators[i];
+      for (var ii = 0; ii < indicators.length; ii++) {
+        if(indicators[ii].label === indicator.label){
+          filteredIndicatorsPositions.push(ii);
+        }
+      }
+    }
+    if(this.state.data.pathways[0].data.length > (indicators.length - filteredIndicatorsPositions.length)){
+        for (var y = 0; y < pathways.length; y++) {
+          let obj = {
+          }
+          obj["color"]       = pathways[y].color;
+          obj["name"]        = pathways[y].name;
+          obj["description"] = pathways[y].description;
+          let line  =  pathways[y].data.
+                             filter(function(v,x){
+                                return !filteredIndicatorsPositions.includes(x)
+                             });
+          obj["data"] = line;
+          pathways[y] = obj;
+      }
+
+    }
+    return pathways;
+
   }
   convertPathwayDataToDomain(pathwayData){
     let data = [];
@@ -118,6 +172,9 @@ class DafnePlot extends React.Component {
         .attr("transform", `translate(6, 0)`);
 
   }
+  drawIcons(t,svg,i,x,data){
+
+  }
   drawAxis(t,svg,i,x,data){
     let width = 80;
     let topOffset = -30;
@@ -132,7 +189,7 @@ class DafnePlot extends React.Component {
              `translate(0,${this.margin.top * - 1})`);
     svg.append('rect')
        .attr("width",width)
-       .attr("height",height - labelContainerHeight )
+       .attr("height",height - (labelContainerHeight / 2) )
        .attr("x",x - 40)
        .attr("fill","#c9ced1a3")
        .attr("transform",
@@ -154,12 +211,36 @@ class DafnePlot extends React.Component {
       .style("font-weight", "bold")
       .attr("transform",
             `translate(0,-${labelContainerHeight})`);
+    // add icons
+    svg.append("svg:image")
+       .attr("x",x)
+       .attr("width",20)
+       .attr("height",20)
+       .attr("xlink:href", cancelButton)
+       .attr("transform",
+             `translate(15,${height - (labelContainerHeight * 2) + 25})`)
+       .attr("class","svgButton")
+       .datum(data)
+       .on("click", function(d) {
+         t.props.onDeleteIndicator(d);
+        });
 
+     svg.append("svg:image")
+        .attr("x",x)
+        .attr("width",20)
+        .attr("height",20)
+        .attr("xlink:href", pinButton)
+        .attr("transform",
+              `translate(-30,${height - (labelContainerHeight * 2) + 25})`)
+        .attr("class","svgButton")
+        .datum(data)
+        .on("click", function(d) {
+           t.props.onPinIndicator(d);
+         });
   }
   onResize = (w,h) => {
     this.svgW = w;
     this.svgH = h;
-    console.log("h",h);
     this.renderPlot();
   }
   render(){
@@ -173,4 +254,18 @@ class DafnePlot extends React.Component {
     )
   }
 }
+DafnePlot.propTypes = {
+  onDeleteIndicator : PropTypes.func,
+  onPinIndicator    : PropTypes.func,
+  filteredIndicators  : PropTypes.array
+
+};
+
+
+DafnePlot.defaultProps = {
+  onDeleteIndicator : (indicator) => {},
+  onPinIndicator    : (indicator) => {},
+  filteredIndicators  : []
+
+};
 export default DafnePlot;

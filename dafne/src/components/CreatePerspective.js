@@ -9,8 +9,22 @@ import GraphC from "../img/icons/graph_c.png";
 import Info from "../img/icons/info.png";
 import Data from "../data/data.json";
 class CreatePerspective extends React.Component {
+  constructor(p){
+    super(p);
+    this.onDeleteIndicator  = this.onDeleteIndicator.bind(this);
+    this.onPinIndicator     = this.onPinIndicator.bind(this);
+    this.filteredIndicators = [];
+  }
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
+  }
+  onDeleteIndicator(indicator){
+    this.filteredIndicators.push(indicator);
+    this.dafnePlot.filterIndicators(this.filteredIndicators);
+    console.log(this.filteredIndicators);
+  }
+  onPinIndicator(indicator){
+    // alert(JSON.stringify(indicator));
   }
   render(){
     return (
@@ -94,6 +108,8 @@ class CreatePerspective extends React.Component {
                 <IndicatorTools></IndicatorTools>
                 <DafnePlot
                   ref={(dp) => { this.dafnePlot = dp; }}
+                  onDeleteIndicator={(indicator) => {this.onDeleteIndicator(indicator);}}
+                  onPinIndicator={(indicator) => this.onPinIndicator(indicator) }
                   data={Data}></DafnePlot>
               </div>
           </div>
