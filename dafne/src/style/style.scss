@@ -70,6 +70,44 @@ input{
 .filters_area{
   min-height: 70px;
   background-color: $gray;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  margin-right: 20px;
+  overflow: hidden;
+}
+.filters_left_area{
+  flex:1;
+  max-width:400px;
+  min-width: 300px;
+  text-align: center;
+  flex-direction:column;
+  justify-content: center;
+}
+.filters_right_area{
+  flex:1;
+  text-align: center;
+  flex-direction:column;
+  justify-content: center;
+}
+.filters_right_area_content{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.wrapper_select span{
+  font-weight: bold;
+  margin-right: 5px;
+}
+.filter_divider_area{
+  width: 2px;
+  background-color:#bcbec0;
+  margin-left:9px;
+  margin-right: 9px;
 }
 .widget_title{
   background-color: $blue;
@@ -265,4 +303,63 @@ label{
 }
 .filter_content{
   flex: 1;
+}
+.title{
+  font-size: 15px;
+  font-weight: bold;
+}
+.m-t-10{
+  margin-top: 10px;
+}
+.m-b-10{
+  margin-bottom: 10px;
+}
+.m-b-5{
+  margin-bottom: 5px;
+}
+.m-b-15{
+  margin-bottom:15px;
+}
+.p-l-15{
+  padding-left:15px;
+}
+/**********************
+----- Pathway
+***********************/
+.pathway{
+  display:flex;
+  flex-direction:row;
+}
+.pathway_wrapper_img{
+  height: 24px;
+  width:35px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.pathway_header{
+  height:24px;
+  display: flex;
+  flex-direction: row;
+}
+.pathway_header_title{
+  display: flex;
+  flex:1;
+  align-items: center;
+  font-size:12px;
+  font-weight:bold;
+  background-color:#bcbec0;
+
+}
+.pathway_wrapper_content{
+  flex:1;
+  display:flex;
+  flex-direction: column;
+}
+.arrow-filler{
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:#bcbec0;
 }
