@@ -17,6 +17,36 @@ class CreatePerspective extends React.Component {
     return (
         <div className="flex">
           <div className="filters_area">
+            <div className="filters_left_area">
+               <div className="title m-b-5">Edit a saved perspective:</div>
+               <select>
+                <option>choose a perspective</option>
+               </select>
+            </div>
+            <div className='filter_divider_area'></div>
+            <div className="filters_right_area">
+               <div className="title m-b-5">To create a new perspective, select the indicators and set the filters:</div>
+               <div className="filters_right_area_content">
+                 <div className='wrapper_select'>
+                   <span>Region</span>
+                   <select>
+                    <option>basin-wide</option>
+                   </select>
+                 </div>
+                 <div className='wrapper_select'>
+                   <span>Sector</span>
+                   <select>
+                    <option>All-sectors</option>
+                   </select>
+                 </div>
+                <div className='wrapper_select'>
+                   <span>Scenario</span>
+                   <select>
+                    <option>No extreme events</option>
+                   </select>
+                 </div>
+               </div>
+            </div>
           </div>
           <div className="flex-row">
               <div className="widget" style={{maxWidth:400}}>
@@ -29,7 +59,7 @@ class CreatePerspective extends React.Component {
                   </div>
                   <div clasName="filter_content">
                     <div className="filter_row">
-                      <label className="filter_label" >
+                      <label className="filter_label title" >
                         <Checkbox
                           defaultChecked
                           onChange={() => {}}
@@ -42,7 +72,7 @@ class CreatePerspective extends React.Component {
 
                     </div>
                     <div className="filter_row">
-                      <label className="filter_label" >
+                      <label className="filter_label title" >
                         <Checkbox
                           defaultChecked
                           onChange={() => {}}
