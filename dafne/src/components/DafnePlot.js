@@ -16,7 +16,6 @@ class DafnePlot extends React.Component {
   }
   componentDidMount(){
     this.dafnePlot.addEventListener('resize', (event) => console.log(event.detail));
-
   }
   clear(){
     d3.select("svg").remove();
@@ -47,7 +46,6 @@ class DafnePlot extends React.Component {
       {"name":"F","value":0.9,"unit":"Tw/H","color":"#91b3ce","label":"Indicator 6"},
       {"name":"G","value":0.1,"unit":"Tw/H","color":"#91b3ce","label":"Indicator 7"},
       {"name":"H","value":0,"unit":"Tw/H","color":"#91b3ce","label":"Indicator 8"},
-
     ]
     var x = d3.scalePoint()
               .domain(domain)
@@ -55,36 +53,34 @@ class DafnePlot extends React.Component {
     var y = d3.scaleLinear()
               .domain([0,1])
               .range([0,this.height - this.margin.bottom - this.margin.top]);
-              var line = d3.line()
-              	.x(function(d){ return x(d.name)})
-              	.y(function(d){ return y(d.value)});
 
-                this.svg.append("path")
-                	.attr("d", line(lineData))
-                	.attr("stroke", "teal")
-                	.attr("stroke-width", "2")
-                	.attr("fill", "none")
-                  .attr("transform", `translate(6, 0)`);
 
 
     for (var i = 0; i < this.data.length; i++) {
       let d = lineData[i];
       this.drawAxis(this,this.svg,i,x(domain[i]),d);
-
-      this.svg.append("circle")
-          .attr("cx",x(domain[i]))
-          .attr("cy",y(this.data[i]))
-          .attr("r",8)
-          .attr("transform", `translate(6, 0)`)
-
-
       this.svg.append("g")
         .attr("transform", `translate(${x(domain[i]) + 6}, 0)`)
         .call(d3.axisLeft(y))
         .selectAll("line")
             .attr("x2","-12")
             .attr("transform", `translate(6, 0)`)
+      this.svg.append("circle")
+          .attr("cx",x(domain[i]))
+          .attr("cy",y(this.data[i]))
+          .attr("r",8)
+          .attr("transform", `translate(6, 0)`)
     }
+    var line = d3.line()
+      .x(function(d){ return x(d.name)})
+      .y(function(d){ return y(d.value)});
+
+      this.svg.append("path")
+        .attr("d", line(lineData))
+        .attr("stroke", "black")
+        .attr("stroke-width", "2")
+        .attr("fill", "none")
+        .attr("transform", `translate(6, 0)`);
   }
   drawAxis(t,svg,i,x,data){
     let width = 80;
