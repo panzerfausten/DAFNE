@@ -3,11 +3,15 @@ import "../style/style.scss";
 import EyeImg from "../img/icons/eye.png";
 import { Collapse } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+
+var classNames = require('classnames');
+
+
 class Pathway extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      isCollapseOpen:false
+      isCollapseOpen:false,
     }
     this.setOpen = this.setOpen.bind(this);
     this.onClick = this.onClick.bind(this);
@@ -25,6 +29,24 @@ class Pathway extends React.Component {
   }
   render(){
     const isCollapseOpen = this.state.isCollapseOpen;
+    //border styles addes
+    let headerClass = classNames({
+      'pathway_header_title': true,
+      'p-l-15': true,
+      'b-t-2': this.state.isCollapseOpen,
+      'b-l-2': this.state.isCollapseOpen,
+      'b-b-2': this.state.isCollapseOpen,
+    });
+    let arrowClass =  classNames({
+      'arrow-filler': true,
+      'b-t-2': this.state.isCollapseOpen,
+      'b-r-2': this.state.isCollapseOpen,
+      'b-b-2': this.state.isCollapseOpen,
+    });
+    let arrowRight =  classNames({
+      'arrow-right': true,
+      'triangle_red': this.state.isCollapseOpen,
+    });
 
     return (
       <div className='pathway m-b-15'>
@@ -33,11 +55,11 @@ class Pathway extends React.Component {
         </div>
         <div className='pathway_wrapper_content' onMouseOver={() => this.onMouseOver()} onClick={() => this.onClick()} >
           <div className='pathway_header' >
-            <div className='pathway_header_title p-l-15'>{`Solution pathway ${this.props.item.name}`}</div>
-            <div className="arrow-filler" >
+            <div className={headerClass}>{`Solution pathway ${this.props.item.name}`}</div>
+            <div className={arrowClass} >
               <div className="arrow-down"></div>
             </div>
-            <div className="arrow-right"></div>
+            <div className={arrowRight}></div>
           </div>
           <Collapse in={isCollapseOpen}>
             <div id="collapse_div">
