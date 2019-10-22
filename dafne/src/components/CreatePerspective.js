@@ -7,8 +7,7 @@ import Checkbox  from 'rc-checkbox';
 import GraphA from "../img/icons/graph_a.png";
 import GraphC from "../img/icons/graph_c.png";
 import Info from "../img/icons/info.png";
-
-
+import Data from "../data/data.json";
 class CreatePerspective extends React.Component {
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
@@ -63,7 +62,7 @@ class CreatePerspective extends React.Component {
               </div>
               <div className="widget" >
                 <IndicatorTools></IndicatorTools>
-                <DafnePlot></DafnePlot>
+                <DafnePlot dafneData={Data}></DafnePlot>
               </div>
           </div>
         </div>

@@ -12,14 +12,23 @@ class DafnePlot extends React.Component {
     this.svg    = null;
     this.renderPlot = this.renderPlot.bind(this);
     this.drawAxis = this.drawAxis.bind(this);
-    this.data = [1,0.1,0.2,0.3,0.2,0.9,0.1,0];
+    this.convertPathwayDataToDomain = this.convertPathwayDataToDomain.bind(this);
+    this.state = {
+      data: []
+    }
+    this.domain = ["A","B","C","D","E","F","G","H"];
+
   }
   componentDidMount(){
     this.dafnePlot.addEventListener('resize', (event) => console.log(event.detail));
+    this.setState({
+      data:this.props.dafneData
+    });
   }
   clear(){
     d3.select("svg").remove();
   }
+
   renderPlot(){
     this.clear();
     //re-set the size
@@ -36,51 +45,65 @@ class DafnePlot extends React.Component {
     //------------------------------------------------------------------------//
 
     // let _this = this;
-    let domain = ["A","B","C","D","E","F","G","H"];
-    var lineData = [
-      {"name":"A","value":1,"unit":"Tw/H","color":"#e6dd9b","label":"Indicator 1"},
-      {"name":"B","value":0.1,"unit":"Tw/H","color":"#c0d7b4","label":"Indicator 2"},
-      {"name":"C","value":0.2,"unit":"Tw/H","color":"#c0d7b4","label":"Indicator 3"},
-      {"name":"D","value":0.3,"unit":"Tw/H","color":"#c0d7b4","label":"Indicator 4"},
-      {"name":"E","value":0.2,"unit":"Tw/H","color":"#91b3ce","label":"Indicator 5"},
-      {"name":"F","value":0.9,"unit":"Tw/H","color":"#91b3ce","label":"Indicator 6"},
-      {"name":"G","value":0.1,"unit":"Tw/H","color":"#91b3ce","label":"Indicator 7"},
-      {"name":"H","value":0,"unit":"Tw/H","color":"#91b3ce","label":"Indicator 8"},
-    ]
     var x = d3.scalePoint()
-              .domain(domain)
+              .domain(this.domain)
               .range([0,this.width]);
     var y = d3.scaleLinear()
               .domain([0,1])
               .range([0,this.height - this.margin.bottom - this.margin.top]);
 
-
-
-    for (var i = 0; i < this.data.length; i++) {
-      let d = lineData[i];
-      this.drawAxis(this,this.svg,i,x(domain[i]),d);
+    for (var i = 0; i < this.state.data.indicators.length; i++) {
+      let d = this.state.data.indicators[i];
+      this.drawAxis(this,this.svg,i,x(this.domain[i]),d);
       this.svg.append("g")
-        .attr("transform", `translate(${x(domain[i]) + 6}, 0)`)
+        .attr("transform", `translate(${x(this.domain[i]) + 6}, 0)`)
         .call(d3.axisLeft(y))
         .selectAll("line")
             .attr("x2","-12")
             .attr("transform", `translate(6, 0)`)
-      this.svg.append("circle")
-          .attr("cx",x(domain[i]))
-          .attr("cy",y(this.data[i]))
-          .attr("r",8)
-          .attr("transform", `translate(6, 0)`)
+      // this.svg.append("circle")
+      //     .attr("cx",x(this.domain[i]))
+      //     .attr("cy",y(this.state.data[i]))
+      //     .attr("r",8)
+      //     .attr("transform", `translate(6, 0)`)
     }
+    for (var i = 0; i < this.state.data.pathways.length; i++) {
+      let data = this.convertPathwayDataToDomain(
+          this.state.data.pathways[i].data
+        );
+      var line = d3.line()
+        .x(function(d){ return x(d.domain)})
+        .y(function(d){ return y(d.value)});
+        this.svg.append("path")
+          .attr("d", line(data))
+          .attr("stroke", this.state.data.pathways[i].color)
+          .attr("stroke-width", "2")
+          .attr("fill", "none")
+          .attr("transform", `translate(6, 0)`);
+    }
+  }
+  convertPathwayDataToDomain(pathwayData){
+    let data = [];
+    for (var i = 0; i < pathwayData.length; i++) {
+      let point = {
+        "domain": this.domain[i],
+        "value": pathwayData[i]
+      }
+      data.push(point);
+    }
+    return data;
+  }
+  drawLine(t,svg,i,x,y,data){
     var line = d3.line()
-      .x(function(d){ return x(d.name)})
-      .y(function(d){ return y(d.value)});
-
+      .x(function(d){ return x("A")})
+      .y(function(d){ return y(1)});
       this.svg.append("path")
-        .attr("d", line(lineData))
+        .attr("d", line(data))
         .attr("stroke", "black")
         .attr("stroke-width", "2")
         .attr("fill", "none")
         .attr("transform", `translate(6, 0)`);
+
   }
   drawAxis(t,svg,i,x,data){
     let width = 80;
