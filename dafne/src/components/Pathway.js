@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "../style/style.scss";
 import EyeImg from "../img/icons/eye.png";
 import { Collapse } from 'react-bootstrap';
-
+import PropTypes from 'prop-types';
 class Pathway extends React.Component {
   constructor (props) {
     super(props);
@@ -10,12 +10,19 @@ class Pathway extends React.Component {
       isCollapseOpen:false
     }
     this.setOpen = this.setOpen.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
   setOpen(value){
     this.setState({isCollapseOpen:value});
   }
-
+  onClick(){
+    this.props.onClick(this.props.item);
+    this.setOpen(!this.state.isCollapseOpen);
+  }
+  onMouseOver(){
+    this.props.onClick(this.props.item);
+  }
   render(){
     const isCollapseOpen = this.state.isCollapseOpen;
 
@@ -24,19 +31,17 @@ class Pathway extends React.Component {
         <div className='pathway_wrapper_img'>
           <img src={EyeImg}></img>
         </div>
-        <div className='pathway_wrapper_content'>
-          <div className='pathway_header'>
-            <div className='pathway_header_title p-l-15'>{`Solution pathway ${this.props.item}`}</div>
-            <div className="arrow-filler" onClick={() => this.setOpen(!isCollapseOpen)}>
+        <div className='pathway_wrapper_content' onMouseOver={() => this.onMouseOver()} onClick={() => this.onClick()} >
+          <div className='pathway_header' >
+            <div className='pathway_header_title p-l-15'>{`Solution pathway ${this.props.item.name}`}</div>
+            <div className="arrow-filler" >
               <div className="arrow-down"></div>
             </div>
             <div className="arrow-right"></div>
           </div>
           <Collapse in={isCollapseOpen}>
             <div id="collapse_div">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-              terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
-              labore wes anderson cred nesciunt sapiente ea proident.
+              {this.props.item.description}
             </div>
           </Collapse>
 
@@ -46,4 +51,13 @@ class Pathway extends React.Component {
     );
   }
 }
+Pathway.propTypes = {
+  onClick : PropTypes.func
+};
+
+
+Pathway.defaultProps = {
+  onClick : (pathway) => {}
+};
+
 export default Pathway;

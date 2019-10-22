@@ -45,16 +45,22 @@
   [
     {
       "data":[1,0.1,0.2,0.3,0.2,0.9,0.1,0],
-      "color":"#227b71"
+      "color":"#227b71",
+      "name":"P1",
+      "description":"This is the description for P1"
     },
     {
       "data":[0.9,0.4,0.3,0.6,0.9,0.9,0.5,1],
-      "color":"#92d051"
+      "color":"#92d051",
+      "name":"P2",
+      "description":"This is the description for P2"
 
     },
     {
       "data":[0.3,0.3,0.8,1,0.6,0.7,1,0.9],
-      "color":"#7030a0"
+      "color":"#7030a0",
+      "name":"P3",
+      "description":"This is the description for P3"
 
     }
   ]

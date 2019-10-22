@@ -13,8 +13,11 @@ class DafnePlot extends React.Component {
     this.renderPlot = this.renderPlot.bind(this);
     this.drawAxis = this.drawAxis.bind(this);
     this.convertPathwayDataToDomain = this.convertPathwayDataToDomain.bind(this);
+    this.highlightPathways = this.highlightPathways.bind(this);
+
     this.state = {
-      data: []
+      data: [],
+      highlightedPathways: []
     }
     this.domain = ["A","B","C","D","E","F","G","H"];
 
@@ -22,13 +25,18 @@ class DafnePlot extends React.Component {
   componentDidMount(){
     this.dafnePlot.addEventListener('resize', (event) => console.log(event.detail));
     this.setState({
-      data:this.props.dafneData
+      data:this.props.data
     });
   }
   clear(){
     d3.select("svg").remove();
   }
+  highlightPathways(pathways){
+    this.setState({
+      highlightedPathways : pathways
+    }, () => this.renderPlot());
 
+  }
   renderPlot(){
     this.clear();
     //re-set the size
@@ -49,7 +57,7 @@ class DafnePlot extends React.Component {
               .domain(this.domain)
               .range([0,this.width]);
     var y = d3.scaleLinear()
-              .domain([0,1])
+              .domain([1,0])
               .range([0,this.height - this.margin.bottom - this.margin.top]);
 
     for (var i = 0; i < this.state.data.indicators.length; i++) {
@@ -67,17 +75,22 @@ class DafnePlot extends React.Component {
       //     .attr("r",8)
       //     .attr("transform", `translate(6, 0)`)
     }
+    let mappedHighlightedPathways = this.state.highlightedPathways.map(p => p.name);
     for (var i = 0; i < this.state.data.pathways.length; i++) {
       let data = this.convertPathwayDataToDomain(
           this.state.data.pathways[i].data
         );
+      let lineWidth = "2";
+      if(mappedHighlightedPathways.includes(this.state.data.pathways[i].name)){
+        lineWidth = "4";
+      }
       var line = d3.line()
         .x(function(d){ return x(d.domain)})
         .y(function(d){ return y(d.value)});
         this.svg.append("path")
           .attr("d", line(data))
           .attr("stroke", this.state.data.pathways[i].color)
-          .attr("stroke-width", "2")
+          .attr("stroke-width", lineWidth)
           .attr("fill", "none")
           .attr("transform", `translate(6, 0)`);
     }
