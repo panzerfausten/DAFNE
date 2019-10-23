@@ -105,7 +105,7 @@ input{
 }
 .filter_divider_area{
   width: 2px;
-  background-color:#bcbec0;
+  background-color: $darkgray;
   margin-left:9px;
   margin-right: 9px;
 }
@@ -234,21 +234,34 @@ input{
   justify-content: center;
 }
 .it_area_b{
-  border-left: 1px solid $darkgray;
   flex:.2;
+  // margin-left: 50px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  font-size: 14px;
+}
+.it_area_divider{
+  background-color: $darkgray;
+  width: 2px;
+  margin-left: 9px;
+  margin-right: 9px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .circular_button{
-  margin-top:10px;
-  width:70px;
-  height: 70px;
+  width:50px;
+  height:50px;
   color:white;
-  border-radius: 50px;
+  border-radius: 50%;
   background-color: $darkblue;
   justify-content: center;
   display: flex;
   align-items: center;
   cursor: pointer;
   box-shadow: 1px 1px 1px 1px #888888;
+  font-size: xx-large;
 }
 .circular_button:hover{
   background-color: #0d5288;
@@ -308,6 +321,12 @@ label{
   font-size: 15px;
   font-weight: bold;
 }
+/**********************
+  Margin and paddings
+***********************/
+.m-l-5{
+  margin-left: 5px;
+}
 .m-t-10{
   margin-top: 10px;
 }
@@ -320,8 +339,14 @@ label{
 .m-b-15{
   margin-bottom:15px;
 }
+.m-b-20{
+  margin-bottom:20px;
+}
 .p-l-15{
   padding-left:15px;
+}
+.p-10{
+  padding: 10px;
 }
 /**********************
        Pathway
@@ -365,7 +390,7 @@ label{
   background-color:#bcbec0;
 }
 .triangle_red{
-  border-left: 12px solid red; 
+  border-left: 12px solid red;
 }
 /**********************
      Pathway borders
@@ -381,4 +406,47 @@ label{
 }
 .b-b-2{
   border-bottom: 2px solid red;
+}
+/**********************
+     Pathway borders
+***********************/
+.txt-center{
+  text-align: center !important;
+}
+/**********************
+  Modal custom
+***********************/
+.custom_modal .modal_content{
+  border: none !important;
+}
+.custom_modal_header{
+  background-color: $blue;
+  color:white !important;
+}
+.custom_modal_header .close{
+  color:white !important;
+}
+.btn_modal{
+  background-color: $blue !important;
+  border: none !important;
+}
+.btn_modal:hover{
+  background-color: #0d5288 !important;
+}
+.custom_modal_content{
+  display: flex;
+  flex-direction: column;
+  // background-color: $gray;
+}
+.custom_top_content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: $gray;
+}
+.custom_top_content span{
+  font-weight: bold;
+}
+.custom_bottom_content{
+  background-color: $gray;
 }
