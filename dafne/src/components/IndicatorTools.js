@@ -3,23 +3,31 @@ import Switch from "react-switch";
 import 'rc-checkbox/assets/index.css';
 import Button from 'react-bootstrap/Button';
 import Checkbox  from 'rc-checkbox';
+
+import IndicatorFilter from '../components/IndicatorFilter';
+
 class IndicatorTools extends React.Component {
   constructor() {
     super();
     this.state = {
-      checked: false,
+      checked     : false,
       show_scales : false,
-      show_best : true
+      show_best   : true,
+      show_modal  : false,
     };
-    this.handleChange   = this.handleChange.bind(this);
-    this.handleCbScales = this.handleCbScales.bind(this);
-
+    this.handleChange    = this.handleChange.bind(this);
+    this.handleCbScales  = this.handleCbScales.bind(this);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
   }
+
   handleChange(checked) {
     this.setState({ checked });
   }
   handleCbScales(checked) {
     this.setState({ show_scales:checked });
+  }
+  handleOpenModal(value){
+    this.setState({ show_modal : value})
   }
   render(){
     return(
@@ -74,13 +82,15 @@ class IndicatorTools extends React.Component {
                     </div>
                 </div>
             </div>
-            <div className="it_area_b" style={{marginLeft: "50",display: "flex",justifyContent: "center",alignItems: "center"}}>
-            <div className="circular_button">+</div>
+            <div className='it_area_divider'></div>
+            <div className="it_area_b">
+              <div className="circular_button m-b-10" onClick={() => this.handleOpenModal(true)}>+</div>
+              add indicator
             </div>
           </div>
           </div>
         </div>
-
+        <IndicatorFilter show={this.state.show_modal} handleOpenModal={this.handleOpenModal}/>
       </div>
     )
   }
