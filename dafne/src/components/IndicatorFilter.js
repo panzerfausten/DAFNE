@@ -2,15 +2,24 @@ import React from 'react';
 import "../style/style.scss";
 import { Modal, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import IndicatorFilterList from '../components/IndicatorFilterList';
 
 class IndicatorFilter extends React.Component {
   constructor (props) {
     super(props);
-    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.state={
+      indicators:[ { name:'Energy Gibe 1',},{ name:'Energy Gibe 2',} ,{ name:'Energy Gibe 3',} ,{ name:'Energy K',}  ]
+    }
+    this.handleOpenModal      = this.handleOpenModal.bind(this);
+    this.onIndicatorSelected  = this.onIndicatorSelected.bind(this);
   }
 
   handleOpenModal(value){
     this.props.handleOpenModal(value);
+  }
+
+  onIndicatorSelected(indicator){
+    console.log(indicator)
   }
 
   render(){
@@ -39,13 +48,8 @@ class IndicatorFilter extends React.Component {
               </div>
             </div>
 
-            <div className='custom_bottom_content p-10'>
-              <select multiple>
-                <option>Energy Gibe 1</option>
-                <option>Energy Gibe 2</option>
-                <option>Energy Gibe 3</option>
-                <option>Energy K</option>
-              </select>
+            <div className='custom_bottom_content'>
+              <IndicatorFilterList indicators={this.state.indicators} onClick={this.onIndicatorSelected}/>
             </div>
           </div>
 
