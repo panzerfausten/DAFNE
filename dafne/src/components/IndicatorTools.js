@@ -3,6 +3,7 @@ import Switch from "react-switch";
 import 'rc-checkbox/assets/index.css';
 import Button from 'react-bootstrap/Button';
 import Checkbox  from 'rc-checkbox';
+import PropTypes from 'prop-types';
 
 import IndicatorFilter from '../components/IndicatorFilter';
 
@@ -90,9 +91,29 @@ class IndicatorTools extends React.Component {
           </div>
           </div>
         </div>
-        <IndicatorFilter show={this.state.show_modal} handleOpenModal={this.handleOpenModal}/>
+        <IndicatorFilter
+          show={this.state.show_modal}
+          handleOpenModal={this.handleOpenModal}
+          data={this.props.data}
+          filteredIndicators={this.props.filteredIndicators}
+          onSelectIndicators={(indicators) => {this.props.onSelectIndicators(indicators);}}
+          />
       </div>
     )
   }
 }
+IndicatorTools.propTypes = {
+  data                : PropTypes.object,
+  filteredIndicators  : PropTypes.array,
+  onSelectIndicators  : PropTypes.func,
+
+};
+
+
+IndicatorTools.defaultProps = {
+  data               : [],
+  filteredIndicators : [],
+  onSelectIndicators : (indicators) => {},
+
+};
 export default IndicatorTools;

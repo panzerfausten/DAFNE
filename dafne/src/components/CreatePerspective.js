@@ -21,7 +21,10 @@ class CreatePerspective extends React.Component {
   onDeleteIndicator(indicator){
     this.filteredIndicators.push(indicator);
     this.dafnePlot.filterIndicators(this.filteredIndicators);
-    console.log(this.filteredIndicators);
+  }
+  onSelectIndicators(indicators){
+    this.filteredIndicators = indicators;
+    this.dafnePlot.filterIndicators(this.filteredIndicators);
   }
   onPinIndicator(indicator){
     // alert(JSON.stringify(indicator));
@@ -105,7 +108,9 @@ class CreatePerspective extends React.Component {
                 </div>
               </div>
               <div className="widget" >
-                <IndicatorTools></IndicatorTools>
+                <IndicatorTools data={Data}
+                                filteredIndicators={this.filteredIndicators}
+                                onSelectIndicators={(indicators) => {this.onSelectIndicators(indicators);}}></IndicatorTools>
                 <DafnePlot
                   ref={(dp) => { this.dafnePlot = dp; }}
                   onDeleteIndicator={(indicator) => {this.onDeleteIndicator(indicator);}}

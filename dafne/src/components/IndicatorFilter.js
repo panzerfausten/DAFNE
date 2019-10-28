@@ -41,10 +41,12 @@ class IndicatorFilter extends React.Component {
 
             <div className='custom_bottom_content p-10'>
               <select multiple>
-                <option>Energy Gibe 1</option>
-                <option>Energy Gibe 2</option>
-                <option>Energy Gibe 3</option>
-                <option>Energy K</option>
+                {
+                  this.props.data.indicators.map((indicator,index) => (
+                    <option item={indicator} key={index}> {indicator.label} </option>
+                  ))
+                }
+
               </select>
             </div>
           </div>
@@ -60,16 +62,23 @@ class IndicatorFilter extends React.Component {
   }
 }
 IndicatorFilter.propTypes = {
-  show            : PropTypes.bool,
-  handleOpenModal : PropTypes.func,
-  onClick         : PropTypes.func
+  show                : PropTypes.bool,
+  handleOpenModal     : PropTypes.func,
+  onClick             : PropTypes.func,
+  data                : PropTypes.object,
+  filteredIndicators  : PropTypes.array,
+  onSelectIndicators  : PropTypes.func
+
 };
 
 
 IndicatorFilter.defaultProps = {
-  show            : false,
-  handleOpenModal : () => {},
-  onClick         : () => {}
+  show               : false,
+  handleOpenModal    : () => {},
+  onClick            : () => {},
+  data               : [],
+  filteredIndicators : [],
+  onSelectIndicators : (indicators) => {}
 };
 
 export default IndicatorFilter;
