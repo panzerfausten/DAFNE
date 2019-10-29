@@ -4,24 +4,40 @@ import { Modal, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import IndicatorFilterList from '../components/IndicatorFilterList';
 
-class IndicatorFilter extends React.Component {
+class IndicatorModal extends React.Component {
   constructor (props) {
     super(props);
-    this.state={
-      indicators:[ { name:'Energy Gibe 1',},{ name:'Energy Gibe 2',} ,{ name:'Energy Gibe 3',} ,{ name:'Energy K',}  ]
-    }
     this.handleOpenModal      = this.handleOpenModal.bind(this);
     this.onIndicatorSelected  = this.onIndicatorSelected.bind(this);
+    this.selectedIndicators   = [];
+    this.onOkClick = this.onOkClick.bind(this);
+
   }
 
   handleOpenModal(value){
     this.props.handleOpenModal(value);
   }
 
-  onIndicatorSelected(indicator){
-    console.log(indicator)
+  onIndicatorSelected(indicator,selected){
+    if(selected){
+      this.selectedIndicators.push(indicator);
+    }else{
+      //remove it
+      this.selectedIndicators = this.selectedIndicators.filter( i => i.label !== indicator.label);
+    }
   }
-
+  onOkClick(){
+    this.handleOpenModal(false);
+    let fIndicators = [];
+    let indicators = this.props.data.indicators;
+    let selectedIndicatorsLabels = this.selectedIndicators.map(i => i.label);
+    for (var i = 0; i < indicators.length; i++) {
+      if(!selectedIndicatorsLabels.includes(indicators[i].label)){
+        fIndicators.push(indicators[i]);
+      }
+    }
+    this.props.onSelectIndicators(fIndicators);
+  }
   render(){
     return (
       <Modal className='custom_modal' show={this.props.show} onHide={() => this.handleOpenModal(false)} centered>
@@ -49,23 +65,19 @@ class IndicatorFilter extends React.Component {
             </div>
 
             <div className='custom_bottom_content p-10'>
-              <select multiple>
-                {
-                  this.props.data.indicators.map((indicator,index) => (
-                    <option item={indicator} key={index}> {indicator.label} </option>
-                  ))
-                }
-
-              </select>
               <div className='custom_bottom_content'>
-                <IndicatorFilterList indicators={this.state.indicators} onClick={this.onIndicatorSelected}/>
+                <IndicatorFilterList
+                  indicators={this.props.data.indicators}
+                  onClick={(indicator,selected) => this.onIndicatorSelected(indicator,selected)}
+                  filteredIndicators={this.props.filteredIndicators}
+                  />
                 </div>
             </div>
           </div>
 
         </Modal.Body>
         <Modal.Footer>
-          <Button className='btn_modal' block onClick={() => this.handleOpenModal(false)}>
+          <Button className='btn_modal' block onClick={() => this.onOkClick()}>
             OK
           </Button>
         </Modal.Footer>
@@ -73,7 +85,7 @@ class IndicatorFilter extends React.Component {
     );
   }
 }
-IndicatorFilter.propTypes = {
+IndicatorModal.propTypes = {
   show                : PropTypes.bool,
   handleOpenModal     : PropTypes.func,
   onClick             : PropTypes.func,
@@ -84,7 +96,7 @@ IndicatorFilter.propTypes = {
 };
 
 
-IndicatorFilter.defaultProps = {
+IndicatorModal.defaultProps = {
   show               : false,
   handleOpenModal    : () => {},
   onClick            : () => {},
@@ -93,4 +105,4 @@ IndicatorFilter.defaultProps = {
   onSelectIndicators : (indicators) => {}
 };
 
-export default IndicatorFilter;
+export default IndicatorModal;

@@ -13,15 +13,24 @@ class IndicatorFilterListItem extends React.Component {
     this.onClick = this.onClick.bind(this);
     this.handleOnSelect = this.handleOnSelect.bind(this);
   }
-
-  onClick(indicator){
-    this.handleOnSelect();
-    this.props.onClick(indicator);
+  componentDidMount(){
+    this.setState({
+      isSelected:this.props.selected
+    }, () => {
+      if(!this.props.isSelected){
+        this.onClick(this.props.indicator);
+      }
+    })
   }
-
-  handleOnSelect(){
+  onClick(indicator){
+    this.handleOnSelect(indicator);
+  }
+  handleOnSelect(indicator){
     let isSelected = this.state.isSelected;
-    this.setState({isSelected:!isSelected});
+    this.setState({isSelected:!isSelected}, () =>{
+      this.props.onClick(indicator,!isSelected);
+      }
+    );
   }
 
   render(){
@@ -33,7 +42,7 @@ class IndicatorFilterListItem extends React.Component {
 
     return (
       <div className={indicatorClass} onClick={() => this.onClick(indicator)}>
-        <div>{indicator.name}</div>
+        <div>{indicator.label}</div>
       </div>
     );
   }
@@ -41,12 +50,15 @@ class IndicatorFilterListItem extends React.Component {
 
 IndicatorFilterListItem.propTypes = {
   indicator      : PropTypes.object,
-  onClick        : PropTypes.func
+  onClick        : PropTypes.func,
+  selected       : PropTypes.bool
 };
 
 IndicatorFilterListItem.defaultProps = {
   indicators     : {},
-  onClick        : () => {}
+  onClick        : (indicators,selected) => {},
+  selected       : false
+
 };
 
 export default IndicatorFilterListItem;

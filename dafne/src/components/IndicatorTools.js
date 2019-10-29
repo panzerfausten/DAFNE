@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Checkbox  from 'rc-checkbox';
 import PropTypes from 'prop-types';
 
-import IndicatorFilter from '../components/IndicatorFilter';
+import IndicatorModal from '../components/IndicatorModal';
 
 class IndicatorTools extends React.Component {
   constructor() {
@@ -91,7 +91,7 @@ class IndicatorTools extends React.Component {
           </div>
           </div>
         </div>
-        <IndicatorFilter
+        <IndicatorModal
           show={this.state.show_modal}
           handleOpenModal={this.handleOpenModal}
           data={this.props.data}

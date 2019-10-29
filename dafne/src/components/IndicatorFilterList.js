@@ -9,31 +9,40 @@ class IndicatorFilterList extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  onClick(item){
-    this.props.onClick(item);
+  onClick(item,isSelected){
+    this.props.onClick(item,isSelected);
   }
-
   render(){
     const indicators = this.props.indicators;
+    let mappedFilteredIndicators = this.props.filteredIndicators.map(i => i.label);
 
     return (
       <div>
-        {indicators.map((item,index) => (
-          <IndicatorFilterListItem key={index} indicator={item} onClick={this.onClick}/>
-        ))}
+        {indicators.map((item,index) => {
+            let isSelected = false;
+            if(mappedFilteredIndicators.includes(item.label)){
+              isSelected = true;
+            }
+            return(
+              <IndicatorFilterListItem selected={isSelected} key={index} indicator={item} onClick={this.onClick}/>
+            )
+          }
+        )}
       </div>
     );
   }
 }
 
 IndicatorFilterList.propTypes = {
-  indicators      : PropTypes.array,
-  onClick         : PropTypes.func
+  indicators         : PropTypes.array,
+  filteredIndicators : PropTypes.array,
+  onClick            : PropTypes.func
 };
 
 IndicatorFilterList.defaultProps = {
-  Indicators      : [],
-  onClick         : () => {}
+  indicators         : [],
+  filteredIndicators : [],
+  onClick            : () => {}
 };
 
 export default IndicatorFilterList;
