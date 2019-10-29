@@ -18,6 +18,7 @@ class IndicatorTools extends React.Component {
     };
     this.handleChange    = this.handleChange.bind(this);
     this.handleCbScales  = this.handleCbScales.bind(this);
+    this.handleCbValues  = this.handleCbValues.bind(this);
     this.handleOpenModal = this.handleOpenModal.bind(this);
   }
 
@@ -26,6 +27,11 @@ class IndicatorTools extends React.Component {
   }
   handleCbScales(checked) {
     this.setState({ show_scales:checked });
+    this.props.onOptionChanged({"option":"showScales","value":checked.target.checked});
+  }
+  handleCbValues(checked) {
+    this.setState({ show_best:checked });
+    this.props.onOptionChanged({"option":"showBestWorstValues","value":checked.target.checked});
   }
   handleOpenModal(value){
     this.setState({ show_modal : value})
@@ -75,7 +81,7 @@ class IndicatorTools extends React.Component {
                       <label className="it_label">
                         <Checkbox
                           defaultChecked
-                          onChange={this.handleCbScales}
+                          onChange={this.handleCbValues}
                           disabled={this.state.cb_values}
                         />
                         Show best / worst values
@@ -106,6 +112,7 @@ IndicatorTools.propTypes = {
   data                : PropTypes.object,
   filteredIndicators  : PropTypes.array,
   onSelectIndicators  : PropTypes.func,
+  onOptionChanged     : PropTypes.func
 
 };
 
@@ -114,6 +121,8 @@ IndicatorTools.defaultProps = {
   data               : [],
   filteredIndicators : [],
   onSelectIndicators : (indicators) => {},
+  onOptionChanged    : (option) => {},
+
 
 };
 export default IndicatorTools;

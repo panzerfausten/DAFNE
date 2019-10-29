@@ -29,6 +29,7 @@ class Pathway extends React.Component {
   }
   render(){
     const isCollapseOpen = this.state.isCollapseOpen;
+    let fillerCollor = isCollapseOpen ? this.props.item.color : "#bcbec0";
     //border styles addes
     let headerClass = classNames({
       'pathway_header_title': true,
@@ -47,19 +48,24 @@ class Pathway extends React.Component {
       'arrow-right': true,
       'triangle_red': this.state.isCollapseOpen,
     });
-
+    let arrowRightSyleObj = {
+      borderLeftColor: fillerCollor
+    }
+    let borderStyleColor = {
+      borderColor: fillerCollor
+    }
     return (
       <div className='pathway m-b-15'>
         <div className='pathway_wrapper_img'>
           <img src={EyeImg}></img>
         </div>
         <div className='pathway_wrapper_content' onMouseOver={() => this.onMouseOver()} onClick={() => this.onClick()} >
-          <div className='pathway_header' >
-            <div className={headerClass}>{`Solution pathway ${this.props.item.name}`}</div>
-            <div className={arrowClass} >
+          <div className='pathway_header'  >
+            <div className={headerClass} style={borderStyleColor}>{`Solution pathway ${this.props.item.name}`}</div>
+            <div className={arrowClass} style={borderStyleColor} >
               <div className="arrow-down"></div>
             </div>
-            <div className={arrowRight}></div>
+            <div className={arrowRight} style={arrowRightSyleObj}></div>
           </div>
           <Collapse in={isCollapseOpen}>
             <div id="collapse_div">

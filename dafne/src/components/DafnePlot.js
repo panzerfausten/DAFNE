@@ -80,13 +80,22 @@ class DafnePlot extends React.Component {
     let mapFilterIndicators = this.state.filteredIndicators.map(i => i.label);
 
     plotIndicators = plotIndicators.filter(i => !mapFilterIndicators.includes(i.label));
-
+    let option_showScales = this.props.showScales;
     for (var i = 0; i < plotIndicators.length; i++) {
       let d = plotIndicators[i];
       this.drawAxis(this,this.svg,i,x(this.domain[i]),d);
       this.svg.append("g")
         .attr("transform", `translate(${x(this.domain[i]) + 6}, 0)`)
-        .call(d3.axisLeft(y))
+        .call(
+          d3.axisLeft(y)
+          .tickFormat(function (d) {
+            if(option_showScales){
+              return d;
+            }else{
+              return "";
+            }
+          })
+        )
         .selectAll("line")
             .attr("x2","-12")
             .attr("transform", `translate(6, 0)`)

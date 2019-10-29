@@ -14,11 +14,14 @@ class CreatePerspective extends React.Component {
     this.onDeleteIndicator  = this.onDeleteIndicator.bind(this);
     this.onPinIndicator     = this.onPinIndicator.bind(this);
     this.onSelectIndicators = this.onSelectIndicators.bind(this);
-
     this.state = {
-      filteredIndicators:[]
+      filteredIndicators:[],
+      dafnePlotOptions:{
+        showScales:true
+      }
     }
     this.filteredIndicators = [];
+    this.onOptionChanged    = this.onOptionChanged.bind(this);
   }
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
@@ -35,6 +38,15 @@ class CreatePerspective extends React.Component {
   }
   onPinIndicator(indicator){
     // alert(JSON.stringify(indicator));
+  }
+  onOptionChanged(option){
+    this.setState(prevState => {
+      let dafnePlotOptions = Object.assign({}, prevState.dafnePlotOptions);
+      dafnePlotOptions[option.option] = option.value;
+      return { dafnePlotOptions };
+    }, () => {
+      this.dafnePlot.filterIndicators(this.filteredIndicators);
+    })
   }
   render(){
     return (
@@ -117,12 +129,16 @@ class CreatePerspective extends React.Component {
               <div className="widget" >
                 <IndicatorTools data={Data}
                                 filteredIndicators={this.state.filteredIndicators}
-                                onSelectIndicators={(indicators) => {this.onSelectIndicators(indicators);}}></IndicatorTools>
+                                onSelectIndicators={(indicators) => {this.onSelectIndicators(indicators);}}
+                                onOptionChanged={(option) => {this.onOptionChanged(option)}}
+                                ></IndicatorTools>
                 <DafnePlot
                   ref={(dp) => { this.dafnePlot = dp; }}
                   onDeleteIndicator={(indicator) => {this.onDeleteIndicator(indicator);}}
                   onPinIndicator={(indicator) => this.onPinIndicator(indicator) }
-                  data={Data}></DafnePlot>
+                  data={Data}
+                  showScales={this.state.dafnePlotOptions.showScales}
+                  ></DafnePlot>
               </div>
           </div>
         </div>
