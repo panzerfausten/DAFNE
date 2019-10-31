@@ -8,6 +8,8 @@ import GraphA from "../img/icons/graph_a.png";
 import GraphC from "../img/icons/graph_c.png";
 import Info from "../img/icons/info.png";
 import Data from "../data/data.json";
+import Button from 'react-bootstrap/Button';
+
 class CreatePerspective extends React.Component {
   constructor(p){
     super(p);
@@ -139,6 +141,10 @@ class CreatePerspective extends React.Component {
                   data={Data}
                   showScales={this.state.dafnePlotOptions.showScales}
                   ></DafnePlot>
+                  <div className="save_area" style={{flex:1,marginBottom:10,maxHeight:30,marginRight:10,alignItems:"end",display:"flex",flexDirection:"column"}}>
+                    <Button size="sm" onClick={() => {}} style={{width: 200}}>Save</Button>
+
+                  </div>
               </div>
           </div>
         </div>
