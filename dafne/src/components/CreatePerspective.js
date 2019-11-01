@@ -123,7 +123,7 @@ class CreatePerspective extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="widget_content">
+                <div className="widget_content" style={{overflowY: "auto"}}>
                   <div className="solution_list_title">Solution pathways and their impact on the selected indicators:</div>
                   <PathwaysList data={Data} onClick={(p) => {this.dafnePlot.highlightPathways([p])}}></PathwaysList>
                 </div>

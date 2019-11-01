@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 class DafnePlot extends React.Component {
   constructor (props) {
     super(props);
-    this.margin = {top: 70, right: 50, bottom: 30, left: 50};
+    this.margin = {top: 70, right: 50, bottom: 30, left: 70};
     this.svgW   = 0;
     this.svgH   = 0;
     this.width  = 0;
@@ -56,13 +56,27 @@ class DafnePlot extends React.Component {
   }
   renderPlot(){
     this.clear();
+    let plotIndicators = this.state.data.indicators;
+    let mapFilterIndicators = this.state.filteredIndicators.map(i => i.label);
+    plotIndicators = plotIndicators.filter(i => !mapFilterIndicators.includes(i.label));
+
     //re-set the size
-    this.width  = this.svgW - this.margin.right - this.margin.left;
+    // this.width  = this.svgW - this.margin.right - this.margin.left;
+    this.width  = (this.state.data.indicators.length * 150 ) + 20;
     this.height = this.svgH - this.margin.bottom - this.margin.top;
+    if(this.width < 600){
+      this.width = 600;
+    }
+    let svgWidth = this.width + 150;
+    if(this.svgW >= this.width){
+      svgWidth = this.svgW;
+    }else{
+
+    }
     // append the svg object to the body of the page
     this.svg = d3.select("#dafne_plot")
     .append("svg")
-      .attr("width", this.svgW)
+      .attr("width", svgWidth)
       .attr("height", this.svgH)
     .append("g")
       .attr("transform",
@@ -76,10 +90,7 @@ class DafnePlot extends React.Component {
     var y = d3.scaleLinear()
               .domain([1,0])
               .range([0,this.height - this.margin.bottom - this.margin.top]);
-    let plotIndicators = this.state.data.indicators;
-    let mapFilterIndicators = this.state.filteredIndicators.map(i => i.label);
 
-    plotIndicators = plotIndicators.filter(i => !mapFilterIndicators.includes(i.label));
     let option_showScales = this.props.showScales;
     for (var i = 0; i < plotIndicators.length; i++) {
       let d = plotIndicators[i];
@@ -256,6 +267,7 @@ class DafnePlot extends React.Component {
     return (
       <div
         id="dafne_plot"
+        style={{maxHeight: "500px",overflowY:"hidden",overflowX:"auto",marginLeft:"-20px"}}
         ref={ref => this.dafnePlot = ref}>
         <ReactResizeDetector  handleWidth handleHeight onResize={this.onResize} />
 
