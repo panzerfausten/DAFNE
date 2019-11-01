@@ -1,7 +1,4 @@
 import React from 'react';
-import DafnePlot from "../components/DafnePlot";
-import IndicatorTools from '../components/IndicatorTools';
-import PathwaysList from '../components/PathwaysList';
 import 'rc-checkbox/assets/index.css';
 import Checkbox  from 'rc-checkbox';
 import GraphA from "../img/icons/graph_a.png";
@@ -10,20 +7,29 @@ import Info from "../img/icons/info.png";
 import Data from "../data/data.json";
 import Button from 'react-bootstrap/Button';
 
+//components
+import DafnePlot from "../components/DafnePlot";
+import IndicatorTools from '../components/IndicatorTools';
+import PathwaysList from '../components/PathwaysList';
+import SavePerspectiveModal from '../components/SavePerspectiveModal';
+
+
 class CreatePerspective extends React.Component {
   constructor(p){
     super(p);
-    this.onDeleteIndicator  = this.onDeleteIndicator.bind(this);
-    this.onPinIndicator     = this.onPinIndicator.bind(this);
-    this.onSelectIndicators = this.onSelectIndicators.bind(this);
     this.state = {
       filteredIndicators:[],
       dafnePlotOptions:{
         showScales:true
-      }
+      },
+      showModal:false,
     }
-    this.filteredIndicators = [];
-    this.onOptionChanged    = this.onOptionChanged.bind(this);
+    this.onDeleteIndicator            = this.onDeleteIndicator.bind(this);
+    this.onPinIndicator               = this.onPinIndicator.bind(this);
+    this.onSelectIndicators           = this.onSelectIndicators.bind(this);
+    this.filteredIndicators           = [];
+    this.onOptionChanged              = this.onOptionChanged.bind(this);
+    this.handleOpenPerspectiveModal   = this.handleOpenPerspectiveModal.bind(this);
   }
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
@@ -49,6 +55,9 @@ class CreatePerspective extends React.Component {
     }, () => {
       this.dafnePlot.filterIndicators(this.filteredIndicators);
     })
+  }
+  handleOpenPerspectiveModal(value){
+    this.setState({showModal:value});
   }
   render(){
     return (
@@ -142,11 +151,11 @@ class CreatePerspective extends React.Component {
                   showScales={this.state.dafnePlotOptions.showScales}
                   ></DafnePlot>
                   <div className="save_area" style={{flex:1,marginBottom:10,maxHeight:30,marginRight:10,alignItems:"end",display:"flex",flexDirection:"column"}}>
-                    <Button size="sm" onClick={() => {}} style={{width: 200}}>Save</Button>
-
+                    <Button size="sm" onClick={() => this.handleOpenPerspectiveModal(true)} style={{width: 200}}>Save</Button>
                   </div>
               </div>
           </div>
+          <SavePerspectiveModal show={this.state.showModal} handleOpenModal={this.handleOpenPerspectiveModal}/>
         </div>
     )
   }

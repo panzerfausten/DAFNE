@@ -35,6 +35,13 @@ input{
   border: 1.5px solid $blue;
   border-radius: 5px;
 }
+.txt_bold{
+  font-weight: bold;
+}
+.width100{
+  max-width: none !important;
+  width: 100% !important;
+}
 .inputLabel{
   font-size: 13px;
   height: 30px;
@@ -330,6 +337,9 @@ label{
 .m-t-10{
   margin-top: 10px;
 }
+.m-t-20{
+  margin-top: 20px;
+}
 .m-b-10{
   margin-bottom: 10px;
 }
@@ -341,6 +351,9 @@ label{
 }
 .m-b-20{
   margin-bottom:20px;
+}
+.p-l-5{
+  padding-left:5px;
 }
 .p-l-15{
   padding-left:15px;
