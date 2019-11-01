@@ -12,6 +12,11 @@ class SavePerspectiveModal extends React.Component {
     this.handleOpenModal      = this.handleOpenModal.bind(this);
     this.onChange             = this.onChange.bind(this);
     this.savePerspective      = this.savePerspective.bind(this);
+    this.onExitModal          = this.onExitModal.bind(this);
+  }
+
+  onExitModal(){
+    this.setState({name : ''});
   }
 
   handleOpenModal(value){
@@ -35,7 +40,11 @@ class SavePerspectiveModal extends React.Component {
 
   render(){
     return (
-      <Modal className='custom_modal' show={this.props.show} onHide={() => this.handleOpenModal(false)} centered>
+      <Modal className='custom_modal'
+             show={this.props.show}
+             onHide={() => this.handleOpenModal(false)}
+             onExit={() => this.onExitModal()}
+             centered>
         <Modal.Header closeButton className="custom_modal_header">
           <Modal.Title> Save your perspective </Modal.Title>
         </Modal.Header>
