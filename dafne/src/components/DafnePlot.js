@@ -82,14 +82,23 @@ class DafnePlot extends React.Component {
       .attr("transform",
             "translate(" + this.margin.left + "," + this.margin.top + ")");
     //------------------------------------------------------------------------//
-
-    // let _this = this;
+    //get DATA
+    let lineData = this.getFilteredPathwaysData();
+    //create scales
     var x = d3.scalePoint()
               .domain(this.domain)
               .range([0,this.width]);
-    var y = d3.scaleLinear()
-              .domain([1,0])
-              .range([0,this.height - this.margin.bottom - this.margin.top]);
+    var y = null;
+    if(this.props.mode === "absolute"){
+      y = d3.scaleLinear()
+        .domain([this.props.data.metadata.max,this.props.data.metadata.min])
+        .range([0,this.height - this.margin.bottom - this.margin.top]);
+    }else{
+      y = d3.scaleLinear()
+        .domain([1,0])
+        .range([0,this.height - this.margin.bottom - this.margin.top]);
+    }
+
     var xLeft = d3.scalePoint()
               .domain(this.domain)
               .range([-69,470]);
@@ -119,11 +128,19 @@ class DafnePlot extends React.Component {
       //     .attr("transform", `translate(6, 0)`)
     }
     let mappedHighlightedPathways = this.state.highlightedPathways.map(p => p.name);
-    let lineData = this.getFilteredPathwaysData();
+
     for (var i = 0; i < lineData.length; i++) {
-      let data = this.convertPathwayDataToDomain(
+      let data = null;
+      if(this.props.mode === "absolute"){
+        data = this.convertPathwayDataToDomain(
+          lineData[i].abs
+        );
+      }else{
+        data = this.convertPathwayDataToDomain(
           lineData[i].data
         );
+      }
+
       let lineWidth = "2";
       if(mappedHighlightedPathways.includes(lineData[i].name)){
         lineWidth = "4";
@@ -291,17 +308,19 @@ class DafnePlot extends React.Component {
   }
 }
 DafnePlot.propTypes = {
-  onDeleteIndicator : PropTypes.func,
-  onPinIndicator    : PropTypes.func,
-  filteredIndicators  : PropTypes.array
+  onDeleteIndicator  : PropTypes.func,
+  onPinIndicator     : PropTypes.func,
+  filteredIndicators : PropTypes.array,
+  mode               : PropTypes.string
 
 };
 
 
 DafnePlot.defaultProps = {
-  onDeleteIndicator : (indicator) => {},
-  onPinIndicator    : (indicator) => {},
-  filteredIndicators  : []
+  onDeleteIndicator  : (indicator) => {},
+  onPinIndicator     : (indicator) => {},
+  filteredIndicators : [],
+  mode               : 'absolute'
 
 };
 export default DafnePlot;

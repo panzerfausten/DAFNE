@@ -140,6 +140,7 @@ class CreatePerspective extends React.Component {
                   onPinIndicator={(indicator) => this.onPinIndicator(indicator) }
                   data={Data}
                   showScales={this.state.dafnePlotOptions.showScales}
+                  mode={this.state.dafnePlotOptions.mode}
                   ></DafnePlot>
                   <div className="save_area" style={{flex:1,marginBottom:10,maxHeight:30,marginRight:10,alignItems:"end",display:"flex",flexDirection:"column"}}>
                     <Button size="sm" onClick={() => {}} style={{width: 200}}>Save</Button>

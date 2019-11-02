@@ -24,14 +24,22 @@ class IndicatorTools extends React.Component {
 
   handleChange(checked) {
     this.setState({ checked });
+    let mode = checked ? "absolute" : "normalized";
+    this.props.onOptionChanged({
+      "option":"mode","value": mode
+    });
   }
   handleCbScales(checked) {
     this.setState({ show_scales:checked });
-    this.props.onOptionChanged({"option":"showScales","value":checked.target.checked});
+    this.props.onOptionChanged({
+      "option":"showScales","value":checked.target.checked
+    });
   }
   handleCbValues(checked) {
     this.setState({ show_best:checked });
-    this.props.onOptionChanged({"option":"showBestWorstValues","value":checked.target.checked});
+    this.props.onOptionChanged({
+      "option":"showBestWorstValues","value":checked.target.checked
+    });
   }
   handleOpenModal(value){
     this.setState({ show_modal : value})
