@@ -3,6 +3,7 @@ import "../style/style.scss";
 import EyeImg from "../img/icons/eye.png";
 import { Collapse } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
 
 var classNames = require('classnames');
 
@@ -23,6 +24,8 @@ class Pathway extends React.Component {
   onClick(){
     this.props.onClick(this.props.item);
     this.setOpen(!this.state.isCollapseOpen);
+    console.log(this.props.item.name,this.pathway.getBoundingClientRect().top);
+
   }
   onMouseOver(){
     this.props.onClick(this.props.item);
@@ -30,6 +33,7 @@ class Pathway extends React.Component {
   render(){
     const isCollapseOpen = this.state.isCollapseOpen;
     let fillerCollor = isCollapseOpen ? this.props.item.color : "#bcbec0";
+    // var rect = ReactDOM.findDOMNode(this).getBoundingClientRect();
     //border styles addes
     let headerClass = classNames({
       'pathway_header_title': true,
@@ -55,7 +59,9 @@ class Pathway extends React.Component {
       borderColor: fillerCollor
     }
     return (
-      <div className='pathway m-b-15'>
+      <div className='pathway m-b-15'
+        ref={ref => this.pathway = ref}>
+        >
         <div className='pathway_wrapper_img'>
           <img src={EyeImg}></img>
         </div>

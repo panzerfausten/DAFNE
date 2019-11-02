@@ -90,7 +90,9 @@ class DafnePlot extends React.Component {
     var y = d3.scaleLinear()
               .domain([1,0])
               .range([0,this.height - this.margin.bottom - this.margin.top]);
-
+    var xLeft = d3.scalePoint()
+              .domain(this.domain)
+              .range([-69,470]);
     let option_showScales = this.props.showScales;
     for (var i = 0; i < plotIndicators.length; i++) {
       let d = plotIndicators[i];
@@ -136,6 +138,19 @@ class DafnePlot extends React.Component {
           .attr("stroke-width", lineWidth)
           .attr("fill", "none")
           .attr("transform", `translate(6, 0)`);
+
+      // var leftData = this.convertPathwayDataToDomain([0.6]);
+      // leftData.push(data[0]);
+      // leftData[1].domain = "B";
+      // var line = d3.line()
+      //   .x(function(d){ return xLeft(d.domain)})
+      //   .y(function(d){ return y(d.value)});
+      //   this.svg.append("path")
+      //     .attr("d", line(leftData))
+      //     .attr("stroke", lineData[i].color)
+      //     .attr("leftLine", "true")
+      //     .attr("stroke-width", lineWidth)
+      //     .attr("fill", "none")
     }
   }
   getFilteredPathwaysData(){
@@ -267,7 +282,7 @@ class DafnePlot extends React.Component {
     return (
       <div
         id="dafne_plot"
-        style={{maxHeight: "500px",overflowY:"hidden",overflowX:"auto",marginLeft:"-20px"}}
+        style={{maxHeight: "500px",overflowY:"hidden",overflowX:"auto",marginLeft:"0px"}}
         ref={ref => this.dafnePlot = ref}>
         <ReactResizeDetector  handleWidth handleHeight onResize={this.onResize} />
 
