@@ -340,6 +340,9 @@ label{
 .m-t-20{
   margin-top: 20px;
 }
+.m-r-10{
+  margin-right: 10px;
+}
 .m-b-10{
   margin-bottom: 10px;
 }
@@ -360,6 +363,9 @@ label{
 }
 .p-10{
   padding: 10px;
+}
+.m-10{
+  margin: 10px;
 }
 /**********************
        Pathway
@@ -387,7 +393,6 @@ label{
   font-size:12px;
   font-weight:bold;
   background-color:#bcbec0;
-
 }
 .pathway_wrapper_content{
   flex:1;
@@ -404,6 +409,28 @@ label{
 }
 .triangle_red{
   border-left: 12px solid red;
+}
+.collapse_div{
+  background-color: white;
+  border-radius: 2px;
+}
+.wrapper_row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn_fav{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  font-size: 12px;
+}
+.fav_icon{
+  height: 22px;
+  width: 22px;
 }
 /**********************
      Pathway borders
