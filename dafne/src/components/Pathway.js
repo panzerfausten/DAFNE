@@ -63,7 +63,6 @@ class Pathway extends React.Component {
     return (
       <div className='pathway m-b-15'
         ref={ref => this.pathway = ref}>
-        >
         <div className='pathway_wrapper_img'>
           <img src={EyeImg}></img>
         </div>

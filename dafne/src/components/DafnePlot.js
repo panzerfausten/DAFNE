@@ -320,7 +320,7 @@ DafnePlot.defaultProps = {
   onDeleteIndicator  : (indicator) => {},
   onPinIndicator     : (indicator) => {},
   filteredIndicators : [],
-  mode               : 'absolute'
+  mode               : 'satisfaction'
 
 };
 export default DafnePlot;
