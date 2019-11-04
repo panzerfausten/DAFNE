@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import "../style/style.scss";
 import EyeImg from "../img/icons/eye.png";
-import { Collapse } from 'react-bootstrap';
+import FavOn from "../img/icons/favorite_on.png";
+import FavOff from "../img/icons/favorite_off.png";
+import { Collapse,Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
@@ -75,7 +77,16 @@ class Pathway extends React.Component {
           </div>
           <Collapse in={isCollapseOpen}>
             <div id="collapse_div">
-              {this.props.item.description}
+              <div className="collapse_div m-t-10 m-r-10 m-b-10">
+                <div className='wrapper_description p-10'>{this.props.item.description}</div>
+                <div className='wrapper_row p-10'>
+                  <Button className='btn btn_modal'>Details in Geoportal</Button>
+                  <div className='btn_fav'>
+                    <img src={FavOff} className='fav_icon'></img>
+                    Mark as favorite
+                  </div>
+                </div>
+              </div>
             </div>
           </Collapse>
 
