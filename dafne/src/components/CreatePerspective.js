@@ -12,6 +12,7 @@ import DafnePlot from "../components/DafnePlot";
 import IndicatorTools from '../components/IndicatorTools';
 import PathwaysList from '../components/PathwaysList';
 import SavePerspectiveModal from '../components/SavePerspectiveModal';
+import DafneApi from "../api/DafneApi"
 
 
 class CreatePerspective extends React.Component {
@@ -23,6 +24,9 @@ class CreatePerspective extends React.Component {
         showScales:true
       },
       showModal:false,
+      perspectives:[
+
+      ]
     }
     this.onDeleteIndicator            = this.onDeleteIndicator.bind(this);
     this.onPinIndicator               = this.onPinIndicator.bind(this);
@@ -30,6 +34,20 @@ class CreatePerspective extends React.Component {
     this.filteredIndicators           = [];
     this.onOptionChanged              = this.onOptionChanged.bind(this);
     this.handleOpenPerspectiveModal   = this.handleOpenPerspectiveModal.bind(this);
+    this.loadPerspectives             = this.loadPerspectives.bind(this);
+    this.selectPerspective            = this.selectPerspective.bind(this);
+  }
+  componentDidMount(){
+    this.loadPerspectives();
+  }
+  loadPerspectives(){
+    DafneApi.getPerspectives().then( (res) => {
+      if(res.success){
+        this.setState({
+          perspectives:res.perspectives
+        })
+      }
+    });
   }
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
@@ -59,14 +77,38 @@ class CreatePerspective extends React.Component {
   handleOpenPerspectiveModal(value){
     this.setState({showModal:value});
   }
+  selectPerspective(event){
+    let index = event.target.value;
+    let fi    = JSON.parse(this.state.perspectives[index].filter);
+    fi        = JSON.parse(fi);
+    this.filteredIndicators = fi;
+    // alert(this.filteredIndicators)
+    console.log(fi);
+    console.log(typeof(fi));
+
+    this.setState({
+      filteredIndicators : fi,
+      dafnePlotOption    : {
+        showScales       : this.state.perspectives[index].showScales,
+        mode             : this.state.perspectives[index].mode
+      }
+    }, () => {
+      this.dafnePlot.filterIndicators(this.filteredIndicators);
+    })
+  }
   render(){
     return (
         <div className="flex">
           <div className="filters_area">
             <div className="filters_left_area">
                <div className="title m-b-5">Edit a saved perspective:</div>
-               <select>
+               <select onChange={this.selectPerspective}>
                 <option>choose a perspective</option>
+                {
+                  this.state.perspectives.map((perspective,index) =>
+                    <option value={index}>{perspective.name}</option>
+                  )
+                }
                </select>
             </div>
             <div className='filter_divider_area'></div>
@@ -156,7 +198,12 @@ class CreatePerspective extends React.Component {
                   </div>
               </div>
           </div>
-          <SavePerspectiveModal show={this.state.showModal} handleOpenModal={this.handleOpenPerspectiveModal}/>
+          <SavePerspectiveModal filter={this.state.filteredIndicators}
+                                mode={this.state.dafnePlotOptions.mode}
+                                showScales={this.state.dafnePlotOptions.showScales}
+                                show={this.state.showModal}
+                                handleOpenModal={this.handleOpenPerspectiveModal}
+                                />
         </div>
     )
   }

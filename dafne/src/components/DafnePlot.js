@@ -131,15 +131,22 @@ class DafnePlot extends React.Component {
 
     for (var i = 0; i < lineData.length; i++) {
       let data = null;
-      if(this.props.mode === "absolute"){
-        data = this.convertPathwayDataToDomain(
-          lineData[i].abs
-        );
+      if(this.state.filteredIndicators.length === 0){
+          if(this.props.mode === "absolute"){
+            data = this.convertPathwayDataToDomain(
+              lineData[i].abs
+            );
+          }else{
+            data = this.convertPathwayDataToDomain(
+              lineData[i].data
+            );
+          }
       }else{
         data = this.convertPathwayDataToDomain(
           lineData[i].data
         );
       }
+
 
       let lineWidth = "2";
       if(mappedHighlightedPathways.includes(lineData[i].name)){
@@ -174,6 +181,7 @@ class DafnePlot extends React.Component {
     let pathways = this.data.pathways.slice();
     let indicators = this.state.data.indicators.slice();
     let filteredIndicatorsPositions = [];
+
     for (var i = 0; i < this.state.filteredIndicators.length; i++) {
       let indicator = this.state.filteredIndicators[i];
       for (var ii = 0; ii < indicators.length; ii++) {
@@ -189,10 +197,19 @@ class DafnePlot extends React.Component {
           obj["color"]       = pathways[y].color;
           obj["name"]        = pathways[y].name;
           obj["description"] = pathways[y].description;
-          let line  =  pathways[y].data.
-                             filter(function(v,x){
-                                return !filteredIndicatorsPositions.includes(x)
-                             });
+          let line = null;
+          if(this.props.mode === "absolute"){
+            line = pathways[y].abs.
+              filter(function(v,x){
+                return !filteredIndicatorsPositions.includes(x)
+              });
+          }else{
+            line = pathways[y].data.
+              filter(function(v,x){
+                return !filteredIndicatorsPositions.includes(x)
+              });
+          }
+
           obj["data"] = line;
           pathways[y] = obj;
       }

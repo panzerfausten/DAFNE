@@ -1,10 +1,26 @@
 var dafneApi = {
-  API_URL: "http://h2823152.stratoserver.net:3001",
+  API_URL: "http://localhost:3001",
   /*
    * Gets current logged in user
    */
   getMe(){
     return fetch(dafneApi.API_URL+'/users/me',{
+      method:"GET",
+      credentials:"include"
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      return response;
+    })
+    .catch((error) =>{
+      return error;
+    });
+  },
+  /*
+   * Gets current logged in user
+   */
+  getPerspectives(){
+    return fetch(dafneApi.API_URL+'/perspectives',{
       method:"GET",
       credentials:"include"
     })
@@ -60,6 +76,40 @@ var dafneApi = {
       return response;
     })
     .catch((error) =>{
+      return error;
+    });
+  },
+  /*
+   * Creates a login request
+   */
+  createPerspective(name,filter,mode,showScales){
+    let params = {
+        'name'       : name,
+        'filter'     : filter,
+        'mode'       : mode,
+        'showScales' : showScales,
+
+    };
+    let formBody = [];
+    for (let property in params) {
+      let encodedKey = encodeURIComponent(property);
+      let encodedValue = encodeURIComponent(params[property]);
+      formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
+    return fetch(dafneApi.API_URL+'/perspectives/create', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: formBody,
+      credentials: 'include'
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      return responseJson;
+    })
+    .catch((error) => {
       return error;
     });
   },

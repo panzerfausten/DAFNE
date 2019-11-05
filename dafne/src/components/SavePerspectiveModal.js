@@ -2,7 +2,7 @@ import React from 'react';
 import "../style/style.scss";
 import { Modal, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-
+import DafneApi from "../api/DafneApi"
 class SavePerspectiveModal extends React.Component {
   constructor (props) {
     super(props);
@@ -14,7 +14,9 @@ class SavePerspectiveModal extends React.Component {
     this.savePerspective      = this.savePerspective.bind(this);
     this.onExitModal          = this.onExitModal.bind(this);
   }
+  onSave(){
 
+  }
   onExitModal(){
     this.setState({name : ''});
   }
@@ -31,7 +33,21 @@ class SavePerspectiveModal extends React.Component {
     let name = this.state.name;
 
     if(name.trim() !== ''){
-      //do sometring
+      DafneApi.createPerspective(this.state.name, JSON.stringify(this.props.filter), this.props.mode ,this.props.showScales).then(res => {
+        if(res.hasOwnProperty("success")){
+        //GO
+          if(res.success){
+            alert("Perspective saved");
+          }else{
+            alert("We couldn't save your perspective. Please try again later");
+          }
+        }else{
+          alert("Connection error");
+        }
+
+      }).catch(err => {
+        alert("Connection error");
+      })
     }else{
       alert('The name can not be empty');
     }
@@ -71,7 +87,8 @@ SavePerspectiveModal.propTypes = {
   show                : PropTypes.bool,
   handleOpenModal     : PropTypes.func,
   dataSetId           : PropTypes.string,
-  perspective         : PropTypes.object
+  perspective         : PropTypes.object,
+  onSave              : PropTypes.func
 };
 
 
@@ -79,7 +96,8 @@ SavePerspectiveModal.defaultProps = {
   show               : false,
   handleOpenModal    : () => {},
   dataSetId          : '',
-  perspective        : {}
+  perspective        : {},
+  onSave             : () => {}
 };
 
 export default SavePerspectiveModal;
