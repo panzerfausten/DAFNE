@@ -5,8 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 var   config       = require('config');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var indexRouter        = require('./routes/index');
+var usersRouter        = require('./routes/users');
+var perspectivesRouter = require('./routes/perspectives');
+
 var app = express();
 //Config files
 
@@ -25,6 +27,8 @@ app.use(cors({credentials: true, origin: CORS_ORIGINS}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/perspectives', perspectivesRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

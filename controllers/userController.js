@@ -6,7 +6,7 @@
 var _Cookies         = require('cookies');
 var Users            = require('../schemas/Users.js');
 var Cookies          = require("../schemas/Cookies");
-var RESPONSE_ERROR_SERVICE_NA        = {"success":true,"error":"Service not available","preUser":null};
+var RESPONSE_ERROR_SERVICE_NA        = {"success":true,"error":"Service not available"};
 var RESPONSE_INVALID_AUTH            = {"success":false,"error":"Invalid Auth"};
 var RESPONSE_INVALID_EMAIL           = {"success":false,"error":"Invalid email"};
 
