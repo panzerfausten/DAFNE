@@ -32,6 +32,19 @@ var dafneApi = {
       return error;
     });
   },
+  getPerspective(perspectiveId){
+    return fetch(`${dafneApi.API_URL}/perspectives/${perspectiveId}`,{
+      method:"GET",
+      credentials:"include"
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      return response;
+    })
+    .catch((error) =>{
+      return error;
+    });
+  },
   /*
    * Creates a login request
    */

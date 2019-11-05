@@ -14,9 +14,6 @@ class SavePerspectiveModal extends React.Component {
     this.savePerspective      = this.savePerspective.bind(this);
     this.onExitModal          = this.onExitModal.bind(this);
   }
-  onSave(){
-
-  }
   onExitModal(){
     this.setState({name : ''});
   }
@@ -37,6 +34,7 @@ class SavePerspectiveModal extends React.Component {
         if(res.hasOwnProperty("success")){
         //GO
           if(res.success){
+            this.props.onSave(res);
             alert("Perspective saved");
           }else{
             alert("We couldn't save your perspective. Please try again later");

@@ -8,6 +8,8 @@ function App() {
     <Router>
       <Route exact path="/" component={ LoginView } />
       <Route exact path="/app" component={ DafneView } />
+      <Route exact path="/app/:id" component={ DafneView } />
+
     </Router>
   )
 

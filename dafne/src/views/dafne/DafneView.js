@@ -18,6 +18,9 @@ class DafneView extends React.Component {
     this.changeIndex  = this.changeIndex.bind(this);
 
   }
+  componentDidMount(){
+    console.log("props",this.props.match.params.id);
+  }
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
   }
@@ -26,7 +29,7 @@ class DafneView extends React.Component {
   }
   renderContent(){
     if(this.state.selectedIndex === 0){
-      return(<CreatePerspective></CreatePerspective>);
+      return(<CreatePerspective perspectiveId={this.props.match.params.id}></CreatePerspective>);
     }else{
       return(null);
 

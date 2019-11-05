@@ -48,7 +48,45 @@ exports.index = function (req, res, next) {
   let _C = new Cookies({uid:-1});
   _C.validateToken(idToken,validate_cookie);
 }
+exports.get = function (req, res, next) {
+  var cookies = new _Cookies( req, res);
+  var idToken = cookies.get( "token" );
+  var shortId = req.params.shortId;
+  function validate_cookie(cookie_user){
+    if(cookie_user.valid_token){
+      let query = {"shortId":shortId};
+      let sortQuery = {
+        sort:{
+            created_at: -1
+        }
+      }
+      Perspectives.find(query,{},sortQuery)
+      .populate({
+        path:"owner",
+        select:"name last_name uid email"
+      }).
+      exec(function (err, perspectives) {
+        if(err){
+          console.log(err);
+          return res.status(503).send(RESPONSE_ERROR_SERVICE_NA);
+        }else{
+          res.status(201).json(
+            {
+              "success":true,
+              "errors":null,
+              "perspectives":perspectives
+            }
+          );
+        }
+      });
 
+    }else{
+      return res.status(401).json(RESPONSE_INVALID_AUTH);
+    }
+  }
+  let _C = new Cookies({uid:-1});
+  _C.validateToken(idToken,validate_cookie);
+}
 exports.create = function (req,res,next){
   var cookies    = new _Cookies( req, res);
   var idToken    = cookies.get( "token" );
