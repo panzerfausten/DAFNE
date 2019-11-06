@@ -1,5 +1,5 @@
 var dafneApi = {
-  API_URL: "http://localhost:3001",
+  API_URL: "http://h2823152.stratoserver.net:3001",
   /*
    * Gets current logged in user
    */

@@ -64,6 +64,7 @@ class CreatePerspective extends React.Component {
                   let fi    = JSON.parse(res.perspectives[0].filter);
                   fi        = JSON.parse(fi);
                   this.filteredIndicators = fi;
+                  // this.indicatorTools.changeScales(res.perspectives[0].showScales);
                   this.setState({
                     filteredIndicators : fi,
                     dafnePlotOptions   : {
@@ -222,11 +223,13 @@ class CreatePerspective extends React.Component {
                 </div>
               </div>
               <div className="widget" >
-                <IndicatorTools data={Data}
-                                filteredIndicators={this.state.filteredIndicators}
-                                onSelectIndicators={(indicators) => {this.onSelectIndicators(indicators);}}
-                                onOptionChanged={(option) => {this.onOptionChanged(option)}}
-                                ></IndicatorTools>
+                <IndicatorTools
+                  ref={(it) => { this.indicatorTools = it; }}
+                  data={Data}
+                  filteredIndicators={this.state.filteredIndicators}
+                  onSelectIndicators={(indicators) => {this.onSelectIndicators(indicators);}}
+                  onOptionChanged={(option) => {this.onOptionChanged(option)}}
+                  ></IndicatorTools>
                 <DafnePlot
                   ref={(dp) => { this.dafnePlot = dp; }}
                   onDeleteIndicator={(indicator) => {this.onDeleteIndicator(indicator);}}
