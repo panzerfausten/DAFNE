@@ -7,7 +7,9 @@ import {
 } from 'react-bootstrap';
 import DafneApi from '../../api/DafneApi.js';
 import DafneLogo from "../../img/dafne_logo.png";
-import CreatePerspective from '../../components/CreatePerspective'
+import CreatePerspective from '../../components/CreatePerspective';
+import ComparePerspective from '../../components/ComparePerspective';
+
 class DafneView extends React.Component {
   constructor (props) {
     super(props);
@@ -31,7 +33,7 @@ class DafneView extends React.Component {
     if(this.state.selectedIndex === 0){
       return(<CreatePerspective perspectiveId={this.props.match.params.id}></CreatePerspective>);
     }else{
-      return(null);
+      return(<ComparePerspective perspectiveId={this.props.match.params.id}></ComparePerspective>);
 
     }
   }
