@@ -14,7 +14,7 @@ class DafneView extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      selectedIndex:0
+      selectedIndex:1
     }
     this.handleChange = this.handleChange.bind(this);
     this.changeIndex  = this.changeIndex.bind(this);

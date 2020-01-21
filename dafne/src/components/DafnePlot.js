@@ -29,7 +29,7 @@ class DafnePlot extends React.Component {
       filteredIndicators: [],
 
     }
-    this.domain = ["A","B","C","D","E","F","G","H"];
+    this.domain = ["A","B","C","D","E","F","G","H","I"];
     this.data = []; //we keep a copy so react doesn't mess up
   }
   componentDidMount(){

@@ -13,6 +13,7 @@ class PerspectivePicker extends React.Component {
       this.setState({
         selectedPerspectiveIndex:index
       }, () => {
+        this.props.onPerspectiveSelected(this.props.perspectives[index]);
       })
   }
   render(){

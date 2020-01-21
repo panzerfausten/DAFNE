@@ -27,7 +27,9 @@ class ComparePerspective extends React.Component {
       perspectives:[
 
       ],
-      selectedPerspectiveIndex:-1
+      selectedPerspectiveIndex:-1,
+      perspectiveA:{},
+      perspectiveB:{}
     }
     this.onDeleteIndicator            = this.onDeleteIndicator.bind(this);
     this.onPinIndicator               = this.onPinIndicator.bind(this);
@@ -146,10 +148,22 @@ class ComparePerspective extends React.Component {
                <div className="title m-b-5">Create a shared perspective by choosing two saved perspectives to compare:</div>
                <div className="filters_right_area_content justify-evenly">
                  <div className='wrapper_select'>
-                   <PerspectivePicker perspectives={this.state.perspectives}></PerspectivePicker>
+                   <PerspectivePicker perspectives={this.state.perspectives} onPerspectiveSelected={(perspective) => {
+                     this.setState({
+                       perspectiveA:perspective
+                     }, () => {
+                       this.dafnePlot.renderPlot();
+                     });
+                   }}></PerspectivePicker>
                  </div>
                  <div className='wrapper_select'>
-                   <PerspectivePicker perspectives={this.state.perspectives}></PerspectivePicker>
+                   <PerspectivePicker perspectives={this.state.perspectives} onPerspectiveSelected={(perspective) => {
+                     this.setState({
+                       perspectiveB:perspective
+                     }, () => {
+                       this.dafnePlot.renderPlot();
+                     });
+                   }}></PerspectivePicker>
                  </div>
                </div>
             </div>
@@ -213,10 +227,13 @@ class ComparePerspective extends React.Component {
                     data={Data}
                     showScales={this.state.dafnePlotOptions.showScales}
                     mode={this.state.dafnePlotOptions.mode}
-                    ></DafnePlotCompare>
-                    <div className="save_area" style={{flex:1,marginBottom:10,maxHeight:30,marginRight:10,alignItems:"end",display:"flex",flexDirection:"column"}}>
-                      <Button size="sm" onClick={() => this.handleOpenPerspectiveModal(true)} style={{width: 200}}>Save</Button>
-                    </div>
+                    perspectiveA={this.state.perspectiveA}
+                    perspectiveB={this.state.perspectiveB}
+                    >
+                  </DafnePlotCompare>
+                  <div className="save_area" style={{flex:1,marginBottom:10,maxHeight:30,marginRight:10,alignItems:"end",display:"flex",flexDirection:"column"}}>
+                    <Button size="sm" onClick={() => this.handleOpenPerspectiveModal(true)} style={{width: 200}}>Save</Button>
+                  </div>
 
                 </div>
               </div>

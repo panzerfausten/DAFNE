@@ -62,7 +62,7 @@ class DafnePlotCompare extends React.Component {
 
     //re-set the size
     // this.width  = this.svgW - this.margin.right - this.margin.left;
-    this.width  = (this.state.data.indicators.length * 150 ) + 20;
+    this.width  = (this.state.data.indicators.length * 80 ) + 20;
     this.height = this.svgH - this.margin.bottom - this.margin.top;
     if(this.width < 600){
       this.width = 600;
@@ -84,6 +84,37 @@ class DafnePlotCompare extends React.Component {
     //------------------------------------------------------------------------//
     //get DATA
     let lineData = this.getFilteredPathwaysData();
+
+    //draw rectangles
+    this.svg.append("rect")
+                   .attr("x",0)
+                   .attr("y",0)
+                   .attr("width", 288)
+                   .attr("height",this.height + 80)
+                   .attr("fill","#f4e6cf")
+                   .attr("transform",
+                         "translate(-" + (this.margin.left - 15) + ",-" + this.margin.top + ")");
+   this.svg.append("rect")
+                  .attr("x",288)
+                  .attr("y",0)
+                  .attr("width", 278)
+                  .attr("height",this.height + 80)
+                  .attr("fill","#d0e2f1")
+                  .attr("transform",
+                          "translate(-" + (this.margin.left - 15) + ",-" + this.margin.top + ")");
+
+    this.svg.append("rect")
+                   .attr("x",566)
+                   .attr("y",0)
+                   .attr("width", 278)
+                   .attr("height",this.height + 80)
+                   .attr("fill","#cee2e0")
+                   .attr("transform",
+                           "translate(-" + (this.margin.left - 15) + ",-" + this.margin.top + ")");
+
+    var xLeft = d3.scalePoint()
+              .domain(this.domain)
+              .range([-69,470]);
     //create scales
     var x = d3.scalePoint()
               .domain(this.domain)
@@ -99,15 +130,13 @@ class DafnePlotCompare extends React.Component {
         .range([0,this.height - this.margin.bottom - this.margin.top]);
     }
 
-    var xLeft = d3.scalePoint()
-              .domain(this.domain)
-              .range([-69,470]);
+
     let option_showScales = this.props.showScales;
     for (var i = 0; i < plotIndicators.length; i++) {
       let d = plotIndicators[i];
       this.drawAxis(this,this.svg,i,x(this.domain[i]),d);
       this.svg.append("g")
-        .attr("transform", `translate(${x(this.domain[i]) + 6}, 0)`)
+        .attr("transform", `translate(${x(this.domain[i]) + 6}, 20)`)
         .call(
           d3.axisLeft(y)
           .tickFormat(function (d) {
@@ -161,7 +190,7 @@ class DafnePlotCompare extends React.Component {
           .attr("stroke", lineData[i].color)
           .attr("stroke-width", lineWidth)
           .attr("fill", "none")
-          .attr("transform", `translate(6, 0)`);
+          .attr("transform", `translate(6, 20)`);
 
       // var leftData = this.convertPathwayDataToDomain([0.6]);
       // leftData.push(data[0]);
@@ -229,18 +258,6 @@ class DafnePlotCompare extends React.Component {
     }
     return data;
   }
-  drawLine(t,svg,i,x,y,data){
-    var line = d3.line()
-      .x(function(d){ return x("A")})
-      .y(function(d){ return y(1)});
-      this.svg.append("path")
-        .attr("d", line(data))
-        .attr("stroke", "black")
-        .attr("stroke-width", "2")
-        .attr("fill", "none")
-        .attr("transform", `translate(6, 0)`);
-
-  }
   drawIcons(t,svg,i,x,data){
 
   }
@@ -249,63 +266,111 @@ class DafnePlotCompare extends React.Component {
     let topOffset = -30;
     let height = t.svgH - this.margin.top - this.margin.bottom;
     let labelContainerHeight = this.margin.top +  (topOffset / 2);
-    svg.append('rect')
-       .attr("width",width)
-       .attr("height",labelContainerHeight )
-        .attr("x",x - 40)
-       .attr("fill",data.color)
-       .attr("transform",
-             `translate(0,${this.margin.top * - 1})`);
-    svg.append('rect')
-       .attr("width",width)
-       .attr("height",height - (labelContainerHeight / 2) )
-       .attr("x",x - 40)
-       .attr("fill","#c9ced1a3")
-       .attr("transform",
-             `translate(0,${topOffset})`);
+    let indexLabels = [1,4,7];
+    svg.append('g')
+          .attr("transform",
+                  `translate(0,${20})`)
+          .append('rect')
+            .attr("width",width)
+            .attr("height",labelContainerHeight )
+            .attr("x",x - 40)
+            .attr("fill",data.color)
+            .attr("transform",
+                  `translate(0,${this.margin.top * - 1})`);
+    svg.append('g')
+          .attr("transform",
+                  `translate(0,${20})`)
+          .append('rect')
+             .attr("width",width)
+             .attr("height",height - (labelContainerHeight / 2) )
+             .attr("x",x - 40)
+             .attr("fill","#c9ced1a3")
+             .attr("transform",
+                   `translate(0,${topOffset})`);
+   svg.append('g')
+         .attr("transform",
+                 `translate(0,${20})`)
+         .append("text")
+          .text(data.unit)
+          .attr("x",x)
+          .attr("text-anchor","middle")
+          .style("font-size", "12px")
+          .attr("transform",
+                `translate(0,-18)`);
 
-    svg.append("text")
-      .text(data.unit)
-      .attr("x",x)
-      .attr("text-anchor","middle")
-      .style("font-size", "12px")
-      .attr("transform",
-            `translate(0,-18)`);
+    svg.append('g')
+          .attr("transform",
+                  `translate(0,${20})`)
+          .append("text")
+            .text(data.label)
+            .attr("x",x)
+            .attr("text-anchor","middle")
+            .style("font-size", "12px")
+            .style("font-weight", "bold")
+            .attr("transform",
+                  `translate(0,-${labelContainerHeight})`);
+    //bottom text
 
-    svg.append("text")
-      .text(data.label)
-      .attr("x",x)
-      .attr("text-anchor","middle")
-      .style("font-size", "12px")
-      .style("font-weight", "bold")
-      .attr("transform",
-            `translate(0,-${labelContainerHeight})`);
+    if(indexLabels.includes(i)){
+      let label = "";
+      if(i === 1){
+        if(this.props.perspectiveA.hasOwnProperty("name")){
+          label = this.props.perspectiveA.name;
+        }else{
+          label = "Select a perspective";
+        }
+      }
+      if(i === 4){
+        label = "Common indicators";
+      }
+      if(i === 7){
+        if(this.props.perspectiveB.hasOwnProperty("name")){
+          label = this.props.perspectiveB.name;
+        }else{
+          label = "Select a perspective";
+        }
+      }
+      svg.append('g')
+            .attr("transform",
+                    `translate(0,${this.height})`)
+            .append("text")
+             .text(label)
+             .attr("x",x)
+             .attr("text-anchor","middle")
+             .style("font-size", "12px")
+     }
+
     // add icons
-    svg.append("svg:image")
-       .attr("x",x)
-       .attr("width",20)
-       .attr("height",20)
-       .attr("xlink:href", cancelButton)
-       .attr("transform",
-             `translate(15,${height - (labelContainerHeight * 2) + 25})`)
-       .attr("class","svgButton")
-       .datum(data)
-       .on("click", function(d) {
-         t.props.onDeleteIndicator(d);
-        });
-
-     svg.append("svg:image")
-        .attr("x",x)
-        .attr("width",20)
-        .attr("height",20)
-        .attr("xlink:href", pinButton)
-        .attr("transform",
-              `translate(-30,${height - (labelContainerHeight * 2) + 25})`)
-        .attr("class","svgButton")
-        .datum(data)
-        .on("click", function(d) {
-           t.props.onPinIndicator(d);
-         });
+    // svg.append('g')
+    //       .attr("transform",
+    //               `translate(0,${20})`)
+    //       .append("svg:image")
+    //        .attr("x",x)
+    //        .attr("width",20)
+    //        .attr("height",20)
+    //        .attr("xlink:href", cancelButton)
+    //        .attr("transform",
+    //              `translate(15,${height - (labelContainerHeight * 2) + 25})`)
+    //        .attr("class","svgButton")
+    //        .datum(data)
+    //        .on("click", function(d) {
+    //          t.props.onDeleteIndicator(d);
+    //         });
+    // svg.append('g')
+    //       .attr("transform",
+    //               `translate(0,${20})`)
+    //        .append("svg:image")
+    //           .attr("x",x)
+    //           .attr("width",20)
+    //           .attr("height",20)
+    //           .attr("xlink:href", pinButton)
+    //           .attr("transform",
+    //                 `translate(-30,${height - (labelContainerHeight * 2) + 25})`)
+    //           .attr("class","svgButton")
+    //           .datum(data)
+    //           .on("click", function(d) {
+    //              t.props.onPinIndicator(d);
+    //            });
   }
   onResize = (w,h) => {
     this.svgW = w;
@@ -328,8 +393,9 @@ DafnePlotCompare.propTypes = {
   onDeleteIndicator  : PropTypes.func,
   onPinIndicator     : PropTypes.func,
   filteredIndicators : PropTypes.array,
-  mode               : PropTypes.string
-
+  mode               : PropTypes.string,
+  perspectiveA       : PropTypes.object,
+  perspectiveB       : PropTypes.object
 };
 
 
@@ -337,7 +403,9 @@ DafnePlotCompare.defaultProps = {
   onDeleteIndicator  : (indicator) => {},
   onPinIndicator     : (indicator) => {},
   filteredIndicators : [],
-  mode               : 'satisfaction'
+  mode               : 'satisfaction',
+  perspectiveA       : {},
+  perspectiveB       : {}
 
 };
 export default DafnePlotCompare;
