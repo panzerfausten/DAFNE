@@ -21,8 +21,6 @@ class DafnePlotCompare extends React.Component {
     this.filterIndicators = this.filterIndicators.bind(this);
     this.getFilteredPathwaysData = this.getFilteredPathwaysData.bind(this);
 
-
-
     this.state = {
       data: [],
       highlightedPathways: [],
@@ -54,15 +52,28 @@ class DafnePlotCompare extends React.Component {
       filteredIndicators : indicators,
     }, () => this.renderPlot());
   }
+
   renderPlot(){
     this.clear();
-    let plotIndicators = this.state.data.indicators;
+    let perspectiveA = this.props.perspectiveA;
+    let perspectiveB = this.props.perspectiveB;
+    let filtersA     = [];
+    let filtersB     = [];
+    try{
+      filtersA       = JSON.parse(JSON.parse(perspectiveA.filter));
+    }catch(ex){
+    }
+    try{
+      filtersB       = JSON.parse(JSON.parse(perspectiveB.filter));
+    }catch(ex){
+    }
+    let plotIndicators = this.props.data.indicators;
     let mapFilterIndicators = this.state.filteredIndicators.map(i => i.label);
     plotIndicators = plotIndicators.filter(i => !mapFilterIndicators.includes(i.label));
 
     //re-set the size
     // this.width  = this.svgW - this.margin.right - this.margin.left;
-    this.width  = (this.state.data.indicators.length * 80 ) + 20;
+    this.width  = (this.props.data.indicators.length * 80 ) + 20;
     this.height = this.svgH - this.margin.bottom - this.margin.top;
     if(this.width < 600){
       this.width = 600;
@@ -152,7 +163,7 @@ class DafnePlotCompare extends React.Component {
             .attr("transform", `translate(6, 0)`)
       // this.svg.append("circle")
       //     .attr("cx",x(this.domain[i]))
-      //     .attr("cy",y(this.state.data[i]))
+      //     .attr("cy",y(this.props.data[i]))
       //     .attr("r",8)
       //     .attr("transform", `translate(6, 0)`)
     }
@@ -208,7 +219,7 @@ class DafnePlotCompare extends React.Component {
   }
   getFilteredPathwaysData(){
     let pathways = this.data.pathways.slice();
-    let indicators = this.state.data.indicators.slice();
+    let indicators = this.props.data.indicators.slice();
     let filteredIndicatorsPositions = [];
 
     for (var i = 0; i < this.state.filteredIndicators.length; i++) {
@@ -219,7 +230,7 @@ class DafnePlotCompare extends React.Component {
         }
       }
     }
-    if(this.state.data.pathways[0].data.length > (indicators.length - filteredIndicatorsPositions.length)){
+    if(this.props.data.pathways[0].data.length > (indicators.length - filteredIndicatorsPositions.length)){
         for (var y = 0; y < pathways.length; y++) {
           let obj = {
           }

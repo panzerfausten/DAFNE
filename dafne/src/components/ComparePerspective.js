@@ -5,6 +5,8 @@ import GraphA from "../img/icons/graph_a.png";
 import GraphC from "../img/icons/graph_c.png";
 import Info from "../img/icons/info.png";
 import Data from "../data/data.json";
+import CompareData from "../data/compareData.json";
+
 import Button from 'react-bootstrap/Button';
 
 //components
@@ -29,7 +31,8 @@ class ComparePerspective extends React.Component {
       ],
       selectedPerspectiveIndex:-1,
       perspectiveA:{},
-      perspectiveB:{}
+      perspectiveB:{},
+      compareData:{...CompareData}
     }
     this.onDeleteIndicator            = this.onDeleteIndicator.bind(this);
     this.onPinIndicator               = this.onPinIndicator.bind(this);
@@ -40,6 +43,7 @@ class ComparePerspective extends React.Component {
     this.loadPerspectives             = this.loadPerspectives.bind(this);
     this.selectPerspective            = this.selectPerspective.bind(this);
     this.selectPerspectiveFromPerspectiveId = this.selectPerspectiveFromPerspectiveId.bind(this);
+    this.onPerspectiveASelected       = this.onPerspectiveASelected.bind(this);
   }
   componentDidMount(){
     this.loadPerspectives();
@@ -136,6 +140,47 @@ class ComparePerspective extends React.Component {
     }
 
   }
+  onPerspectiveASelected(perspective){
+    //copy compare data
+    let data = {...this.state.compareData};
+    let filtersA     = [];
+    try{
+      filtersA       = JSON.parse(JSON.parse(perspective.filter));
+    }catch(ex){
+
+    }
+    let indicatorsA = filtersA.slice(0,3);
+    let commonIndicators = [
+      {
+        "color":"gray",
+        "label":"-",
+        "unit":"-"
+      },
+      {
+        "color":"gray",
+        "label":"-",
+        "unit":"-"
+      },
+      {
+        "color":"gray",
+        "label":"-",
+        "unit":"-"
+      }
+    ];
+
+    data.indicators = indicatorsA;
+    data.indicators = data.indicators.concat(commonIndicators);
+    data.indicators = data.indicators.concat(commonIndicators);
+
+    this.setState({
+      perspectiveA:perspective,
+      compareData:data
+    }, () => {
+      this.dafnePlot.renderPlot();
+    });
+
+
+  }
   render(){
     return (
         <div className="flex">
@@ -148,13 +193,7 @@ class ComparePerspective extends React.Component {
                <div className="title m-b-5">Create a shared perspective by choosing two saved perspectives to compare:</div>
                <div className="filters_right_area_content justify-evenly">
                  <div className='wrapper_select'>
-                   <PerspectivePicker perspectives={this.state.perspectives} onPerspectiveSelected={(perspective) => {
-                     this.setState({
-                       perspectiveA:perspective
-                     }, () => {
-                       this.dafnePlot.renderPlot();
-                     });
-                   }}></PerspectivePicker>
+                   <PerspectivePicker perspectives={this.state.perspectives} onPerspectiveSelected={this.onPerspectiveASelected}></PerspectivePicker>
                  </div>
                  <div className='wrapper_select'>
                    <PerspectivePicker perspectives={this.state.perspectives} onPerspectiveSelected={(perspective) => {
@@ -224,7 +263,7 @@ class ComparePerspective extends React.Component {
                     ref={(dp) => { this.dafnePlot = dp; }}
                     onDeleteIndicator={(indicator) => {this.onDeleteIndicator(indicator);}}
                     onPinIndicator={(indicator) => this.onPinIndicator(indicator) }
-                    data={Data}
+                    data={this.state.compareData}
                     showScales={this.state.dafnePlotOptions.showScales}
                     mode={this.state.dafnePlotOptions.mode}
                     perspectiveA={this.state.perspectiveA}
