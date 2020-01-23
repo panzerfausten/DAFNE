@@ -195,13 +195,17 @@ class DafnePlotCompare extends React.Component {
 
       var line = d3.line()
         .x(function(d){ return x(d.domain)})
-        .y(function(d){ return y(d.value)});
+        .y(function(d){ return y(d.value)})
+        .defined(function (d) {
+          return d.value !== null;
+        });
         this.svg.append("path")
           .attr("d", line(data))
           .attr("stroke", lineData[i].color)
           .attr("stroke-width", lineWidth)
           .attr("fill", "none")
-          .attr("transform", `translate(6, 20)`);
+          .attr("transform", `translate(6, 20)`)
+
 
       // var leftData = this.convertPathwayDataToDomain([0.6]);
       // leftData.push(data[0]);

@@ -120,7 +120,6 @@ class CreatePerspective extends React.Component {
       let fi    = JSON.parse(this.state.perspectives[index].filter);
       fi        = JSON.parse(fi);
       this.filteredIndicators = fi;
-
       this.setState({
         filteredIndicators : fi,
         dafnePlotOptions   : {

@@ -10,6 +10,8 @@ class PerspectivePicker extends React.Component {
   }
   onSelectedPerspective(event){
     let index = event.target.value;
+    let p = this.props.perspectives[index];
+    let f = JSON.parse(JSON.parse(p.filter));
       this.setState({
         selectedPerspectiveIndex:index
       }, () => {

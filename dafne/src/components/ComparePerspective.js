@@ -44,9 +44,38 @@ class ComparePerspective extends React.Component {
     this.selectPerspective            = this.selectPerspective.bind(this);
     this.selectPerspectiveFromPerspectiveId = this.selectPerspectiveFromPerspectiveId.bind(this);
     this.onPerspectiveASelected       = this.onPerspectiveASelected.bind(this);
+    this.onPerspectiveBSelected       = this.onPerspectiveBSelected.bind(this);
+    this.getOriginalValuesFromIndicator = this.getOriginalValuesFromIndicator.bind(this);
+    this.filterData                     = this.filterData.bind(this);
   }
   componentDidMount(){
     this.loadPerspectives();
+  }
+  getOriginalValuesFromIndicator(indicatorLabel){
+    let indicatorIndex  = -1;
+    for (var i = 0; i < Data.indicators.length; i++) {
+      let indicator = Data.indicators[i];
+      if(indicator.label === indicatorLabel){
+        indicatorIndex = i;
+      }
+    }
+    let originalValues = [
+    ];
+    for (var p = 0; p < Data.pathways.length; p++) {
+      if(indicatorLabel === null){
+        originalValues.push({
+          "data":null,
+          "abs":null
+        });
+      }else{
+        originalValues.push({
+          "data":Data.pathways[p].data[indicatorIndex],
+          "abs":Data.pathways[p].abs[indicatorIndex]
+        });
+      }
+
+    }
+    return originalValues;
   }
   selectPerspectiveFromPerspectiveId(perspectiveId){
     for (var i = 0; i < this.state.perspectives.length; i++) {
@@ -140,15 +169,76 @@ class ComparePerspective extends React.Component {
     }
 
   }
+  // onPerspectiveASelectedx(perspective){
+  //   //copy compare data
+  //   let data = {...this.state.compareData};
+  //   let filtersA     = [];
+  //   try{
+  //     filtersA       = JSON.parse(JSON.parse(perspective.filter));
+  //   }catch(ex){
+  //
+  //   }
+  //   let indicatorsA = filtersA.slice(0,3);
+  //   let commonIndicators = [
+  //     {
+  //       "color":"gray",
+  //       "label":"-",
+  //       "unit":"-"
+  //     },
+  //     {
+  //       "color":"gray",
+  //       "label":"-",
+  //       "unit":"-"
+  //     },
+  //     {
+  //       "color":"gray",
+  //       "label":"-",
+  //       "unit":"-"
+  //     }
+  //   ];
+  //
+  //   data.indicators[0] = indicatorsA[0];
+  //   data.indicators[1] = indicatorsA[1];
+  //   data.indicators[2] = indicatorsA[2];
+  //   // Calculate data
+  //
+  //   for (var i = 0; i < data.pathways.length; i++) {
+  //     data.pathways[i][1] = this.getOriginalValuesFromIndicator(indicatorsA[1].label);
+  //   }
+  //   for (var i = 0; i < data.pathways.length; i++) {
+  //     data.pathways[i][2] = this.getOriginalValuesFromIndicator(indicatorsA[2].label);
+  //   }
+  //   debugger;
+  //   this.setState({
+  //     perspectiveA:perspective,
+  //     compareData:data
+  //   }, () => {
+  //     this.dafnePlot.renderPlot();
+  //   });
+  // }
+  filterData(data,filters){
+    let mFilters = filters.map(f => f.label);
+    return data.indicators.filter( i => !mFilters.includes(i.label));
+  }
+  extractLabel(indicators,index){
+    if(indicators.length -1 < index){
+      return null
+    }else{
+      return indicators[index].label;
+    }
+  }
   onPerspectiveASelected(perspective){
     //copy compare data
     let data = {...this.state.compareData};
+
     let filtersA     = [];
     try{
       filtersA       = JSON.parse(JSON.parse(perspective.filter));
     }catch(ex){
 
     }
+    filtersA = this.filterData({...Data},filtersA);
+
     let indicatorsA = filtersA.slice(0,3);
     let commonIndicators = [
       {
@@ -167,19 +257,116 @@ class ComparePerspective extends React.Component {
         "unit":"-"
       }
     ];
-
-    data.indicators = indicatorsA;
-    data.indicators = data.indicators.concat(commonIndicators);
-    data.indicators = data.indicators.concat(commonIndicators);
-
+    if(indicatorsA[0] !== undefined){
+      data.indicators[0] = indicatorsA[0];
+    }else{
+      data.indicators[0] = commonIndicators[0];
+    }
+    if(indicatorsA[1] !== undefined){
+      data.indicators[1] = indicatorsA[1];
+    }else{
+      data.indicators[1] = commonIndicators[0];
+    }
+    if(indicatorsA[2] !== undefined){
+      data.indicators[2] = indicatorsA[2];
+    }else{
+      data.indicators[2] = commonIndicators[0];
+    }
+    let label_0 = this.getOriginalValuesFromIndicator(this.extractLabel(indicatorsA,0));
+    let label_1 = this.getOriginalValuesFromIndicator(this.extractLabel(indicatorsA,1));
+    let label_2 = this.getOriginalValuesFromIndicator(this.extractLabel(indicatorsA,2));
+    for (var i = 0; i < label_0.length; i++) {
+        data.pathways[i].data[0] = label_0[i].data;
+        data.pathways[i].abs[0] = label_0[i].abs;
+    }
+    for (i = 0; i < label_1.length; i++) {
+        data.pathways[i].data[1] = label_1[i].data;
+        data.pathways[i].abs[1]  = label_1[i].abs;
+    }
+    for (i = 0; i < label_2.length; i++) {
+        data.pathways[i].data[2] = label_2[i].data;
+        data.pathways[i].abs[2]  = label_2[i].abs;
+    }
     this.setState({
       perspectiveA:perspective,
       compareData:data
     }, () => {
       this.dafnePlot.renderPlot();
     });
+  }
+  onPerspectiveBSelected(perspective){
+    //copy compare data
+    let data = {...this.state.compareData};
+    let filtersB     = [];
+    try{
+      filtersB       = JSON.parse(JSON.parse(perspective.filter));
+    }catch(ex){
+
+    }
+
+    filtersB = this.filterData({...Data},filtersB);
+    let indicatorsB = filtersB.slice(0,3);
 
 
+    let commonIndicators = [
+      {
+        "color":"gray",
+        "label":"-",
+        "unit":"-"
+      },
+      {
+        "color":"gray",
+        "label":"-",
+        "unit":"-"
+      },
+      {
+        "color":"gray",
+        "label":"-",
+        "unit":"-"
+      }
+    ];
+
+    if(indicatorsB[0] !== undefined){
+      data.indicators[6] = indicatorsB[0];
+    }else{
+      data.indicators[6] = commonIndicators[0];
+    }
+    if(indicatorsB[1] !== undefined){
+      data.indicators[7] = indicatorsB[1];
+    }else{
+      data.indicators[7] = commonIndicators[0];
+    }
+    if(indicatorsB[2] !== undefined){
+      data.indicators[8] = indicatorsB[2];
+    }else{
+      data.indicators[8] = commonIndicators[0];
+    }
+
+    // let label_0 = this.getOriginalValuesFromIndicator(indicatorsB[0].label);
+    // let label_1 = this.getOriginalValuesFromIndicator(indicatorsB[1].label);
+    // let label_2 = this.getOriginalValuesFromIndicator(indicatorsB[2].label);
+    let label_0 = this.getOriginalValuesFromIndicator(this.extractLabel(indicatorsB,0));
+    let label_1 = this.getOriginalValuesFromIndicator(this.extractLabel(indicatorsB,1));
+    let label_2 = this.getOriginalValuesFromIndicator(this.extractLabel(indicatorsB,2));
+
+    for (var i = 0; i < label_0.length; i++) {
+        data.pathways[i].data[6] = label_0[i].data;
+        data.pathways[i].abs[6] = label_0[i].abs;
+    }
+    for (i = 0; i < label_1.length; i++) {
+        data.pathways[i].data[7] = label_1[i].data;
+        data.pathways[i].abs[7]  = label_1[i].abs;
+    }
+    for (i = 0; i < label_2.length; i++) {
+        data.pathways[i].data[8] = label_2[i].data;
+        data.pathways[i].abs[8]  = label_2[i].abs;
+    }
+    this.setState({
+      perspectiveB:perspective,
+      compareData:data
+    }, () => {
+      this.dafnePlot.renderPlot();
+    });
   }
   render(){
     return (
@@ -196,13 +383,7 @@ class ComparePerspective extends React.Component {
                    <PerspectivePicker perspectives={this.state.perspectives} onPerspectiveSelected={this.onPerspectiveASelected}></PerspectivePicker>
                  </div>
                  <div className='wrapper_select'>
-                   <PerspectivePicker perspectives={this.state.perspectives} onPerspectiveSelected={(perspective) => {
-                     this.setState({
-                       perspectiveB:perspective
-                     }, () => {
-                       this.dafnePlot.renderPlot();
-                     });
-                   }}></PerspectivePicker>
+                   <PerspectivePicker perspectives={this.state.perspectives} onPerspectiveSelected={this.onPerspectiveBSelected}></PerspectivePicker>
                  </div>
                </div>
             </div>
