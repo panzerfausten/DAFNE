@@ -47,6 +47,7 @@ class ComparePerspective extends React.Component {
     this.onPerspectiveBSelected       = this.onPerspectiveBSelected.bind(this);
     this.getOriginalValuesFromIndicator = this.getOriginalValuesFromIndicator.bind(this);
     this.filterData                     = this.filterData.bind(this);
+    this.clear  = this.clear.bind(this);
   }
   componentDidMount(){
     this.loadPerspectives();
@@ -227,7 +228,34 @@ class ComparePerspective extends React.Component {
       return indicators[index].label;
     }
   }
+  clear(){
+    let data = {...CompareData};
+    for (var i = 0; i < data.pathways.length; i++) {
+      let d = data.pathways[i];
+      for (var j = 0; j < d.data.length; j++) {
+        data.pathways[i].data[j] = null;
+        data.pathways[i].abs[j] = null;
+      }
+    }
+    for (var i = 0; i < data.indicators.length; i++) {
+      data.indicators[i] = {
+        "color":"gray",
+        "label":"-",
+        "unit":"-"
+      }
+    }
+    this.setState({
+      perspectiveA:{},
+      perspectiveB:{},
+      compareData:data
+    }, () => {
+      this.dafnePlot.renderPlot();
+    });
+  }
   onPerspectiveASelected(perspective){
+    if(perspective === undefined){
+      return this.clear();
+    }
     //copy compare data
     let data = {...this.state.compareData};
 
@@ -325,6 +353,9 @@ class ComparePerspective extends React.Component {
     });
   }
   onPerspectiveBSelected(perspective){
+    if(perspective === undefined){
+      return this.clear();
+    }
     //copy compare data
     let data = {...this.state.compareData};
     let filtersB     = [];
