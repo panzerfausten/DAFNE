@@ -287,6 +287,36 @@ class ComparePerspective extends React.Component {
         data.pathways[i].data[2] = label_2[i].data;
         data.pathways[i].abs[2]  = label_2[i].abs;
     }
+    //calculate common indicators
+    for (var i = 0; i < 3; i++) {
+      let currentIndicator = data.indicators[i+6];
+      let commonIndicatorI =
+      {
+        "color":"gray",
+        "label":"-",
+        "unit":"-"
+      };
+      let commonIndicatorFound = false;
+      for (var j = 0; j < 3; j++) {
+        if(currentIndicator.label === data.indicators[j].label){ //we found one
+          commonIndicatorFound = true;
+          commonIndicatorI = currentIndicator;
+          //copy path data
+          for (var x = 0; x < data.pathways.length; x++) {
+            data.pathways[x].data[i+3] = data.pathways[x].data[i+6];
+            data.pathways[x].abs[i+3] = data.pathways[x].abs[i+6];
+          }
+        }
+      }
+      data.indicators[i+3] = commonIndicatorI;
+      if(!commonIndicatorFound){
+        //reset data
+        for (var xx = 0; xx < data.pathways.length; xx++) {
+          data.pathways[xx].data[i+3] = null;
+          data.pathways[xx].abs[i+3] = null;
+        }
+      }
+    }
     this.setState({
       perspectiveA:perspective,
       compareData:data
@@ -342,9 +372,6 @@ class ComparePerspective extends React.Component {
       data.indicators[8] = commonIndicators[0];
     }
 
-    // let label_0 = this.getOriginalValuesFromIndicator(indicatorsB[0].label);
-    // let label_1 = this.getOriginalValuesFromIndicator(indicatorsB[1].label);
-    // let label_2 = this.getOriginalValuesFromIndicator(indicatorsB[2].label);
     let label_0 = this.getOriginalValuesFromIndicator(this.extractLabel(indicatorsB,0));
     let label_1 = this.getOriginalValuesFromIndicator(this.extractLabel(indicatorsB,1));
     let label_2 = this.getOriginalValuesFromIndicator(this.extractLabel(indicatorsB,2));
@@ -361,12 +388,45 @@ class ComparePerspective extends React.Component {
         data.pathways[i].data[8] = label_2[i].data;
         data.pathways[i].abs[8]  = label_2[i].abs;
     }
+    //calculate common indicators
+    for (var i = 0; i < 3; i++) {
+      let currentIndicator = data.indicators[i+6];
+      let commonIndicatorI =
+      {
+        "color":"gray",
+        "label":"-",
+        "unit":"-"
+      };
+      let commonIndicatorFound = false;
+      for (var j = 0; j < 3; j++) {
+        if(currentIndicator.label === data.indicators[j].label){ //we found one
+          commonIndicatorFound = true;
+          commonIndicatorI = currentIndicator;
+          //copy path data
+          for (var x = 0; x < data.pathways.length; x++) {
+            data.pathways[x].data[i+3] = data.pathways[x].data[i+6];
+            data.pathways[x].abs[i+3] = data.pathways[x].abs[i+6];
+          }
+        }
+      }
+      data.indicators[i+3] = commonIndicatorI;
+      if(!commonIndicatorFound){
+        //reset data
+        for (var xx = 0; xx < data.pathways.length; xx++) {
+          data.pathways[xx].data[i+3] = null;
+          data.pathways[xx].abs[i+3] = null;
+        }
+      }
+    }
+
     this.setState({
       perspectiveB:perspective,
       compareData:data
     }, () => {
+
       this.dafnePlot.renderPlot();
     });
+
   }
   render(){
     return (
