@@ -20,14 +20,15 @@ class DafnePlotCompare extends React.Component {
     this.highlightPathways = this.highlightPathways.bind(this);
     this.filterIndicators = this.filterIndicators.bind(this);
     this.getFilteredPathwaysData = this.getFilteredPathwaysData.bind(this);
-
+    this.generateDomain = this.generateDomain.bind(this);
     this.state = {
       data: [],
       highlightedPathways: [],
       filteredIndicators: [],
 
     }
-    this.domain = ["A","B","C","D","E","F","G","H","I"];
+    // this.domain = ["A","B","C","D","E","F","G","H","I","J","I","K","L","M"];
+    this.domain = [];
     this.data = []; //we keep a copy so react doesn't mess up
   }
   componentDidMount(){
@@ -37,6 +38,9 @@ class DafnePlotCompare extends React.Component {
       filteredIndicators: this.props.filteredIndicators
     });
     this.data = this.props.data;
+  }
+  generateDomain(){
+    return new Array(this.props.data.indicators.length).fill( 1 ).map( ( _, i ) => String.fromCharCode( 65 + i ) );
   }
   clear(){
     d3.select("svg").remove();
@@ -55,6 +59,7 @@ class DafnePlotCompare extends React.Component {
 
   renderPlot(){
     this.clear();
+    this.domain = this.generateDomain();
     let perspectiveA = this.props.perspectiveA;
     let perspectiveB = this.props.perspectiveB;
     let filtersA     = [];
@@ -73,7 +78,8 @@ class DafnePlotCompare extends React.Component {
 
     //re-set the size
     // this.width  = this.svgW - this.margin.right - this.margin.left;
-    this.width  = (this.props.data.indicators.length * 80 ) + 20;
+    let indicatorWidth = 100;
+    this.width  = (this.props.data.indicators.length * indicatorWidth ) + 20;
     this.height = this.svgH - this.margin.bottom - this.margin.top;
     if(this.width < 600){
       this.width = 600;
@@ -96,32 +102,6 @@ class DafnePlotCompare extends React.Component {
     //get DATA
     let lineData = this.getFilteredPathwaysData();
 
-    //draw rectangles
-    this.svg.append("rect")
-                   .attr("x",0)
-                   .attr("y",0)
-                   .attr("width", 288)
-                   .attr("height",this.height + 80)
-                   .attr("fill","#f4e6cf")
-                   .attr("transform",
-                         "translate(-" + (this.margin.left - 15) + ",-" + this.margin.top + ")");
-   this.svg.append("rect")
-                  .attr("x",288)
-                  .attr("y",0)
-                  .attr("width", 278)
-                  .attr("height",this.height + 80)
-                  .attr("fill","#d0e2f1")
-                  .attr("transform",
-                          "translate(-" + (this.margin.left - 15) + ",-" + this.margin.top + ")");
-
-    this.svg.append("rect")
-                   .attr("x",566)
-                   .attr("y",0)
-                   .attr("width", 278)
-                   .attr("height",this.height + 80)
-                   .attr("fill","#cee2e0")
-                   .attr("transform",
-                           "translate(-" + (this.margin.left - 15) + ",-" + this.margin.top + ")");
 
     var xLeft = d3.scalePoint()
               .domain(this.domain)
@@ -130,6 +110,45 @@ class DafnePlotCompare extends React.Component {
     var x = d3.scalePoint()
               .domain(this.domain)
               .range([0,this.width]);
+
+              let widthPerspA = x(this.domain[this.props.lenIndicatorsA]);
+
+              let xCommon = widthPerspA;
+              let widthCommon = x(this.domain[this.props.commonIndicators.length]);
+              let widthPerspB =  x(this.domain[this.props.lenIndicatorsB]);
+              let xPerspB = xCommon + widthCommon;
+              //draw rectangles
+              this.svg.append("rect")
+                             .attr("x",0)
+                             .attr("y",0)
+                             .attr("width",widthPerspA)
+                             .attr("height",this.height + 80)
+                             .attr("fill","#f4e6cf")
+                             .attr("transform",
+                                   "translate(-" + (this.margin.left - 15) + ",-" + this.margin.top + ")");
+             this.svg.append("rect")
+                            .attr("x",xCommon)
+                            .attr("y",0)
+                            .attr("width", widthCommon)
+                            .attr("height",this.height + 80)
+                            .attr("fill","#d0e2f1")
+                            .attr("transform",
+                                    "translate(-" + (this.margin.left - 15) + ",-" + this.margin.top + ")");
+
+              this.svg.append("rect")
+                             .attr("x",xPerspB)
+                             .attr("y",0)
+                             .attr("width", widthPerspB)
+                             .attr("height",this.height + 80)
+                             .attr("fill","#cee2e0")
+                             .attr("transform",
+                                     "translate(-" + (this.margin.left - 15) + ",-" + this.margin.top + ")");
+
+
+
+
+
+
     var y = null;
     if(this.props.mode === "absolute"){
       y = d3.scaleLinear()

@@ -1,5 +1,6 @@
 import React from 'react';
 import 'rc-checkbox/assets/index.css';
+import Switch from "react-switch";
 import Checkbox  from 'rc-checkbox';
 import GraphA from "../img/icons/graph_a.png";
 import GraphC from "../img/icons/graph_c.png";
@@ -32,7 +33,11 @@ class ComparePerspective extends React.Component {
       selectedPerspectiveIndex:-1,
       perspectiveA:{},
       perspectiveB:{},
-      compareData:{...CompareData}
+      lenIndicatorsA:0,
+      lenIndicatorsB:0,
+      commonIndicators:[],
+      compareData:{...CompareData},
+      commonIndicatorsOnly:false
     }
     this.onDeleteIndicator            = this.onDeleteIndicator.bind(this);
     this.onPinIndicator               = this.onPinIndicator.bind(this);
@@ -43,11 +48,11 @@ class ComparePerspective extends React.Component {
     this.loadPerspectives             = this.loadPerspectives.bind(this);
     this.selectPerspective            = this.selectPerspective.bind(this);
     this.selectPerspectiveFromPerspectiveId = this.selectPerspectiveFromPerspectiveId.bind(this);
-    this.onPerspectiveASelected       = this.onPerspectiveASelected.bind(this);
-    this.onPerspectiveBSelected       = this.onPerspectiveBSelected.bind(this);
+    this.onPerspectiveSelected        = this.onPerspectiveSelected.bind(this);
     this.getOriginalValuesFromIndicator = this.getOriginalValuesFromIndicator.bind(this);
     this.filterData                     = this.filterData.bind(this);
     this.clear  = this.clear.bind(this);
+    this.handleCommonIndicatorsOnly = this.handleCommonIndicatorsOnly.bind(this);
   }
   componentDidMount(){
     this.loadPerspectives();
@@ -229,125 +234,130 @@ class ComparePerspective extends React.Component {
     }
   }
   clear(){
-    let data = {...CompareData};
+    let data = {...this.state.compareData};
     for (var i = 0; i < data.pathways.length; i++) {
-      let d = data.pathways[i];
-      for (var j = 0; j < d.data.length; j++) {
-        data.pathways[i].data[j] = null;
-        data.pathways[i].abs[j] = null;
-      }
+      data.pathways[i].data = [];
+      data.pathways[i].abs = [];
+
+      // let d = data.pathways[i];
+      // for (var j = 0; j < d.data.length; j++) {
+        // data.pathways[i].data[j] = null;
+        // data.pathways[i].abs[j] = null;
+      // }
     }
-    for (var i = 0; i < data.indicators.length; i++) {
-      data.indicators[i] = {
-        "color":"gray",
-        "label":"-",
-        "unit":"-"
-      }
-    }
+    data.indicators = [];
     this.setState({
-      perspectiveA:{},
-      perspectiveB:{},
       compareData:data
     }, () => {
       this.dafnePlot.renderPlot();
     });
   }
-  onPerspectiveASelected(perspective){
-    if(perspective === undefined){
-      return this.clear();
+  onPerspectiveSelected(perspective,side){
+    if(side === "A"){
+      let perspectiveA = perspective;
+      let perspectiveB = this.state.perspectiveB;
+      this.setState({
+        perspectiveA:perspective,
+      },
+        this.loadPerspective
+      );
+    }else{
+      let perspectiveA = this.state.perspectiveB;
+      let perspectiveB = perspective;
+      this.setState({
+        perspectiveB:perspective
+      },
+        this.loadPerspective
+      );
+    }
+
+  }
+  loadPerspective(){
+    let perspectiveA = this.state.perspectiveA;
+    let perspectiveB = this.state.perspectiveB;
+    if(perspectiveA === undefined || perspectiveB === undefined){
+      // return this.clear();
+    }else{
+      this.clear();
     }
     //copy compare data
     let data = {...this.state.compareData};
+    data.indicators = [];
 
     let filtersA     = [];
     try{
-      filtersA       = JSON.parse(JSON.parse(perspective.filter));
+      filtersA       = JSON.parse(JSON.parse(perspectiveA.filter));
     }catch(ex){
 
     }
-    filtersA = this.filterData({...Data},filtersA);
+    let filtersB     = [];
+    try{
+      filtersB       = JSON.parse(JSON.parse(perspectiveB.filter));
+    }catch(ex){
 
-    let indicatorsA = filtersA.slice(0,3);
-    let commonIndicators = [
-      {
-        "color":"gray",
-        "label":"-",
-        "unit":"-"
-      },
-      {
-        "color":"gray",
-        "label":"-",
-        "unit":"-"
-      },
-      {
-        "color":"gray",
-        "label":"-",
-        "unit":"-"
+    }
+    let indicatorsA = this.filterData({...Data},filtersA);
+    let indicatorsB = this.filterData({...Data},filtersB);
+
+    let commonIndicatorsOnly = this.state.commonIndicatorsOnly;
+    if(!commonIndicatorsOnly){
+      //create indicators
+      data.indicators = indicatorsA;
+
+      //FILL INDICATORS A --------------------------------------------------------
+      for (var i = 0; i < indicatorsA.length; i++) {
+        let labels = this.getOriginalValuesFromIndicator(indicatorsA[i].label);
+          for (var l = 0; l < labels.length; l++) {
+              data.pathways[l].data.push(labels[l].data);
+              data.pathways[l].abs.push(labels[l].abs);
+          }
       }
-    ];
-    if(indicatorsA[0] !== undefined){
-      data.indicators[0] = indicatorsA[0];
-    }else{
-      data.indicators[0] = commonIndicators[0];
     }
-    if(indicatorsA[1] !== undefined){
-      data.indicators[1] = indicatorsA[1];
-    }else{
-      data.indicators[1] = commonIndicators[0];
-    }
-    if(indicatorsA[2] !== undefined){
-      data.indicators[2] = indicatorsA[2];
-    }else{
-      data.indicators[2] = commonIndicators[0];
-    }
-    let label_0 = this.getOriginalValuesFromIndicator(this.extractLabel(indicatorsA,0));
-    let label_1 = this.getOriginalValuesFromIndicator(this.extractLabel(indicatorsA,1));
-    let label_2 = this.getOriginalValuesFromIndicator(this.extractLabel(indicatorsA,2));
-    for (var i = 0; i < label_0.length; i++) {
-        data.pathways[i].data[0] = label_0[i].data;
-        data.pathways[i].abs[0] = label_0[i].abs;
-    }
-    for (i = 0; i < label_1.length; i++) {
-        data.pathways[i].data[1] = label_1[i].data;
-        data.pathways[i].abs[1]  = label_1[i].abs;
-    }
-    for (i = 0; i < label_2.length; i++) {
-        data.pathways[i].data[2] = label_2[i].data;
-        data.pathways[i].abs[2]  = label_2[i].abs;
-    }
-    //calculate common indicators
-    for (var i = 0; i < 3; i++) {
-      let currentIndicator = data.indicators[i+6];
-      let commonIndicatorI =
-      {
-        "color":"gray",
-        "label":"-",
-        "unit":"-"
-      };
-      let commonIndicatorFound = false;
-      for (var j = 0; j < 3; j++) {
-        if(currentIndicator.label === data.indicators[j].label){ //we found one
-          commonIndicatorFound = true;
-          commonIndicatorI = currentIndicator;
-          //copy path data
-          for (var x = 0; x < data.pathways.length; x++) {
-            data.pathways[x].data[i+3] = data.pathways[x].data[i+6];
-            data.pathways[x].abs[i+3] = data.pathways[x].abs[i+6];
+
+    //CALCULATE COMMON INDICATORS-----------------------------------------------
+    let commonIndicators = [];
+    if(filtersB.hasOwnProperty("length") && filtersB.length > 0){
+      for (var iA = 0; iA < indicatorsA.length; iA++) {
+        for (var iB = 0; iB < indicatorsB.length; iB++) {
+          if(indicatorsA[iA].label === indicatorsB[iB].label){
+            //we found a common indicator, add it to the list
+            commonIndicators.push(indicatorsB[iB]);
           }
         }
       }
-      data.indicators[i+3] = commonIndicatorI;
-      if(!commonIndicatorFound){
-        //reset data
-        for (var xx = 0; xx < data.pathways.length; xx++) {
-          data.pathways[xx].data[i+3] = null;
-          data.pathways[xx].abs[i+3] = null;
+      //add common indicators to data.indicators
+      data.indicators = data.indicators.concat(commonIndicators);
+      for (var iC = 0; iC < commonIndicators.length; iC++) {
+        let labels = this.getOriginalValuesFromIndicator(commonIndicators[iC].label);
+          for (var lC = 0; lC < labels.length; lC++) {
+              data.pathways[lC].data.push(labels[lC].data);
+              data.pathways[lC].abs.push(labels[lC].abs);
+          }
+      }
+    }
+    if(!commonIndicatorsOnly){
+      //FILL INDICATORS B --------------------------------------------------------
+      if(filtersB.hasOwnProperty("length") && filtersB.length > 0){
+        data.indicators = data.indicators.concat(indicatorsB);
+
+        for (var i = 0; i < indicatorsB.length; i++) {
+          let labels = this.getOriginalValuesFromIndicator(indicatorsB[i].label);
+            for (var l = 0; l < labels.length; l++) {
+                data.pathways[l].data.push(labels[l].data);
+                data.pathways[l].abs.push(labels[l].abs);
+            }
         }
       }
     }
+
+
+
+
     this.setState({
-      perspectiveA:perspective,
-      compareData:data
+      compareData:data,
+      lenIndicatorsA:indicatorsA.length,
+      lenIndicatorsB:indicatorsB.length,
+      commonIndicators:commonIndicators
     }, () => {
       this.dafnePlot.renderPlot();
     });
@@ -459,6 +469,11 @@ class ComparePerspective extends React.Component {
     });
 
   }
+  handleCommonIndicatorsOnly(checked) {
+    this.setState({ commonIndicatorsOnly:checked }, () =>{
+        this.loadPerspective();
+    });
+  }
   render(){
     return (
         <div className="flex">
@@ -471,10 +486,14 @@ class ComparePerspective extends React.Component {
                <div className="title m-b-5">Create a shared perspective by choosing two saved perspectives to compare:</div>
                <div className="filters_right_area_content justify-evenly">
                  <div className='wrapper_select'>
-                   <PerspectivePicker perspectives={this.state.perspectives} onPerspectiveSelected={this.onPerspectiveASelected}></PerspectivePicker>
+                   <PerspectivePicker perspectives={this.state.perspectives} onPerspectiveSelected={(p) => {
+                     this.onPerspectiveSelected(p,"A");
+                   }}></PerspectivePicker>
                  </div>
                  <div className='wrapper_select'>
-                   <PerspectivePicker perspectives={this.state.perspectives} onPerspectiveSelected={this.onPerspectiveBSelected}></PerspectivePicker>
+                   <PerspectivePicker perspectives={this.state.perspectives} onPerspectiveSelected={(p) => {
+                     this.onPerspectiveSelected(p,"B");
+                   }}></PerspectivePicker>
                  </div>
                </div>
             </div>
@@ -530,6 +549,22 @@ class ComparePerspective extends React.Component {
                   onSelectIndicators={(indicators) => {this.onSelectIndicators(indicators);}}
                   onOptionChanged={(option) => {this.onOptionChanged(option)}}
                   ></IndicatorTools>
+                  <div style ={{display: "flex",justifyContent: "inherit",width: "280px",}}>
+                    <div className="it_label">Show all<br></br>Indicators</div>
+                    <Switch uncheckedIcon={false}
+                            onHandleColor={"#1b75bc"}
+                            onColor={"#9fc0db"}
+                            offHandleColor={"#9fc0db"}
+                            handleDiameter={30}
+                            height={22}
+                            onChange={this.handleCommonIndicatorsOnly}
+                            checked={this.state.commonIndicatorsOnly}
+                    />
+                    <div className="it_label" style={{marginRight:30}}>Common<br></br>  indicators </div>
+
+                  </div>
+
+
                 <div className="widget" style={{backgroundColor:"white !important"}}>
                   <DafnePlotCompare
                     ref={(dp) => { this.dafnePlot = dp; }}
@@ -539,7 +574,10 @@ class ComparePerspective extends React.Component {
                     showScales={this.state.dafnePlotOptions.showScales}
                     mode={this.state.dafnePlotOptions.mode}
                     perspectiveA={this.state.perspectiveA}
+                    lenIndicatorsA={this.state.lenIndicatorsA}
+                    lenIndicatorsB={this.state.lenIndicatorsB}
                     perspectiveB={this.state.perspectiveB}
+                    commonIndicators={this.state.commonIndicators}
                     >
                   </DafnePlotCompare>
                   <div className="save_area" style={{flex:1,marginBottom:10,maxHeight:30,marginRight:10,alignItems:"end",display:"flex",flexDirection:"column"}}>
