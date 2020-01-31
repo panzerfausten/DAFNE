@@ -32,6 +32,9 @@ class ComparePerspective extends React.Component {
       selectedPerspectiveIndex:-1,
       perspectiveA:{},
       perspectiveB:{},
+      lenIndicatorsA:0,
+      lenIndicatorsB:0,
+      commonIndicators:[],
       compareData:{...CompareData}
     }
     this.onDeleteIndicator            = this.onDeleteIndicator.bind(this);
@@ -293,7 +296,7 @@ class ComparePerspective extends React.Component {
     let indicatorsA = this.filterData({...Data},filtersA);
     let indicatorsB = this.filterData({...Data},filtersB);
 
-    let commonIndicatorsOnly = true;
+    let commonIndicatorsOnly = false;
     if(!commonIndicatorsOnly){
       //create indicators
       data.indicators = indicatorsA;
@@ -348,7 +351,10 @@ class ComparePerspective extends React.Component {
 
 
     this.setState({
-      compareData:data
+      compareData:data,
+      lenIndicatorsA:indicatorsA.length,
+      lenIndicatorsB:indicatorsB.length,
+      commonIndicators:commonIndicators
     }, () => {
       this.dafnePlot.renderPlot();
     });
@@ -544,7 +550,10 @@ class ComparePerspective extends React.Component {
                     showScales={this.state.dafnePlotOptions.showScales}
                     mode={this.state.dafnePlotOptions.mode}
                     perspectiveA={this.state.perspectiveA}
+                    lenIndicatorsA={this.state.lenIndicatorsA}
+                    lenIndicatorsB={this.state.lenIndicatorsB}
                     perspectiveB={this.state.perspectiveB}
+                    commonIndicators={this.state.commonIndicators}
                     >
                   </DafnePlotCompare>
                   <div className="save_area" style={{flex:1,marginBottom:10,maxHeight:30,marginRight:10,alignItems:"end",display:"flex",flexDirection:"column"}}>
