@@ -27,7 +27,8 @@ class DafnePlotCompare extends React.Component {
       filteredIndicators: [],
 
     }
-    this.domain = ["A","B","C","D","E","F","G","H","I"];
+    // this.domain = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+    this.domain = ["A","B"];
     this.data = []; //we keep a copy so react doesn't mess up
   }
   componentDidMount(){

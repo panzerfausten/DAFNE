@@ -270,12 +270,13 @@ class ComparePerspective extends React.Component {
     let perspectiveA = this.state.perspectiveA;
     let perspectiveB = this.state.perspectiveB;
     if(perspectiveA === undefined || perspectiveB === undefined){
-      return this.clear();
+      // return this.clear();
     }else{
       this.clear();
     }
     //copy compare data
     let data = {...this.state.compareData};
+    data.indicators = [];
 
     let filtersA     = [];
     try{
@@ -292,51 +293,57 @@ class ComparePerspective extends React.Component {
     let indicatorsA = this.filterData({...Data},filtersA);
     let indicatorsB = this.filterData({...Data},filtersB);
 
-    // let commonIndicators = [
-    //   {
-    //     "color":"gray",
-    //     "label":"-",
-    //     "unit":"-"
-    //   },
-    //   {
-    //     "color":"gray",
-    //     "label":"-",
-    //     "unit":"-"
-    //   },
-    //   {
-    //     "color":"gray",
-    //     "label":"-",
-    //     "unit":"-"
-    //   }
-    // ];
+    let commonIndicatorsOnly = true;
+    if(!commonIndicatorsOnly){
+      //create indicators
+      data.indicators = indicatorsA;
 
-    //create indicators
-    data.indicators = indicatorsA;
-    // if(this.state.perspectiveB.hasOwnProperty("length")){
-    //
-    // }
-    // debugger;
-
-    //FILL INDICATORS A --------------------------------------------------------
-    for (var i = 0; i < indicatorsA.length; i++) {
-      let labels = this.getOriginalValuesFromIndicator(indicatorsA[i].label);
-        for (var l = 0; l < labels.length; l++) {
-            data.pathways[l].data.push(labels[l].data);
-            data.pathways[l].abs.push(labels[l].abs);
-        }
-    }
-    //FILL INDICATORS B --------------------------------------------------------
-    if(filtersB.hasOwnProperty("length") && filtersB.length > 0){
-      data.indicators = data.indicators.concat(indicatorsB);
-      // debugger;
-      for (var i = 0; i < indicatorsB.length; i++) {
-        let labels = this.getOriginalValuesFromIndicator(indicatorsB[i].label);
+      //FILL INDICATORS A --------------------------------------------------------
+      for (var i = 0; i < indicatorsA.length; i++) {
+        let labels = this.getOriginalValuesFromIndicator(indicatorsA[i].label);
           for (var l = 0; l < labels.length; l++) {
               data.pathways[l].data.push(labels[l].data);
               data.pathways[l].abs.push(labels[l].abs);
           }
       }
     }
+
+    //CALCULATE COMMON INDICATORS-----------------------------------------------
+    let commonIndicators = [];
+    if(filtersB.hasOwnProperty("length") && filtersB.length > 0){
+      for (var iA = 0; iA < indicatorsA.length; iA++) {
+        for (var iB = 0; iB < indicatorsB.length; iB++) {
+          if(indicatorsA[iA].label === indicatorsB[iB].label){
+            //we found a common indicator, add it to the list
+            commonIndicators.push(indicatorsB[iB]);
+          }
+        }
+      }
+      //add common indicators to data.indicators
+      data.indicators = data.indicators.concat(commonIndicators);
+      for (var iC = 0; iC < commonIndicators.length; iC++) {
+        let labels = this.getOriginalValuesFromIndicator(commonIndicators[iC].label);
+          for (var lC = 0; lC < labels.length; lC++) {
+              data.pathways[lC].data.push(labels[lC].data);
+              data.pathways[lC].abs.push(labels[lC].abs);
+          }
+      }
+    }
+    if(!commonIndicatorsOnly){
+      //FILL INDICATORS B --------------------------------------------------------
+      if(filtersB.hasOwnProperty("length") && filtersB.length > 0){
+        data.indicators = data.indicators.concat(indicatorsB);
+
+        for (var i = 0; i < indicatorsB.length; i++) {
+          let labels = this.getOriginalValuesFromIndicator(indicatorsB[i].label);
+            for (var l = 0; l < labels.length; l++) {
+                data.pathways[l].data.push(labels[l].data);
+                data.pathways[l].abs.push(labels[l].abs);
+            }
+        }
+      }
+    }
+
 
 
 
