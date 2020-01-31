@@ -1,5 +1,6 @@
 import React from 'react';
 import 'rc-checkbox/assets/index.css';
+import Switch from "react-switch";
 import Checkbox  from 'rc-checkbox';
 import GraphA from "../img/icons/graph_a.png";
 import GraphC from "../img/icons/graph_c.png";
@@ -35,7 +36,8 @@ class ComparePerspective extends React.Component {
       lenIndicatorsA:0,
       lenIndicatorsB:0,
       commonIndicators:[],
-      compareData:{...CompareData}
+      compareData:{...CompareData},
+      commonIndicatorsOnly:false
     }
     this.onDeleteIndicator            = this.onDeleteIndicator.bind(this);
     this.onPinIndicator               = this.onPinIndicator.bind(this);
@@ -50,6 +52,7 @@ class ComparePerspective extends React.Component {
     this.getOriginalValuesFromIndicator = this.getOriginalValuesFromIndicator.bind(this);
     this.filterData                     = this.filterData.bind(this);
     this.clear  = this.clear.bind(this);
+    this.handleCommonIndicatorsOnly = this.handleCommonIndicatorsOnly.bind(this);
   }
   componentDidMount(){
     this.loadPerspectives();
@@ -296,7 +299,7 @@ class ComparePerspective extends React.Component {
     let indicatorsA = this.filterData({...Data},filtersA);
     let indicatorsB = this.filterData({...Data},filtersB);
 
-    let commonIndicatorsOnly = false;
+    let commonIndicatorsOnly = this.state.commonIndicatorsOnly;
     if(!commonIndicatorsOnly){
       //create indicators
       data.indicators = indicatorsA;
@@ -466,6 +469,11 @@ class ComparePerspective extends React.Component {
     });
 
   }
+  handleCommonIndicatorsOnly(checked) {
+    this.setState({ commonIndicatorsOnly:checked }, () =>{
+        this.loadPerspective();
+    });
+  }
   render(){
     return (
         <div className="flex">
@@ -541,6 +549,22 @@ class ComparePerspective extends React.Component {
                   onSelectIndicators={(indicators) => {this.onSelectIndicators(indicators);}}
                   onOptionChanged={(option) => {this.onOptionChanged(option)}}
                   ></IndicatorTools>
+                  <div style ={{display: "flex",justifyContent: "inherit",width: "280px",}}>
+                    <div className="it_label">Show all<br></br>Indicators</div>
+                    <Switch uncheckedIcon={false}
+                            onHandleColor={"#1b75bc"}
+                            onColor={"#9fc0db"}
+                            offHandleColor={"#9fc0db"}
+                            handleDiameter={30}
+                            height={22}
+                            onChange={this.handleCommonIndicatorsOnly}
+                            checked={this.state.commonIndicatorsOnly}
+                    />
+                    <div className="it_label" style={{marginRight:30}}>Common<br></br>  indicators </div>
+
+                  </div>
+
+
                 <div className="widget" style={{backgroundColor:"white !important"}}>
                   <DafnePlotCompare
                     ref={(dp) => { this.dafnePlot = dp; }}
