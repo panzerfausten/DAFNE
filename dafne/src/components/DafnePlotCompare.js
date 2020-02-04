@@ -115,35 +115,85 @@ class DafnePlotCompare extends React.Component {
 
               let xCommon = widthPerspA;
               let widthCommon = x(this.domain[this.props.commonIndicators.length]);
+              if(this.props.showCommonIndicatorsOnly){
+                widthCommon = "100%";
+              }
               let widthPerspB =  x(this.domain[this.props.lenIndicatorsB]);
               let xPerspB = xCommon + widthCommon;
               //draw rectangles
-              this.svg.append("rect")
-                             .attr("x",0)
-                             .attr("y",0)
-                             .attr("width",widthPerspA)
-                             .attr("height",this.height + 80)
-                             .attr("fill","#f4e6cf")
-                             .attr("transform",
-                                   "translate(-" + (this.margin.left - 15) + ",-" + this.margin.top + ")");
-             this.svg.append("rect")
-                            .attr("x",xCommon)
-                            .attr("y",0)
-                            .attr("width", widthCommon)
-                            .attr("height",this.height + 80)
-                            .attr("fill","#d0e2f1")
-                            .attr("transform",
-                                    "translate(-" + (this.margin.left - 15) + ",-" + this.margin.top + ")");
 
-              this.svg.append("rect")
-                             .attr("x",xPerspB)
-                             .attr("y",0)
-                             .attr("width", widthPerspB)
-                             .attr("height",this.height + 80)
-                             .attr("fill","#cee2e0")
-                             .attr("transform",
-                                     "translate(-" + (this.margin.left - 15) + ",-" + this.margin.top + ")");
 
+
+              if(this.props.perspectiveA.hasOwnProperty("name") && !this.props.showCommonIndicatorsOnly){
+                let leftArea = this.svg.append('g')
+                  .attr("x",0)
+                  .attr("y",0)
+                  .attr("width",widthPerspA)
+                  .attr("height",this.height + 80)
+                  .attr("transform",
+                        "translate(-" + (this.margin.left - 15) + ",-" + this.margin.top + ")");
+                leftArea.append("rect")
+                  .attr("x",0)
+                  .attr("y",0)
+                  .attr("width",widthPerspA)
+                  .attr("height",this.height + 80)
+                  .attr("fill","#f4e6cf")
+                //label
+                leftArea.append("text")
+                 .text(this.props.perspectiveB.name)
+                 .attr("x",widthPerspA / 2)
+                 .attr("y","92%")
+                 .attr("text-anchor","middle")
+                 .attr("dominant-baseline","middle")
+                 .style("font-size", "12px")
+              }
+              if(this.props.commonIndicators.length > 0){
+                let middleArea = this.svg.append('g')
+                 .attr("x",xCommon)
+                 .attr("y",0)
+                 .attr("width", widthCommon)
+                 .attr("height",this.height + 80)
+                 .attr("transform",
+                        "translate(-" + (this.margin.left - 15) + ",-" + this.margin.top + ")");
+                middleArea.append("rect")
+                 .attr("x",xCommon)
+                 .attr("y",0)
+                 .attr("width", widthCommon)
+                 .attr("height",this.height + 80)
+                 .attr("fill","#d0e2f1")
+               //label
+               let txCommon = this.props.showCommonIndicatorsOnly ? "50%" : xCommon + (widthCommon / 2);
+               middleArea.append("text")
+                .text("Common Indicators")
+                .attr("x",txCommon)
+                .attr("y","92%")
+                .attr("text-anchor","middle")
+                .attr("dominant-baseline","middle")
+                .style("font-size", "12px")
+              }
+              if(this.props.perspectiveA.hasOwnProperty("name") && !this.props.showCommonIndicatorsOnly){
+                let rightArea = this.svg.append('g')
+                  .attr("x",xPerspB)
+                  .attr("y",0)
+                  .attr("width", widthPerspB)
+                  .attr("height",this.height + 80)
+                  .attr("transform",
+                          "translate(-" + (this.margin.left - 15) + ",-" + this.margin.top + ")");
+                rightArea.append("rect")
+                  .attr("x",xPerspB)
+                  .attr("y",0)
+                  .attr("width", widthPerspB)
+                  .attr("height",this.height + 80)
+                  .attr("fill","#cee2e0")
+                //label
+                rightArea.append("text")
+                 .text(this.props.perspectiveB.name)
+                 .attr("x",xPerspB + (widthPerspB / 2))
+                 .attr("y","92%")
+                 .attr("text-anchor","middle")
+                 .attr("dominant-baseline","middle")
+                 .style("font-size", "12px")
+              }
 
 
 
@@ -343,37 +393,6 @@ class DafnePlotCompare extends React.Component {
             .style("font-weight", "bold")
             .attr("transform",
                   `translate(0,-${labelContainerHeight})`);
-    //bottom text
-
-    if(indexLabels.includes(i)){
-      let label = "";
-      if(i === 1){
-        if(this.props.perspectiveA.hasOwnProperty("name")){
-          label = this.props.perspectiveA.name;
-        }else{
-          label = "Select a perspective";
-        }
-      }
-      if(i === 4){
-        label = "Common indicators";
-      }
-      if(i === 7){
-        if(this.props.perspectiveB.hasOwnProperty("name")){
-          label = this.props.perspectiveB.name;
-        }else{
-          label = "Select a perspective";
-        }
-      }
-      svg.append('g')
-            .attr("transform",
-                    `translate(0,${this.height})`)
-            .append("text")
-             .text(label)
-             .attr("x",x)
-             .attr("text-anchor","middle")
-             .style("font-size", "12px")
-     }
-
     // add icons
     // svg.append('g')
     //       .attr("transform",
