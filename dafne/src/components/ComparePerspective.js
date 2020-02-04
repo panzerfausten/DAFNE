@@ -578,6 +578,7 @@ class ComparePerspective extends React.Component {
                     lenIndicatorsB={this.state.lenIndicatorsB}
                     perspectiveB={this.state.perspectiveB}
                     commonIndicators={this.state.commonIndicators}
+                    showCommonIndicatorsOnly={this.state.commonIndicatorsOnly}
                     >
                   </DafnePlotCompare>
                   <div className="save_area" style={{flex:1,marginBottom:10,maxHeight:30,marginRight:10,alignItems:"end",display:"flex",flexDirection:"column"}}>
