@@ -59,6 +59,7 @@ class DafnePlotCompare extends React.Component {
 
   renderPlot(){
     this.clear();
+    this.clear();
     this.domain = this.generateDomain();
     let perspectiveA = this.props.perspectiveA;
     let perspectiveB = this.props.perspectiveB;
@@ -75,7 +76,9 @@ class DafnePlotCompare extends React.Component {
     let plotIndicators = this.props.data.indicators;
     let mapFilterIndicators = this.state.filteredIndicators.map(i => i.label);
     plotIndicators = plotIndicators.filter(i => !mapFilterIndicators.includes(i.label));
-
+    if(this.props.data.indicators.length === 0){
+      plotIndicators = [];
+    }
     //re-set the size
     // this.width  = this.svgW - this.margin.right - this.margin.left;
     let indicatorWidth = 100;
@@ -140,7 +143,7 @@ class DafnePlotCompare extends React.Component {
                   .attr("fill","#f4e6cf")
                 //label
                 leftArea.append("text")
-                 .text(this.props.perspectiveB.name)
+                 .text(this.props.perspectiveA.name)
                  .attr("x",widthPerspA / 2)
                  .attr("y","92%")
                  .attr("text-anchor","middle")

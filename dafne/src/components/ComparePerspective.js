@@ -175,53 +175,6 @@ class ComparePerspective extends React.Component {
     }
 
   }
-  // onPerspectiveASelectedx(perspective){
-  //   //copy compare data
-  //   let data = {...this.state.compareData};
-  //   let filtersA     = [];
-  //   try{
-  //     filtersA       = JSON.parse(JSON.parse(perspective.filter));
-  //   }catch(ex){
-  //
-  //   }
-  //   let indicatorsA = filtersA.slice(0,3);
-  //   let commonIndicators = [
-  //     {
-  //       "color":"gray",
-  //       "label":"-",
-  //       "unit":"-"
-  //     },
-  //     {
-  //       "color":"gray",
-  //       "label":"-",
-  //       "unit":"-"
-  //     },
-  //     {
-  //       "color":"gray",
-  //       "label":"-",
-  //       "unit":"-"
-  //     }
-  //   ];
-  //
-  //   data.indicators[0] = indicatorsA[0];
-  //   data.indicators[1] = indicatorsA[1];
-  //   data.indicators[2] = indicatorsA[2];
-  //   // Calculate data
-  //
-  //   for (var i = 0; i < data.pathways.length; i++) {
-  //     data.pathways[i][1] = this.getOriginalValuesFromIndicator(indicatorsA[1].label);
-  //   }
-  //   for (var i = 0; i < data.pathways.length; i++) {
-  //     data.pathways[i][2] = this.getOriginalValuesFromIndicator(indicatorsA[2].label);
-  //   }
-  //   debugger;
-  //   this.setState({
-  //     perspectiveA:perspective,
-  //     compareData:data
-  //   }, () => {
-  //     this.dafnePlot.renderPlot();
-  //   });
-  // }
   filterData(data,filters){
     let mFilters = filters.map(f => f.label);
     return data.indicators.filter( i => !mFilters.includes(i.label));
@@ -276,7 +229,7 @@ class ComparePerspective extends React.Component {
     let perspectiveA = this.state.perspectiveA;
     let perspectiveB = this.state.perspectiveB;
     if(perspectiveA === undefined || perspectiveB === undefined){
-      // return this.clear();
+      return this.clear();
     }else{
       this.clear();
     }
@@ -316,7 +269,7 @@ class ComparePerspective extends React.Component {
 
     //CALCULATE COMMON INDICATORS-----------------------------------------------
     let commonIndicators = [];
-    if(filtersB.hasOwnProperty("length") && filtersB.length > 0){
+    if(this.state.perspectiveA.hasOwnProperty("name")){
       for (var iA = 0; iA < indicatorsA.length; iA++) {
         for (var iB = 0; iB < indicatorsB.length; iB++) {
           if(indicatorsA[iA].label === indicatorsB[iB].label){
@@ -337,7 +290,7 @@ class ComparePerspective extends React.Component {
     }
     if(!commonIndicatorsOnly){
       //FILL INDICATORS B --------------------------------------------------------
-      if(filtersB.hasOwnProperty("length") && filtersB.length > 0){
+      if(this.state.perspectiveB.hasOwnProperty("name")){
         data.indicators = data.indicators.concat(indicatorsB);
 
         for (var i = 0; i < indicatorsB.length; i++) {
