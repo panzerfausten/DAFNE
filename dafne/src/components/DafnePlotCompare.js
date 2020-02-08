@@ -115,19 +115,28 @@ class DafnePlotCompare extends React.Component {
               .range([0,this.width]);
 
               let widthPerspA = x(this.domain[this.props.lenIndicatorsA]);
-
               let xCommon = widthPerspA;
               let widthCommon = x(this.domain[this.props.commonIndicators.length]);
+              let txCommon = xCommon + (widthCommon / 2);
               if(this.props.showCommonIndicatorsOnly){
                 widthCommon = "100%";
+                txCommon    = "50%";
+              }
+              if(this.props.lenIndicatorsA === 0 && this.props.lenIndicatorsB === 0){
+                widthCommon = "100%";
+                txCommon    = "50%";
               }
               let widthPerspB =  x(this.domain[this.props.lenIndicatorsB]);
-              let xPerspB = xCommon + widthCommon;
+              let xPerspB = widthPerspA + widthCommon;
+
               //draw rectangles
 
 
 
-              if(this.props.perspectiveA.hasOwnProperty("name") && !this.props.showCommonIndicatorsOnly){
+              if(this.props.perspectiveA.hasOwnProperty("name") &&
+                  !this.props.showCommonIndicatorsOnly
+                  && this.props.lenIndicatorsA > 0
+                ){
                 let leftArea = this.svg.append('g')
                   .attr("x",0)
                   .attr("y",0)
@@ -154,7 +163,7 @@ class DafnePlotCompare extends React.Component {
                 let middleArea = this.svg.append('g')
                  .attr("x",xCommon)
                  .attr("y",0)
-                 .attr("width", widthCommon)
+                 .attr("width", "100%")
                  .attr("height",this.height + 80)
                  .attr("transform",
                         "translate(-" + (this.margin.left - 15) + ",-" + this.margin.top + ")");
@@ -165,7 +174,6 @@ class DafnePlotCompare extends React.Component {
                  .attr("height",this.height + 80)
                  .attr("fill","#d0e2f1")
                //label
-               let txCommon = this.props.showCommonIndicatorsOnly ? "50%" : xCommon + (widthCommon / 2);
                middleArea.append("text")
                 .text("Common Indicators")
                 .attr("x",txCommon)
@@ -174,7 +182,10 @@ class DafnePlotCompare extends React.Component {
                 .attr("dominant-baseline","middle")
                 .style("font-size", "12px")
               }
-              if(this.props.perspectiveA.hasOwnProperty("name") && !this.props.showCommonIndicatorsOnly){
+              if(this.props.perspectiveA.hasOwnProperty("name")
+                  && !this.props.showCommonIndicatorsOnly
+                  && this.props.lenIndicatorsB > 0
+                ){
                 let rightArea = this.svg.append('g')
                   .attr("x",xPerspB)
                   .attr("y",0)
