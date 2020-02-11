@@ -510,3 +510,22 @@ label{
 .item_selected{
   background-color: $lightBlue;
 }
+/**********************
+    Custom menu
+***********************/
+.circle_menu_btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  width: 56px;
+  border-radius: 100%;
+  background-color: $gray;
+  text-align: center;
+}
+.circle_menu_btn a{
+  font-size: 18px !important;
+}
+/**********************
+***********************/
