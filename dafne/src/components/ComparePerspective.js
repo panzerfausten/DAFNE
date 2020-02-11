@@ -207,18 +207,14 @@ class ComparePerspective extends React.Component {
   }
   onPerspectiveSelected(perspective,side){
     if(side === "A"){
-      let perspectiveA = perspective;
-      let perspectiveB = this.state.perspectiveB;
       this.setState({
-        perspectiveA:perspective,
+        perspectiveA:perspective || {}
       },
         this.loadPerspective
       );
     }else{
-      let perspectiveA = this.state.perspectiveB;
-      let perspectiveB = perspective;
       this.setState({
-        perspectiveB:perspective
+        perspectiveB:perspective || {}
       },
         this.loadPerspective
       );
@@ -229,7 +225,7 @@ class ComparePerspective extends React.Component {
     let perspectiveA = this.state.perspectiveA;
     let perspectiveB = this.state.perspectiveB;
     if(perspectiveA === undefined || perspectiveB === undefined){
-      return this.clear();
+      // return this.clear();
     }else{
       this.clear();
     }
@@ -251,13 +247,23 @@ class ComparePerspective extends React.Component {
     }
     let indicatorsA  = [];
     let indicatorsB  = [];
-    if(perspectiveA.hasOwnProperty("name")){
-      indicatorsA = this.filterData({...Data},filtersA);
+    try{
+      if(perspectiveA.hasOwnProperty("name")){
+        indicatorsA = this.filterData({...Data},filtersA);
+      }
+    }catch(ex){
+      perspectiveA = null;
     }
-    if(perspectiveB.hasOwnProperty("name")){
-      indicatorsB = this.filterData({...Data},filtersB);
+    try{
+      if(perspectiveB.hasOwnProperty("name")){
+        indicatorsB = this.filterData({...Data},filtersB);
+      }
+    }catch(ex){
+      perspectiveB = null;
 
     }
+
+
     let lenIndicatorsB = 0;
     let commonIndicatorsOnly = this.state.commonIndicatorsOnly;
     //CALCULATE COMMON INDICATORS-----------------------------------------------

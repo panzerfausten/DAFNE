@@ -119,20 +119,19 @@ class DafnePlotCompare extends React.Component {
               let widthCommon = x(this.domain[this.props.commonIndicators.length]);
               let txCommon = xCommon + (widthCommon / 2);
               if(this.props.showCommonIndicatorsOnly){
-                widthCommon = "100%";
-                txCommon    = "50%";
+                xCommon    = 0;
+                txCommon   = widthCommon / 2;
               }
-              if(this.props.lenIndicatorsA === 0 && this.props.lenIndicatorsB === 0
-                && this.props.commonIndicators.length > 0){
-                widthCommon = "100%";
-                txCommon    = "50%";
-              }
+              // if(this.props.lenIndicatorsA === 0 && this.props.lenIndicatorsB === 0
+              //   && this.props.commonIndicators.length > 0){
+              //   txCommon    = "50%";
+              // }
               let widthPerspB =  x(this.domain[this.props.lenIndicatorsB]);
               let xPerspB = widthPerspA + widthCommon;
 
               //draw rectangles
 
-
+              debugger;
 
               if(this.props.perspectiveA.hasOwnProperty("name") &&
                   !this.props.showCommonIndicatorsOnly
@@ -183,7 +182,7 @@ class DafnePlotCompare extends React.Component {
                 .attr("dominant-baseline","middle")
                 .style("font-size", "12px")
               }
-              if(this.props.perspectiveA.hasOwnProperty("name")
+              if(this.props.perspectiveB.hasOwnProperty("name")
                   && !this.props.showCommonIndicatorsOnly
                   && this.props.lenIndicatorsB > 0
                 ){

@@ -44,7 +44,7 @@ var cookiesSchema = new mongoose.Schema(
   }
 );
 cookiesSchema.methods.validateToken= function(token,cb){
-  let fields = "_id name email created_at updatedAt source uid __v valid token " +
+  let fields = "_id name last_name email created_at updatedAt source uid __v valid token " +
   "success ";
 
   this.model("Cookies").findOne({ token:token }, function (err, c) {
