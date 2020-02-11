@@ -225,18 +225,6 @@ class ComparePerspective extends React.Component {
     }
 
   }
-  deleteDataAtIndex(data,i){
-    // data.indicators.splice(x,1);
-    //search label @indicators
-    //slice it
-    data.indicators = data.indicators.slice(i,1);
-    for (var p = 0; p < data.pathways.length; p++) {
-      data.pathways.data = data.pathways[p].data.splice(i,1);
-      data.pathways.abs = data.pathways[p].abs.splice(i,1);
-    }
-    return data;
-
-  }
   loadPerspective(){
     let perspectiveA = this.state.perspectiveA;
     let perspectiveB = this.state.perspectiveB;
@@ -261,8 +249,15 @@ class ComparePerspective extends React.Component {
     }catch(ex){
 
     }
-    let indicatorsA  = this.filterData({...Data},filtersA);
-    let indicatorsB  = this.filterData({...Data},filtersB);
+    let indicatorsA  = [];
+    let indicatorsB  = [];
+    if(perspectiveA.hasOwnProperty("name")){
+      indicatorsA = this.filterData({...Data},filtersA);
+    }
+    if(perspectiveB.hasOwnProperty("name")){
+      indicatorsB = this.filterData({...Data},filtersB);
+
+    }
     let lenIndicatorsB = 0;
     let commonIndicatorsOnly = this.state.commonIndicatorsOnly;
     //CALCULATE COMMON INDICATORS-----------------------------------------------

@@ -40,7 +40,7 @@ class DafnePlotCompare extends React.Component {
     this.data = this.props.data;
   }
   generateDomain(){
-    return new Array(this.props.data.indicators.length).fill( 1 ).map( ( _, i ) => String.fromCharCode( 65 + i ) );
+    return new Array(this.props.data.indicators.length + 1).fill( 1 ).map( ( _, i ) => String.fromCharCode( 65 + i ) );
   }
   clear(){
     d3.select("svg").remove();
@@ -122,7 +122,8 @@ class DafnePlotCompare extends React.Component {
                 widthCommon = "100%";
                 txCommon    = "50%";
               }
-              if(this.props.lenIndicatorsA === 0 && this.props.lenIndicatorsB === 0){
+              if(this.props.lenIndicatorsA === 0 && this.props.lenIndicatorsB === 0
+                && this.props.commonIndicators.length > 0){
                 widthCommon = "100%";
                 txCommon    = "50%";
               }
