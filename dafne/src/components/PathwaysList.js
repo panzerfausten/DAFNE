@@ -24,7 +24,10 @@ class PathwaysList extends React.Component {
         <div style={{maxHeight:300,overflow:"auto",paddingLeft:"1%",paddingRight:"1%"}}>
         {
           pathways.map((item,index) => (
-            <Pathway item={item} key={index} onClick={(pathway) => this.onClick(pathway)}></Pathway>
+            <Pathway item={item} key={index} index={index}
+                     onClick={(pathway) => this.onClick(pathway)}
+                     onEyeToggled={(index,state) => this.props.onEyeToggled(index,state)}
+                     ></Pathway>
           ))
         }
         </div>
@@ -32,12 +35,16 @@ class PathwaysList extends React.Component {
   }
 }
 PathwaysList.propTypes = {
-  onClick : PropTypes.func
+  onClick : PropTypes.func,
+  onEyeToggled: PropTypes.func
+
 };
 
 
 PathwaysList.defaultProps = {
-  onClick : (pathway) => {}
+  onClick : (pathway) => {},
+  onEyeToggled: (index,state) =>{}
+
 };
 
 export default PathwaysList;

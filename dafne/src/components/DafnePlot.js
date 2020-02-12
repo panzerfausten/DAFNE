@@ -130,6 +130,9 @@ class DafnePlot extends React.Component {
     let mappedHighlightedPathways = this.state.highlightedPathways.map(p => p.name);
 
     for (var i = 0; i < lineData.length; i++) {
+      if(this.props.hiddenPathways.includes(i)){
+        continue;
+      }
       let data = null;
       if(this.state.filteredIndicators.length === 0){
           if(this.props.mode === "absolute"){
@@ -328,6 +331,7 @@ DafnePlot.propTypes = {
   onDeleteIndicator  : PropTypes.func,
   onPinIndicator     : PropTypes.func,
   filteredIndicators : PropTypes.array,
+  hiddenPathways     : PropTypes.array, //array of labels
   mode               : PropTypes.string
 
 };
@@ -337,7 +341,8 @@ DafnePlot.defaultProps = {
   onDeleteIndicator  : (indicator) => {},
   onPinIndicator     : (indicator) => {},
   filteredIndicators : [],
-  mode               : 'satisfaction'
+  mode               : 'satisfaction',
+  hiddenPathways     : []
 
 };
 export default DafnePlot;
