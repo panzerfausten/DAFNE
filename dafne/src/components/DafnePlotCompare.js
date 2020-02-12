@@ -131,7 +131,6 @@ class DafnePlotCompare extends React.Component {
 
               //draw rectangles
 
-              debugger;
 
               if(this.props.perspectiveA.hasOwnProperty("name") &&
                   !this.props.showCommonIndicatorsOnly

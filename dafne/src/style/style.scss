@@ -76,7 +76,7 @@ input{
 }
 .filters_area{
   min-height: 70px;
-  background-color: $gray;
+  background-color: $lightBlue;
   padding-top: 5px;
   padding-bottom: 5px;
   display: flex;
@@ -528,4 +528,19 @@ label{
   font-size: 18px !important;
 }
 /**********************
+Select custom
 ***********************/
+// "#d0e2f1"
+.orange-select{
+  border: 3px solid #f4e6cf !important;
+  border-radius: 10px !important;
+  background-color: #f4e6cf !important;
+  line-height: 0.5 !important;
+}
+
+.green-select{
+  border: 3px solid #29797c !important;
+  border-radius: 10px !important;
+  color: #29797c !important;
+  line-height: 0.5 !important;
+}
