@@ -16,12 +16,13 @@ class Pathway extends React.Component {
     super(props);
     this.state = {
       isCollapseOpen:false,
-      isPathwayHidden:false
+      isPathwayHidden:false,
+      isFavorited:false
     }
-    this.setOpen   = this.setOpen.bind(this);
-    this.onClick   = this.onClick.bind(this);
-    this.toggleEye = this.toggleEye.bind(this);
-
+    this.setOpen        = this.setOpen.bind(this);
+    this.onClick        = this.onClick.bind(this);
+    this.toggleEye      = this.toggleEye.bind(this);
+    this.toggleFavorite = this.toggleFavorite.bind(this);
   }
 
   setOpen(value){
@@ -30,8 +31,6 @@ class Pathway extends React.Component {
   onClick(){
     this.props.onClick(this.props.item);
     this.setOpen(!this.state.isCollapseOpen);
-    console.log(this.props.item.name,this.pathway.getBoundingClientRect().top);
-
   }
   onMouseOver(){
     this.props.onClick(this.props.item);
@@ -40,8 +39,15 @@ class Pathway extends React.Component {
     this.setState({
       isPathwayHidden : !this.state.isPathwayHidden
     }, ()=> {
-      let k = this.props.index;
       this.props.onEyeToggled(this.props.index,this.state.isPathwayHidden);
+    });
+  }
+  toggleFavorite(e){
+    e.stopPropagation();
+    this.setState({
+      isFavorited : !this.state.isFavorited
+    }, ()=> {
+      this.props.onFavouriteToggled(this.props.index,this.state.isFavorited);
     });
   }
   render(){
@@ -92,9 +98,9 @@ class Pathway extends React.Component {
                 <div className='wrapper_description p-10' >{this.props.item.description}</div>
                 <div className='wrapper_row p-10'>
                   <Button className='btn btn_modal' onClick={(e) => {debugger;e.stopPropagation()}}>Details in Geoportal</Button>
-                  <div className='btn_fav' onClick={(e) => {debugger;e.stopPropagation()}} >
-                    <img src={FavOff} className='fav_icon'></img>
-                    Mark as favorite
+                  <div className='btn_fav' onClick={this.toggleFavorite}>
+                    <img src={this.state.isFavorited ? FavOn : FavOff} className='fav_icon'></img>
+                    Mark as favourite
                   </div>
                 </div>
               </div>
@@ -109,13 +115,16 @@ class Pathway extends React.Component {
 }
 Pathway.propTypes = {
   onClick : PropTypes.func,
-  onEyeToggled: PropTypes.func
+  onEyeToggled: PropTypes.func,
+  onFavouriteToggled: PropTypes.func
+
 };
 
 
 Pathway.defaultProps = {
   onClick : (pathway) => {},
-  onEyeToggled: (index,state) =>{}
+  onEyeToggled: (index,state) =>{},
+  onFavouriteToggled: (index,state) =>{}
 };
 
 export default Pathway;

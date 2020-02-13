@@ -159,12 +159,17 @@ class DafnePlot extends React.Component {
       var line = d3.line()
         .x(function(d){ return x(d.domain)})
         .y(function(d){ return y(d.value)});
-        this.svg.append("path")
-          .attr("d", line(data))
-          .attr("stroke", lineData[i].color)
-          .attr("stroke-width", lineWidth)
-          .attr("fill", "none")
-          .attr("transform", `translate(6, 0)`);
+      let path =
+      this.svg.append("path")
+        .attr("d", line(data))
+        .attr("stroke", lineData[i].color)
+        .attr("stroke-width", lineWidth)
+        .attr("fill", "none")
+        .attr("transform", `translate(6, 0)`);
+      if(this.props.favouritedPathways.includes(i)){
+        path.style("stroke-dasharray", ("3, 3"))
+      }
+
 
       // var leftData = this.convertPathwayDataToDomain([0.6]);
       // leftData.push(data[0]);
@@ -332,7 +337,8 @@ DafnePlot.propTypes = {
   onPinIndicator     : PropTypes.func,
   filteredIndicators : PropTypes.array,
   hiddenPathways     : PropTypes.array, //array of labels
-  mode               : PropTypes.string
+  mode               : PropTypes.string,
+  favouritedPathways : PropTypes.array
 
 };
 
@@ -342,7 +348,8 @@ DafnePlot.defaultProps = {
   onPinIndicator     : (indicator) => {},
   filteredIndicators : [],
   mode               : 'satisfaction',
-  hiddenPathways     : []
+  hiddenPathways     : [],
+  favouritedPathways : []
 
 };
 export default DafnePlot;

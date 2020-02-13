@@ -500,19 +500,6 @@ class ComparePerspective extends React.Component {
                       <div><img src={Info} style={{height:25}}></img></div>
 
                     </div>
-                    <div className="filter_row">
-                      <label className="filter_label title" >
-                        <Checkbox
-                          defaultChecked
-                          onChange={() => {}}
-                          disabled={false}
-                        />
-                        Show average alternatives
-                      </label>
-                      <div><img src={GraphC} style={{height:25}}></img></div>
-                      <div><img src={Info} style={{height:25}}></img></div>
-
-                    </div>
                   </div>
                 </div>
                 <div className="widget_content" style={{overflowY: "auto"}}>

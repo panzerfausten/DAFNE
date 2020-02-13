@@ -27,6 +27,8 @@ class PathwaysList extends React.Component {
             <Pathway item={item} key={index} index={index}
                      onClick={(pathway) => this.onClick(pathway)}
                      onEyeToggled={(index,state) => this.props.onEyeToggled(index,state)}
+                     onFavouriteToggled={(index,state) => this.props.onFavouriteToggled(index,state)}
+
                      ></Pathway>
           ))
         }
@@ -36,14 +38,17 @@ class PathwaysList extends React.Component {
 }
 PathwaysList.propTypes = {
   onClick : PropTypes.func,
-  onEyeToggled: PropTypes.func
+  onEyeToggled: PropTypes.func,
+  onFavouriteToggled: PropTypes.func
 
 };
 
 
 PathwaysList.defaultProps = {
   onClick : (pathway) => {},
-  onEyeToggled: (index,state) =>{}
+  onEyeToggled: (index,state) =>{},
+  onFavouriteToggled: (index,state) =>{}
+
 
 };
 

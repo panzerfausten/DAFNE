@@ -28,7 +28,8 @@ class CreatePerspective extends React.Component {
 
       ],
       selectedPerspectiveIndex:-1,
-      hiddenPathways:[]
+      hiddenPathways:[],
+      favouritedPathways:[]
     }
     this.onDeleteIndicator            = this.onDeleteIndicator.bind(this);
     this.onPinIndicator               = this.onPinIndicator.bind(this);
@@ -40,6 +41,8 @@ class CreatePerspective extends React.Component {
     this.selectPerspective            = this.selectPerspective.bind(this);
     this.selectPerspectiveFromPerspectiveId = this.selectPerspectiveFromPerspectiveId.bind(this);
     this.onEyeToggled                 = this.onEyeToggled.bind(this);
+    this.onFavouriteToggled           = this.onFavouriteToggled.bind(this);
+
   }
   componentDidMount(){
     this.loadPerspectives();
@@ -150,6 +153,21 @@ class CreatePerspective extends React.Component {
       this.dafnePlot.filterIndicators(this.filteredIndicators);
     });
   }
+  onFavouriteToggled(index,state){
+    let favouritedPathways = this.state.favouritedPathways.slice();
+    if(!state){
+      //remove it from the list
+      favouritedPathways = favouritedPathways.filter(p => p !== index);
+    }else{
+      //add it to the list
+      favouritedPathways.push(index);
+    }
+    this.setState({
+      favouritedPathways:favouritedPathways
+    }, () =>{
+      this.dafnePlot.filterIndicators(this.filteredIndicators);
+    });
+  }
   render(){
     return (
         <div className="flex">
@@ -218,19 +236,7 @@ class CreatePerspective extends React.Component {
                       <div><img src={Info} style={{height:25}}></img></div>
 
                     </div>
-                    <div className="filter_row">
-                      <label className="filter_label title" >
-                        <Checkbox
-                          defaultChecked
-                          onChange={() => {}}
-                          disabled={false}
-                        />
-                        Show average alternatives
-                      </label>
-                      <div><img src={GraphC} style={{height:25}}></img></div>
-                      <div><img src={Info} style={{height:25}}></img></div>
 
-                    </div>
                   </div>
                 </div>
                 <div className="widget_content" style={{overflowY: "auto"}}>
@@ -238,7 +244,8 @@ class CreatePerspective extends React.Component {
                   <PathwaysList data={Data}
                                 onClick={(p) => {this.dafnePlot.highlightPathways([p])}}
                                 onEyeToggled={(index,state) => this.onEyeToggled(index,state)}
-                                ></PathwaysList>
+                                onFavouriteToggled={(index,state) => this.onFavouriteToggled(index,state)}>
+                  </PathwaysList>
                 </div>
               </div>
               <div className="widget" >
@@ -257,6 +264,8 @@ class CreatePerspective extends React.Component {
                   showScales={this.state.dafnePlotOptions.showScales}
                   mode={this.state.dafnePlotOptions.mode}
                   hiddenPathways={this.state.hiddenPathways}
+                  favouritedPathways={this.state.favouritedPathways}
+
                   ></DafnePlot>
                   <div className="save_area" style={{flex:1,marginBottom:10,maxHeight:30,marginRight:10,alignItems:"end",display:"flex",flexDirection:"column"}}>
                     <Button size="sm" onClick={() => this.handleOpenPerspectiveModal(true)} style={{width: 200}}>Save</Button>
