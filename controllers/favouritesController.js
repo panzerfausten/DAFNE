@@ -114,7 +114,7 @@ exports.mines   = function(req,res,next){
   var idToken = cookies.get( "token" );
   function validate_cookie(result){
     if(result.valid_token){
-      Favourites.find(,function(err,favs){
+      Favourites.find({user:result.user._id},function(err,favs){
         if(err){
           res.status(503).json(RESPONSE_ERROR_SERVICE_NA)
         }else{
