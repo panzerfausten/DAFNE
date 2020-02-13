@@ -46,6 +46,7 @@ class CreatePerspective extends React.Component {
   }
   componentDidMount(){
     this.loadPerspectives();
+    this.loadFavourites();
   }
   selectPerspectiveFromPerspectiveId(perspectiveId){
     for (var i = 0; i < this.state.perspectives.length; i++) {
@@ -55,6 +56,15 @@ class CreatePerspective extends React.Component {
         })
       }
     }
+  }
+  loadFavourites(){
+    DafneApi.getAllFavourites().then( (res) => {
+      if(res.success){
+
+      }else{
+
+      }
+    });
   }
   loadPerspectives(){
     DafneApi.getPerspectives().then( (res) => {
@@ -153,14 +163,31 @@ class CreatePerspective extends React.Component {
       this.dafnePlot.filterIndicators(this.filteredIndicators);
     });
   }
-  onFavouriteToggled(index,state){
+  onFavouriteToggled(index,name,state){
     let favouritedPathways = this.state.favouritedPathways.slice();
     if(!state){
       //remove it from the list
       favouritedPathways = favouritedPathways.filter(p => p !== index);
+      //send it to the server
+      DafneApi.removeFavourite(index,name).then( (res) => {
+        if(res.success){
+          //do something
+        }else{
+
+        }
+      });
     }else{
       //add it to the list
       favouritedPathways.push(index);
+      //send it to the server
+      DafneApi.addFavourite(index,name).then( (res) => {
+        if(res.success){
+          //do something
+        }else{
+
+        }
+      });
+
     }
     this.setState({
       favouritedPathways:favouritedPathways
@@ -244,7 +271,7 @@ class CreatePerspective extends React.Component {
                   <PathwaysList data={Data}
                                 onClick={(p) => {this.dafnePlot.highlightPathways([p])}}
                                 onEyeToggled={(index,state) => this.onEyeToggled(index,state)}
-                                onFavouriteToggled={(index,state) => this.onFavouriteToggled(index,state)}>
+                                onFavouriteToggled={(index,name,state) => this.onFavouriteToggled(index,name,state)}>
                   </PathwaysList>
                 </div>
               </div>

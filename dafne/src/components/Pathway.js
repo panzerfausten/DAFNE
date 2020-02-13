@@ -47,7 +47,7 @@ class Pathway extends React.Component {
     this.setState({
       isFavorited : !this.state.isFavorited
     }, ()=> {
-      this.props.onFavouriteToggled(this.props.index,this.state.isFavorited);
+      this.props.onFavouriteToggled(this.props.index,this.props.item.name,this.state.isFavorited);
     });
   }
   render(){
@@ -124,7 +124,7 @@ Pathway.propTypes = {
 Pathway.defaultProps = {
   onClick : (pathway) => {},
   onEyeToggled: (index,state) =>{},
-  onFavouriteToggled: (index,state) =>{}
+  onFavouriteToggled: (index,name,state) =>{}
 };
 
 export default Pathway;
