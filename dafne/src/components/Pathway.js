@@ -44,11 +44,7 @@ class Pathway extends React.Component {
   }
   toggleFavorite(e){
     e.stopPropagation();
-    this.setState({
-      isFavorited : !this.state.isFavorited
-    }, ()=> {
-      this.props.onFavouriteToggled(this.props.index,this.props.item.name,this.state.isFavorited);
-    });
+    this.props.onFavouriteToggled(this.props.index,this.props.item.name,!this.props.favState);
   }
   render(){
     const isCollapseOpen = this.state.isCollapseOpen;
@@ -99,7 +95,7 @@ class Pathway extends React.Component {
                 <div className='wrapper_row p-10'>
                   <Button className='btn btn_modal' onClick={(e) => {debugger;e.stopPropagation()}}>Details in Geoportal</Button>
                   <div className='btn_fav' onClick={this.toggleFavorite}>
-                    <img src={this.state.isFavorited ? FavOn : FavOff} className='fav_icon'></img>
+                    <img src={this.props.favState ? FavOn : FavOff} className='fav_icon'></img>
                     Mark as favourite
                   </div>
                 </div>

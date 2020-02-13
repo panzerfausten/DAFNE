@@ -192,7 +192,7 @@ var dafneApi = {
    * Gets current logged in user
    */
   getAllFavourites(){
-    return fetch(dafneApi.API_URL+'/perspectives',{
+    return fetch(dafneApi.API_URL+'/favourites/',{
       method:"GET",
       credentials:"include"
     })

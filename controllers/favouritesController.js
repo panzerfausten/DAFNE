@@ -18,7 +18,7 @@ exports.index   = function(req,res,next){
   var idToken = cookies.get( "token" );
   function validate_cookie(result){
     if(result.valid_token){
-      Favourites.find({},function(err,favs){
+      Favourites.find({user:result.user},function(err,favs){
         if(err){
           res.status(503).json(RESPONSE_ERROR_SERVICE_NA)
         }else{
@@ -114,7 +114,19 @@ exports.mines   = function(req,res,next){
   var idToken = cookies.get( "token" );
   function validate_cookie(result){
     if(result.valid_token){
-
+      Favourites.find(,function(err,favs){
+        if(err){
+          res.status(503).json(RESPONSE_ERROR_SERVICE_NA)
+        }else{
+          res.status(201).json(
+            {
+              "success":true,
+              "errors":null,
+              "favourites":favs
+            }
+          );
+        }
+      });
     }else{
       return res.send(RESPONSE_INVALID_AUTH);
     }
