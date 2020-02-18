@@ -14,7 +14,7 @@ class DafneView extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      selectedIndex:1,
+      selectedIndex:0,
       authorized:false,
       initials:''
     }

@@ -14,6 +14,8 @@ import PathwaysList from '../components/PathwaysList';
 import SavePerspectiveModal from '../components/SavePerspectiveModal';
 import DafneApi from "../api/DafneApi"
 
+//
+let _ = require('underscore');
 
 class CreatePerspective extends React.Component {
   constructor(p){
@@ -27,7 +29,10 @@ class CreatePerspective extends React.Component {
       perspectives:[
 
       ],
-      selectedPerspectiveIndex:-1
+      selectedPerspectiveIndex:-1,
+      hiddenPathways:[],
+      favouritedPathways:[],
+      showFavs:true
     }
     this.onDeleteIndicator            = this.onDeleteIndicator.bind(this);
     this.onPinIndicator               = this.onPinIndicator.bind(this);
@@ -38,9 +43,15 @@ class CreatePerspective extends React.Component {
     this.loadPerspectives             = this.loadPerspectives.bind(this);
     this.selectPerspective            = this.selectPerspective.bind(this);
     this.selectPerspectiveFromPerspectiveId = this.selectPerspectiveFromPerspectiveId.bind(this);
+    this.onEyeToggled                 = this.onEyeToggled.bind(this);
+    this.onFavouriteToggled           = this.onFavouriteToggled.bind(this);
+    this.handleCbShowFavs             = this.handleCbShowFavs.bind(this);
+
+
   }
   componentDidMount(){
     this.loadPerspectives();
+    this.loadFavourites();
   }
   selectPerspectiveFromPerspectiveId(perspectiveId){
     for (var i = 0; i < this.state.perspectives.length; i++) {
@@ -50,6 +61,37 @@ class CreatePerspective extends React.Component {
         })
       }
     }
+  }
+  loadFavourites(){
+    if(!this.state.showFavs){
+      this.setState({
+        favouritedPathways:[]
+      }, () => {
+        this.dafnePlot.filterIndicators(this.filteredIndicators);
+
+      });
+      return false;
+    }
+    DafneApi.getAllFavourites().then( (res) => {
+      if(res.success){
+        let fp = res.favourites.map(f => f.pathway_index);
+        fp = _.uniq(fp, function (x){
+          return x
+        });
+        this.setState({
+          favouritedPathways:fp
+        }, () => {
+          this.dafnePlot.filterIndicators(this.filteredIndicators);
+
+        });
+      }
+    });
+  }
+  handleCbShowFavs(){
+    this.setState({ showFavs:!this.state.showFavs }, () => {
+        this.loadFavourites();
+    });
+
   }
   loadPerspectives(){
     DafneApi.getPerspectives().then( (res) => {
@@ -151,6 +193,53 @@ class CreatePerspective extends React.Component {
  //     <option>No extreme events</option>
  //    </select>
  //  </div>
+  onEyeToggled(index,state){
+    let hiddenPathways = this.state.hiddenPathways.slice();
+    if(!state){
+      //remove it from the list
+      hiddenPathways = hiddenPathways.filter(p => p !== index);
+    }else{
+      //add it to the list
+      hiddenPathways.push(index);
+    }
+    this.setState({
+      hiddenPathways:hiddenPathways
+    }, () =>{
+      this.dafnePlot.filterIndicators(this.filteredIndicators);
+    });
+  }
+  onFavouriteToggled(index,name,state){
+    let favouritedPathways = this.state.favouritedPathways.slice();
+    if(!state){
+      //remove it from the list
+      favouritedPathways = favouritedPathways.filter(p => p !== index);
+      //send it to the server
+      DafneApi.removeFavourite(index,name).then( (res) => {
+        if(res.success){
+          //do something
+        }else{
+
+        }
+      });
+    }else{
+      //add it to the list
+      favouritedPathways.push(index);
+      //send it to the server
+      DafneApi.addFavourite(index,name).then( (res) => {
+        if(res.success){
+          //do something
+        }else{
+
+        }
+      });
+
+    }
+    this.setState({
+      favouritedPathways:favouritedPathways
+    }, () =>{
+      this.dafnePlot.filterIndicators(this.filteredIndicators);
+    });
+  }
   render(){
     return (
         <div className="flex">
@@ -188,33 +277,30 @@ class CreatePerspective extends React.Component {
                       <label className="filter_label title" >
                         <Checkbox
                           defaultChecked
-                          onChange={() => {}}
+                          onChange={this.handleCbShowFavs}
+                          checked={this.state.showFavs}
                           disabled={false}
                         />
                         Show favourite pathways
                       </label>
+
+
                       <div><img src={GraphA} style={{height:25}}></img></div>
                       <div><img src={Info} style={{height:25}}></img></div>
 
                     </div>
-                    <div className="filter_row">
-                      <label className="filter_label title" >
-                        <Checkbox
-                          defaultChecked
-                          onChange={() => {}}
-                          disabled={false}
-                        />
-                        Show average alternatives
-                      </label>
-                      <div><img src={GraphC} style={{height:25}}></img></div>
-                      <div><img src={Info} style={{height:25}}></img></div>
 
-                    </div>
                   </div>
                 </div>
                 <div className="widget_content" style={{overflowY: "auto"}}>
                   <div className="solution_list_title">Solution pathways and their impact on the selected indicators:</div>
-                  <PathwaysList data={Data} onClick={(p) => {this.dafnePlot.highlightPathways([p])}}></PathwaysList>
+                  <PathwaysList data={Data}
+                                onClick={(p) => {this.dafnePlot.highlightPathways([p])}}
+                                onEyeToggled={(index,state) => this.onEyeToggled(index,state)}
+                                onFavouriteToggled={(index,name,state) => this.onFavouriteToggled(index,name,state)}
+                                favourites={this.state.favouritedPathways}
+                                hidden={this.state.hiddenPathways}>
+                  </PathwaysList>
                 </div>
               </div>
               <div className="widget" >
@@ -232,6 +318,9 @@ class CreatePerspective extends React.Component {
                   data={Data}
                   showScales={this.state.dafnePlotOptions.showScales}
                   mode={this.state.dafnePlotOptions.mode}
+                  hiddenPathways={this.state.hiddenPathways}
+                  favouritedPathways={this.state.favouritedPathways}
+
                   ></DafnePlot>
                   <div className="save_area" style={{flex:1,marginBottom:10,maxHeight:30,marginRight:10,alignItems:"end",display:"flex",flexDirection:"column"}}>
                     <Button size="sm" onClick={() => this.handleOpenPerspectiveModal(true)} style={{width: 200}}>Save</Button>
@@ -244,6 +333,8 @@ class CreatePerspective extends React.Component {
                                 show={this.state.showModal}
                                 handleOpenModal={this.handleOpenPerspectiveModal}
                                 onSave={(res) => this.loadPerspectives()}
+                                hiddenPathwaysIndexes={this.state.hiddenPathways}
+
                                 />
         </div>
     )

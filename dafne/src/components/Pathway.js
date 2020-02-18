@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "../style/style.scss";
-import EyeImg from "../img/icons/eye.png";
+import EyeOn from "../img/icons/eye_on.png";
+import EyeOff from "../img/icons/eye_off.png";
 import FavOn from "../img/icons/favorite_on.png";
 import FavOff from "../img/icons/favorite_off.png";
 import { Collapse,Button } from 'react-bootstrap';
@@ -15,9 +16,13 @@ class Pathway extends React.Component {
     super(props);
     this.state = {
       isCollapseOpen:false,
+      isPathwayHidden:false,
+      isFavorited:false
     }
-    this.setOpen = this.setOpen.bind(this);
-    this.onClick = this.onClick.bind(this);
+    this.setOpen        = this.setOpen.bind(this);
+    this.onClick        = this.onClick.bind(this);
+    this.toggleEye      = this.toggleEye.bind(this);
+    this.toggleFavorite = this.toggleFavorite.bind(this);
   }
 
   setOpen(value){
@@ -26,11 +31,20 @@ class Pathway extends React.Component {
   onClick(){
     this.props.onClick(this.props.item);
     this.setOpen(!this.state.isCollapseOpen);
-    console.log(this.props.item.name,this.pathway.getBoundingClientRect().top);
-
   }
   onMouseOver(){
     this.props.onClick(this.props.item);
+  }
+  toggleEye(){
+    this.setState({
+      isPathwayHidden : !this.state.isPathwayHidden
+    }, ()=> {
+      this.props.onEyeToggled(this.props.index,this.state.isPathwayHidden);
+    });
+  }
+  toggleFavorite(e){
+    e.stopPropagation();
+    this.props.onFavouriteToggled(this.props.index,this.props.item.name,!this.props.favState);
   }
   render(){
     const isCollapseOpen = this.state.isCollapseOpen;
@@ -63,8 +77,8 @@ class Pathway extends React.Component {
     return (
       <div className='pathway m-b-15'
         ref={ref => this.pathway = ref}>
-        <div className='pathway_wrapper_img'>
-          <img src={EyeImg}></img>
+        <div className='pathway_wrapper_img' style={{cursor:'pointer'}}>
+          <img src={!this.props.hidState ? EyeOn : EyeOff}  onClick={this.toggleEye} className="eye"></img>
         </div>
         <div className='pathway_wrapper_content' onMouseOver={() => this.onMouseOver()} onClick={() => this.onClick()} >
           <div className='pathway_header'  >
@@ -77,12 +91,12 @@ class Pathway extends React.Component {
           <Collapse in={isCollapseOpen}>
             <div id="collapse_div">
               <div className="collapse_div m-t-10 m-r-10 m-b-10">
-                <div className='wrapper_description p-10'>{this.props.item.description}</div>
+                <div className='wrapper_description p-10' >{this.props.item.description}</div>
                 <div className='wrapper_row p-10'>
-                  <Button className='btn btn_modal'>Details in Geoportal</Button>
-                  <div className='btn_fav'>
-                    <img src={FavOff} className='fav_icon'></img>
-                    Mark as favorite
+                  <Button className='btn btn_modal' onClick={(e) => {debugger;e.stopPropagation()}}>Details in Geoportal</Button>
+                  <div className='btn_fav' onClick={this.toggleFavorite}>
+                    <img src={this.props.favState ? FavOn : FavOff} className='fav_icon'></img>
+                    Mark as favourite
                   </div>
                 </div>
               </div>
@@ -96,12 +110,17 @@ class Pathway extends React.Component {
   }
 }
 Pathway.propTypes = {
-  onClick : PropTypes.func
+  onClick : PropTypes.func,
+  onEyeToggled: PropTypes.func,
+  onFavouriteToggled: PropTypes.func
+
 };
 
 
 Pathway.defaultProps = {
-  onClick : (pathway) => {}
+  onClick : (pathway) => {},
+  onEyeToggled: (index,state) =>{},
+  onFavouriteToggled: (index,name,state) =>{}
 };
 
 export default Pathway;

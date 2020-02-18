@@ -253,6 +253,9 @@ class DafnePlotCompare extends React.Component {
 
     for (var i = 0; i < lineData.length; i++) {
       let data = null;
+      if(this.props.hiddenPathways.includes(i)){
+        continue;
+      }
       if(this.state.filteredIndicators.length === 0){
           if(this.props.mode === "absolute"){
             data = this.convertPathwayDataToDomain(

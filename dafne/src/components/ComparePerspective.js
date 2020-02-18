@@ -37,7 +37,12 @@ class ComparePerspective extends React.Component {
       lenIndicatorsB:0,
       commonIndicators:[],
       compareData:{...CompareData},
-      commonIndicatorsOnly:false
+      commonIndicatorsOnly:false,
+      hiddenPathways:[],
+      favouritedPathways:[],
+      showFavs:true,
+      hiddenPathwaysA:[],
+      hiddenPathwaysB:[]
     }
     this.onDeleteIndicator            = this.onDeleteIndicator.bind(this);
     this.onPinIndicator               = this.onPinIndicator.bind(this);
@@ -51,8 +56,10 @@ class ComparePerspective extends React.Component {
     this.onPerspectiveSelected        = this.onPerspectiveSelected.bind(this);
     this.getOriginalValuesFromIndicator = this.getOriginalValuesFromIndicator.bind(this);
     this.filterData                     = this.filterData.bind(this);
-    this.clear  = this.clear.bind(this);
-    this.handleCommonIndicatorsOnly = this.handleCommonIndicatorsOnly.bind(this);
+    this.clear                          = this.clear.bind(this);
+    this.handleCommonIndicatorsOnly     = this.handleCommonIndicatorsOnly.bind(this);
+    this.onEyeToggled                   = this.onEyeToggled.bind(this);
+
   }
   componentDidMount(){
     this.loadPerspectives();
@@ -91,6 +98,21 @@ class ComparePerspective extends React.Component {
         })
       }
     }
+  }
+  onEyeToggled(index,state){
+    let hiddenPathways = this.state.hiddenPathways.slice();
+    if(!state){
+      //remove it from the list
+      hiddenPathways = hiddenPathways.filter(p => p !== index);
+    }else{
+      //add it to the list
+      hiddenPathways.push(index);
+    }
+    this.setState({
+      hiddenPathways:hiddenPathways
+    }, () =>{
+      this.dafnePlot.filterIndicators(this.filteredIndicators);
+    });
   }
   loadPerspectives(){
     DafneApi.getPerspectives().then( (res) => {
@@ -207,14 +229,32 @@ class ComparePerspective extends React.Component {
   }
   onPerspectiveSelected(perspective,side){
     if(side === "A"){
+      let hiddenPathwaysA = [];
+      let hp = [];
+      try{
+        hiddenPathwaysA = JSON.parse(perspective.hiddenPathwaysIndexes);
+        hp = hiddenPathwaysA.filter( v => this.state.hiddenPathwaysB.includes(v))
+      }catch(ex){
+      }
       this.setState({
-        perspectiveA:perspective || {}
+        perspectiveA:perspective || {},
+        hiddenPathwaysA:hiddenPathwaysA,
+        hiddenPathways:hp
       },
         this.loadPerspective
       );
     }else{
+      let hiddenPathwaysB = [];
+      let hp = [];
+      try{
+        hiddenPathwaysB = JSON.parse(perspective.hiddenPathwaysIndexes);
+        hp = hiddenPathwaysB.filter( v => this.state.hiddenPathwaysA.includes(v))
+      }catch(ex){
+      }
       this.setState({
-        perspectiveB:perspective || {}
+        perspectiveB:perspective || {},
+        hiddenPathwaysB:hiddenPathwaysB,
+        hiddenPathways:hp
       },
         this.loadPerspective
       );
@@ -499,24 +539,17 @@ class ComparePerspective extends React.Component {
                       <div><img src={Info} style={{height:25}}></img></div>
 
                     </div>
-                    <div className="filter_row">
-                      <label className="filter_label title" >
-                        <Checkbox
-                          defaultChecked
-                          onChange={() => {}}
-                          disabled={false}
-                        />
-                        Show average alternatives
-                      </label>
-                      <div><img src={GraphC} style={{height:25}}></img></div>
-                      <div><img src={Info} style={{height:25}}></img></div>
-
-                    </div>
                   </div>
                 </div>
                 <div className="widget_content" style={{overflowY: "auto"}}>
                   <div className="solution_list_title">Solution pathways and their impact on the selected indicators:</div>
-                  <PathwaysList data={Data} onClick={(p) => {this.dafnePlot.highlightPathways([p])}}></PathwaysList>
+                  <PathwaysList
+                    data={Data}
+                    onClick={(p) => {this.dafnePlot.highlightPathways([p])}}
+                    onEyeToggled={(index,state) => this.onEyeToggled(index,state)}
+                    hidden={this.state.hiddenPathways}
+                    ></PathwaysList>
+
                 </div>
               </div>
               <div className="widget" >
@@ -557,6 +590,8 @@ class ComparePerspective extends React.Component {
                     perspectiveB={this.state.perspectiveB}
                     commonIndicators={this.state.commonIndicators}
                     showCommonIndicatorsOnly={this.state.commonIndicatorsOnly}
+                    hiddenPathways={this.state.hiddenPathways}
+
                     >
                   </DafnePlotCompare>
                   <div className="save_area" style={{flex:1,marginBottom:10,maxHeight:30,marginRight:10,alignItems:"end",display:"flex",flexDirection:"column"}}>

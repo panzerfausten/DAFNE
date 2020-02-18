@@ -130,6 +130,9 @@ class DafnePlot extends React.Component {
     let mappedHighlightedPathways = this.state.highlightedPathways.map(p => p.name);
 
     for (var i = 0; i < lineData.length; i++) {
+      if(this.props.hiddenPathways.includes(i)){
+        continue;
+      }
       let data = null;
       if(this.state.filteredIndicators.length === 0){
           if(this.props.mode === "absolute"){
@@ -156,12 +159,17 @@ class DafnePlot extends React.Component {
       var line = d3.line()
         .x(function(d){ return x(d.domain)})
         .y(function(d){ return y(d.value)});
-        this.svg.append("path")
-          .attr("d", line(data))
-          .attr("stroke", lineData[i].color)
-          .attr("stroke-width", lineWidth)
-          .attr("fill", "none")
-          .attr("transform", `translate(6, 0)`);
+      let path =
+      this.svg.append("path")
+        .attr("d", line(data))
+        .attr("stroke", lineData[i].color)
+        .attr("stroke-width", lineWidth)
+        .attr("fill", "none")
+        .attr("transform", `translate(6, 0)`);
+      if(this.props.favouritedPathways.includes(i)){
+        path.style("stroke-dasharray", ("3, 3"))
+      }
+
 
       // var leftData = this.convertPathwayDataToDomain([0.6]);
       // leftData.push(data[0]);
@@ -328,7 +336,9 @@ DafnePlot.propTypes = {
   onDeleteIndicator  : PropTypes.func,
   onPinIndicator     : PropTypes.func,
   filteredIndicators : PropTypes.array,
-  mode               : PropTypes.string
+  hiddenPathways     : PropTypes.array, //array of labels
+  mode               : PropTypes.string,
+  favouritedPathways : PropTypes.array
 
 };
 
@@ -337,7 +347,9 @@ DafnePlot.defaultProps = {
   onDeleteIndicator  : (indicator) => {},
   onPinIndicator     : (indicator) => {},
   filteredIndicators : [],
-  mode               : 'satisfaction'
+  mode               : 'satisfaction',
+  hiddenPathways     : [],
+  favouritedPathways : []
 
 };
 export default DafnePlot;

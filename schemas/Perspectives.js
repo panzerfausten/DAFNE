@@ -55,7 +55,12 @@ var perspectivesSchema = new mongoose.Schema(
     shortId:{
       type:String,
       required:true
-    }
+    },
+    hiddenPathwaysIndexes:{
+      type: String,
+      required:false,
+      default:'[]'
+    },
   },
   {
     timestamps: { createdAt: 'created_at' }

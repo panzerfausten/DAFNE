@@ -17,14 +17,25 @@ class PathwaysList extends React.Component {
   onClick(pathway){
     this.props.onClick(pathway);
   }
-
+  getFavState(index){
+    return(this.props.favourites.includes(index));
+  }
+  getHiddenState(index){
+    return(this.props.hidden.includes(index));
+  }
   render(){
     const pathways = this.state.pathways;
     return (
         <div style={{maxHeight:300,overflow:"auto",paddingLeft:"1%",paddingRight:"1%"}}>
         {
           pathways.map((item,index) => (
-            <Pathway item={item} key={index} onClick={(pathway) => this.onClick(pathway)}></Pathway>
+            <Pathway item={item} key={index} index={index}
+                     onClick={(pathway) => this.onClick(pathway)}
+                     onEyeToggled={(index,state) => this.props.onEyeToggled(index,state)}
+                     onFavouriteToggled={(index,name,state) => this.props.onFavouriteToggled(index,name,state)}
+                     favState={this.getFavState(index)}
+                     hidState={this.getHiddenState(index)}
+                     ></Pathway>
           ))
         }
         </div>
@@ -32,12 +43,22 @@ class PathwaysList extends React.Component {
   }
 }
 PathwaysList.propTypes = {
-  onClick : PropTypes.func
+  onClick : PropTypes.func,
+  onEyeToggled: PropTypes.func,
+  onFavouriteToggled: PropTypes.func,
+  favourites: PropTypes.array,
+  hidden: PropTypes.array
 };
 
 
 PathwaysList.defaultProps = {
-  onClick : (pathway) => {}
+  onClick : (pathway) => {},
+  onEyeToggled: (index,state) =>{},
+  onFavouriteToggled: (index,name,state) =>{},
+  favourites : [],
+  hidden:[]
+
+
 };
 
 export default PathwaysList;

@@ -94,6 +94,8 @@ exports.create = function (req,res,next){
   let filter     = JSON.stringify(sanitizeString(req.body.filter));
   let mode       = sanitizeString(req.body.mode);
   let showScales = sanitizeString(req.body.showScales);
+  let hiddenPathwaysIndexes = sanitizeString(req.body.hiddenPathwaysIndexes);
+
 
 
   function validate_cookie(cookie_user){
@@ -105,6 +107,7 @@ exports.create = function (req,res,next){
           mode: mode,
           showScales: showScales,
           filter: filter,
+          hiddenPathwaysIndexes: hiddenPathwaysIndexes,
           shortId: shortid.generate()
         }
       );
