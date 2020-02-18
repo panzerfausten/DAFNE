@@ -75,7 +75,7 @@ input{
   color:black !important;
 }
 .filters_area{
-  min-height: 70px;
+  min-height: 60px;
   background-color: $lightBlue;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -85,14 +85,17 @@ input{
   overflow: hidden;
 }
 .filters_left_area{
+  display: flex;
   flex:1;
   max-width:400px;
   min-width: 300px;
   text-align: center;
   flex-direction:column;
   justify-content: center;
+  align-items: center;
 }
 .filters_right_area{
+  display: flex;
   flex:1;
   text-align: center;
   flex-direction:column;
@@ -543,5 +546,12 @@ Select custom
   border-radius: 10px !important;
   background-color: #cee2e0 !important;
   line-height: 0.5 !important;
-  // color: white;
+}
+
+.blue-select{
+  border: 3px solid #97d0ff !important;
+  border-radius: 10px !important;
+  background-color: #d0e2f1 !important;
+  line-height: 0.5 !important;
+  max-width: 250px;
 }
