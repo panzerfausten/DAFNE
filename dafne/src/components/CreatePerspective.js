@@ -175,6 +175,24 @@ class CreatePerspective extends React.Component {
     }
 
   }
+ //  <div className='wrapper_select'>
+ //    <span>Region</span>
+ //    <select>
+ //     <option>basin-wide</option>
+ //    </select>
+ //  </div>
+ //  <div className='wrapper_select'>
+ //    <span>Sector</span>
+ //    <select>
+ //     <option>All-sectors</option>
+ //    </select>
+ //  </div>
+ // <div className='wrapper_select'>
+ //    <span>Scenario</span>
+ //    <select>
+ //     <option>No extreme events</option>
+ //    </select>
+ //  </div>
   onEyeToggled(index,state){
     let hiddenPathways = this.state.hiddenPathways.slice();
     if(!state){
@@ -226,9 +244,11 @@ class CreatePerspective extends React.Component {
     return (
         <div className="flex">
           <div className="filters_area">
+            <div className="filters_right_area">
+               <div className="title m-b-5">Select Indicators in the indicator tool <span className="p-l-15">OR edit a saved perspective</span></div>
+            </div>
             <div className="filters_left_area">
-               <div className="title m-b-5">Edit a saved perspective:</div>
-               <select onChange={this.selectPerspective} value={this.selectedPerspectiveIndex}>
+               <select className='custom-select blue-select' onChange={this.selectPerspective} value={this.selectedPerspectiveIndex}>
                 <option>choose a perspective</option>
                 {
                   this.state.perspectives.map((perspective,index) =>{
@@ -241,30 +261,6 @@ class CreatePerspective extends React.Component {
                   )
                 }
                </select>
-            </div>
-            <div className='filter_divider_area'></div>
-            <div className="filters_right_area">
-               <div className="title m-b-5">To create a new perspective, select the indicators and set the filters:</div>
-               <div className="filters_right_area_content">
-                 <div className='wrapper_select'>
-                   <span>Region</span>
-                   <select>
-                    <option>basin-wide</option>
-                   </select>
-                 </div>
-                 <div className='wrapper_select'>
-                   <span>Sector</span>
-                   <select>
-                    <option>All-sectors</option>
-                   </select>
-                 </div>
-                <div className='wrapper_select'>
-                   <span>Scenario</span>
-                   <select>
-                    <option>No extreme events</option>
-                   </select>
-                 </div>
-               </div>
             </div>
           </div>
           <div className="flex-row">

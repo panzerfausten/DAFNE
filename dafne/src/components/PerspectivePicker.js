@@ -24,8 +24,9 @@ class PerspectivePicker extends React.Component {
     })
   }
   render(){
+    const className = `custom-select ${this.props.className}`
     return(
-      <select onChange={this.onSelectedPerspective} value={this.state.selectedPerspectiveIndex}>
+      <select className={className} onChange={this.onSelectedPerspective} value={this.state.selectedPerspectiveIndex}>
        <option>choose a perspective</option>
        {
          this.props.perspectives.map((perspective,index) =>{
@@ -43,13 +44,14 @@ class PerspectivePicker extends React.Component {
 }
 PerspectivePicker.propTypes = {
   onPerspectiveSelected : PropTypes.func,
-  perspectives: PropTypes.array
+  perspectives: PropTypes.array,
+  className: PropTypes.string
 };
 
 
 PerspectivePicker.defaultProps = {
   onPerspectiveSelected : (perspective) => {},
-  perspectives: []
-
+  perspectives: [],
+  className: 'orange-select'
 };
 export default PerspectivePicker;

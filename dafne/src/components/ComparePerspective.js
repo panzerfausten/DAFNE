@@ -500,9 +500,7 @@ class ComparePerspective extends React.Component {
             <div className="filters_left_area">
                <div className="title m-b-5">Edit a shared perspective:</div>
             </div>
-            <div className='filter_divider_area'></div>
             <div className="filters_right_area" >
-               <div className="title m-b-5">Create a shared perspective by choosing two saved perspectives to compare:</div>
                <div className="filters_right_area_content justify-evenly">
                  <div className='wrapper_select'>
                    <PerspectivePicker perspectives={this.state.perspectives} onPerspectiveSelected={(p) => {
@@ -510,9 +508,10 @@ class ComparePerspective extends React.Component {
                    }}></PerspectivePicker>
                  </div>
                  <div className='wrapper_select'>
-                   <PerspectivePicker perspectives={this.state.perspectives} onPerspectiveSelected={(p) => {
-                     this.onPerspectiveSelected(p,"B");
-                   }}></PerspectivePicker>
+                   <PerspectivePicker className={'green-select'}
+                                      perspectives={this.state.perspectives}
+                                      onPerspectiveSelected={(p) => {this.onPerspectiveSelected(p,"B")}}>
+                   </PerspectivePicker>
                  </div>
                </div>
             </div>
