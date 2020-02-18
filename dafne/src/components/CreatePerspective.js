@@ -302,7 +302,8 @@ class CreatePerspective extends React.Component {
                                 onClick={(p) => {this.dafnePlot.highlightPathways([p])}}
                                 onEyeToggled={(index,state) => this.onEyeToggled(index,state)}
                                 onFavouriteToggled={(index,name,state) => this.onFavouriteToggled(index,name,state)}
-                                favourites={this.state.favouritedPathways}>
+                                favourites={this.state.favouritedPathways}
+                                hidden={this.state.hiddenPathways}>
                   </PathwaysList>
                 </div>
               </div>
@@ -336,6 +337,8 @@ class CreatePerspective extends React.Component {
                                 show={this.state.showModal}
                                 handleOpenModal={this.handleOpenPerspectiveModal}
                                 onSave={(res) => this.loadPerspectives()}
+                                hiddenPathwaysIndexes={this.state.hiddenPathways}
+
                                 />
         </div>
     )

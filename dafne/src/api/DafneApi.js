@@ -95,12 +95,13 @@ var dafneApi = {
   /*
    * Creates a login request
    */
-  createPerspective(name,filter,mode,showScales){
+  createPerspective(name,filter,mode,showScales,hiddenPathwaysIndexes){
     let params = {
         'name'       : name,
         'filter'     : filter,
         'mode'       : mode,
         'showScales' : showScales,
+        'hiddenPathwaysIndexes' : hiddenPathwaysIndexes
 
     };
     let formBody = [];

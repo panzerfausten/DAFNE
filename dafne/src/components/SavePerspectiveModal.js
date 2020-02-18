@@ -30,7 +30,12 @@ class SavePerspectiveModal extends React.Component {
     let name = this.state.name;
 
     if(name.trim() !== ''){
-      DafneApi.createPerspective(this.state.name, JSON.stringify(this.props.filter), this.props.mode ,this.props.showScales).then(res => {
+      DafneApi.createPerspective(this.state.name,
+                                 JSON.stringify(this.props.filter),
+                                 this.props.mode,
+                                 this.props.showScales,
+                                 JSON.stringify(this.props.hiddenPathwaysIndexes)
+                               ).then(res => {
         if(res.hasOwnProperty("success")){
         //GO
           if(res.success){
@@ -82,20 +87,22 @@ class SavePerspectiveModal extends React.Component {
   }
 }
 SavePerspectiveModal.propTypes = {
-  show                : PropTypes.bool,
-  handleOpenModal     : PropTypes.func,
-  dataSetId           : PropTypes.string,
-  perspective         : PropTypes.object,
-  onSave              : PropTypes.func
+  show                  : PropTypes.bool,
+  handleOpenModal       : PropTypes.func,
+  dataSetId             : PropTypes.string,
+  perspective           : PropTypes.object,
+  onSave                : PropTypes.func,
+  hiddenPathwaysIndexes : PropTypes.array
 };
 
 
 SavePerspectiveModal.defaultProps = {
-  show               : false,
-  handleOpenModal    : () => {},
-  dataSetId          : '',
-  perspective        : {},
-  onSave             : () => {}
+  show                  : false,
+  handleOpenModal       : () => {},
+  dataSetId             : '',
+  perspective           : {},
+  onSave                : () => {},
+  hiddenPathwaysIndexes : []
 };
 
 export default SavePerspectiveModal;

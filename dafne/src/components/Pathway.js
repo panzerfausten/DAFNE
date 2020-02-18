@@ -78,7 +78,7 @@ class Pathway extends React.Component {
       <div className='pathway m-b-15'
         ref={ref => this.pathway = ref}>
         <div className='pathway_wrapper_img' style={{cursor:'pointer'}}>
-          <img src={!this.state.isPathwayHidden ? EyeOn : EyeOff} onClick={this.toggleEye} className="eye"></img>
+          <img src={!this.props.hidState ? EyeOn : EyeOff}  onClick={this.toggleEye} className="eye"></img>
         </div>
         <div className='pathway_wrapper_content' onMouseOver={() => this.onMouseOver()} onClick={() => this.onClick()} >
           <div className='pathway_header'  >
