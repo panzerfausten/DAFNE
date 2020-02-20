@@ -340,6 +340,9 @@ label{
 .m-l-5{
   margin-left: 5px;
 }
+.m-l-10{
+  margin-left: 10px;
+}
 .m-t-10{
   margin-top: 10px;
 }
@@ -363,6 +366,9 @@ label{
 }
 .p-l-5{
   padding-left:5px;
+}
+.p-r-5{
+  padding-right:5px;
 }
 .p-l-15{
   padding-left:15px;
@@ -557,4 +563,52 @@ Select custom
 }
 .eye{
   width: 35px;
+}
+/**********************
+Modal comments
+***********************/
+.comments-list-area{
+  display: flex;
+  // flex-direction:column;
+  min-height: 100px;
+}
+.comments-input-area{
+  display: flex;
+  flex:1;
+  flex-direction: row;
+  align-items: center;
+}
+.background-gray{
+  background-color: $gray;
+}
+.input-comment{
+  height: 38px;
+  display:flex;
+  flex:1;
+  max-width: 100% !important;
+}
+//Comments
+.comment-area{
+  display: flex;
+  flex-direction: row;
+  background-color: pink;
+  min-height: 50px;
+  flex:1;
+}
+.comment-wrapper{
+  display: flex;
+  flex-direction: column;
+  flex:1;
+  background-color: plum;
+}
+.comment-user-data{
+  display: flex;
+  flex-direction: row;
+  background-color: beige;
+}
+.comment-text{
+  display: flex;
+  background-color: white;
+
+
 }
