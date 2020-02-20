@@ -14,7 +14,8 @@ import PathwaysList from '../components/PathwaysList';
 import SavePerspectiveModal from '../components/SavePerspectiveModal';
 import DafneApi from "../api/DafneApi"
 
-//
+import FavouritesPlotModal from "../components/FavouritesPlotModal";
+
 let _ = require('underscore');
 
 class CreatePerspective extends React.Component {
@@ -32,7 +33,8 @@ class CreatePerspective extends React.Component {
       selectedPerspectiveIndex:-1,
       hiddenPathways:[],
       favouritedPathways:[],
-      showFavs:true
+      showFavs:true,
+      showFavouritesModal:false
     }
     this.onDeleteIndicator            = this.onDeleteIndicator.bind(this);
     this.onPinIndicator               = this.onPinIndicator.bind(this);
@@ -46,6 +48,7 @@ class CreatePerspective extends React.Component {
     this.onEyeToggled                 = this.onEyeToggled.bind(this);
     this.onFavouriteToggled           = this.onFavouriteToggled.bind(this);
     this.handleCbShowFavs             = this.handleCbShowFavs.bind(this);
+    this.handleAllFavouritesModal     = this.handleAllFavouritesModal.bind(this);
 
 
   }
@@ -72,7 +75,7 @@ class CreatePerspective extends React.Component {
       });
       return false;
     }
-    DafneApi.getAllFavourites().then( (res) => {
+    DafneApi.getMyFavourites().then( (res) => {
       if(res.success){
         let fp = res.favourites.map(f => f.pathway_index);
         fp = _.uniq(fp, function (x){
@@ -155,6 +158,9 @@ class CreatePerspective extends React.Component {
   }
   handleOpenPerspectiveModal(value){
     this.setState({showModal:value});
+  }
+  handleAllFavouritesModal(value){
+    this.setState({showFavouritesModal:value});
   }
   selectPerspective(event){
     let index = event.target.value;
@@ -289,6 +295,15 @@ class CreatePerspective extends React.Component {
                       <div><img src={Info} style={{height:25}}></img></div>
 
                     </div>
+                    <div className="filter_row">
+                      <Button size="sm" onClick={() => this.handleAllFavouritesModal(true)} style={{width: 200}}>All users favourites</Button>
+                      <FavouritesPlotModal
+                        show={this.state.showFavouritesModal}
+                        handleOpenModal={this.handleAllFavouritesModal}
+                      >
+                      </FavouritesPlotModal>
+                    </div>
+
 
                   </div>
                 </div>

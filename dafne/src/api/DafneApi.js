@@ -205,5 +205,18 @@ var dafneApi = {
       return error;
     });
   },
+  getMyFavourites(){
+    return fetch(dafneApi.API_URL+'/favourites/mines',{
+      method:"GET",
+      credentials:"include"
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      return response;
+    })
+    .catch((error) =>{
+      return error;
+    });
+  },
 }
 module.exports = dafneApi;

@@ -17,6 +17,7 @@ import PathwaysList from '../components/PathwaysList';
 import SavePerspectiveModal from '../components/SavePerspectiveModal';
 import DafneApi from "../api/DafneApi"
 import PerspectivePicker from "../components/PerspectivePicker";
+import FavouritesPlotModal from "../components/FavouritesPlotModal";
 
 class ComparePerspective extends React.Component {
   constructor(p){
@@ -41,6 +42,7 @@ class ComparePerspective extends React.Component {
       hiddenPathways:[],
       favouritedPathways:[],
       showFavs:true,
+      showFavouritesModal:false,
       hiddenPathwaysA:[],
       hiddenPathwaysB:[]
     }
@@ -59,6 +61,8 @@ class ComparePerspective extends React.Component {
     this.clear                          = this.clear.bind(this);
     this.handleCommonIndicatorsOnly     = this.handleCommonIndicatorsOnly.bind(this);
     this.onEyeToggled                   = this.onEyeToggled.bind(this);
+    this.handleAllFavouritesModal     = this.handleAllFavouritesModal.bind(this);
+
 
   }
   componentDidMount(){
@@ -493,6 +497,9 @@ class ComparePerspective extends React.Component {
         this.loadPerspective();
     });
   }
+  handleAllFavouritesModal(value){
+    this.setState({showFavouritesModal:value});
+  }
   render(){
     return (
         <div className="flex">
@@ -538,6 +545,14 @@ class ComparePerspective extends React.Component {
                       <div><img src={GraphA} style={{height:25}}></img></div>
                       <div><img src={Info} style={{height:25}}></img></div>
 
+                    </div>
+                    <div className="filter_row">
+                      <Button size="sm" onClick={() => this.handleAllFavouritesModal(true)} style={{width: 200}}>All users favourites</Button>
+                      <FavouritesPlotModal
+                        show={this.state.showFavouritesModal}
+                        handleOpenModal={this.handleAllFavouritesModal}
+                      >
+                      </FavouritesPlotModal>
                     </div>
                   </div>
                 </div>

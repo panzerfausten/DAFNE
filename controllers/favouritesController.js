@@ -18,7 +18,7 @@ exports.index   = function(req,res,next){
   var idToken = cookies.get( "token" );
   function validate_cookie(result){
     if(result.valid_token){
-      Favourites.find({user:result.user},function(err,favs){
+      Favourites.find({},function(err,favs){
         if(err){
           res.status(503).json(RESPONSE_ERROR_SERVICE_NA)
         }else{
@@ -53,6 +53,7 @@ exports.add   = function(req,res,next){
         pathway_name:pathway_name
       };
       let findQuery = {
+        user:result.user,
         pathway_index:pathway_index,
         dataset:"default",
         pathway_name:pathway_name
