@@ -1,18 +1,19 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import CommentList from '../components/CommentList';
 
 import "../style/style.scss";
+
 
 class CommentsModal extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
       comment:'',
-      comments:[]
+      comments:[{comment:'one comment'},{comment:'two comment'}]
     }
     this.handleOpenModal      = this.handleOpenModal.bind(this);
-
 
   }
 
@@ -32,21 +33,8 @@ class CommentsModal extends React.Component {
         </Modal.Header>
         <Modal.Body>
           <div className='custom_modal_content'>
-            <div className='comments-list-area background-gray p-10'>
-              <div className='comment-area'>
-                <div className=''>
-                  foto
-                </div>
-
-                <div className='comment-wrapper'>
-                  <div className='comment-user-data'>
-                    Nombre
-                  </div>
-                  <div className='comment-text'>
-                    cometario
-                  </div>
-                </div>
-              </div>
+            <div className='background-gray p-10'>
+              <CommentList comments={this.state.comments}></CommentList>
             </div>
           </div>
         </Modal.Body>

@@ -569,7 +569,7 @@ Modal comments
 ***********************/
 .comments-list-area{
   display: flex;
-  // flex-direction:column;
+  flex-direction:column;
   min-height: 100px;
 }
 .comments-input-area{
@@ -611,4 +611,18 @@ Modal comments
   background-color: white;
 
 
+}
+/**********************
+Tag circle
+***********************/
+.tag-circle{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  background-color: $lightBlue;
+  text-align: center;
 }
