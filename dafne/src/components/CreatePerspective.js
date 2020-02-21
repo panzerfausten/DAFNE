@@ -34,7 +34,7 @@ class CreatePerspective extends React.Component {
       hiddenPathways:[],
       favouritedPathways:[],
       showFavs:true,
-      showFavouritesModal:false
+      showFavouritesModal:true
     }
     this.onDeleteIndicator            = this.onDeleteIndicator.bind(this);
     this.onPinIndicator               = this.onPinIndicator.bind(this);

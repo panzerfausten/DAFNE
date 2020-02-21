@@ -43,7 +43,6 @@ class FavouritesPlot extends React.Component {
       pathways_obj[pathways_list[i]] = 0;
     }
     DafneApi.getAllFavourites().then( (res) => {
-      debugger;
       if(res.success){
         let favs = _.groupBy(res.favourites,'pathway_name')
         let fKeys = Object.keys(favs);
@@ -63,7 +62,8 @@ class FavouritesPlot extends React.Component {
         for (var i = 0; i < oKeys.length; i++) {
           arr_obj.push({
               "pathway":oKeys[i],
-              "value": pathways_obj[oKeys[i]]
+              "value": pathways_obj[oKeys[i]],
+              "color": Data.pathways[i].color
           })
         }
         this.setState({
@@ -116,7 +116,26 @@ class FavouritesPlot extends React.Component {
         .attr("y", function(d) { return y(d.value); })
         .attr("width", x.bandwidth())
         .attr("height", function(d) { return _this.height - _this.margin.top - _this.margin.bottom - y(d.value); })
-        .attr("fill", "#69b3a2")
+        .attr("fill", function(d){return d.color})
+    // Add legend X
+    let center = (this.width - this.margin.left - this.margin.right) / 2;
+    this.svg.append("text")
+            .attr("x",0)
+            .attr("y",0)
+            .text("Pathways")
+            .attr("transform",`translate(${center},${this.height - this.margin.top - this.margin.bottom +  29})`)
+            .attr("text-anchor","middle")
+            .style("font-size", "11px")
+
+    // Add legend Y
+    let middle = (this.height - this.margin.top - this.margin.bottom) / 2;
+    this.svg.append("text")
+            .attr("x",0)
+            .attr("y",0)
+            .text("Number of distinct users who marked the pathway as favourite")
+            .attr("transform",`translate(-30,${middle}),rotate(90)`)
+            .attr("text-anchor","middle")
+            .style("font-size", "11px")
   }
   render(){
     return(
