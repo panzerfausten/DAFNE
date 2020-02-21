@@ -35,6 +35,7 @@ class PathwaysList extends React.Component {
                      onFavouriteToggled={(index,name,state) => this.props.onFavouriteToggled(index,name,state)}
                      favState={this.getFavState(index)}
                      hidState={this.getHiddenState(index)}
+                     onCommentsClicked={(item) => this.props.onCommentsClicked(item)}
                      ></Pathway>
           ))
         }
@@ -46,6 +47,7 @@ PathwaysList.propTypes = {
   onClick : PropTypes.func,
   onEyeToggled: PropTypes.func,
   onFavouriteToggled: PropTypes.func,
+  onCommentsClicked: PropTypes.func,
   favourites: PropTypes.array,
   hidden: PropTypes.array
 };
@@ -55,6 +57,7 @@ PathwaysList.defaultProps = {
   onClick : (pathway) => {},
   onEyeToggled: (index,state) =>{},
   onFavouriteToggled: (index,name,state) =>{},
+  onCommentsClicked: (index) =>{},
   favourites : [],
   hidden:[]
 

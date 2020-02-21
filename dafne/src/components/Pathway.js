@@ -19,10 +19,11 @@ class Pathway extends React.Component {
       isPathwayHidden:false,
       isFavorited:false
     }
-    this.setOpen        = this.setOpen.bind(this);
-    this.onClick        = this.onClick.bind(this);
-    this.toggleEye      = this.toggleEye.bind(this);
-    this.toggleFavorite = this.toggleFavorite.bind(this);
+    this.setOpen           = this.setOpen.bind(this);
+    this.onClick           = this.onClick.bind(this);
+    this.toggleEye         = this.toggleEye.bind(this);
+    this.toggleFavorite    = this.toggleFavorite.bind(this);
+    this.onCommentsClicked = this.onCommentsClicked.bind(this);
   }
 
   setOpen(value){
@@ -45,6 +46,13 @@ class Pathway extends React.Component {
   toggleFavorite(e){
     e.stopPropagation();
     this.props.onFavouriteToggled(this.props.index,this.props.item.name,!this.props.favState);
+  }
+  onCommentsClicked(e){
+    e.stopPropagation();
+    let item = this.props.item;
+    item["index"] = this.props.index;
+    this.props.onCommentsClicked(item);
+
   }
   render(){
     const isCollapseOpen = this.state.isCollapseOpen;
@@ -93,12 +101,17 @@ class Pathway extends React.Component {
               <div className="collapse_div m-t-10 m-r-10 m-b-10">
                 <div className='wrapper_description p-10' >{this.props.item.description}</div>
                 <div className='wrapper_row p-10'>
-                  <Button className='btn btn_modal' onClick={(e) => {debugger;e.stopPropagation()}}>Details in Geoportal</Button>
+                  <Button className='btn btn_modal' onClick={(e) => {e.stopPropagation()}} style={{width:200}}>Details in Geoportal</Button>
                   <div className='btn_fav' onClick={this.toggleFavorite}>
                     <img src={this.props.favState ? FavOn : FavOff} className='fav_icon'></img>
                     Mark as favourite
                   </div>
                 </div>
+                <div className='wrapper_row p-10'>
+                  <Button className='btn btn_modal' onClick={this.onCommentsClicked} style={{width:200}}>Comments</Button>
+                </div>
+
+
               </div>
             </div>
           </Collapse>
@@ -112,15 +125,16 @@ class Pathway extends React.Component {
 Pathway.propTypes = {
   onClick : PropTypes.func,
   onEyeToggled: PropTypes.func,
-  onFavouriteToggled: PropTypes.func
-
+  onFavouriteToggled: PropTypes.func,
+  onCommentsClicked: PropTypes.func
 };
 
 
 Pathway.defaultProps = {
   onClick : (pathway) => {},
   onEyeToggled: (index,state) =>{},
-  onFavouriteToggled: (index,name,state) =>{}
+  onFavouriteToggled: (index,name,state) =>{},
+  onCommentsClicked: (item) =>{}
 };
 
 export default Pathway;

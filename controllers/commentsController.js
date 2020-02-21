@@ -6,7 +6,7 @@
 var _Cookies         = require('cookies');
 var Users            = require('../schemas/Users.js');
 var Cookies          = require("../schemas/Cookies");
-var Favourites       = require("../schemas/Favourites");
+var Comments         = require("../schemas/Comments");
 
 var RESPONSE_ERROR_SERVICE_NA        = {"success":true,"error":"Service not available"};
 var RESPONSE_INVALID_AUTH            = {"success":false,"error":"Invalid Auth"};
@@ -16,9 +16,15 @@ var RESPONSE_INVALID_EMAIL           = {"success":false,"error":"Invalid email"}
 exports.index   = function(req,res,next){
   var cookies = new _Cookies( req, res);
   var idToken = cookies.get( "token" );
+  let pathway_name = req.query.pathway_name;
   function validate_cookie(result){
     if(result.valid_token){
-      Favourites.find({},function(err,favs){
+      Comments
+      .find({pathway_name:pathway_name})
+      .populate({
+        path:"user",
+        select:"_id name email last_name source uid"
+      }).exec(function(err,comments){
         if(err){
           res.status(503).json(RESPONSE_ERROR_SERVICE_NA)
         }else{
@@ -26,7 +32,7 @@ exports.index   = function(req,res,next){
             {
               "success":true,
               "errors":null,
-              "favourites":favs
+              "comments":comments
             }
           );
         }
@@ -38,59 +44,23 @@ exports.index   = function(req,res,next){
   let _C = new Cookies({uid:-1});
   _C.validateToken(idToken,validate_cookie);
 }
-exports.add   = function(req,res,next){
+exports.create   = function(req,res,next){
   var cookies = new _Cookies( req, res);
   var idToken = cookies.get( "token" );
   let pathway_index = sanitizeString(req.body.pathway_index);
   let pathway_name  = sanitizeString(req.body.pathway_name);
+  let comment  = sanitizeString(req.body.comment);
 
   function validate_cookie(result){
     if(result.valid_token){
-      let newFav = {
+      let newComment = new Comments({
         user:result.user,
         pathway_index:pathway_index,
         dataset:"default",
-        pathway_name:pathway_name
-      };
-      let findQuery = {
-        user:result.user,
-        pathway_index:pathway_index,
-        dataset:"default",
-        pathway_name:pathway_name
-      }
-      Favourites.findOneAndUpdate(findQuery,newFav,{upsert: true},function(err,f){
-        if(err){
-          res.status(503).json(RESPONSE_ERROR_SERVICE_NA)
-        }else{
-          res.status(201).json(
-            {
-              "success":true,
-              "errors":null,
-              "message":"Favourite added",
-              "favourite":f
-            }
-          );
-        }
+        pathway_name:pathway_name,
+        comment:comment
       });
-    }else{
-      return res.send(RESPONSE_INVALID_AUTH);
-    }
-  }
-  let _C = new Cookies({uid:-1});
-  _C.validateToken(idToken,validate_cookie);
-}
-exports.remove   = function(req,res,next){
-  var cookies = new _Cookies( req, res);
-  var idToken = cookies.get( "token" );
-  let pathway_index = sanitizeString(req.body.pathway_index);
-  let pathway_name  = sanitizeString(req.body.pathway_name);
-  function validate_cookie(result){
-    if(result.valid_token){
-      Favourites.deleteOne({
-          user:result.user,
-          pathway_index:pathway_index,
-          pathway_name:pathway_name
-        },function(err){
+      newComment.save(function(err,c){
         if(err){
           res.status(503).json(RESPONSE_ERROR_SERVICE_NA)
         }else{
@@ -98,32 +68,8 @@ exports.remove   = function(req,res,next){
             {
               "success":true,
               "errors":null,
-              "message":"Favourite removed",
-            }
-          );
-        }
-      });
-    }else{
-      return res.send(RESPONSE_INVALID_AUTH);
-    }
-  }
-  let _C = new Cookies({uid:-1});
-  _C.validateToken(idToken,validate_cookie);
-}
-exports.mines   = function(req,res,next){
-  var cookies = new _Cookies( req, res);
-  var idToken = cookies.get( "token" );
-  function validate_cookie(result){
-    if(result.valid_token){
-      Favourites.find({user:result.user._id},function(err,favs){
-        if(err){
-          res.status(503).json(RESPONSE_ERROR_SERVICE_NA)
-        }else{
-          res.status(201).json(
-            {
-              "success":true,
-              "errors":null,
-              "favourites":favs
+              "message":"Comment added",
+              "comment":c
             }
           );
         }

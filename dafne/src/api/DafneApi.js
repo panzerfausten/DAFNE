@@ -218,5 +218,53 @@ var dafneApi = {
       return error;
     });
   },
+  /*
+   * Creates a login request
+   */
+  createComment(pathway_name,pathway_index,comment){
+    let params = {
+        'pathway_name'  : pathway_name,
+        'pathway_index' : pathway_index,
+        'comment'       : comment,
+    };
+    let formBody = [];
+    for (let property in params) {
+      let encodedKey = encodeURIComponent(property);
+      let encodedValue = encodeURIComponent(params[property]);
+      formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
+    return fetch(dafneApi.API_URL+'/comments/create', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: formBody,
+      credentials: 'include'
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      return responseJson;
+    })
+    .catch((error) => {
+      return error;
+    });
+  },
+  /*
+   * Gets current logged in user
+   */
+  getComments(pathway_name){
+    return fetch(`${dafneApi.API_URL}/comments?pathway_name=${pathway_name}`,{
+      method:"GET",
+      credentials:"include"
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      return response;
+    })
+    .catch((error) =>{
+      return error;
+    });
+  },
 }
 module.exports = dafneApi;

@@ -13,7 +13,7 @@ import IndicatorTools from '../components/IndicatorTools';
 import PathwaysList from '../components/PathwaysList';
 import SavePerspectiveModal from '../components/SavePerspectiveModal';
 import DafneApi from "../api/DafneApi"
-
+import CommentsModal from "../components/CommentsModal";
 import FavouritesPlotModal from "../components/FavouritesPlotModal";
 
 let _ = require('underscore');
@@ -34,7 +34,12 @@ class CreatePerspective extends React.Component {
       hiddenPathways:[],
       favouritedPathways:[],
       showFavs:true,
-      showFavouritesModal:true
+      showFavouritesModal:false,
+      showCommentsModal:false,
+      clickedPathway:{
+        pathway_name:'',
+        pathway_index:0
+      }
     }
     this.onDeleteIndicator            = this.onDeleteIndicator.bind(this);
     this.onPinIndicator               = this.onPinIndicator.bind(this);
@@ -49,8 +54,8 @@ class CreatePerspective extends React.Component {
     this.onFavouriteToggled           = this.onFavouriteToggled.bind(this);
     this.handleCbShowFavs             = this.handleCbShowFavs.bind(this);
     this.handleAllFavouritesModal     = this.handleAllFavouritesModal.bind(this);
-
-
+    this.handleCommentsModal          = this.handleCommentsModal.bind(this);
+    this.onCommentsClicked            = this.onCommentsClicked.bind(this);
   }
   componentDidMount(){
     this.loadPerspectives();
@@ -161,6 +166,21 @@ class CreatePerspective extends React.Component {
   }
   handleAllFavouritesModal(value){
     this.setState({showFavouritesModal:value});
+  }
+  handleCommentsModal(value){
+    this.setState({showCommentsModal:value});
+  }
+  onCommentsClicked(item){
+    let cp = {
+      pathway_name:item.name,
+      pathway_index:item.index
+    }
+    this.setState({
+      clickedPathway:cp,
+      showCommentsModal:true
+    }, () =>{
+      this.commentsModal.loadComments();
+    })
   }
   selectPerspective(event){
     let index = event.target.value;
@@ -313,6 +333,7 @@ class CreatePerspective extends React.Component {
                                 onClick={(p) => {this.dafnePlot.highlightPathways([p])}}
                                 onEyeToggled={(index,state) => this.onEyeToggled(index,state)}
                                 onFavouriteToggled={(index,name,state) => this.onFavouriteToggled(index,name,state)}
+                                onCommentsClicked={(item) => this.onCommentsClicked(item)}
                                 favourites={this.state.favouritedPathways}
                                 hidden={this.state.hiddenPathways}>
                   </PathwaysList>
@@ -349,8 +370,15 @@ class CreatePerspective extends React.Component {
                                 handleOpenModal={this.handleOpenPerspectiveModal}
                                 onSave={(res) => this.loadPerspectives()}
                                 hiddenPathwaysIndexes={this.state.hiddenPathways}
-
                                 />
+          <CommentsModal
+            ref={(cm) => { this.commentsModal = cm; }}
+            show={this.state.showCommentsModal}
+            handleOpenModal={this.handleCommentsModal}
+            pathway_name={this.state.clickedPathway.pathway_name}
+            pathway_index={this.state.clickedPathway.pathway_index}
+          >
+          </CommentsModal>
         </div>
     )
   }

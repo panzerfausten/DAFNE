@@ -591,7 +591,6 @@ Modal comments
 .comment-area{
   display: flex;
   flex-direction: row;
-  background-color: pink;
   min-height: 50px;
   flex:1;
 }
@@ -599,18 +598,19 @@ Modal comments
   display: flex;
   flex-direction: column;
   flex:1;
-  background-color: plum;
 }
 .comment-user-data{
   display: flex;
   flex-direction: row;
-  background-color: beige;
+  align-items: flex-end;
+
 }
 .comment-text{
   display: flex;
-  background-color: white;
-
-
+}
+.comment-date{
+  color: #626262;
+  font-size: 13px;
 }
 /**********************
 Tag circle
