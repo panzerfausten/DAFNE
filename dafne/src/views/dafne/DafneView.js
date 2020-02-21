@@ -9,6 +9,8 @@ import DafneApi from '../../api/DafneApi.js';
 import DafneLogo from "../../img/dafne_logo.png";
 import CreatePerspective from '../../components/CreatePerspective';
 import ComparePerspective from '../../components/ComparePerspective';
+import CommentsModal from '../../components/CommentsModal';
+
 
 class DafneView extends React.Component {
   constructor (props) {
@@ -94,6 +96,7 @@ class DafneView extends React.Component {
             </Navbar.Collapse>
           </Navbar>
           {this.renderContent()}
+          <CommentsModal></CommentsModal>
 
         </div>
       )

@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route} from "react-router-dom"
 import LoginView from './views/auth/LoginView';
 import DafneView from './views/dafne/DafneView';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
@@ -9,7 +10,6 @@ function App() {
       <Route exact path="/" component={ LoginView } />
       <Route exact path="/app" component={ DafneView } />
       <Route exact path="/app/:id" component={ DafneView } />
-
     </Router>
   )
 
