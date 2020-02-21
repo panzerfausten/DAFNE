@@ -18,6 +18,7 @@ import SavePerspectiveModal from '../components/SavePerspectiveModal';
 import DafneApi from "../api/DafneApi"
 import PerspectivePicker from "../components/PerspectivePicker";
 import FavouritesPlotModal from "../components/FavouritesPlotModal";
+import CommentsModal from "../components/CommentsModal";
 
 class ComparePerspective extends React.Component {
   constructor(p){
@@ -44,7 +45,12 @@ class ComparePerspective extends React.Component {
       showFavs:true,
       showFavouritesModal:false,
       hiddenPathwaysA:[],
-      hiddenPathwaysB:[]
+      hiddenPathwaysB:[],
+      showCommentsModal:false,
+      clickedPathway:{
+        pathway_name:'',
+        pathway_index:0
+      }
     }
     this.onDeleteIndicator            = this.onDeleteIndicator.bind(this);
     this.onPinIndicator               = this.onPinIndicator.bind(this);
@@ -62,6 +68,8 @@ class ComparePerspective extends React.Component {
     this.handleCommonIndicatorsOnly     = this.handleCommonIndicatorsOnly.bind(this);
     this.onEyeToggled                   = this.onEyeToggled.bind(this);
     this.handleAllFavouritesModal     = this.handleAllFavouritesModal.bind(this);
+    this.onCommentsClicked            = this.onCommentsClicked.bind(this);
+    this.handleCommentsModal          = this.handleCommentsModal.bind(this);
 
 
   }
@@ -155,6 +163,21 @@ class ComparePerspective extends React.Component {
   }
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
+  }
+  handleCommentsModal(value){
+    this.setState({showCommentsModal:value});
+  }
+  onCommentsClicked(item){
+    let cp = {
+      pathway_name:item.name,
+      pathway_index:item.index
+    }
+    this.setState({
+      clickedPathway:cp,
+      showCommentsModal:true
+    }, () =>{
+      this.commentsModal.loadComments();
+    })
   }
   onDeleteIndicator(indicator){
     this.filteredIndicators.push(indicator);
@@ -562,8 +585,9 @@ class ComparePerspective extends React.Component {
                     data={Data}
                     onClick={(p) => {this.dafnePlot.highlightPathways([p])}}
                     onEyeToggled={(index,state) => this.onEyeToggled(index,state)}
-                    hidden={this.state.hiddenPathways}
-                    ></PathwaysList>
+                    onCommentsClicked={(item) => this.onCommentsClicked(item)}
+                    hidden={this.state.hiddenPathways}>
+                  </PathwaysList>
 
                 </div>
               </div>
@@ -624,6 +648,14 @@ class ComparePerspective extends React.Component {
                                 handleOpenModal={this.handleOpenPerspectiveModal}
                                 onSave={(res) => this.loadPerspectives()}
                                 />
+        <CommentsModal
+          ref={(cm) => { this.commentsModal = cm; }}
+          show={this.state.showCommentsModal}
+          handleOpenModal={this.handleCommentsModal}
+          pathway_name={this.state.clickedPathway.pathway_name}
+          pathway_index={this.state.clickedPathway.pathway_index}
+        >
+        </CommentsModal>
         </div>
     )
   }
