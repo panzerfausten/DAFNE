@@ -239,21 +239,28 @@ input{
   justify-content: space-between;
   margin-left: 1%;
   margin-right: 1%;
+  flex:1;
 }
 .it_area_a{
   flex:1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 350px;
 }
 .it_area_b{
-  flex:.2;
-  // margin-left: 50px;
+  flex:1;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   font-size: 14px;
+  max-width: 100px
+}
+.it_area_c{
+  display: flex;
+  flex:1;
+  flex-direction: column;
 }
 .it_area_divider{
   background-color: $darkgray;
@@ -264,11 +271,12 @@ input{
   margin-bottom: 10px;
 }
 .circular_button{
-  width:50px;
-  height:50px;
-  color:white;
+  width:45px;
+  height:45px;
+  color: $darkblue;
   border-radius: 50%;
-  background-color: $darkblue;
+  border: 2px $darkblue solid;
+  background-color:white ;
   justify-content: center;
   display: flex;
   align-items: center;
@@ -277,7 +285,7 @@ input{
   font-size: xx-large;
 }
 .circular_button:hover{
-  background-color: #0d5288;
+  background-color: #f3f4f4;
 }
 
 .arrow-right {
@@ -296,7 +304,6 @@ input{
 }
 .filter{
   border: 1px solid $darkgray;
-  min-height: 122px;
   margin:10px;
   display: flex;
   flex-direction: column;

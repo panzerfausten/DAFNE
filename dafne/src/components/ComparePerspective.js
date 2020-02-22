@@ -40,7 +40,6 @@ class ComparePerspective extends React.Component {
       lenIndicatorsB:0,
       commonIndicators:[],
       compareData:{...CompareData},
-      commonIndicatorsOnly:false,
       hiddenPathways:[],
       favouritedPathways:[],
       showFavs:true,
@@ -51,7 +50,8 @@ class ComparePerspective extends React.Component {
       clickedPathway:{
         pathway_name:'',
         pathway_index:0
-      }
+      },
+      showCommonIndicatorsOnly:false
     }
     this.onDeleteIndicator            = this.onDeleteIndicator.bind(this);
     this.onPinIndicator               = this.onPinIndicator.bind(this);
@@ -66,13 +66,12 @@ class ComparePerspective extends React.Component {
     this.getOriginalValuesFromIndicator = this.getOriginalValuesFromIndicator.bind(this);
     this.filterData                     = this.filterData.bind(this);
     this.clear                          = this.clear.bind(this);
-    this.handleCommonIndicatorsOnly     = this.handleCommonIndicatorsOnly.bind(this);
     this.onEyeToggled                   = this.onEyeToggled.bind(this);
     this.handleAllFavouritesModal     = this.handleAllFavouritesModal.bind(this);
     this.onCommentsClicked            = this.onCommentsClicked.bind(this);
     this.handleCommentsModal          = this.handleCommentsModal.bind(this);
     this.handleCbShowFavs             = this.handleCbShowFavs.bind(this);
-
+    this.onCommonIndicatorToggle      = this.onCommonIndicatorToggle.bind(this);
 
   }
   componentDidMount(){
@@ -158,6 +157,13 @@ class ComparePerspective extends React.Component {
   handleCbShowFavs(){
     this.setState({ showFavs:!this.state.showFavs }, () => {
         this.loadFavourites();
+    });
+  }
+  onCommonIndicatorToggle(e){
+    this.setState({
+      showCommonIndicatorsOnly:e.target.checked
+    }, () =>{
+      this.loadPerspective();
     });
   }
   loadPerspectives(){
@@ -398,7 +404,7 @@ class ComparePerspective extends React.Component {
 
 
     let lenIndicatorsB = 0;
-    let commonIndicatorsOnly = this.state.commonIndicatorsOnly;
+    let commonIndicatorsOnly = this.state.showCommonIndicatorsOnly;
     //CALCULATE COMMON INDICATORS-----------------------------------------------
     let commonIndicators = [];
     if(this.state.perspectiveA.hasOwnProperty("name")){
@@ -581,11 +587,6 @@ class ComparePerspective extends React.Component {
     });
 
   }
-  handleCommonIndicatorsOnly(checked) {
-    this.setState({ commonIndicatorsOnly:checked }, () =>{
-        this.loadPerspective();
-    });
-  }
   handleAllFavouritesModal(value){
     this.setState({showFavouritesModal:value});
   }
@@ -666,22 +667,12 @@ class ComparePerspective extends React.Component {
                   data={Data}
                   filteredIndicators={this.state.filteredIndicators}
                   onSelectIndicators={(indicators) => {this.onSelectIndicators(indicators);}}
+                  view="compare"
                   onOptionChanged={(option) => {this.onOptionChanged(option)}}
-                  ></IndicatorTools>
-                  <div style ={{display: "flex",justifyContent: "inherit",width: "280px",}}>
-                    <div className="it_label">Show all<br></br>Indicators</div>
-                    <Switch uncheckedIcon={false}
-                            onHandleColor={"#1b75bc"}
-                            onColor={"#9fc0db"}
-                            offHandleColor={"#9fc0db"}
-                            handleDiameter={30}
-                            height={22}
-                            onChange={this.handleCommonIndicatorsOnly}
-                            checked={this.state.commonIndicatorsOnly}
-                    />
-                    <div className="it_label" style={{marginRight:30}}>Common<br></br>  indicators </div>
+                  showCommonIndicatorsOnly={this.state.showCommonIndicatorsOnly}
+                  onCommonIndicatorToggle={(e) => this.onCommonIndicatorToggle(e)}>
+                </IndicatorTools>
 
-                  </div>
 
 
                 <div className="widget" style={{backgroundColor:"white !important"}}>
@@ -697,7 +688,7 @@ class ComparePerspective extends React.Component {
                     lenIndicatorsB={this.state.lenIndicatorsB}
                     perspectiveB={this.state.perspectiveB}
                     commonIndicators={this.state.commonIndicators}
-                    showCommonIndicatorsOnly={this.state.commonIndicatorsOnly}
+                    showCommonIndicatorsOnly={this.state.showCommonIndicatorsOnly}
                     hiddenPathways={this.state.hiddenPathways}
                     favouritedPathways={this.state.favouritedPathways}
 

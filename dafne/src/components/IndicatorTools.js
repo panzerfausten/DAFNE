@@ -44,6 +44,23 @@ class IndicatorTools extends React.Component {
   handleOpenModal(value){
     this.setState({ show_modal : value})
   }
+  renderCommonIndicatorsCheckbox(){
+    if(this.props.view === "create"){
+      return (null);
+    }
+    return (
+        <label className="it_label" >
+          <Checkbox
+            defaultChecked
+            onChange={(e) => this.props.onCommonIndicatorToggle(e)}
+            checked={this.props.showCommonIndicatorsOnly}
+          />
+          &nbsp;Show common indicators only
+        </label>
+    )
+  }
+
+
   render(){
     return(
       <div className="" >
@@ -55,17 +72,46 @@ class IndicatorTools extends React.Component {
             Indicator Tools
           </div>
           <div className="filter_content">
-          <div className="it_area">
-            <div className="it_area_a">
+            <div className="it_area">
+              <div className="it_area_b">
+                <div className="circular_button m-b-10" onClick={() => this.handleOpenModal(true)}>+</div>
+                add indicator
+              </div>
+              <div className='it_area_divider'>
+              </div>
+              <div className="it_area_a">
                 <div className="it_row">
-                  <div className="it_label" style={{width:180}}>Your indicator sets:</div>
-                  <div><select style={{width:290}}></select></div>
-                  <Button size="sm" onClick={() => {}} style={{width: 200}}>Upload a new set</Button>
+                  <label>Sector</label>
+                  <select className="custom-select blue-select">
+                   <option>All Sectors</option>
+                  </select>
+                </div>
+                <div className="it_row">
+                  <label>Region</label>
+                  <select className="custom-select blue-select">
+                   <option>Basin-wide</option>
+                  </select>
+                </div>
+              </div>
+              <div className='it_area_divider'></div>
+              <div className="it_area_c">
+                <div className="it_row" style={{flexDirection:"column",alignItems: "baseline"}}>
+                  <label className="it_label" >
+                    <Checkbox
+                      defaultChecked
+                      onChange={this.handleCbScales}
+                      disabled={this.state.cb_values}
+                    />
+                    &nbsp;Show scales
+                  </label>
+
+                </div>
+                <div className="it_row" style={{flexDirection:"column",alignItems: "baseline"}}>
+                  {this.renderCommonIndicatorsCheckbox()}
                 </div>
                 <div className="it_row" >
-                  <div className="it_label" style={{width:180}}>Values of the <br></br> Indicators:</div>
-                    <div style ={{display: "flex",justifyContent: "inherit",width: "280px",}}>
-                      <div className="it_label">Satisfaction<br></br> Values</div>
+                    <div style ={{display: "flex",flex:1,justifyContent:"center",alignItems:"center"}}>
+                      <div className="it_label">Satisfaction values&nbsp;</div>
                       <Switch uncheckedIcon={false}
                               onHandleColor={"#1b75bc"}
                               onColor={"#9fc0db"}
@@ -75,33 +121,12 @@ class IndicatorTools extends React.Component {
                               onChange={this.handleChange}
                               checked={this.state.checked}
                       />
-                      <div className="it_label" style={{marginRight:30}}>Absolute<br></br> Values</div>
-                    </div>
-                    <div className="it_row" style={{flexDirection:"column",alignItems: "baseline"}}>
-                      <label className="it_label" >
-                        <Checkbox
-                          defaultChecked
-                          onChange={this.handleCbScales}
-                          disabled={this.state.cb_values}
-                        />
-                        Show scales
-                      </label>
-                      <label className="it_label">
-                        <Checkbox
-                          defaultChecked
-                          onChange={this.handleCbValues}
-                          disabled={this.state.cb_values}
-                        />
-                        Show best / worst values
-                      </label>
+                      <div className="it_label" style={{marginRight:30}}>&nbsp;Absolute values</div>
                     </div>
                 </div>
-            </div>
-            <div className='it_area_divider'></div>
-            <div className="it_area_b">
-              <div className="circular_button m-b-10" onClick={() => this.handleOpenModal(true)}>+</div>
-              add indicator
-            </div>
+              </div>
+
+
           </div>
           </div>
         </div>
@@ -117,19 +142,26 @@ class IndicatorTools extends React.Component {
   }
 }
 IndicatorTools.propTypes = {
-  data                : PropTypes.object,
-  filteredIndicators  : PropTypes.array,
-  onSelectIndicators  : PropTypes.func,
-  onOptionChanged     : PropTypes.func
+  data                     : PropTypes.object,
+  filteredIndicators       : PropTypes.array,
+  onSelectIndicators       : PropTypes.func,
+  onOptionChanged          : PropTypes.func,
+  view                     : PropTypes.string,
+  showCommonIndicatorsOnly : PropTypes.bool,
+  onCommonIndicatorToggle  : PropTypes.func
 
 };
 
 
 IndicatorTools.defaultProps = {
-  data               : [],
-  filteredIndicators : [],
-  onSelectIndicators : (indicators) => {},
-  onOptionChanged    : (option) => {},
+  data                     : [],
+  filteredIndicators       : [],
+  onSelectIndicators       : (indicators) => {},
+  onOptionChanged          : (option) => {},
+  view                     : 'create',
+  showCommonIndicatorsOnly : false,
+  onCommonIndicatorToggle  : (option) => {},
+
 
 
 };
