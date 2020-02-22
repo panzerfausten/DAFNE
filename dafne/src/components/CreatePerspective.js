@@ -99,7 +99,6 @@ class CreatePerspective extends React.Component {
     this.setState({ showFavs:!this.state.showFavs }, () => {
         this.loadFavourites();
     });
-
   }
   loadPerspectives(){
     DafneApi.getPerspectives().then( (res) => {

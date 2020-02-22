@@ -65,7 +65,7 @@ class CommentsModal extends React.Component {
              onHide={() => this.handleOpenModal(false)}
              centered>
         <Modal.Header closeButton className="custom_modal_header">
-          <Modal.Title> Add a comment </Modal.Title>
+          <Modal.Title>{`Comments to pathway ${this.props.pathway_name}`}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className='custom_modal_content'>

@@ -98,8 +98,8 @@ class FavouritesPlot extends React.Component {
             .attr("transform", `translate(0,${this.height - this.margin.top - this.margin.bottom})`)
             .call(d3.axisBottom(x))
               .selectAll("text")
-              .attr("transform", "translate(-10,0)rotate(-45)")
-              .style("text-anchor", "end");
+              .attr("transform", "translate(0,0)")
+              .style("text-anchor", "middle");
     // Add Y axis
     var y = d3.scaleLinear()
               .domain([0, 10])
@@ -126,6 +126,8 @@ class FavouritesPlot extends React.Component {
             .attr("transform",`translate(${center},${this.height - this.margin.top - this.margin.bottom +  29})`)
             .attr("text-anchor","middle")
             .style("font-size", "11px")
+            .style("font-weight", "bold")
+
 
     // Add legend Y
     let middle = (this.height - this.margin.top - this.margin.bottom) / 2;
@@ -133,9 +135,11 @@ class FavouritesPlot extends React.Component {
             .attr("x",0)
             .attr("y",0)
             .text("Number of distinct users who marked the pathway as favourite")
-            .attr("transform",`translate(-30,${middle}),rotate(90)`)
+            .attr("transform",`translate(-30,${middle}),rotate(-90)`)
             .attr("text-anchor","middle")
             .style("font-size", "11px")
+            .style("font-weight", "bold")
+
   }
   render(){
     return(

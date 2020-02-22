@@ -19,6 +19,7 @@ import DafneApi from "../api/DafneApi"
 import PerspectivePicker from "../components/PerspectivePicker";
 import FavouritesPlotModal from "../components/FavouritesPlotModal";
 import CommentsModal from "../components/CommentsModal";
+let _ = require('underscore');
 
 class ComparePerspective extends React.Component {
   constructor(p){
@@ -70,11 +71,14 @@ class ComparePerspective extends React.Component {
     this.handleAllFavouritesModal     = this.handleAllFavouritesModal.bind(this);
     this.onCommentsClicked            = this.onCommentsClicked.bind(this);
     this.handleCommentsModal          = this.handleCommentsModal.bind(this);
+    this.handleCbShowFavs             = this.handleCbShowFavs.bind(this);
 
 
   }
   componentDidMount(){
     this.loadPerspectives();
+    this.loadFavourites();
+
   }
   getOriginalValuesFromIndicator(indicatorLabel){
     let indicatorIndex  = -1;
@@ -102,6 +106,31 @@ class ComparePerspective extends React.Component {
     }
     return originalValues;
   }
+  loadFavourites(){
+    if(!this.state.showFavs){
+      this.setState({
+        favouritedPathways:[]
+      }, () => {
+        this.dafnePlot.filterIndicators(this.filteredIndicators);
+
+      });
+      return false;
+    }
+    DafneApi.getMyFavourites().then( (res) => {
+      if(res.success){
+        let fp = res.favourites.map(f => f.pathway_index);
+        fp = _.uniq(fp, function (x){
+          return x
+        });
+        this.setState({
+          favouritedPathways:fp
+        }, () => {
+          this.dafnePlot.filterIndicators(this.filteredIndicators);
+
+        });
+      }
+    });
+  }
   selectPerspectiveFromPerspectiveId(perspectiveId){
     for (var i = 0; i < this.state.perspectives.length; i++) {
       if(this.state.perspectives[i].shortId === perspectiveId){
@@ -124,6 +153,11 @@ class ComparePerspective extends React.Component {
       hiddenPathways:hiddenPathways
     }, () =>{
       this.dafnePlot.filterIndicators(this.filteredIndicators);
+    });
+  }
+  handleCbShowFavs(){
+    this.setState({ showFavs:!this.state.showFavs }, () => {
+        this.loadFavourites();
     });
   }
   loadPerspectives(){
@@ -200,6 +234,38 @@ class ComparePerspective extends React.Component {
     }, () => {
       this.dafnePlot.filterIndicators(this.filteredIndicators);
     })
+  }
+  onFavouriteToggled(index,name,state){
+    let favouritedPathways = this.state.favouritedPathways.slice();
+    if(!state){
+      //remove it from the list
+      favouritedPathways = favouritedPathways.filter(p => p !== index);
+      //send it to the server
+      DafneApi.removeFavourite(index,name).then( (res) => {
+        if(res.success){
+          //do something
+        }else{
+
+        }
+      });
+    }else{
+      //add it to the list
+      favouritedPathways.push(index);
+      //send it to the server
+      DafneApi.addFavourite(index,name).then( (res) => {
+        if(res.success){
+          //do something
+        }else{
+
+        }
+      });
+
+    }
+    this.setState({
+      favouritedPathways:favouritedPathways
+    }, () =>{
+      this.dafnePlot.filterIndicators(this.filteredIndicators);
+    });
   }
   handleOpenPerspectiveModal(value){
     this.setState({showModal:value});
@@ -558,11 +624,12 @@ class ComparePerspective extends React.Component {
                   <div clasName="filter_content">
                     <div className="filter_row">
                       <label className="filter_label title" >
-                        <Checkbox
-                          defaultChecked
-                          onChange={() => {}}
-                          disabled={false}
-                        />
+                      <Checkbox
+                        defaultChecked
+                        onChange={this.handleCbShowFavs}
+                        checked={this.state.showFavs}
+                        disabled={false}
+                      />
                         Show favourite pathways
                       </label>
                       <div><img src={GraphA} style={{height:25}}></img></div>
@@ -585,7 +652,9 @@ class ComparePerspective extends React.Component {
                     data={Data}
                     onClick={(p) => {this.dafnePlot.highlightPathways([p])}}
                     onEyeToggled={(index,state) => this.onEyeToggled(index,state)}
+                    onFavouriteToggled={(index,name,state) => this.onFavouriteToggled(index,name,state)}
                     onCommentsClicked={(item) => this.onCommentsClicked(item)}
+                    favourites={this.state.favouritedPathways}
                     hidden={this.state.hiddenPathways}>
                   </PathwaysList>
 
@@ -630,6 +699,7 @@ class ComparePerspective extends React.Component {
                     commonIndicators={this.state.commonIndicators}
                     showCommonIndicatorsOnly={this.state.commonIndicatorsOnly}
                     hiddenPathways={this.state.hiddenPathways}
+                    favouritedPathways={this.state.favouritedPathways}
 
                     >
                   </DafnePlotCompare>
