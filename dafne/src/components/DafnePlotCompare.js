@@ -21,6 +21,7 @@ class DafnePlotCompare extends React.Component {
     this.filterIndicators = this.filterIndicators.bind(this);
     this.getFilteredPathwaysData = this.getFilteredPathwaysData.bind(this);
     this.generateDomain = this.generateDomain.bind(this);
+    this.drawLabel = this.drawLabel.bind(this);
     this.state = {
       data: [],
       highlightedPathways: [],
@@ -364,8 +365,28 @@ class DafnePlotCompare extends React.Component {
   drawIcons(t,svg,i,x,data){
 
   }
+  drawLabel(t,svg,i,x,data,labelContainerHeight){
+    let nLines = data.label / 10;
+    let lines = data.label.match(/.{1,11}/g);
+    svg.append("text")
+      .text(lines[0])
+      .attr("x",x)
+      .attr("text-anchor","middle")
+      .style("font-size", "12px")
+      .style("font-weight", "bold")
+      .attr("transform",
+            `translate(0,-${labelContainerHeight-17})`);
+    svg.append("text")
+      .text(lines[1])
+      .attr("x",x)
+      .attr("text-anchor","middle")
+      .style("font-size", "12px")
+      .style("font-weight", "bold")
+      .attr("transform",
+            `translate(0,-${labelContainerHeight-32})`);
+  }
   drawAxis(t,svg,i,x,data){
-    let width = 80;
+    let width = 82;
     let topOffset = -30;
     let height = t.svgH - this.margin.top - this.margin.bottom;
     let labelContainerHeight = this.margin.top +  (topOffset / 2);
@@ -401,17 +422,8 @@ class DafnePlotCompare extends React.Component {
           .attr("transform",
                 `translate(0,-18)`);
 
-    svg.append('g')
-          .attr("transform",
-                  `translate(0,${20})`)
-          .append("text")
-            .text(data.label)
-            .attr("x",x)
-            .attr("text-anchor","middle")
-            .style("font-size", "12px")
-            .style("font-weight", "bold")
-            .attr("transform",
-                  `translate(0,-${labelContainerHeight})`);
+    this.drawLabel(t,svg,i,x,data,labelContainerHeight);
+
     // add icons
     // svg.append('g')
     //       .attr("transform",

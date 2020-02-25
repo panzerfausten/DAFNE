@@ -7,37 +7,18 @@ var classNames = require('classnames');
 class IndicatorFilterListItem extends React.Component {
   constructor (props) {
     super(props);
-    this.state={
-      isSelected:false,
-    }
     this.onClick = this.onClick.bind(this);
-    this.handleOnSelect = this.handleOnSelect.bind(this);
-  }
-  componentDidMount(){
-    this.setState({
-      isSelected:this.props.selected
-    }, () => {
-      if(!this.props.isSelected){
-        this.onClick(this.props.indicator);
-      }
-    })
-  }
-  onClick(indicator){
-    this.handleOnSelect(indicator);
-  }
-  handleOnSelect(indicator){
-    let isSelected = this.state.isSelected;
-    this.setState({isSelected:!isSelected}, () =>{
-      this.props.onClick(indicator,!isSelected);
-      }
-    );
   }
 
+  onClick(indicator){
+    let selected = this.props.selected;
+    this.props.onClick(indicator,!selected);
+  }
   render(){
     const indicator = this.props.indicator;
     let indicatorClass = classNames({
       'item_list': true,
-      'item_selected': this.state.isSelected,
+      'item_selected': this.props.selected,
     });
 
     return (

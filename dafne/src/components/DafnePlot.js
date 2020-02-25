@@ -20,9 +20,8 @@ class DafnePlot extends React.Component {
     this.highlightPathways = this.highlightPathways.bind(this);
     this.filterIndicators = this.filterIndicators.bind(this);
     this.getFilteredPathwaysData = this.getFilteredPathwaysData.bind(this);
-
-
-
+    this.generateDomain = this.generateDomain.bind(this);
+    this.drawLabel      = this.drawLabel.bind(this);
     this.state = {
       data: [],
       highlightedPathways: [],
@@ -40,6 +39,9 @@ class DafnePlot extends React.Component {
     });
     this.data = this.props.data;
   }
+  generateDomain(){
+    return new Array(this.props.data.indicators.length + 1).fill( 1 ).map( ( _, i ) => String.fromCharCode( 65 + i ) );
+  }
   clear(){
     d3.select("svg").remove();
   }
@@ -55,6 +57,7 @@ class DafnePlot extends React.Component {
     }, () => this.renderPlot());
   }
   renderPlot(){
+    this.domain = this.generateDomain();
     this.clear();
     let plotIndicators = this.state.data.indicators;
     let mapFilterIndicators = this.state.filteredIndicators.map(i => i.label);
@@ -252,8 +255,28 @@ class DafnePlot extends React.Component {
   drawIcons(t,svg,i,x,data){
 
   }
+  drawLabel(t,svg,i,x,data,labelContainerHeight){
+    let nLines = data.label / 10;
+    let lines = data.label.match(/.{1,11}/g);
+    svg.append("text")
+      .text(lines[0])
+      .attr("x",x)
+      .attr("text-anchor","middle")
+      .style("font-size", "12px")
+      .style("font-weight", "bold")
+      .attr("transform",
+            `translate(0,-${labelContainerHeight})`);
+    svg.append("text")
+      .text(lines[1])
+      .attr("x",x)
+      .attr("text-anchor","middle")
+      .style("font-size", "12px")
+      .style("font-weight", "bold")
+      .attr("transform",
+            `translate(0,-${labelContainerHeight-15})`);
+  }
   drawAxis(t,svg,i,x,data){
-    let width = 80;
+    let width = 82;
     let topOffset = -30;
     let height = t.svgH - this.margin.top - this.margin.bottom;
     let labelContainerHeight = this.margin.top +  (topOffset / 2);
@@ -280,14 +303,7 @@ class DafnePlot extends React.Component {
       .attr("transform",
             `translate(0,-18)`);
 
-    svg.append("text")
-      .text(data.label)
-      .attr("x",x)
-      .attr("text-anchor","middle")
-      .style("font-size", "12px")
-      .style("font-weight", "bold")
-      .attr("transform",
-            `translate(0,-${labelContainerHeight})`);
+    this.drawLabel(t,svg,i,x,data,labelContainerHeight);
     // add icons
     svg.append("svg:image")
        .attr("x",x)

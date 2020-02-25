@@ -136,6 +136,7 @@ class IndicatorTools extends React.Component {
           data={this.props.data}
           filteredIndicators={this.props.filteredIndicators}
           onSelectIndicators={(indicators) => {this.props.onSelectIndicators(indicators);}}
+          onFilterSelected={(filter => {this.props.onFilterSelected(filter)})}
           />
       </div>
     )
@@ -148,7 +149,9 @@ IndicatorTools.propTypes = {
   onOptionChanged          : PropTypes.func,
   view                     : PropTypes.string,
   showCommonIndicatorsOnly : PropTypes.bool,
-  onCommonIndicatorToggle  : PropTypes.func
+  onCommonIndicatorToggle  : PropTypes.func,
+  onFilterSelected         : PropTypes.func
+
 
 };
 
@@ -161,6 +164,7 @@ IndicatorTools.defaultProps = {
   view                     : 'create',
   showCommonIndicatorsOnly : false,
   onCommonIndicatorToggle  : (option) => {},
+  onFilterSelected         : (filter) => {},
 
 
 
