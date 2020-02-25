@@ -161,7 +161,10 @@ class DafnePlot extends React.Component {
 
       var line = d3.line()
         .x(function(d){ return x(d.domain)})
-        .y(function(d){ return y(d.value)});
+        .y(function(d){ return y(d.value)})
+        .defined(function (d) {
+          return d.value !== null;
+        });
       let path =
       this.svg.append("path")
         .attr("d", line(data))

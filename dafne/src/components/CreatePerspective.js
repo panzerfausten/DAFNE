@@ -188,8 +188,9 @@ class CreatePerspective extends React.Component {
     })
   }
   selectPerspective(event){
+
     let index = event.target.value;
-    if(index  > 0){
+    if(index  !== "choose a perspective"){
       let fi    = JSON.parse(this.state.perspectives[index].filter);
       fi        = JSON.parse(fi);
       this.filteredIndicators = fi;

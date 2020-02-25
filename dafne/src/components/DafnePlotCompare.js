@@ -291,7 +291,7 @@ class DafnePlotCompare extends React.Component {
           .attr("stroke", lineData[i].color)
           .attr("stroke-width", lineWidth)
           .attr("fill", "none")
-          .attr("transform", `translate(6, 0)`);
+          .attr("transform", `translate(6, 21)`);
         if(this.props.favouritedPathways.includes(i)){
           path.style("stroke-dasharray", ("3, 3"))
         }
