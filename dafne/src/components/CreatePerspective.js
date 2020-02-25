@@ -46,6 +46,7 @@ class CreatePerspective extends React.Component {
     this.onSelectIndicators           = this.onSelectIndicators.bind(this);
     this.filteredIndicators           = [];
     this.onOptionChanged              = this.onOptionChanged.bind(this);
+    this.onFilterSelected             = this.onFilterSelected.bind(this);
     this.handleOpenPerspectiveModal   = this.handleOpenPerspectiveModal.bind(this);
     this.loadPerspectives             = this.loadPerspectives.bind(this);
     this.selectPerspective            = this.selectPerspective.bind(this);
@@ -160,6 +161,11 @@ class CreatePerspective extends React.Component {
       this.dafnePlot.filterIndicators(this.filteredIndicators);
     })
   }
+  onFilterSelected(filter){
+    // this.setState({
+    //   filteredIndicators:[]
+    // });
+  }
   handleOpenPerspectiveModal(value){
     this.setState({showModal:value});
   }
@@ -182,8 +188,9 @@ class CreatePerspective extends React.Component {
     })
   }
   selectPerspective(event){
+
     let index = event.target.value;
-    if(index  > 0){
+    if(index  !== "choose a perspective"){
       let fi    = JSON.parse(this.state.perspectives[index].filter);
       fi        = JSON.parse(fi);
       this.filteredIndicators = fi;
@@ -345,6 +352,7 @@ class CreatePerspective extends React.Component {
                   filteredIndicators={this.state.filteredIndicators}
                   onSelectIndicators={(indicators) => {this.onSelectIndicators(indicators);}}
                   onOptionChanged={(option) => {this.onOptionChanged(option)}}
+                  onFilterSelected={(filter) => this.onFilterSelected(filter)}
                   ></IndicatorTools>
                 <DafnePlot
                   ref={(dp) => { this.dafnePlot = dp; }}

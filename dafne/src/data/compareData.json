@@ -4,27 +4,48 @@
   "pathways":
   [
     {
-      "data":[],
-      "abs": [],
+      "name":"P3.89",
+      "data": [],
+      "abs":[],
       "color":"#227b71",
-      "name":"P1",
-      "description":"This is the description for P1"
+      "description":""
     },
     {
-      "data":[],
-      "abs": [],
+      "name":"P3.330",
+      "data": [],
+      "abs":[],
       "color":"#92d051",
-      "name":"P2",
-      "description":"This is the description for P2"
-
+      "description":""
     },
     {
-      "data":[],
-      "abs": [],
+      "name":"P3.394",
+      "data": [],
+      "abs":[],
       "color":"#7030a0",
-      "name":"P3",
-      "description":"This is the description for P3"
+      "description":""
+    },
+    {
+      "name":"P3.428",
+      "data": [],
+      "abs":[],
+      "color":"#fdc100",
+      "description":""
+    },
+    {
+      "name":"P3.470",
+      "data": [],
+      "abs":[],
+      "color":"#b00000",
+      "description":""
+    },
+    {
+      "name":"P3.607",
+      "data": [],
+      "abs":[],
+      "color":"#00d2d2",
+      "description":""
     }
+
   ],
   "metadata":{
     "max":1000,

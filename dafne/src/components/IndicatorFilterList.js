@@ -14,17 +14,24 @@ class IndicatorFilterList extends React.Component {
   }
   render(){
     const indicators = this.props.indicators;
-    let mappedFilteredIndicators = this.props.filteredIndicators.map(i => i.label);
+    let mappedFilteredIndicators = this.props.filteredIndicators;
+    debugger;
+    mappedFilteredIndicators = this.props.filteredIndicators.map(i => i.label);
 
     return (
       <div>
         {indicators.map((item,index) => {
             let isSelected = false;
-            if(mappedFilteredIndicators.includes(item.label)){
+            if(!mappedFilteredIndicators.includes(item.label)){
               isSelected = true;
             }
             return(
-              <IndicatorFilterListItem selected={isSelected} key={index} indicator={item} onClick={this.onClick}/>
+              <IndicatorFilterListItem
+                selected={isSelected}
+                key={index}
+                indicator={item}
+                onClick={this.onClick}
+              />
             )
           }
         )}
