@@ -11,8 +11,9 @@ class IndicatorModal extends React.Component {
     this.handleOpenModal      = this.handleOpenModal.bind(this);
     this.onIndicatorSelected  = this.onIndicatorSelected.bind(this);
     this.selectedIndicators   = [];
-    this.onOkClick = this.onOkClick.bind(this);
+    this.onOkClick            = this.onOkClick.bind(this);
     this.onSectorChange       = this.onSectorChange.bind(this);
+    this.onClearClicked       = this.onClearClicked.bind(this);
     this.state = {
       sector:'All',
       sectors:[]
@@ -29,7 +30,10 @@ class IndicatorModal extends React.Component {
   handleOpenModal(value){
     this.props.handleOpenModal(value);
   }
-
+  onClearClicked(){
+    this.selectedIndicators = this.props.data.indicators;
+    this.props.onSelectIndicators(this.selectedIndicators);
+  }
   onIndicatorSelected(indicator,selected){
     if(!selected){
       this.selectedIndicators = this.props.filteredIndicators.slice();
@@ -70,25 +74,26 @@ class IndicatorModal extends React.Component {
   }
   render(){
     return (
-      <Modal className='custom_modal' show={this.props.show} onHide={() => this.handleOpenModal(false)} centered>
+      <Modal className='custom_modal' show={this.props.show} onHide={() => this.handleOpenModal(false)} centered size="lg">
         <Modal.Header closeButton className="custom_modal_header">
           <Modal.Title> Select your indicators </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className='custom_modal_content'>
-            <div className='custom_top_content m-b-10 p-10'>
+            <div className='custom_top_content m-b-10'>
               <span>Filters: </span>
 
               <div>
-                <span>Region</span>
-                <select className='m-l-5'>
+                <span>Region&nbsp;</span>
+                <select className='m-l-5 custom-select blue-select'>
                   <option>basin-wide</option>
                 </select>
               </div>
 
               <div>
                 <span>Sector</span>
-                <select className='m-l-5' onChange={this.onSectorChange} value={this.state.sector}>
+
+                <select className='m-l-5 custom-select blue-select ' onChange={this.onSectorChange} value={this.state.sector}>
                   {
                      this.state.sectors.map(function(s,i) {
                        return <option key={i}
@@ -98,6 +103,7 @@ class IndicatorModal extends React.Component {
 
                 </select>
               </div>
+              <Button variant="danger" onClick={this.onClearClicked}>Clear</Button>
             </div>
 
             <div className='custom_bottom_content p-10'>

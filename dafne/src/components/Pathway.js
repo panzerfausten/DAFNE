@@ -17,13 +17,16 @@ class Pathway extends React.Component {
     this.state = {
       isCollapseOpen:false,
       isPathwayHidden:false,
-      isFavorited:false
+      isFavorited:false,
+      isHovered:false
     }
     this.setOpen           = this.setOpen.bind(this);
     this.onClick           = this.onClick.bind(this);
     this.toggleEye         = this.toggleEye.bind(this);
     this.toggleFavorite    = this.toggleFavorite.bind(this);
     this.onCommentsClicked = this.onCommentsClicked.bind(this);
+    this.onMouseLeave      = this.onMouseLeave.bind(this);
+
   }
 
   setOpen(value){
@@ -34,7 +37,15 @@ class Pathway extends React.Component {
     this.setOpen(!this.state.isCollapseOpen);
   }
   onMouseOver(){
+    this.setState({
+      isHovered:true
+    })
     this.props.onClick(this.props.item);
+  }
+  onMouseLeave(){
+    this.setState({
+      isHovered:false
+    })
   }
   toggleEye(){
     this.setState({
@@ -80,7 +91,11 @@ class Pathway extends React.Component {
       borderLeftColor: fillerCollor
     }
     let borderStyleColor = {
-      borderColor: fillerCollor
+      borderColor: fillerCollor,
+    }
+    let borderStyleColorHover = {
+      borderColor: fillerCollor,
+      color: this.props.item.color,
     }
     return (
       <div className='pathway m-b-15'
@@ -88,9 +103,9 @@ class Pathway extends React.Component {
         <div className='pathway_wrapper_img' style={{cursor:'pointer'}}>
           <img src={!this.props.hidState ? EyeOn : EyeOff}  onClick={this.toggleEye} className="eye"></img>
         </div>
-        <div className='pathway_wrapper_content' onMouseOver={() => this.onMouseOver()} onClick={() => this.onClick()} >
+        <div className='pathway_wrapper_content' onMouseLeave={this.onMouseLeave}  onMouseOver={() => this.onMouseOver()} onClick={() => this.onClick()} >
           <div className='pathway_header'  >
-            <div className={headerClass} style={borderStyleColor}>{`Solution pathway ${this.props.item.name}`}</div>
+            <div className={headerClass} style={this.state.isHovered ? borderStyleColorHover : borderStyleColor}> {`Solution pathway ${this.props.item.name}`}</div>
             <div className={arrowClass} style={borderStyleColor} >
               <div className="arrow-down"></div>
             </div>
