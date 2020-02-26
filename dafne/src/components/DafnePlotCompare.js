@@ -4,6 +4,7 @@ import ReactResizeDetector from 'react-resize-detector';
 import cancelButton from "../img/icons/cancel.png";
 import pinButton from "../img/icons/pin.png";
 import PropTypes from 'prop-types';
+import Data from "../data/data.json";
 
 class DafnePlotCompare extends React.Component {
   constructor (props) {
@@ -380,7 +381,7 @@ class DafnePlotCompare extends React.Component {
       let point = {
         "domain": this.domain[i],
         "value": pathwayData[i],
-        "funDirection": this.props.data.indicators[i].funDirection
+        "funDirection": Data.indicators[i].funDirection
 
       }
       data.push(point);
