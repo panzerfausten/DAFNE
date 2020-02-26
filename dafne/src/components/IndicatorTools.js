@@ -15,13 +15,23 @@ class IndicatorTools extends React.Component {
       show_scales : false,
       show_best   : true,
       show_modal  : false,
+      sector      : 'All',
+      sectors     : []
     };
     this.handleChange    = this.handleChange.bind(this);
     this.handleCbScales  = this.handleCbScales.bind(this);
     this.handleCbValues  = this.handleCbValues.bind(this);
     this.handleOpenModal = this.handleOpenModal.bind(this);
-  }
+    this.onSectorChange  = this.onSectorChange.bind(this);
 
+  }
+  componentDidMount(){
+    let sectors = this.props.data.indicators.map( i => i.sector).filter((v,i,a) => a.indexOf(v) === i);
+    sectors = ["All"].concat(sectors);
+    this.setState({
+      sectors:sectors
+    })
+  }
   handleChange(checked) {
     this.setState({ checked });
     let mode = checked ? "absolute" : "normalized";
@@ -44,6 +54,19 @@ class IndicatorTools extends React.Component {
   handleOpenModal(value){
     this.setState({ show_modal : value})
   }
+  onSectorChange(e){
+    let sector = e.target.value;
+    this.setState({sector: sector});
+    this.selectedIndicators = this.props.filteredIndicators.slice();
+    let indicators = this.props.data.indicators.slice();
+    if(sector !== "All"){
+      indicators = indicators.filter(i => i.sector !== sector);
+    }else{
+      indicators = [];
+    }
+    this.props.onSelectIndicators(indicators);
+  }
+
   renderCommonIndicatorsCheckbox(){
     if(this.props.view === "create"){
       return (null);
@@ -82,8 +105,13 @@ class IndicatorTools extends React.Component {
               <div className="it_area_a">
                 <div className="it_row">
                   <label>Sector</label>
-                  <select className="custom-select blue-select">
-                   <option>All Sectors</option>
+                  <select className='custom-select blue-select' onChange={this.onSectorChange} value={this.state.sector}>
+                    {
+                       this.state.sectors.map(function(s,i) {
+                         return <option key={i}
+                           value={s}>{s}</option>;
+                       })
+                    }
                   </select>
                 </div>
                 <div className="it_row">

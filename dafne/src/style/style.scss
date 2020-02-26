@@ -236,7 +236,7 @@ input{
   flex-direction: row;
   min-height: 40px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-left: 1%;
   margin-right: 1%;
   flex:1;
@@ -632,4 +632,9 @@ Tag circle
   border-radius: 100%;
   background-color: $lightBlue;
   text-align: center;
+}
+.scrollable-select{
+  max-height: 400px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }

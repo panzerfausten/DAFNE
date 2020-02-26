@@ -15,11 +15,10 @@ class IndicatorFilterList extends React.Component {
   render(){
     const indicators = this.props.indicators;
     let mappedFilteredIndicators = this.props.filteredIndicators;
-    debugger;
     mappedFilteredIndicators = this.props.filteredIndicators.map(i => i.label);
 
     return (
-      <div>
+      <div className="scrollable-select">
         {indicators.map((item,index) => {
             let isSelected = false;
             if(!mappedFilteredIndicators.includes(item.label)){
