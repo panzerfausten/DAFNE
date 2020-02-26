@@ -229,26 +229,42 @@ class DafnePlotCompare extends React.Component {
     for (var i = 0; i < plotIndicators.length; i++) {
       let d = plotIndicators[i];
       this.drawAxis(this,this.svg,i,x(this.domain[i]),d);
-      this.svg.append("g")
-        .attr("transform", `translate(${x(this.domain[i]) + 6}, 20)`)
-        .call(
-          d3.axisLeft(y)
-          .tickFormat(function (d) {
-            if(option_showScales){
-              return d;
-            }else{
-              return "";
-            }
-          })
-        )
-        .selectAll("line")
-            .attr("x2","-12")
-            .attr("transform", `translate(6, 0)`)
-      // this.svg.append("circle")
-      //     .attr("cx",x(this.domain[i]))
-      //     .attr("cy",y(this.props.data[i]))
-      //     .attr("r",8)
-      //     .attr("transform", `translate(6, 0)`)
+      let funDirection = d.funDirection;
+      if(funDirection === "minimize" && this.props.mode === "absolute"){
+        let metadata = this.props.data.metadata;
+          this.svg.append("g")
+            .attr("transform", `translate(${x(this.domain[i]) + 6}, 20)`)
+            .call(
+              d3.axisLeft(y)
+              .tickFormat(function (d) {
+                if(option_showScales){
+                  let s = ( metadata.max - d).toFixed(0);
+                  return s;
+                }else{
+                  return "";
+                }
+              })
+            )
+            .selectAll("line")
+                .attr("x2","-12")
+                .attr("transform", `translate(6, 0)`)
+      }else{
+        this.svg.append("g")
+          .attr("transform", `translate(${x(this.domain[i]) + 6}, 20)`)
+          .call(
+            d3.axisLeft(y)
+            .tickFormat(function (d) {
+              if(option_showScales){
+                return d;
+              }else{
+                return "";
+              }
+            })
+          )
+          .selectAll("line")
+              .attr("x2","-12")
+              .attr("transform", `translate(6, 0)`)
+      }
     }
     let mappedHighlightedPathways = this.state.highlightedPathways.map(p => p.name);
 
@@ -278,10 +294,17 @@ class DafnePlotCompare extends React.Component {
       if(mappedHighlightedPathways.includes(lineData[i].name)){
         lineWidth = "4";
       }
-
+      let mode = this.props.mode;
+      let maxVal = this.props.data.metadata.max;
       var line = d3.line()
         .x(function(d){ return x(d.domain)})
-        .y(function(d){ return y(d.value)})
+        .y(function(d){
+          let value = d.value;
+          if(d.funDirection === "minimize" && mode === "absolute"){
+            value = maxVal - value;
+          }
+          return y(value)
+        })
         .defined(function (d) {
           return d.value !== null;
         });
@@ -356,7 +379,9 @@ class DafnePlotCompare extends React.Component {
     for (var i = 0; i < pathwayData.length; i++) {
       let point = {
         "domain": this.domain[i],
-        "value": pathwayData[i]
+        "value": pathwayData[i],
+        "funDirection": this.props.data.indicators[i].funDirection
+
       }
       data.push(point);
     }
