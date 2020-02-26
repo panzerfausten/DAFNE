@@ -87,15 +87,23 @@ class Pathway extends React.Component {
       'arrow-right': true,
       'triangle_red': this.state.isCollapseOpen,
     });
+    let currentBgColor = (this.state.isHovered || this.state.isCollapseOpen) ? this.props.item.color : "#bcbec0";
+    let currentBgDownColor = (this.state.isHovered || this.state.isCollapseOpen) ? "5px solid white" : "5px solid #1b75bc";
+
     let arrowRightSyleObj = {
-      borderLeftColor: fillerCollor
+      borderLeftColor: currentBgColor
+    }
+    let arrowDownStyleObj = {
+      borderTop:currentBgDownColor
     }
     let borderStyleColor = {
       borderColor: fillerCollor,
+      backgroundColor: currentBgColor
     }
     let borderStyleColorHover = {
       borderColor: fillerCollor,
-      color: this.props.item.color,
+      color:'white',
+      backgroundColor: this.props.item.color,
     }
     return (
       <div className='pathway m-b-15'
@@ -105,9 +113,9 @@ class Pathway extends React.Component {
         </div>
         <div className='pathway_wrapper_content' onMouseLeave={this.onMouseLeave}  onMouseOver={() => this.onMouseOver()} onClick={() => this.onClick()} >
           <div className='pathway_header'  >
-            <div className={headerClass} style={this.state.isHovered ? borderStyleColorHover : borderStyleColor}> {`Solution pathway ${this.props.item.name}`}</div>
+            <div className={headerClass} style={(this.state.isHovered || this.state.isCollapseOpen) ? borderStyleColorHover : borderStyleColor}> {`Solution pathway ${this.props.item.name}`}</div>
             <div className={arrowClass} style={borderStyleColor} >
-              <div className="arrow-down"></div>
+              <div className="arrow-down" style={arrowDownStyleObj}></div>
             </div>
             <div className={arrowRight} style={arrowRightSyleObj}></div>
           </div>
