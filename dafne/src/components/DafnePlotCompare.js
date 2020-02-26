@@ -393,20 +393,26 @@ class DafnePlotCompare extends React.Component {
   drawLabel(t,svg,i,x,data,labelContainerHeight){
     let nLines = data.label / 10;
     let lines = data.label.match(/.{1,11}/g);
-    svg.append("text")
-      .text(lines[0])
-      .attr("x",x)
-      .attr("text-anchor","middle")
-      .style("font-size", "12px")
-      .style("font-weight", "bold")
+    svg.append("a")
+      .attr("href",data.url)
+      .attr("target","_blank")
+      .append("text")
+        .text(lines[0])
+        .attr("x",x)
+        .attr("text-anchor","middle")
+        .style("font-size", "12px")
+        .style("font-weight", "bold")
       .attr("transform",
             `translate(0,-${labelContainerHeight-17})`);
-    svg.append("text")
-      .text(lines[1])
-      .attr("x",x)
-      .attr("text-anchor","middle")
-      .style("font-size", "12px")
-      .style("font-weight", "bold")
+            svg.append("a")
+              .attr("href",data.url)
+              .attr("target","_blank")
+              .append("text")
+              .text(lines[1])
+              .attr("x",x)
+              .attr("text-anchor","middle")
+              .style("font-size", "12px")
+              .style("font-weight", "bold")
       .attr("transform",
             `translate(0,-${labelContainerHeight-32})`);
   }

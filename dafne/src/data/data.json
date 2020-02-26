@@ -16,7 +16,7 @@
           "funDirection": "minimize",
           "max": "691.7132568",
           "min": "106.9614563",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
       },
       {
           "name": "i_WE_8_MeanMFlowDevFeb_TURK",
@@ -33,7 +33,7 @@
           "funDirection": "minimize",
           "max": "193.3171234",
           "min": "72.313797",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -51,7 +51,7 @@
           "funDirection": "minimize",
           "max": "66.69859314",
           "min": "11.76438904",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -69,7 +69,7 @@
           "funDirection": "minimize",
           "max": "97.53993988",
           "min": "10.06866455",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -87,7 +87,7 @@
           "funDirection": "minimize",
           "max": "429.3312073",
           "min": "229.0413513",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -105,7 +105,7 @@
           "funDirection": "minimize",
           "max": "432.1873779",
           "min": "163.1234741",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -123,7 +123,7 @@
           "funDirection": "minimize",
           "max": "409.2440491",
           "min": "124.1849976",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -141,7 +141,7 @@
           "funDirection": "minimize",
           "max": "696.9301758",
           "min": "269.7362061",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -159,7 +159,7 @@
           "funDirection": "minimize",
           "max": "806.4504395",
           "min": "148.892395",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -177,7 +177,7 @@
           "funDirection": "minimize",
           "max": "561.0550537",
           "min": "135.689209",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -195,7 +195,7 @@
           "funDirection": "minimize",
           "max": "233.505188",
           "min": "60.17572021",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -213,7 +213,7 @@
           "funDirection": "minimize",
           "max": "678.9073486",
           "min": "105.554718",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -231,7 +231,7 @@
           "funDirection": "minimize",
           "max": "5.572319031",
           "min": "4.250544071",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -249,7 +249,7 @@
           "funDirection": "minimize",
           "max": "28.20490456",
           "min": "2.021029472",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -267,7 +267,7 @@
           "funDirection": "minimize",
           "max": "11.3807745",
           "min": "0.826117039",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -285,7 +285,7 @@
           "funDirection": "minimize",
           "max": "17.06453133",
           "min": "10.97180939",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -303,7 +303,7 @@
           "funDirection": "minimize",
           "max": "21.71255112",
           "min": "14.81224823",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -321,7 +321,7 @@
           "funDirection": "minimize",
           "max": "9.598257065",
           "min": "5.726475716",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -339,7 +339,7 @@
           "funDirection": "minimize",
           "max": "8.96000576",
           "min": "0.069319725",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -357,7 +357,7 @@
           "funDirection": "minimize",
           "max": "20.79825401",
           "min": "3.061795235",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -375,7 +375,7 @@
           "funDirection": "minimize",
           "max": "32.87967682",
           "min": "4.205148697",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -393,7 +393,7 @@
           "funDirection": "minimize",
           "max": "8.900847435",
           "min": "3.867226601",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -411,7 +411,7 @@
           "funDirection": "minimize",
           "max": "13.94193172",
           "min": "4.389205933",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -429,7 +429,7 @@
           "funDirection": "minimize",
           "max": "10.17531967",
           "min": "1.02794838",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -447,7 +447,7 @@
           "funDirection": "minimize",
           "max": "0.9099617",
           "min": "0.021072865",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -465,7 +465,7 @@
           "funDirection": "minimize",
           "max": "22.32968712",
           "min": "4.379137039",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -483,7 +483,7 @@
           "funDirection": "minimize",
           "max": "0.766283512",
           "min": "0.19923377",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -501,7 +501,7 @@
           "funDirection": "minimize",
           "max": "22.05768013",
           "min": "2.606090546",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -519,7 +519,7 @@
           "funDirection": "minimize",
           "max": "61.77096558",
           "min": "21.57488251",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -537,7 +537,7 @@
           "funDirection": "minimize",
           "max": "61.86300659",
           "min": "21.49441528",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -555,7 +555,7 @@
           "funDirection": "minimize",
           "max": "62.26089478",
           "min": "21.17772675",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -573,7 +573,7 @@
           "funDirection": "minimize",
           "max": "66.43492126",
           "min": "18.84811401",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -591,7 +591,7 @@
           "funDirection": "minimize",
           "max": "90.43309021",
           "min": "1.909362793",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -609,7 +609,7 @@
           "funDirection": "minimize",
           "max": "7.642589092",
           "min": "6.741409302",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -627,7 +627,7 @@
           "funDirection": "minimize",
           "max": "7.64227438",
           "min": "6.744125843",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -645,7 +645,7 @@
           "funDirection": "minimize",
           "max": "7.713607311",
           "min": "6.825521469",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -663,7 +663,7 @@
           "funDirection": "minimize",
           "max": "8.13799572",
           "min": "6.96058321",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -681,7 +681,7 @@
           "funDirection": "minimize",
           "max": "9.488168716",
           "min": "8.194501877",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -699,7 +699,7 @@
           "funDirection": "minimize",
           "max": "37",
           "min": "1.5",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -717,7 +717,7 @@
           "funDirection": "minimize",
           "max": "24.86959839",
           "min": "0.60018158",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -735,7 +735,7 @@
           "funDirection": "minimize",
           "max": "805.6699219",
           "min": "106.7989502",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -753,7 +753,7 @@
           "funDirection": "minimize",
           "max": "798.3513184",
           "min": "101.5042725",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -771,7 +771,7 @@
           "funDirection": "minimize",
           "max": "774.3274536",
           "min": "87.80224609",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -789,7 +789,7 @@
           "funDirection": "minimize",
           "max": "638.0846558",
           "min": "31.97302246",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -807,7 +807,7 @@
           "funDirection": "minimize",
           "max": "477.5772095",
           "min": "201.7360229",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -825,7 +825,7 @@
           "funDirection": "minimize",
           "max": "14.78321743",
           "min": "6.577156067",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -843,7 +843,7 @@
           "funDirection": "minimize",
           "max": "14.83508015",
           "min": "6.567512512",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -861,7 +861,7 @@
           "funDirection": "minimize",
           "max": "15.2004528",
           "min": "6.769760132",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -879,7 +879,7 @@
           "funDirection": "minimize",
           "max": "17.51787567",
           "min": "8.773657799",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -897,7 +897,7 @@
           "funDirection": "minimize",
           "max": "9.53669548",
           "min": "7.364170074",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -915,7 +915,7 @@
           "funDirection": "minimize",
           "max": "18.58333397",
           "min": "2.75",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -933,7 +933,7 @@
           "funDirection": "minimize",
           "max": "32.43125153",
           "min": "6.694644928",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -951,7 +951,7 @@
           "funDirection": "minimize",
           "max": "9",
           "min": "5",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -969,7 +969,7 @@
           "funDirection": "minimize",
           "max": "7.514801025",
           "min": "6.302742481",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -987,7 +987,7 @@
           "funDirection": "minimize",
           "max": "102",
           "min": "1",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -1005,7 +1005,7 @@
           "funDirection": "minimize",
           "max": "38.34258652",
           "min": "13.42585373",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -1023,7 +1023,7 @@
           "funDirection": "minimize",
           "max": "10.73548794",
           "min": "5.989355087",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -1041,7 +1041,7 @@
           "funDirection": "minimize",
           "max": "38.56800079",
           "min": "2.440162659",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -1059,7 +1059,7 @@
           "funDirection": "minimize",
           "max": "4.136703014",
           "min": "2.2382617",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
 
       },
       {
@@ -1077,7 +1077,7 @@
           "funDirection": "minimize",
           "max": "47.37579346",
           "min": "10.15261841",
-          "color":"#92a5a7"
+          "color":"#1B75BC24"
       },
       {
           "name": "i_E_EnProdSum_G1",
@@ -1094,7 +1094,7 @@
           "funDirection": "maximize",
           "max": "409",
           "min": "317",
-          "color":"#e2d890"
+          "color":"#7AC9431B"
       },
       {
           "name": "i_E_EnProdSum_G2",
@@ -1109,7 +1109,7 @@
           "scenario": "ss1_rcp45",
           "url": "http://xake.elet.polimi.it:8081/drupal/omo-turkana/?q=indicators/ieenprodsum",
           "funDirection": "maximize",
-          "color":"#e2d890"
+          "color":"#7AC9431B"
       },
       {
           "name": "i_E_EnProdSum_G3",
@@ -1124,7 +1124,7 @@
           "scenario": "ss1_rcp45",
           "url": "http://xake.elet.polimi.it:8081/drupal/omo-turkana/?q=indicators/ieenprodsum",
           "funDirection": "maximize",
-          "color":"#e2d890"
+          "color":"#7AC9431B"
       },
       {
           "name": "i_E_EnProdSum_KOY",
@@ -1139,7 +1139,7 @@
           "scenario": "ss1_rcp45",
           "url": "http://xake.elet.polimi.it:8081/drupal/omo-turkana/?q=indicators/ieenprodsum",
           "funDirection": "maximize",
-          "color":"#e2d890"
+          "color":"#7AC9431B"
       },
       {
           "name": "i_F_IrrDefSum_IR1",
@@ -1154,7 +1154,7 @@
           "scenario": "ss1_rcp45",
           "url": "http://xake.elet.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrdefsum",
           "funDirection": "minimize",
-          "color":"#b8d1aa"
+          "color":"#FF4D1D22"
 
 
       },
@@ -1171,7 +1171,7 @@
           "scenario": "ss1_rcp45",
           "url": "http://xake.elet.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrdefsum",
           "funDirection": "minimize",
-          "color":"#b8d1aa"
+          "color":"#FF4D1D22"
       },
       {
           "name": "i_F_IrrDistPosDMean_REC",
@@ -1185,7 +1185,7 @@
           "scenario": "ss1_rcp45",
           "url": "http://xake.elet.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrdistposdmean",
           "funDirection": "minimize",
-          "color":"#b8d1aa"
+          "color":"#FF4D1D22"
       },
       {
           "name": "i_F_IrrDistNegDMean_REC",
@@ -1199,7 +1199,7 @@
           "scenario": "ss1_rcp45",
           "url": "http://xake.elet.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrdistnegdmean",
           "funDirection": "minimize",
-          "color":"#b8d1aa"
+          "color":"#FF4D1D22"
       },
       {
           "name": "i_W_QEnvDistPosMean_ODE",
@@ -1213,7 +1213,8 @@
           "scenario": "ss1_rcp45",
           "url": "http://xake.elet.polimi.it:8081/drupal/omo-turkana/?q=indicators/iwqenvdistposmean",
           "funDirection": "minimize",
-          "color":"#92a5a7"
+          "color":"#7AC94322"
+
       },
       {
           "name": "i_W_QEnvDistNegSum_ODE",
@@ -1227,7 +1228,7 @@
           "scenario": "ss1_rcp45",
           "url": "http://xake.elet.polimi.it:8081/drupal/omo-turkana/?q=indicators/iwqenvdistnegsum",
           "funDirection": "minimize",
-          "color":"#92a5a7"
+          "color":"#7AC94322"
       },
       {
           "name": "i_F_IrrFishProdSum_TUR",
@@ -1241,7 +1242,7 @@
           "scenario": "ss1_rcp45",
           "url": "http://xake.elet.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrfishprodsum",
           "funDirection": "maximize",
-          "color":"#b8d1aa"
+          "color":"#FF4D1D22"
       },
       {
           "name": "i_F_IrrFishDefSum_TUR",
@@ -1252,7 +1253,7 @@
           "country": "Kenya",
           "unit": "MT",
           "sector": "Food",
-          "color":"#b8d1aa",
+          "color":"#FF4D1D22",
           "scenario": "ss1_rcp45",
           "url": "http://xake.elet.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrfishdefsum",
           "funDirection": "minimize"
