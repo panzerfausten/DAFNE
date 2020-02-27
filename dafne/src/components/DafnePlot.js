@@ -4,6 +4,7 @@ import ReactResizeDetector from 'react-resize-detector';
 import cancelButton from "../img/icons/cancel.png";
 import pinButton from "../img/icons/pin.png";
 import PropTypes from 'prop-types';
+const millify = require('millify');
 
 class DafnePlot extends React.Component {
   constructor (props) {
@@ -87,72 +88,67 @@ class DafnePlot extends React.Component {
     //------------------------------------------------------------------------//
     //get DATA
     let lineData = this.getFilteredPathwaysData();
-    //create scales
+    //create scales-------------------------------------------------------------
     var x = d3.scalePoint()
               .domain(this.domain)
               .range([0,this.width]);
-    var y = null;
-    if(this.props.mode === "absolute"){
-      y = d3.scaleLinear()
-        .domain([this.props.data.metadata.max,this.props.data.metadata.min])
-        .range([0,this.height - this.margin.bottom - this.margin.top]);
-    }else{
-      y = d3.scaleLinear()
-        .domain([1,0])
-        .range([0,this.height - this.margin.bottom - this.margin.top]);
+
+    let scales = [];
+    for (var i = 0; i < plotIndicators.length; i++) {
+      let max = plotIndicators[i].max;
+      let min = plotIndicators[i].min;
+      let funDirection = plotIndicators[i].funDirection;
+      let scale = null;
+
+      if(this.props.mode === "absolute"){
+        if(funDirection === "minimize"){
+          scale = d3.scaleLinear()
+            .domain([min,max])
+            .range([0,this.height - this.margin.bottom - this.margin.top]);
+        }else{
+          scale = d3.scaleLinear()
+            .domain([max,min])
+            .range([0,this.height - this.margin.bottom - this.margin.top]);
+        }
+
+      }else{
+        scale = d3.scaleLinear()
+          .domain([1,0])
+          .range([0,this.height - this.margin.bottom - this.margin.top]);
+      }
+      scales.push(scale);
     }
 
     var xLeft = d3.scalePoint()
               .domain(this.domain)
               .range([-69,470]);
+    //--------------------------------------------------------------------------
+    function drawScale(_this,scale,indicator){
+      _this.svg.append("g")
+        .attr("transform", `translate(${x(_this.domain[i]) + 6}, 0)`)
+        .call(
+          d3.axisLeft(scale) //call the scale at position i
+          .tickFormat(function (d) {
+            if(option_showScales){
+              return millify.default(d);
+            }else{
+              return "";
+            }
+          })
+        )
+        .selectAll("line")
+            .attr("x2","-12")
+            .attr("transform", `translate(6, 0)`)
+    }
+    //--------------------------------------------------------------------------
     let option_showScales = this.props.showScales;
     for (var i = 0; i < plotIndicators.length; i++) {
       let d = plotIndicators[i];
       this.drawAxis(this,this.svg,i,x(this.domain[i]),d);
       let funDirection = d.funDirection;
-
-      if(funDirection === "minimize" && this.props.mode === "absolute"){
-        let metadata = this.props.data.metadata;
-        this.svg.append("g")
-          .attr("transform", `translate(${x(this.domain[i]) + 6}, 0)`)
-          .call(
-            d3.axisLeft(y)
-            .tickFormat(function (d) {
-              if(option_showScales){
-                let s = ( metadata.max - d).toFixed(0);
-                return s;
-              }else{
-                return "";
-              }
-            })
-          )
-          .selectAll("line")
-              .attr("x2","-12")
-              .attr("transform", `translate(6, 0)`)
-      }else{
-        this.svg.append("g")
-          .attr("transform", `translate(${x(this.domain[i]) + 6}, 0)rotate(0)`)
-          .call(
-            d3.axisLeft(y)
-            .tickFormat(function (d) {
-              if(option_showScales){
-                return d;
-              }else{
-                return "";
-              }
-            })
-          )
-          .selectAll("line")
-              .attr("x2","-12")
-              .attr("transform", `translate(6, 0)`)
-      }
-
-      // this.svg.append("circle")
-      //     .attr("cx",x(this.domain[i]))
-      //     .attr("cy",y(this.state.data[i]))
-      //     .attr("r",8)
-      //     .attr("transform", `translate(6, 0)`)
+      drawScale(this,scales[i],plotIndicators[i]);
     }
+
     let mappedHighlightedPathways = this.state.highlightedPathways.map(p => p.name);
 
     for (var i = 0; i < lineData.length; i++) {
@@ -186,11 +182,7 @@ class DafnePlot extends React.Component {
       var line = d3.line()
         .x(function(d){ return x(d.domain)})
         .y(function(d){
-          let value = d.value;
-          if(d.funDirection === "minimize" && mode === "absolute"){
-            value = maxVal - value;
-          }
-          return y(value)
+          return scales[d.i](d.value)
         })
         .defined(function (d) {
           return d.value !== null;
@@ -206,19 +198,6 @@ class DafnePlot extends React.Component {
         path.style("stroke-dasharray", ("3, 3"))
       }
 
-
-      // var leftData = this.convertPathwayDataToDomain([0.6]);
-      // leftData.push(data[0]);
-      // leftData[1].domain = "B";
-      // var line = d3.line()
-      //   .x(function(d){ return xLeft(d.domain)})
-      //   .y(function(d){ return y(d.value)});
-      //   this.svg.append("path")
-      //     .attr("d", line(leftData))
-      //     .attr("stroke", lineData[i].color)
-      //     .attr("leftLine", "true")
-      //     .attr("stroke-width", lineWidth)
-      //     .attr("fill", "none")
     }
   }
   getFilteredPathwaysData(){
@@ -268,7 +247,8 @@ class DafnePlot extends React.Component {
       let point = {
         "domain": this.domain[i],
         "value": pathwayData[i],
-        "funDirection": this.props.data.indicators[i].funDirection
+        "funDirection": this.props.data.indicators[i].funDirection,
+        "i":i
       }
       data.push(point);
     }
@@ -290,8 +270,8 @@ class DafnePlot extends React.Component {
 
   }
   drawLabel(t,svg,i,x,data,labelContainerHeight){
-    let nLines = data.label / 10;
-    let lines = data.label.match(/.{1,11}/g);
+    let nLines = data.very_short / 10;
+    let lines = data.very_short.match(/.{1,11}/g);
     svg.append("a")
       .attr("href",data.url)
       .attr("target","_blank")
