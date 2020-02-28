@@ -16,7 +16,8 @@ class IndicatorModal extends React.Component {
     this.onClearClicked       = this.onClearClicked.bind(this);
     this.state = {
       sector:'All',
-      sectors:[]
+      sectors:[],
+      indicatorsToShow:[]
     }
 
   }
@@ -24,7 +25,8 @@ class IndicatorModal extends React.Component {
     let sectors = Data.indicators.map( i => i.sector).filter((v,i,a) => a.indexOf(v) === i);
     sectors = ["All"].concat(sectors);
     this.setState({
-      sectors:sectors
+      sectors:sectors,
+      indicatorsToShow:this.props.data.indicators
     })
   }
   handleOpenModal(value){
@@ -47,27 +49,21 @@ class IndicatorModal extends React.Component {
   }
   onOkClick(){
     this.handleOpenModal(false);
-    // let fIndicators = [];
-    // let indicators = this.props.data.indicators;
-    // let selectedIndicatorsLabels = this.selectedIndicators.map(i => i.label);
-    // for (var i = 0; i < indicators.length; i++) {
-    //   if(!selectedIndicatorsLabels.includes(indicators[i].label)){
-    //     fIndicators.push(indicators[i]);
-    //   }
-    // }
-    // this.props.onSelectIndicators(fIndicators);
   }
   onSectorChange(e){
     let sector = e.target.value;
     this.setState({sector: sector});
-    this.selectedIndicators = this.props.filteredIndicators.slice();
+    // this.selectedIndicators = this.props.filteredIndicators.slice();
     let indicators = Data.indicators.slice();
     if(sector !== "All"){
       indicators = indicators.filter(i => i.sector !== sector);
     }else{
-      indicators = [];
+      indicators = Data.indicators.slice();
     }
-    this.props.onSelectIndicators(indicators);
+    this.setState({
+      indicatorsToShow:indicators
+    })
+    this.props.onSelectIndicators(Data.indicators.slice());
 
 
     // this.props.onFilterSelected(e.target.value);
@@ -109,7 +105,7 @@ class IndicatorModal extends React.Component {
             <div className='custom_bottom_content p-10'>
               <div className='custom_bottom_content'>
                 <IndicatorFilterList
-                  indicators={this.props.data.indicators}
+                  indicators={this.state.indicatorsToShow}
                   onClick={(indicator,selected) => this.onIndicatorSelected(indicator,selected)}
                   filteredIndicators={this.props.filteredIndicators}
                   />
