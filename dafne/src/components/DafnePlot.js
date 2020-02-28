@@ -112,8 +112,9 @@ class DafnePlot extends React.Component {
         }
 
       }else{
+        let domain = funDirection === "minimize" ?  [0,1]: [1,0];
         scale = d3.scaleLinear()
-          .domain([1,0])
+          .domain(domain)
           .range([0,this.height - this.margin.bottom - this.margin.top]);
       }
       scales.push(scale);
