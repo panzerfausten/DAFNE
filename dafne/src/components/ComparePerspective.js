@@ -4,7 +4,7 @@ import Switch from "react-switch";
 import Checkbox  from 'rc-checkbox';
 import GraphA from "../img/icons/graph_a.png";
 import GraphC from "../img/icons/graph_c.png";
-import Info from "../img/icons/info.png";
+// import Info from "../img/icons/info.png";
 import Data from "../data/data.json";
 import CompareData from "../data/compareData.json";
 
@@ -19,6 +19,8 @@ import DafneApi from "../api/DafneApi"
 import PerspectivePicker from "../components/PerspectivePicker";
 import FavouritesPlotModal from "../components/FavouritesPlotModal";
 import CommentsModal from "../components/CommentsModal";
+import HelpModal from "../components/HelpModal";
+
 let _ = require('underscore');
 
 class ComparePerspective extends React.Component {
@@ -594,8 +596,9 @@ class ComparePerspective extends React.Component {
     return (
         <div className="flex">
           <div className="filters_area">
-            <div className="filters_left_area">
-               <div className="title m-b-5">Edit a shared perspective:</div>
+            <div className="filters_left_area" style={{flexDirection:"row",alignItems: "center"}}>
+               <HelpModal type='compare_perspective' />
+               <div className="title p-l-15">Edit a shared perspective:</div>
             </div>
             <div className="filters_right_area" >
                <div className="filters_right_area_content justify-evenly">
@@ -634,7 +637,7 @@ class ComparePerspective extends React.Component {
                         Show favourite pathways
                       </label>
                       <div><img src={GraphA} style={{height:25}}></img></div>
-                      <div><img src={Info} style={{height:25}}></img></div>
+                      <HelpModal type='pathway_tools' />
 
                     </div>
                     <div className="filter_row">
