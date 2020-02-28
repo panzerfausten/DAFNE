@@ -41,6 +41,11 @@ class DafnePlotCompare extends React.Component {
       filteredIndicators: this.props.filteredIndicators
     });
     this.data = this.props.data;
+    d3.selection.prototype.moveToFront = function() {
+      return this.each(function(){
+        this.parentNode.appendChild(this);
+      });
+    };
   }
   generateDomain(){
     return new Array(this.props.data.indicators.length + 1).fill( 1 ).map( ( _, i ) => String.fromCharCode( 65 + i ) );
@@ -141,7 +146,7 @@ class DafnePlotCompare extends React.Component {
     //--------------------------------------------------------------------------
     function drawScale(_this,scale,indicator){
       _this.svg.append("g")
-        .attr("transform", `translate(${x(_this.domain[i]) + 26}, 20)`)
+        .attr("transform", `translate(${x(_this.domain[i]) + 20}, 20)`)
         .call(
           d3.axisLeft(scale) //call the scale at position i
           .tickFormat(function (d) {
@@ -154,7 +159,7 @@ class DafnePlotCompare extends React.Component {
         )
         .selectAll("line")
             .attr("x2","-12")
-            .attr("transform", `translate(6, 0)`)
+            .attr("transform", `translate(0, 0)`)
     }
     //--------------------------------------------------------------------------
     let option_showScales = this.props.showScales;
@@ -312,7 +317,7 @@ class DafnePlotCompare extends React.Component {
           .attr("stroke", lineData[i].color)
           .attr("stroke-width", lineWidth)
           .attr("fill", "none")
-          .attr("transform", `translate(7, 21)`);
+          .attr("transform", `translate(0, 21)`);
         if(this.props.favouritedPathways.includes(i)){
           path.style("stroke-dasharray", ("3, 3"))
         }
@@ -410,6 +415,13 @@ class DafnePlotCompare extends React.Component {
     svg.append("a")
       .attr("href",data.url)
       .attr("target","_blank")
+      .on("mouseover", function () {
+        d3.select(`#text_tooltip_${i}`).style('visibility','visible')
+        d3.select(`#text_tooltip_${i}`).moveToFront();
+      })
+      .on("mouseout", function () {
+        d3.selectAll(`.dtooltip`).style('visibility','hidden');
+      })
       .append("text")
         .text(firstLine)
         .attr("x",x+20)
@@ -417,18 +429,26 @@ class DafnePlotCompare extends React.Component {
         .style("font-size", "12px")
         .style("font-weight", "bold")
         .attr("transform",
-              `translate(0,-${labelContainerHeight-17})`);
-              svg.append("a")
-                .attr("href",data.url)
-                .attr("target","_blank")
-                .append("text")
-                .text(secondLine)
-                .attr("x",x+20)
-                .attr("text-anchor","middle")
-                .style("font-size", "12px")
-                .style("font-weight", "bold")
+              `translate(-5,-${labelContainerHeight-15})`);
+    svg.append("a")
+      .attr("href",data.url)
+      .attr("target","_blank")
+      .append("text")
+      .text(secondLine)
+      .attr("x",x+20)
+      .attr("text-anchor","middle")
+      .style("font-size", "12px")
+      .style("font-weight", "bold")
+      .on("mouseover", function () {
+        d3.select(`#text_tooltip_${i}`).style('visibility','visible')
+        d3.select(`#text_tooltip_${i}`).moveToFront();
+      })
+      .on("mouseout", function () {
+        d3.selectAll(`.dtooltip`).style('visibility','hidden');
+      })
       .attr("transform",
-            `translate(0,-${labelContainerHeight-32})`);
+            `translate(-5,-${labelContainerHeight-30})`);
+
   }
   drawAxis(t,svg,i,x,data){
     let width = 110;
@@ -464,7 +484,31 @@ class DafnePlotCompare extends React.Component {
           .attr("text-anchor","middle")
           .style("font-size", "12px")
           .attr("transform",
-                `translate(20,-18)`);
+                `translate(15,-18)`);
+    let tooltip_g = svg.append("g")
+      .attr('visibility','hidden')
+      .attr("x",x-20)
+      .attr("transform",
+            `translate(0,0)`)
+      .attr("id",`text_tooltip_${i}`)
+      .attr("class","dtooltip")
+    let tooltip_rect = tooltip_g.append("rect")
+      .attr("fill","black")
+      .attr("width",1)
+      .attr("height",20)
+      .attr("x",x-20)
+
+
+    let tooltip_text = tooltip_g.append("text")
+      .text(data.long_description)
+      .attr("x",x-20)
+      .attr("fill","white")
+      .attr("text-anchor","middle")
+      .style("font-size", "14px")
+
+    let text_width = tooltip_text.node().getComputedTextLength();
+    tooltip_rect.attr("width",text_width + 10)
+    tooltip_rect.attr("transform",`translate(-${(text_width / 2) + 5},-12)`)
 
     this.drawLabel(t,svg,i,x,data,labelContainerHeight);
 

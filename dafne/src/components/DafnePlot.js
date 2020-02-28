@@ -5,7 +5,6 @@ import cancelButton from "../img/icons/cancel.png";
 import pinButton from "../img/icons/pin.png";
 import PropTypes from 'prop-types';
 const millify = require('millify');
-
 class DafnePlot extends React.Component {
   constructor (props) {
     super(props);
@@ -39,6 +38,11 @@ class DafnePlot extends React.Component {
       filteredIndicators: this.props.filteredIndicators
     });
     this.data = this.props.data;
+    d3.selection.prototype.moveToFront = function() {
+      return this.each(function(){
+        this.parentNode.appendChild(this);
+      });
+    };
   }
   generateDomain(){
     return new Array(this.props.data.indicators.length + 1).fill( 1 ).map( ( _, i ) => String.fromCharCode( 65 + i ) );
@@ -282,10 +286,16 @@ class DafnePlot extends React.Component {
     //take the value of x
     let firstLine = lines.slice(0,_x).join(" ");
     let secondLine = lines.slice(_x).join(" ");
-
     svg.append("a")
       .attr("href",data.url)
       .attr("target","_blank")
+      .on("mouseover", function () {
+        d3.select(`#text_tooltip_${i}`).style('visibility','visible')
+        d3.select(`#text_tooltip_${i}`).moveToFront();
+      })
+      .on("mouseout", function () {
+        d3.select(`#text_tooltip_${i}`).style('visibility','hidden');
+      })
       .append("text")
         .text(firstLine)
         .attr("x",x+20)
@@ -303,6 +313,13 @@ class DafnePlot extends React.Component {
       .attr("text-anchor","middle")
       .style("font-size", "12px")
       .style("font-weight", "bold")
+      .on("mouseover", function (d) {
+        d3.select(`#text_tooltip_${i}`).style('visibility','visible')
+
+      })
+      .on("mouseout", function () {
+        d3.select(`#text_tooltip_${i}`).style('visibility','hidden');
+      })
       .attr("transform",
             `translate(0,-${labelContainerHeight-15})`);
   }
@@ -314,7 +331,7 @@ class DafnePlot extends React.Component {
     svg.append('rect')
        .attr("width",width)
        .attr("height",labelContainerHeight )
-        .attr("x",x - 40)
+       .attr("x",x - 40)
        .attr("fill",data.color)
        .attr("transform",
              `translate(0,${this.margin.top * - 1})`);
@@ -333,6 +350,30 @@ class DafnePlot extends React.Component {
       .style("font-size", "12px")
       .attr("transform",
             `translate(20,-18)`);
+    let tooltip_g = svg.append("g")
+      .style('visibility','hidden')
+      .attr("x",x-20)
+      .attr("transform",
+            `translate(0,0)`)
+      .attr("id",`text_tooltip_${i}`);
+    let tooltip_rect = tooltip_g.append("rect")
+      .attr("fill","black")
+      .attr("width",1)
+      .attr("height",20)
+      .attr("x",x-20)
+
+
+    let tooltip_text = tooltip_g.append("text")
+      .text(data.long_description)
+      .attr("x",x-20)
+      .attr("fill","white")
+      .attr("text-anchor","middle")
+      .style("font-size", "14px")
+
+    let text_width = tooltip_text.node().getComputedTextLength();
+    tooltip_rect.attr("width",text_width + 10)
+    tooltip_rect.attr("transform",`translate(-${(text_width / 2) + 5},-12)`)
+
 
     this.drawLabel(t,svg,i,x,data,labelContainerHeight);
     // add icons
@@ -374,7 +415,6 @@ class DafnePlot extends React.Component {
         style={{maxHeight: "500px",overflowY:"hidden",overflowX:"auto",marginLeft:"0px"}}
         ref={ref => this.dafnePlot = ref}>
         <ReactResizeDetector  handleWidth handleHeight onResize={this.onResize} />
-
       </div>
     )
   }
