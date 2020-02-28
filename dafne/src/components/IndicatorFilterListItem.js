@@ -23,7 +23,7 @@ class IndicatorFilterListItem extends React.Component {
 
     return (
       <div className={indicatorClass} onClick={() => this.onClick(indicator)}>
-        <div>{indicator.label}</div>
+        <div>{indicator.short_description}</div>
       </div>
     );
   }
