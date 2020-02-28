@@ -126,7 +126,7 @@ class Pathway extends React.Component {
           <Collapse in={isCollapseOpen}>
             <div id="collapse_div">
               <div className="collapse_div m-t-10 m-r-10 m-b-10">
-                <div className='wrapper_description p-10' style={{fontSize:11}}>{this.props.item.description}</div>
+                <div className='wrapper_description p-10' style={{fontSize:12}}>{this.props.item.description}</div>
                 <div className='wrapper_row p-10'>
                   <Button className='btn btn_modal' onClick={(e) => this.openLink(e)} style={{width:200}}>Details in Geoportal</Button>
                   <div className='btn_fav' onClick={this.toggleFavorite}>

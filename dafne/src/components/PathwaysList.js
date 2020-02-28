@@ -26,7 +26,7 @@ class PathwaysList extends React.Component {
   render(){
     const pathways = this.state.pathways;
     return (
-        <div style={{maxHeight:300,overflow:"auto",paddingLeft:"1%",paddingRight:"1%"}}>
+        <div style={{maxHeight:400,overflow:"auto",paddingLeft:"1%",paddingRight:"1%"}}>
         {
           pathways.map((item,index) => (
             <Pathway item={item} key={index} index={index}
