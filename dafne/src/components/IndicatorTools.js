@@ -97,7 +97,7 @@ class IndicatorTools extends React.Component {
           </div>
           <div className="filter_content">
             <div className="it_area">
-              <div className="it_area_b">
+              <div className="it_area_b" style={{textAlign: "center"}}>
                 <div className="circular_button m-b-10" onClick={() => this.handleOpenModal(true)}>+</div>
                 Select Indicators
               </div>
