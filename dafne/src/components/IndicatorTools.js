@@ -99,7 +99,7 @@ class IndicatorTools extends React.Component {
             <div className="it_area">
               <div className="it_area_b">
                 <div className="circular_button m-b-10" onClick={() => this.handleOpenModal(true)}>+</div>
-                Add indicator
+                Select Indicators
               </div>
               <div className='it_area_divider'>
               </div>

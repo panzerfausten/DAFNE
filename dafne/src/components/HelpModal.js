@@ -86,9 +86,9 @@ class HelpModal extends React.Component {
         <p className='wrapper_description'>
         <div className="it_area_b">
            <div className="circular_button m-b-10" style={{paddingLeft:1,paddingBottom:1}}onClick={() => {}}>+</div>
-           Add indicator
+           Select Indicators
          </div>
-         When you click on “Add indicators”, a new popup screen appears showing the available indicators. You can pre-filter them
+         When you click on “Select Indicators”, a new popup screen appears showing the available indicators. You can pre-filter them
          by region and by sector. Click on the indicators to select or deselect
          them and then once you are satisfied with your selection, click “OK”.
          The section below then shows the impact of pathways (on the left) on

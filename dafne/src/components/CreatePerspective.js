@@ -279,7 +279,7 @@ class CreatePerspective extends React.Component {
           <div className="filters_area">
             <div className="filters_right_area" style={{flexDirection:"row",alignItems: "center"}}>
                <HelpModal type='create_perspective' />
-               <div className="title p-l-15"> Select Indicators in the indicator tool <span className="p-l-15">OR edit a saved perspective</span></div>
+               <div className="title p-l-15"> To start, please select the indicators in the indicator tool or edit a saved perspective</div>
             </div>
             <div className="filters_left_area">
                <select className='custom-select blue-select' onChange={this.selectPerspective} value={this.selectedPerspectiveIndex}>
