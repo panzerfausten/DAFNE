@@ -26,7 +26,7 @@ class Pathway extends React.Component {
     this.toggleFavorite    = this.toggleFavorite.bind(this);
     this.onCommentsClicked = this.onCommentsClicked.bind(this);
     this.onMouseLeave      = this.onMouseLeave.bind(this);
-
+    this.openLink          = this.openLink.bind(this);
   }
 
   setOpen(value){
@@ -64,6 +64,10 @@ class Pathway extends React.Component {
     item["index"] = this.props.index;
     this.props.onCommentsClicked(item);
 
+  }
+  openLink(e){
+    e.stopPropagation();
+    window.open(this.props.item.url, '_blank');
   }
   render(){
     const isCollapseOpen = this.state.isCollapseOpen;
@@ -124,7 +128,7 @@ class Pathway extends React.Component {
               <div className="collapse_div m-t-10 m-r-10 m-b-10">
                 <div className='wrapper_description p-10' >{this.props.item.description}</div>
                 <div className='wrapper_row p-10'>
-                  <Button className='btn btn_modal' onClick={(e) => {e.stopPropagation()}} style={{width:200}}>Details in Geoportal</Button>
+                  <Button className='btn btn_modal' onClick={(e) => this.openLink(e)} style={{width:200}}>Details in Geoportal</Button>
                   <div className='btn_fav' onClick={this.toggleFavorite}>
                     <img src={this.props.favState ? FavOn : FavOff} className='fav_icon'></img>
                     Mark as favourite

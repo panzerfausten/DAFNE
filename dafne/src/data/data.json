@@ -1372,6 +1372,7 @@
   "pathways": [
     {
       "name": "P3.89",
+      "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=pathway/p389",
       "data": [
         0,
         0,
@@ -1521,10 +1522,11 @@
         6628378
       ],
       "color": "#227b71",
-      "description": ""
+      "description": "Structural configuration related to this pathway encompasses the realization of Koysha reservoir and power plant and the full realization of both Kuraz Irrigation Scheme and Private Commercial Agricoltural schemes in the lower Omo. This specific pathway has been selected with the following filtering sequence during the screening exercise in NSL 2019: Fish."
     },
     {
       "name": "P3.330",
+      "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=pathway/p3330",
       "color": "#92d051",
       "data": [
         0.429712236,
@@ -1674,11 +1676,12 @@
         1102108,
         97549
       ],
-      "description": ""
+      "description": "Structural configuration related to this pathway encompasses the realization of Koysha reservoir and power plant and the full realization of both Kuraz Irrigation Scheme and Private Commercial Agricoltural schemes in the lower Omo. This specific pathway has been selected with the following filtering sequence during the screening exercise in NSL 2019: Food, Fish, Energy"
     },
     {
       "name": "P3.394",
       "color": "#7030a0",
+      "url":"http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=pathway/p3394",
       "data": [
         0.00138624,
         0.003082216,
@@ -1827,10 +1830,11 @@
         1102732,
         969237
       ],
-      "description": ""
+      "description": "Structural configuration related to this pathway encompasses the realization of Koysha reservoir and power plant and the full realization of both Kuraz Irrigation Scheme and Private Commercial Agricoltural schemes in the lower Omo. This specific pathway has been selected with the following filtering sequence during the screening exercise in NSL 2019: Fish, Food"
     },
     {
       "name": "P3.428",
+      "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=pathway/p3428",
       "color": "#fdc100",
       "data": [
         1,
@@ -1980,10 +1984,11 @@
         1011531,
         1881242
       ],
-      "description": ""
+      "description": "Structural configuration related to this pathway encompasses the realization of Koysha reservoir and power plant and the full realization of both Kuraz Irrigation Scheme and Private Commercial Agricoltural schemes in the lower Omo. This specific pathway has been selected with the following filtering sequence during the screening exercise in NSL 2019: Irrigation."
     },
     {
       "name": "P3.470",
+      "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=pathway/p3470",
       "color": "#b00000",
       "data": [
         0.015229568,
@@ -2133,10 +2138,11 @@
         974445,
         2252102
       ],
-      "description": ""
+      "description": "Structural configuration related to this pathway encompasses the realization of Koysha reservoir and power plant and the full realization of both Kuraz Irrigation Scheme and Private Commercial Agricoltural schemes in the lower Omo. This specific pathway has been selected with the following filtering sequence during the screening exercise in NSL 2019: Food, Energy"
     },
     {
       "name": "P3.607",
+      "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=pathway/p3-607",
       "color": "#00d2d2",
       "data": [
         0.001978382,
@@ -2286,7 +2292,7 @@
         1077859,
         1217961
       ],
-      "description": ""
+      "description": "Structural configuration related to this pathway encompasses the realization of Koysha reservoir and power plant and the full realization of both Kuraz Irrigation Scheme and Private Commercial Agricoltural schemes in the lower Omo."
     }
   ],
   "metadata": {
