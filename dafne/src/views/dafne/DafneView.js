@@ -10,6 +10,7 @@ import DafneLogo from "../../img/dafne_logo.png";
 import CreatePerspective from '../../components/CreatePerspective';
 import ComparePerspective from '../../components/ComparePerspective';
 import CommentsModal from '../../components/CommentsModal';
+import HelpModal from "../../components/HelpModal";
 
 
 class DafneView extends React.Component {
@@ -88,7 +89,9 @@ class DafneView extends React.Component {
                 <Nav.Link  onClick={() => this.changeIndex(1)} className={this.state.selectedIndex === 1 ? 'navbar-selected' : null}>Compare perspectives</Nav.Link>
               </Nav>
 
-              <NavDropdown alignRight className="circle_menu_btn" title={this.state.initials} id="basic-nav-dropdown">
+              <HelpModal type='header' />
+
+              <NavDropdown alignRight className="circle_menu_btn m-l-10" title={this.state.initials} id="basic-nav-dropdown">
                 <NavDropdown.Item onClick={() => this.logout()}>Log out</NavDropdown.Item>
               </NavDropdown>
 

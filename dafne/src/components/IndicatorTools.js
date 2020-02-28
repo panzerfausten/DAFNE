@@ -6,6 +6,7 @@ import Checkbox  from 'rc-checkbox';
 import PropTypes from 'prop-types';
 
 import IndicatorModal from '../components/IndicatorModal';
+import HelpModal from "../components/HelpModal";
 
 class IndicatorTools extends React.Component {
   constructor() {
@@ -124,6 +125,9 @@ class IndicatorTools extends React.Component {
               <div className='it_area_divider'></div>
               <div className="it_area_c">
                 <div className="it_row" style={{flexDirection:"column",alignItems: "baseline"}}>
+                  <HelpModal type='indicator_tools' />
+                </div>
+                <div className="it_row" style={{flexDirection:"column",alignItems: "baseline"}}>
                   <label className="it_label" >
                     <Checkbox
                       defaultChecked
@@ -132,7 +136,6 @@ class IndicatorTools extends React.Component {
                     />
                     &nbsp;Show scales
                   </label>
-
                 </div>
                 <div className="it_row" style={{flexDirection:"column",alignItems: "baseline"}}>
                   {this.renderCommonIndicatorsCheckbox()}

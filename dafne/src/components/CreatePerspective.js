@@ -15,6 +15,7 @@ import SavePerspectiveModal from '../components/SavePerspectiveModal';
 import DafneApi from "../api/DafneApi"
 import CommentsModal from "../components/CommentsModal";
 import FavouritesPlotModal from "../components/FavouritesPlotModal";
+import HelpModal from "../components/HelpModal";
 
 let _ = require('underscore');
 
@@ -276,8 +277,9 @@ class CreatePerspective extends React.Component {
     return (
         <div className="flex">
           <div className="filters_area">
-            <div className="filters_right_area">
-               <div className="title m-b-5">Select Indicators in the indicator tool <span className="p-l-15">OR edit a saved perspective</span></div>
+            <div className="filters_right_area" style={{flexDirection:"row",alignItems: "center"}}>
+               <HelpModal type='create_perspective' />
+               <div className="title p-l-15"> Select Indicators in the indicator tool <span className="p-l-15">OR edit a saved perspective</span></div>
             </div>
             <div className="filters_left_area">
                <select className='custom-select blue-select' onChange={this.selectPerspective} value={this.selectedPerspectiveIndex}>
@@ -318,7 +320,7 @@ class CreatePerspective extends React.Component {
 
 
                       <div><img src={GraphA} style={{height:25}}></img></div>
-                      <div><img src={Info} style={{height:25}}></img></div>
+                      <HelpModal type='pathway_tools' />
 
                     </div>
                     <div className="filter_row">
