@@ -118,14 +118,10 @@ class DafnePlot extends React.Component {
       }
       scales.push(scale);
     }
-
-    var xLeft = d3.scalePoint()
-              .domain(this.domain)
-              .range([-69,470]);
     //--------------------------------------------------------------------------
     function drawScale(_this,scale,indicator){
       _this.svg.append("g")
-        .attr("transform", `translate(${x(_this.domain[i]) + 6}, 0)`)
+        .attr("transform", `translate(${x(_this.domain[i]) + 26}, 0)`)
         .call(
           d3.axisLeft(scale) //call the scale at position i
           .tickFormat(function (d) {
@@ -180,7 +176,7 @@ class DafnePlot extends React.Component {
       let mode = this.props.mode;
       let maxVal = this.props.data.metadata.max;
       var line = d3.line()
-        .x(function(d){ return x(d.domain)})
+        .x(function(d){ return x(d.domain)+20})
         .y(function(d){
           return scales[d.i](d.value)
         })
@@ -271,13 +267,27 @@ class DafnePlot extends React.Component {
   }
   drawLabel(t,svg,i,x,data,labelContainerHeight){
     let nLines = data.very_short / 10;
-    let lines = data.very_short.match(/.{1,11}/g);
+    let lines = data.very_short.split(" ");
+    let maxlineLen = 15;
+    let currentLen = 0;
+    for(var _x = 0; _x < lines.length ; _x++){
+      if(currentLen + lines[_x].length <= maxlineLen){
+        currentLen += lines[_x].length;
+      }else{
+        //break it here
+        break;
+      }
+    }
+    //take the value of x
+    let firstLine = lines.slice(0,_x).join(" ");
+    let secondLine = lines.slice(_x).join(" ");
+
     svg.append("a")
       .attr("href",data.url)
       .attr("target","_blank")
       .append("text")
-        .text(lines[0])
-        .attr("x",x)
+        .text(firstLine)
+        .attr("x",x+20)
         .attr("text-anchor","middle")
         .style("font-size", "12px")
         .style("font-weight", "bold")
@@ -287,8 +297,8 @@ class DafnePlot extends React.Component {
       .attr("href",data.url)
       .attr("target","_blank")
       .append("text")
-      .text(lines[1])
-      .attr("x",x)
+      .text(secondLine)
+      .attr("x",x+20)
       .attr("text-anchor","middle")
       .style("font-size", "12px")
       .style("font-weight", "bold")
@@ -296,7 +306,7 @@ class DafnePlot extends React.Component {
             `translate(0,-${labelContainerHeight-15})`);
   }
   drawAxis(t,svg,i,x,data){
-    let width = 82;
+    let width = 120;
     let topOffset = -30;
     let height = t.svgH - this.margin.top - this.margin.bottom;
     let labelContainerHeight = this.margin.top +  (topOffset / 2);
@@ -321,7 +331,7 @@ class DafnePlot extends React.Component {
       .attr("text-anchor","middle")
       .style("font-size", "12px")
       .attr("transform",
-            `translate(0,-18)`);
+            `translate(20,-18)`);
 
     this.drawLabel(t,svg,i,x,data,labelContainerHeight);
     // add icons
@@ -331,7 +341,7 @@ class DafnePlot extends React.Component {
        .attr("height",20)
        .attr("xlink:href", cancelButton)
        .attr("transform",
-             `translate(15,${height - (labelContainerHeight * 2) + 25})`)
+             `translate(55,${height - (labelContainerHeight * 2) + 25})`)
        .attr("class","svgButton")
        .datum(data)
        .on("click", function(d) {

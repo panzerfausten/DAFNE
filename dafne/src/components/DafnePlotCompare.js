@@ -84,7 +84,7 @@ class DafnePlotCompare extends React.Component {
     }
     //re-set the size
     // this.width  = this.svgW - this.margin.right - this.margin.left;
-    let indicatorWidth = 100;
+    let indicatorWidth = 120;
     this.width  = (this.props.data.indicators.length * indicatorWidth ) + 20;
     this.height = this.svgH - this.margin.bottom - this.margin.top;
     if(this.width < 600){
@@ -140,7 +140,7 @@ class DafnePlotCompare extends React.Component {
     //--------------------------------------------------------------------------
     function drawScale(_this,scale,indicator){
       _this.svg.append("g")
-        .attr("transform", `translate(${x(_this.domain[i]) + 6}, 20)`)
+        .attr("transform", `translate(${x(_this.domain[i]) + 26}, 20)`)
         .call(
           d3.axisLeft(scale) //call the scale at position i
           .tickFormat(function (d) {
@@ -297,7 +297,7 @@ class DafnePlotCompare extends React.Component {
       }
       let mode = this.props.mode;
       var line = d3.line()
-        .x(function(d){ return x(d.domain)})
+        .x(function(d){ return x(d.domain)+20})
         .y(function(d){
           return scales[d.i](d.value)
         })
@@ -311,7 +311,7 @@ class DafnePlotCompare extends React.Component {
           .attr("stroke", lineData[i].color)
           .attr("stroke-width", lineWidth)
           .attr("fill", "none")
-          .attr("transform", `translate(6, 21)`);
+          .attr("transform", `translate(7, 21)`);
         if(this.props.favouritedPathways.includes(i)){
           path.style("stroke-dasharray", ("3, 3"))
         }
@@ -392,36 +392,48 @@ class DafnePlotCompare extends React.Component {
   }
   drawLabel(t,svg,i,x,data,labelContainerHeight){
     let nLines = data.very_short / 10;
-    let lines = data.very_short.match(/.{1,11}/g);
+    let lines = data.very_short.split(" ");
+    let maxlineLen = 15;
+    let currentLen = 0;
+    for(var _x = 0; _x < lines.length ; _x++){
+      if(currentLen + lines[_x].length <= maxlineLen){
+        currentLen += lines[_x].length;
+      }else{
+        //break it here
+        break;
+      }
+    }
+    //take the value of x
+    let firstLine = lines.slice(0,_x).join(" ");
+    let secondLine = lines.slice(_x).join(" ");
     svg.append("a")
       .attr("href",data.url)
       .attr("target","_blank")
       .append("text")
-        .text(lines[0])
-        .attr("x",x)
+        .text(firstLine)
+        .attr("x",x+20)
         .attr("text-anchor","middle")
         .style("font-size", "12px")
         .style("font-weight", "bold")
-      .attr("transform",
-            `translate(0,-${labelContainerHeight-17})`);
-            svg.append("a")
-              .attr("href",data.url)
-              .attr("target","_blank")
-              .append("text")
-              .text(lines[1])
-              .attr("x",x)
-              .attr("text-anchor","middle")
-              .style("font-size", "12px")
-              .style("font-weight", "bold")
+        .attr("transform",
+              `translate(0,-${labelContainerHeight-17})`);
+              svg.append("a")
+                .attr("href",data.url)
+                .attr("target","_blank")
+                .append("text")
+                .text(secondLine)
+                .attr("x",x+20)
+                .attr("text-anchor","middle")
+                .style("font-size", "12px")
+                .style("font-weight", "bold")
       .attr("transform",
             `translate(0,-${labelContainerHeight-32})`);
   }
   drawAxis(t,svg,i,x,data){
-    let width = 82;
+    let width = 110;
     let topOffset = -30;
     let height = t.svgH - this.margin.top - this.margin.bottom;
     let labelContainerHeight = this.margin.top +  (topOffset / 2);
-    let indexLabels = [1,4,7];
     svg.append('g')
           .attr("transform",
                   `translate(0,${20})`)
@@ -451,7 +463,7 @@ class DafnePlotCompare extends React.Component {
           .attr("text-anchor","middle")
           .style("font-size", "12px")
           .attr("transform",
-                `translate(0,-18)`);
+                `translate(20,-18)`);
 
     this.drawLabel(t,svg,i,x,data,labelContainerHeight);
 
