@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal, Button } from 'react-bootstrap';
-
+import EyeOn from "../img/icons/eye_on.png";
+import Pathway from "../img/pathway.png";
+import CancelButton from "../img/icons/cancel.png";
 import Info from "../img/icons/info.png";
 import Create_Compare from "../img/create_compare_perspective.png";
 
@@ -82,8 +84,11 @@ class HelpModal extends React.Component {
          you would like to explore, as well as customize your view regarding
          the way in which the indicators are presented.</p>
         <p className='wrapper_description'>
-         When you click on “Select indicators”  <b>imagen</b>, a new popup
-         screen appears showing the available indicators. You can pre-filter them
+        <div className="it_area_b">
+           <div className="circular_button m-b-10" style={{paddingLeft:1,paddingBottom:1}}onClick={() => {}}>+</div>
+           Add indicator
+         </div>
+         When you click on “Add indicators”, a new popup screen appears showing the available indicators. You can pre-filter them
          by region and by sector. Click on the indicators to select or deselect
          them and then once you are satisfied with your selection, click “OK”.
          The section below then shows the impact of pathways (on the left) on
@@ -92,7 +97,7 @@ class HelpModal extends React.Component {
          only view 7 of them on the screen at the time (depending on the size of
          your screen, this number can be higher or lower).
          To view all indicators, you can use the scroll bar on the bottom.
-         You can also use the <b>imagen</b> sign, if you want to remove an
+         You can also use the <img src={CancelButton} width={20} height={20}></img> sign, if you want to remove an
          indicator from the graph.</p>
         <p className='wrapper_description'>
          It is advised not to add too many indicators at a time, as then it becomes
@@ -140,7 +145,7 @@ class HelpModal extends React.Component {
           actions refer to managing the system in various ways depending on the specifications
           of the model.
           <br/>
-          <b>IMAGEN</b>
+            <img src={Pathway} style={{margin:10,backgroundColor:'white'}}></img>
           <br/>
           Each pathway has its own unique colour assigned to it. When you move
           your mouse over a pathway in the list, its indicator value line is
@@ -160,7 +165,9 @@ class HelpModal extends React.Component {
           You can unselect pathway from favourites by clicking on the face again.
           By default, you can view all pathways for which the indicator values
           are provided. If you want to filter out some pathways, because you are
-          not interested in them, on the left-hand side, you can click on the eye icon <b>IMAGEN</b>
+          not interested in them, on the left-hand side, you can click on the eye icon
+          <img src={EyeOn} style={{marginLeft:10,marginRight:10,backgroundColor:'white'}} className="eye"></img>
+
           to make it invisible.
           Please note that only the visible pathways are saved when you save your perspective.
         </p>
