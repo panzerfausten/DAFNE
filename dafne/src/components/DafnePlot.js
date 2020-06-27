@@ -131,7 +131,11 @@ class DafnePlot extends React.Component {
           d3.axisLeft(scale) //call the scale at position i
           .tickFormat(function (d) {
             if(option_showScales){
-              return millify.default(d);
+                try{
+                    return millify.default(d)
+                }catch(e){
+                    return d;
+                }
             }else{
               return "";
             }
