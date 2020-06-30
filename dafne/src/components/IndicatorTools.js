@@ -4,6 +4,7 @@ import 'rc-checkbox/assets/index.css';
 import Button from 'react-bootstrap/Button';
 import Checkbox  from 'rc-checkbox';
 import PropTypes from 'prop-types';
+import Data from "../data/data.json";
 
 import IndicatorModal from '../components/IndicatorModal';
 import HelpModal from "../components/HelpModal";
@@ -17,20 +18,27 @@ class IndicatorTools extends React.Component {
       show_best   : true,
       show_modal  : false,
       sector      : 'All',
-      sectors     : []
+      region      : 'All',
+      sectors     : [],
+      regions     : []
     };
-    this.handleChange    = this.handleChange.bind(this);
-    this.handleCbScales  = this.handleCbScales.bind(this);
-    this.handleCbValues  = this.handleCbValues.bind(this);
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.onSectorChange  = this.onSectorChange.bind(this);
-
+    this.handleChange       = this.handleChange.bind(this);
+    this.handleCbScales     = this.handleCbScales.bind(this);
+    this.handleCbValues     = this.handleCbValues.bind(this);
+    this.handleOpenModal    = this.handleOpenModal.bind(this);
+    this.onSectorChange     = this.onSectorChange.bind(this);
+    this.onRegionChange     = this.onRegionChange.bind(this);
+    this.filterData         = this.filterData.bind(this);
+    this.selectedIndicators = [];
   }
   componentDidMount(){
     let sectors = this.props.data.indicators.map( i => i.sector).filter((v,i,a) => a.indexOf(v) === i);
     sectors = ["All"].concat(sectors);
+    let regions = this.props.data.indicators.map( i => i.subbasin).filter((v,i,a) => a.indexOf(v) === i);
+    regions = ["All"].concat(regions);
     this.setState({
-      sectors:sectors
+      sectors:sectors,
+      regions:regions
     })
   }
   handleChange(checked) {
@@ -55,19 +63,62 @@ class IndicatorTools extends React.Component {
   handleOpenModal(value){
     this.setState({ show_modal : value})
   }
+  filterData(){
+    let indicators = Data.indicators;
+    let sector = this.state.sector.toLowerCase();
+    let region = this.state.region.toLowerCase();
+
+    if(region === "all" && sector === "all"){
+        indicators = [];
+        return this.props.onSelectIndicators(indicators);
+
+    }else if(region !== 'all' && sector === 'all'){
+        indicators = indicators.filter(i => {
+             return i.subbasin.toString().toLowerCase() !== region
+        });
+    }else if(region === 'all' && sector !== 'all'){
+        indicators = indicators.filter(i => {
+             return i.sector.toString().toLowerCase() !== sector
+        });
+    }
+    else{
+        indicators = indicators.filter(i => {
+             return i.sector.toString().toLowerCase() !== sector || i.subbasin.toString().toLowerCase() !== region
+        });
+    }
+    return this.props.onSelectIndicators(indicators);
+
+    // if(sector !== "all"){
+    //     console.log("sector",sector);
+    //     indicators = indicators.filter(i => {
+    //         return i.sector.toString().toLowerCase() !== sector
+    //     });
+    // }
+    // if(region !== "all"){
+
+     debugger;
+    // indicators = indicators.filter(i => {
+         // return i.subbasin.toLowerCase() === region
+    // });
+    // console.log(sector,region);
+    // }
+
+
+  }
   onSectorChange(e){
     let sector = e.target.value;
-    this.setState({sector: sector});
-    this.selectedIndicators = this.props.filteredIndicators.slice();
-    let indicators = this.props.data.indicators.slice();
-    if(sector !== "All"){
-      indicators = indicators.filter(i => i.sector !== sector);
-    }else{
-      indicators = [];
-    }
-    this.props.onSelectIndicators(indicators);
-  }
+    this.setState({sector: sector}, () =>{
+        this.filterData();
+    });
 
+  }
+  onRegionChange(e){
+    let region = e.target.value;
+    this.setState({region: region}, () =>{
+        this.filterData();
+    });
+
+  }
   renderCommonIndicatorsCheckbox(){
     if(this.props.view === "create"){
       return (null);
@@ -117,8 +168,13 @@ class IndicatorTools extends React.Component {
                 </div>
                 <div className="it_row">
                   <label>Region</label>
-                  <select className="custom-select blue-select">
-                   <option>Basin-wide</option>
+                  <select className='custom-select blue-select' onChange={this.onRegionChange} value={this.state.region}>
+                    {
+                       this.state.regions.map(function(s,i) {
+                         return <option key={i}
+                           value={s}>{s}</option>;
+                       })
+                    }
                   </select>
                 </div>
               </div>
