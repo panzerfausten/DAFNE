@@ -12,11 +12,17 @@ class LoginView extends React.Component {
       email:'',
       password:''
     }
-    this.handleChange = this.handleChange.bind(this);
-    this.onLoginClick = this.onLoginClick.bind(this);
+    this.handleChange   = this.handleChange.bind(this);
+    this.onLoginClick   = this.onLoginClick.bind(this);
+    this._handleKeyDown = this._handleKeyDown.bind(this);
   }
   redirectToApp(){
     this.props.history.push('/app')
+  }
+  _handleKeyDown(e){
+      if (e.key === 'Enter') {
+          this.onLoginClick();
+      }
   }
   componentDidMount(){
     DafneApi.getMe().then( (res) => {
@@ -62,10 +68,10 @@ class LoginView extends React.Component {
               <div className="form">
                 <div className="spacer"></div>
                 <div className="inputLabel">Username</div>
-                <input type="text" name="email" value={this.state.email} onChange={this.handleChange}>
+                <input type="text" name="email" value={this.state.email} onChange={this.handleChange} onKeyDown={this._handleKeyDown}>
                 </input>
                 <div className="inputLabel" >Password</div>
-                <input type="password" name="password" value={this.state.password} onChange={this.handleChange}>
+                <input type="password" name="password" value={this.state.password} onChange={this.handleChange} onKeyDown={this._handleKeyDown} >
                 </input>
                 <br></br>
                 <row className="login_buttons">

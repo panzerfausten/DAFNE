@@ -6,7 +6,25 @@ import pinButton from "../img/icons/pin.png";
 import PropTypes from 'prop-types';
 import Data from "../data/data.json";
 const millify = require('millify');
+function sectorToColor(sector){
+    switch (sector.toLowerCase()) {
+        case 'food':
+            return '#FF4D1D22';
+            break;
+        case 'energy':
+            return '#FFDE1722';
+            break;
+        case 'water-environment':
+            return '#7AC94322';
+            break;
+        case 'water-ecosystem':
+            return '#1B75BC24'
+            break;
+        default:
+            return 'black';
 
+    }
+}
 class DafnePlotCompare extends React.Component {
   constructor (props) {
     super(props);
@@ -462,7 +480,7 @@ class DafnePlotCompare extends React.Component {
             .attr("width",width)
             .attr("height",labelContainerHeight )
             .attr("x",x - 40)
-            .attr("fill",data.color)
+            .attr("fill",sectorToColor(data.sector))
             .attr("transform",
                   `translate(0,${this.margin.top * - 1})`);
     svg.append('g')

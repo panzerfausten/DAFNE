@@ -5,6 +5,26 @@ import cancelButton from "../img/icons/cancel.png";
 import pinButton from "../img/icons/pin.png";
 import PropTypes from 'prop-types';
 const millify = require('millify');
+
+function sectorToColor(sector){
+    switch (sector.toLowerCase()) {
+        case 'food':
+            return '#FF4D1D22';
+            break;
+        case 'energy':
+            return '#FFDE1722';
+            break;
+        case 'water-environment':
+            return '#7AC94322';
+            break;
+        case 'water-ecosystem':
+            return '#1B75BC24'
+            break;
+        default:
+            return 'black';
+
+    }
+}
 class DafnePlot extends React.Component {
   constructor (props) {
     super(props);
@@ -116,7 +136,7 @@ class DafnePlot extends React.Component {
         }
 
       }else{
-        let domain = funDirection === "minimize" ?  [0,1]: [1,0];
+        let domain = [1,0];
         scale = d3.scaleLinear()
           .domain(domain)
           .range([0,this.height - this.margin.bottom - this.margin.top]);
@@ -336,7 +356,7 @@ class DafnePlot extends React.Component {
        .attr("width",width)
        .attr("height",labelContainerHeight )
        .attr("x",x - 40)
-       .attr("fill",data.color)
+       .attr("fill",sectorToColor(data.sector))
        .attr("transform",
              `translate(0,${this.margin.top * - 1})`);
     svg.append('rect')
