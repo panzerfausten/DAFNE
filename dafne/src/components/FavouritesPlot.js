@@ -7,7 +7,25 @@ import PropTypes from 'prop-types';
 import DafneApi from "../api/DafneApi"
 import Data from "../data/data.json";
 let _ = require('underscore');
+function sectorToColor(sector){
+    switch (sector.toLowerCase()) {
+        case 'food':
+            return '#FF4D1D22';
+            break;
+        case 'energy':
+            return '#FFDE1722';
+            break;
+        case 'water-environment':
+            return '#7AC94322';
+            break;
+        case 'water-ecosystem':
+            return '#1B75BC24'
+            break;
+        default:
+            return 'black';
 
+    }
+}
 class FavouritesPlot extends React.Component {
   constructor (props) {
     super(props);
@@ -60,11 +78,14 @@ class FavouritesPlot extends React.Component {
         let oKeys = Object.keys(pathways_obj);
         let arr_obj = [];
         for (var i = 0; i < oKeys.length; i++) {
-          arr_obj.push({
-              "pathway":oKeys[i],
-              "value": pathways_obj[oKeys[i]],
-              "color": Data.pathways[i].color
-          })
+            if(Data.pathways.find( p => p.name === oKeys[i]) !== undefined){
+                arr_obj.push({
+                    "pathway":oKeys[i],
+                    "value": pathways_obj[oKeys[i]],
+                    "color": Data.pathways.find( p => p.name === oKeys[i]).color
+                })    
+            }
+
         }
         this.setState({
           data:arr_obj

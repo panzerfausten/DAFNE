@@ -414,18 +414,18 @@ class DafnePlot extends React.Component {
          t.props.onDeleteIndicator(d);
         });
 
-     svg.append("svg:image")
-        .attr("x",x)
-        .attr("width",20)
-        .attr("height",20)
-        .attr("xlink:href", pinButton)
-        .attr("transform",
-              `translate(-30,${height - (labelContainerHeight * 2) + 25})`)
-        .attr("class","svgButton")
-        .datum(data)
-        .on("click", function(d) {
-           t.props.onPinIndicator(d);
-         });
+     // svg.append("svg:image")
+     //    .attr("x",x)
+     //    .attr("width",20)
+     //    .attr("height",20)
+     //    .attr("xlink:href", pinButton)
+     //    .attr("transform",
+     //          `translate(-30,${height - (labelContainerHeight * 2) + 25})`)
+     //    .attr("class","svgButton")
+     //    .datum(data)
+     //    .on("click", function(d) {
+     //       t.props.onPinIndicator(d);
+     //     });
   }
   onResize = (w,h) => {
     this.svgW = w;
