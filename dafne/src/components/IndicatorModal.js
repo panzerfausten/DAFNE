@@ -8,24 +8,32 @@ import Data from "../data/data.json";
 class IndicatorModal extends React.Component {
   constructor (props) {
     super(props);
-    this.handleOpenModal      = this.handleOpenModal.bind(this);
-    this.onIndicatorSelected  = this.onIndicatorSelected.bind(this);
-    this.selectedIndicators   = [];
-    this.onOkClick            = this.onOkClick.bind(this);
-    this.onSectorChange       = this.onSectorChange.bind(this);
-    this.onClearClicked       = this.onClearClicked.bind(this);
-    this.state = {
-      sector:'All',
-      sectors:[],
-      indicatorsToShow:[]
+    this.handleOpenModal     = this.handleOpenModal.bind(this);
+    this.onIndicatorSelected = this.onIndicatorSelected.bind(this);
+    this.selectedIndicators  = [];
+    this.onOkClick           = this.onOkClick.bind(this);
+    this.onSectorChange      = this.onSectorChange.bind(this);
+    this.onClearClicked      = this.onClearClicked.bind(this);
+    this.selectAll      = this.selectAll.bind(this);
+    this.onRegionChange      = this.onRegionChange.bind(this);
+    this.filterData          = this.filterData.bind(this);
+    this.state               = {
+        sector           : 'All',
+        region           : 'All',
+        sectors          : [],
+        regions          : [],
+        indicatorsToShow : []
     }
 
   }
   componentDidMount(){
     let sectors = Data.indicators.map( i => i.sector).filter((v,i,a) => a.indexOf(v) === i);
     sectors = ["All"].concat(sectors);
+    let regions = Data.indicators.map( i => i.subbasin).filter((v,i,a) => a.indexOf(v) === i);
+    regions = ["All"].concat(regions);
     this.setState({
       sectors:sectors,
+      regions:regions,
       indicatorsToShow:this.props.data.indicators
     })
   }
@@ -50,23 +58,46 @@ class IndicatorModal extends React.Component {
   onOkClick(){
     this.handleOpenModal(false);
   }
+  selectAll(){
+      this.selectedIndicators = [];
+      this.props.onSelectIndicators(this.selectedIndicators);
+  }
+  filterData(){
+      let indicators = Data.indicators.slice();
+      let sector = this.state.sector.toLowerCase();
+      let region = this.state.region.toLowerCase();
+      if(region === "all" && sector === "all"){
+
+      }else if(region !== 'all' && sector === 'all'){
+          indicators = indicators.filter(i => {
+               return i.subbasin.toString().toLowerCase() === region
+          });
+      }else if(region === 'all' && sector !== 'all'){
+          indicators = indicators.filter(i => {
+               return i.sector.toString().toLowerCase() === sector
+          });
+      }
+      else{
+          indicators = indicators.filter(i => {
+               return i.sector.toString().toLowerCase() === sector || i.subbasin.toString().toLowerCase() === region
+          });
+      }
+      this.setState({
+        indicatorsToShow:indicators
+      })
+  }
   onSectorChange(e){
     let sector = e.target.value;
-    this.setState({sector: sector});
-    // this.selectedIndicators = this.props.filteredIndicators.slice();
-    let indicators = Data.indicators.slice();
-    if(sector !== "All"){
-      indicators = indicators.filter(i => i.sector !== sector);
-    }else{
-      indicators = Data.indicators.slice();
-    }
-    this.setState({
-      indicatorsToShow:indicators
-    })
-    this.props.onSelectIndicators(Data.indicators.slice());
+    this.setState({sector: sector}, () =>{
+      this.filterData();
+    });
+  }
+  onRegionChange(e){
+    let region = e.target.value;
+    this.setState({region: region}, () =>{
+        this.filterData();
+    });
 
-
-    // this.props.onFilterSelected(e.target.value);
   }
   render(){
     return (
@@ -77,12 +108,15 @@ class IndicatorModal extends React.Component {
         <Modal.Body>
           <div className='custom_modal_content'>
             <div className='custom_top_content m-b-10'>
-              <span>Filters: </span>
-
               <div>
                 <span>Region&nbsp;</span>
-                <select className='m-l-5 custom-select blue-select'>
-                  <option>basin-wide</option>
+                <select className='custom-select blue-select' onChange={this.onRegionChange} value={this.state.region}>
+                  {
+                     this.state.regions.map(function(s,i) {
+                       return <option key={i}
+                         value={s}>{s}</option>;
+                     })
+                  }
                 </select>
               </div>
 
@@ -99,7 +133,11 @@ class IndicatorModal extends React.Component {
 
                 </select>
               </div>
-              <Button variant="danger" onClick={this.onClearClicked}>Clear</Button>
+              <div style={{display: 'flex',alignItems: 'center'}}>
+                  <Button variant="danger" onClick={this.onClearClicked} style={{marginRight:5}}>Clear</Button>
+                  <Button variant="info" onClick={this.selectAll}>Select All</Button>
+              </div>
+
             </div>
 
             <div className='custom_bottom_content p-10'>

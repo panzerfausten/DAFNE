@@ -499,8 +499,10 @@ label{
 .custom_top_content{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: $gray;
+  align-items: center;
+  height: 90px;
 }
 .custom_top_content span{
   font-weight: bold;
