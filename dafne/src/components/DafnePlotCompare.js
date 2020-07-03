@@ -9,7 +9,7 @@ const millify = require('millify');
 function sectorToColor(sector){
     switch (sector.toLowerCase()) {
         case 'food':
-            return '#FF4D1D22';
+            return '#1B75BC24';
             break;
         case 'energy':
             return '#FFDE1722';
@@ -24,6 +24,9 @@ function sectorToColor(sector){
             return 'black';
 
     }
+}
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 class DafnePlotCompare extends React.Component {
   constructor (props) {
@@ -169,7 +172,7 @@ class DafnePlotCompare extends React.Component {
           d3.axisLeft(scale) //call the scale at position i
           .tickFormat(function (d) {
             if(option_showScales){
-              return millify.default(d);
+                return numberWithCommas(parseFloat(d).toFixed(2));//millify.default(d)
             }else{
               return "";
             }
@@ -228,12 +231,14 @@ class DafnePlotCompare extends React.Component {
         .attr("fill","#f4e6cf")
       //label
       leftArea.append("text")
-       .text(this.props.perspectiveA.name)
+       .text(`Perspective 2: ${this.props.perspectiveA.name}`)
        .attr("x",widthPerspA / 2)
        .attr("y","92%")
        .attr("text-anchor","middle")
        .attr("dominant-baseline","middle")
        .style("font-size", "12px")
+       .style("font-weight","bold")
+
     }
     if(this.props.commonIndicators.length > 0){
       let middleArea = this.svg.append('g')
@@ -248,15 +253,16 @@ class DafnePlotCompare extends React.Component {
        .attr("y",0)
        .attr("width", widthCommon)
        .attr("height",this.height + 80)
-       .attr("fill","#d0e2f1")
+       .attr("fill","#BEDAF2")
      //label
      middleArea.append("text")
-      .text("Common Indicators")
+      .text("COMMON INDICATORS")
       .attr("x",txCommon)
       .attr("y","92%")
       .attr("text-anchor","middle")
       .attr("dominant-baseline","middle")
       .style("font-size", "12px")
+      .style("font-weight","bold")
     }
     if(this.props.perspectiveB.hasOwnProperty("name")
         && !this.props.showCommonIndicatorsOnly
@@ -277,12 +283,14 @@ class DafnePlotCompare extends React.Component {
         .attr("fill","#cee2e0")
       //label
       rightArea.append("text")
-       .text(this.props.perspectiveB.name)
+       .text(`Perspective 2: ${this.props.perspectiveB.name}`)
        .attr("x",xPerspB + (widthPerspB / 2))
        .attr("y","92%")
        .attr("text-anchor","middle")
        .attr("dominant-baseline","middle")
        .style("font-size", "12px")
+       .style("font-weight","bold")
+
     }
 
     for (var i = 0; i < plotIndicators.length; i++) {

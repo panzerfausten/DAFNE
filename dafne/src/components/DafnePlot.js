@@ -9,7 +9,7 @@ const millify = require('millify');
 function sectorToColor(sector){
     switch (sector.toLowerCase()) {
         case 'food':
-            return '#FF4D1D22';
+            return '#1B75BC24';
             break;
         case 'energy':
             return '#FFDE1722';
@@ -24,6 +24,9 @@ function sectorToColor(sector){
             return 'black';
 
     }
+}
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 class DafnePlot extends React.Component {
   constructor (props) {
@@ -152,7 +155,7 @@ class DafnePlot extends React.Component {
           .tickFormat(function (d) {
             if(option_showScales){
                 try{
-                    return millify.default(d)
+                    return numberWithCommas(parseFloat(d).toFixed(2));//millify.default(d)
                 }catch(e){
                     return d;
                 }

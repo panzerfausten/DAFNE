@@ -13,7 +13,7 @@
             "origin": "KU LEUVEN, AquaCrop-OS",
             "sector": "Food",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/if3",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/if3",
             "funDirection": "Maximize",
             "max": 25.48,
             "min": 5.5
@@ -31,7 +31,7 @@
             "origin": "KU LEUVEN, AquaCrop-OS",
             "sector": "Food",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/if5",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/if5",
             "funDirection": "Maximize",
             "max": 461736.94,
             "min": 461735.81
@@ -49,7 +49,7 @@
             "origin": "KU LEUVEN, AquaCrop-OS",
             "sector": "Food",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/if7",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/if7",
             "funDirection": "Maximize",
             "max": 1909.05,
             "min": 942.76
@@ -67,7 +67,7 @@
             "origin": "KU LEUVEN, AquaCrop-OS",
             "sector": "Food",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/if16",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/if16",
             "funDirection": "Maximize",
             "max": 269851.41,
             "min": 269850.75
@@ -85,7 +85,7 @@
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Energy",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ie2enprod",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ie2enprod",
             "funDirection": "maximize",
             "max": 2236.16,
             "min": 2073.34
@@ -103,7 +103,7 @@
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Energy",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ie2enprod",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ie2enprod",
             "funDirection": "maximize",
             "max": 0.08,
             "min": 0.07
@@ -121,7 +121,7 @@
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Energy",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ie2enprod",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ie2enprod",
             "funDirection": "maximize",
             "max": 28.31,
             "min": 26.24
@@ -139,7 +139,7 @@
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Energy",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ie2enprod",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ie2enprod",
             "funDirection": "maximize",
             "max": 257787.41,
             "min": 160252.89
@@ -157,7 +157,7 @@
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Energy",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ie2enprod",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ie2enprod",
             "funDirection": "maximize",
             "max": 8.93,
             "min": 5.55
@@ -175,7 +175,7 @@
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Energy",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ie2enprod",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ie2enprod",
             "funDirection": "maximize",
             "max": 3263.13,
             "min": 2028.52
@@ -193,7 +193,7 @@
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Food",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrfishres",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrfishres",
             "funDirection": "maximize",
             "max": 1041.21,
             "min": 385.62
@@ -211,7 +211,7 @@
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Food",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrfishres",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrfishres",
             "funDirection": "maximize",
             "max": 82255.75,
             "min": 30464
@@ -229,7 +229,7 @@
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Energy",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ie2enprod",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ie2enprod",
             "funDirection": "maximize",
             "max": 204640.34,
             "min": 176405.7
@@ -247,7 +247,7 @@
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Energy",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ie2enprod",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ie2enprod",
             "funDirection": "maximize",
             "max": 7.09,
             "min": 6.11
@@ -265,7 +265,7 @@
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Energy",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ie2enprod",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ie2enprod",
             "funDirection": "maximize",
             "max": 2590.38,
             "min": 2232.98
@@ -283,7 +283,7 @@
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Food",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrfishres",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrfishres",
             "funDirection": "maximize",
             "max": 398.6,
             "min": 272.58
@@ -301,46 +301,46 @@
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Food",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrfishres",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrfishres",
             "funDirection": "maximize",
             "max": 31489.06,
             "min": 21533.72
         },
         {
-            "name": "i_F_IrrDef_Sum_IR1",
-            "label": "i_F_IrrDef_Sum_IR1",
+            "name": "i_F_IrrDef_YMean_IR1",
+            "label": "i_F_IrrDef_YMean_IR1",
             "very_short": "Water deficit Kuraz",
             "short_description": "Water deficit for irrigation Kuraz",
-            "long_description": "Water deficit for irrigation Kuraz Irrigation Scheme",
+            "long_description": "Yearly average volume of water deficit for irrigation Kuraz Irrigation Scheme",
             "location": "",
-            "subbasin": "Lower Omo",
+            "subbasin": "Omo",
             "country": "Ethiopia",
-            "unit": "['m3/sec']",
+            "unit": "['Mm3']",
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Food",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrdef",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrdef",
             "funDirection": "minimize",
-            "max": 5012305.5,
-            "min": 3033641.75
+            "max": 703.95,
+            "min": 21.25
         },
         {
-            "name": "i_F_IrrDef_Sum_IR2",
-            "label": "i_F_IrrDef_Sum_IR2",
+            "name": "i_F_IrrDef_YMean_IR2",
+            "label": "i_F_IrrDef_YMean_IR2",
             "very_short": "Water deficit private Irrigation",
             "short_description": "Water Deficit Private Irrigation, lower Omo",
-            "long_description": "Water deficit for irrigation Private Irrigation Scheme, lower Omo",
+            "long_description": "Yearly average volume of water deficit for irrigation Private Irrigation Scheme, lower Omo",
             "location": "",
-            "subbasin": "Lower Omo",
+            "subbasin": "Omo",
             "country": "Ethiopia",
-            "unit": "['m3/sec']",
+            "unit": "['Mm3']",
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Food",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrdef",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrdef",
             "funDirection": "minimize",
-            "max": 250321.52,
-            "min": 28168.92
+            "max": 6.44,
+            "min": 4.54
         },
         {
             "name": "i_F_IrrDistPos_DMean_REC",
@@ -355,7 +355,7 @@
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Food",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrdistpos",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrdistpos",
             "funDirection": "minimize",
             "max": 819.34,
             "min": 460.25
@@ -373,46 +373,10 @@
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Food",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrdistneg",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrdistneg",
             "funDirection": "minimize",
             "max": 280.17,
             "min": 148.39
-        },
-        {
-            "name": "i_W_QEnvDistPos_Mean_ODE",
-            "label": "i_W_QEnvDistPos_Mean_ODE",
-            "very_short": "Flow positive distance ",
-            "short_description": "Flow positive distance, Omo Delta",
-            "long_description": "Flow positive distance with respect to an environmental target flow Omo Delta",
-            "location": "",
-            "subbasin": "Turkana",
-            "country": "Ethiopia",
-            "unit": "['m3/sec']",
-            "origin": "DAFNE project: July 2020 NSL final results",
-            "sector": "Water-Environment",
-            "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/iwqenvdistpos",
-            "funDirection": "minimize",
-            "max": 560.96,
-            "min": 239.3
-        },
-        {
-            "name": "i_W_QEnvDistNeg_Sum_ODE",
-            "label": "i_W_QEnvDistNeg_Sum_ODE",
-            "very_short": "Flow negative distance ",
-            "short_description": "Flow negative distance, Omo Delta ",
-            "long_description": "Flow negative distance with respect to an environmental target flow Omo Delta",
-            "location": "",
-            "subbasin": "Turkana",
-            "country": "Ethiopia",
-            "unit": "['m3/sec']",
-            "origin": "DAFNE project: July 2020 NSL final results",
-            "sector": "Water-Environment",
-            "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/iwqenvdistneg",
-            "funDirection": "minimize",
-            "max": 615.58,
-            "min": 111.38
         },
         {
             "name": "i_F_IrrFishProd_Sum_TUR",
@@ -427,7 +391,7 @@
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Food",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrfishprod",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrfishprod",
             "funDirection": "maximize",
             "max": 870.48,
             "min": 666.05
@@ -445,7 +409,7 @@
             "origin": "DAFNE project: July 2020 NSL final results",
             "sector": "Food",
             "scenario": "RCP45_R17",
-            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrfishdef",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrfishdef",
             "funDirection": "minimize",
             "max": 238.66,
             "min": 36.63
@@ -463,7 +427,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 516.8,
             "min": 101.8
@@ -481,7 +445,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 905.26,
             "min": 68.87
@@ -499,7 +463,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 454.05,
             "min": 31.9
@@ -517,7 +481,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 266.09,
             "min": 12.01
@@ -535,7 +499,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 397.87,
             "min": 106.4
@@ -553,7 +517,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 490.37,
             "min": 79.34
@@ -571,7 +535,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 545,
             "min": 237.84
@@ -589,7 +553,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 843.73,
             "min": 344.56
@@ -607,7 +571,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 1006.67,
             "min": 473.66
@@ -625,7 +589,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 725.53,
             "min": 90.58
@@ -643,7 +607,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 504.84,
             "min": 49.3
@@ -661,7 +625,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 1522.45,
             "min": 45.2
@@ -679,7 +643,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 39.06,
             "min": 4.34
@@ -697,7 +661,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 27.62,
             "min": 0.52
@@ -715,7 +679,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 8.94,
             "min": 0.46
@@ -733,7 +697,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 16.6,
             "min": 8.26
@@ -751,7 +715,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 27.83,
             "min": 14.62
@@ -769,7 +733,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 17.25,
             "min": 4.29
@@ -787,7 +751,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 7.78,
             "min": 3.02
@@ -805,7 +769,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 12.09,
             "min": 1.9
@@ -823,7 +787,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 43.84,
             "min": 4.04
@@ -841,7 +805,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 9.01,
             "min": 1.27
@@ -859,7 +823,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 49.02,
             "min": 3.88
@@ -877,7 +841,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 11.05,
             "min": 5.62
@@ -895,7 +859,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 2.19,
             "min": 0.02
@@ -913,7 +877,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 26.85,
             "min": 4.38
@@ -931,7 +895,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 2.08,
             "min": 0.08
@@ -949,7 +913,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 24.59,
             "min": 7.59
@@ -967,7 +931,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 102.59,
             "min": 5.49
@@ -985,7 +949,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 102.65,
             "min": 5.49
@@ -1003,7 +967,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 102.9,
             "min": 5.54
@@ -1021,7 +985,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 103.99,
             "min": 7.44
@@ -1039,7 +1003,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 107.72,
             "min": 0.83
@@ -1057,7 +1021,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 10.17,
             "min": 3.95
@@ -1075,7 +1039,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 10.17,
             "min": 3.92
@@ -1093,7 +1057,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 10.2,
             "min": 3.89
@@ -1111,7 +1075,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 10.88,
             "min": 5.14
@@ -1129,7 +1093,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 11.96,
             "min": 4.9
@@ -1147,7 +1111,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 50.83,
             "min": 4.5
@@ -1165,7 +1129,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 20.93,
             "min": 0.55
@@ -1183,7 +1147,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 986.78,
             "min": 51.08
@@ -1201,7 +1165,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 987.19,
             "min": 52.52
@@ -1219,7 +1183,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 977.62,
             "min": 48.41
@@ -1237,7 +1201,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 758.86,
             "min": 233.57
@@ -1255,7 +1219,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 541.1,
             "min": 49.82
@@ -1273,7 +1237,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 17.39,
             "min": 8.88
@@ -1291,7 +1255,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 17.43,
             "min": 9.09
@@ -1309,7 +1273,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 17.81,
             "min": 10.04
@@ -1327,7 +1291,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 16.91,
             "min": 6.98
@@ -1345,7 +1309,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 9.89,
             "min": 3.84
@@ -1363,7 +1327,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 64.75,
             "min": 2
@@ -1381,7 +1345,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 36.65,
             "min": 3.21
@@ -1399,7 +1363,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 158,
             "min": 5
@@ -1417,7 +1381,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 9.65,
             "min": 5.25
@@ -1435,7 +1399,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 222,
             "min": 17
@@ -1453,7 +1417,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 39.21,
             "min": 18.71
@@ -1471,7 +1435,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 12.27,
             "min": 1.54
@@ -1489,7 +1453,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 107.18,
             "min": 1.23
@@ -1507,7 +1471,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 4.54,
             "min": 0.06
@@ -1525,7 +1489,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 60.8,
             "min": 7.89
@@ -1543,7 +1507,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 682.66,
             "min": 88.24
@@ -1561,7 +1525,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 804.86,
             "min": 47.96
@@ -1579,7 +1543,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 419.41,
             "min": 6.1
@@ -1597,7 +1561,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 202.15,
             "min": 16.02
@@ -1615,7 +1579,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 475.57,
             "min": 188.99
@@ -1633,7 +1597,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 485.49,
             "min": 162.48
@@ -1651,7 +1615,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 592.33,
             "min": 248.49
@@ -1669,7 +1633,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 882.61,
             "min": 383.83
@@ -1687,7 +1651,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 1025.04,
             "min": 478.72
@@ -1705,7 +1669,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 649.52,
             "min": 52.92
@@ -1723,7 +1687,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 824.89,
             "min": 6.41
@@ -1741,7 +1705,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 1353.75,
             "min": 58.96
@@ -1759,7 +1723,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 28.74,
             "min": 0.76
@@ -1777,7 +1741,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 35.49,
             "min": 1.13
@@ -1795,7 +1759,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 7.01,
             "min": 1.68
@@ -1813,7 +1777,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 24,
             "min": 8.94
@@ -1831,7 +1795,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 23.36,
             "min": 15.92
@@ -1849,7 +1813,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 7.52,
             "min": 1.52
@@ -1867,7 +1831,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 9.8,
             "min": 1.09
@@ -1885,7 +1849,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 10.37,
             "min": 0.11
@@ -1903,7 +1867,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 39.45,
             "min": 2.05
@@ -1921,7 +1885,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 14.55,
             "min": 1.88
@@ -1939,7 +1903,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 37.14,
             "min": 6.07
@@ -1957,7 +1921,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 17.84,
             "min": 2.5
@@ -1975,7 +1939,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 2.08,
             "min": 0.02
@@ -1993,7 +1957,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 26.85,
             "min": 1.34
@@ -2011,7 +1975,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 1.99,
             "min": 0.01
@@ -2029,7 +1993,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 15.52,
             "min": 9.16
@@ -2047,7 +2011,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 94.49,
             "min": 0.14
@@ -2065,7 +2029,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 94.44,
             "min": 0.09
@@ -2083,7 +2047,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 94.34,
             "min": 0.23
@@ -2101,7 +2065,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 95.23,
             "min": 0.08
@@ -2119,7 +2083,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 98.85,
             "min": 8.41
@@ -2137,7 +2101,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 10.45,
             "min": 3.92
@@ -2155,7 +2119,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 10.46,
             "min": 3.85
@@ -2173,7 +2137,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 10.56,
             "min": 3.76
@@ -2191,7 +2155,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 11.15,
             "min": 4.8
@@ -2209,7 +2173,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 12,
             "min": 3.87
@@ -2227,7 +2191,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 49.67,
             "min": 5
@@ -2245,7 +2209,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 20.64,
             "min": 0.96
@@ -2263,7 +2227,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 984.03,
             "min": 58.43
@@ -2281,7 +2245,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 980.77,
             "min": 56.18
@@ -2299,7 +2263,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 964.12,
             "min": 45.76
@@ -2317,7 +2281,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 773.42,
             "min": 236.94
@@ -2335,7 +2299,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 549.66,
             "min": 44.39
@@ -2353,7 +2317,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 18.02,
             "min": 8.05
@@ -2371,7 +2335,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 17.95,
             "min": 8.15
@@ -2389,7 +2353,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 17.68,
             "min": 8.42
@@ -2407,7 +2371,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 16.62,
             "min": 6.29
@@ -2425,7 +2389,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 10.25,
             "min": 4.14
@@ -2443,7 +2407,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 63.75,
             "min": 1
@@ -2461,7 +2425,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 34.25,
             "min": 11.72
@@ -2479,7 +2443,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 154,
             "min": 5
@@ -2497,7 +2461,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 9.24,
             "min": 4.31
@@ -2515,7 +2479,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 216,
             "min": 20
@@ -2533,7 +2497,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 45.65,
             "min": 17.16
@@ -2551,7 +2515,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 13.07,
             "min": 0.19
@@ -2569,7 +2533,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 101.15,
             "min": 4.75
@@ -2587,7 +2551,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 4.73,
             "min": 0.25
@@ -2605,7 +2569,7 @@
             "origin": "WEF Hydrological model, ETHZ-HWRM, June 2020",
             "sector": "Water-Ecosystem",
             "scenario": "RCP45_R17",
-            "url": "http://http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
+            "url": "xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicator/iwec8",
             "funDirection": "minimize",
             "max": 69.64,
             "min": 2.58
@@ -2613,8 +2577,6 @@
     ],
     "pathways": [
         {
-            "url": "",
-            "description": "",
             "abs": [
                 5.5,
                 461735.81,
@@ -2633,12 +2595,10 @@
                 2244.15,
                 274.08,
                 21652.44,
-                5012305.5,
-                102040.02,
+                703.95,
+                4.91,
                 467.22,
                 269.54,
-                263.67,
-                111.38,
                 691.65,
                 61.44,
                 101.8,
@@ -2762,7 +2722,9 @@
                 4.73,
                 24.06
             ],
-            "color": "#00d2d2",
+            "color": "#1f77b4",
+            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=pathway/p389",
+            "description": "Structural configuration related to this pathway encompasses the realization of Koysha reservoir and power plant and the full realization of both Kuraz Irrigation Scheme and Private Commercial Agricoltural schemes in the lower Omo. This specific pathway has been selected with the following filtering sequence during the screening exercise in NSL 2019: Fish.",
             "name": "P1",
             "data": [
                 0,
@@ -2783,11 +2745,9 @@
                 0.01,
                 0.01,
                 0,
-                0.67,
+                0.8,
                 0.98,
                 0.08,
-                0.92,
-                1,
                 0.13,
                 0.88,
                 1,
@@ -2913,8 +2873,6 @@
             ]
         },
         {
-            "url": "",
-            "description": "",
             "abs": [
                 6.23,
                 461735.84,
@@ -2933,12 +2891,10 @@
                 2460.29,
                 323.61,
                 25565.05,
-                4885092,
-                28168.92,
+                614.29,
+                4.54,
                 602.16,
                 179.94,
-                318.79,
-                262.05,
                 723.99,
                 92.27,
                 420.13,
@@ -3062,7 +3018,9 @@
                 3.91,
                 19.2
             ],
-            "color": "#92d051",
+            "color": "#ff7f0e",
+            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=pathway/p3330",
+            "description": "Structural configuration related to this pathway encompasses the realization of Koysha reservoir and power plant and the full realization of both Kuraz Irrigation Scheme and Private Commercial Agricoltural schemes in the lower Omo. This specific pathway has been selected with the following filtering sequence during the screening exercise in NSL 2019: Food, Fish, Energy",
             "name": "P2",
             "data": [
                 0.04,
@@ -3082,12 +3040,10 @@
                 0.64,
                 0.4,
                 0.4,
-                0.06,
+                0.13,
                 1,
                 0.6,
                 0.76,
-                0.75,
-                0.7,
                 0.28,
                 0.72,
                 0.23,
@@ -3213,8 +3169,6 @@
             ]
         },
         {
-            "url": "",
-            "description": "",
             "abs": [
                 7.52,
                 461735.94,
@@ -3233,12 +3187,10 @@
                 2407.23,
                 393.16,
                 31059.96,
-                4520611.5,
-                167901.03,
+                468.1,
+                4.89,
                 798.73,
                 0,
-                560.96,
-                615.58,
                 723.83,
                 92.31,
                 369.49,
@@ -3362,7 +3314,9 @@
                 1.66,
                 69.64
             ],
-            "color": "#b00000",
+            "color": "#2ca02c",
+            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=pathway/p3394",
+            "description": "Structural configuration related to this pathway encompasses the realization of Koysha reservoir and power plant and the full realization of both Kuraz Irrigation Scheme and Private Commercial Agricoltural schemes in the lower Omo. This specific pathway has been selected with the following filtering sequence during the screening exercise in NSL 2019: Fish, Food",
             "name": "P3",
             "data": [
                 0.1,
@@ -3382,11 +3336,9 @@
                 0.49,
                 0.96,
                 0.96,
-                0.25,
-                0.37,
+                0.35,
+                0.81,
                 0.06,
-                0,
-                0,
                 0,
                 0.28,
                 0.72,
@@ -3513,8 +3465,6 @@
             ]
         },
         {
-            "url": "",
-            "description": "",
             "abs": [
                 25.48,
                 461736.94,
@@ -3533,12 +3483,10 @@
                 2232.98,
                 272.58,
                 21533.72,
-                3033641.75,
-                67114.55,
+                21.25,
+                4.73,
                 460.25,
                 280.17,
-                239.3,
-                142.32,
                 870.48,
                 238.66,
                 147.77,
@@ -3662,7 +3610,9 @@
                 3.54,
                 20.64
             ],
-            "color": "#fdc100",
+            "color": "#d62728",
+            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=pathway/p3428",
+            "description": "Structural configuration related to this pathway encompasses the realization of Koysha reservoir and power plant and the full realization of both Kuraz Irrigation Scheme and Private Commercial Agricoltural schemes in the lower Omo. This specific pathway has been selected with the following filtering sequence during the screening exercise in NSL 2019: Irrigation.",
             "name": "P4",
             "data": [
                 1,
@@ -3683,11 +3633,9 @@
                 0,
                 0,
                 1,
-                0.82,
+                0.9,
                 1,
                 0,
-                1,
-                0.94,
                 1,
                 0,
                 0.89,
@@ -3813,8 +3761,6 @@
             ]
         },
         {
-            "url": "",
-            "description": "",
             "abs": [
                 21.13,
                 461736.69,
@@ -3833,12 +3779,10 @@
                 2590.38,
                 398.6,
                 31489.06,
-                3965116,
-                250321.52,
+                127.38,
+                6.44,
                 537.88,
                 228.48,
-                325.25,
-                188.62,
                 719.74,
                 87.92,
                 116.96,
@@ -3962,7 +3906,9 @@
                 0.25,
                 57.35
             ],
-            "color": "#227b71",
+            "color": "#9467bd",
+            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=pathway/p3470",
+            "description": "Structural configuration related to this pathway encompasses the realization of Koysha reservoir and power plant and the full realization of both Kuraz Irrigation Scheme and Private Commercial Agricoltural schemes in the lower Omo. This specific pathway has been selected with the following filtering sequence during the screening exercise in NSL 2019: Food, Energy",
             "name": "P5",
             "data": [
                 0.78,
@@ -3982,12 +3928,10 @@
                 1,
                 1,
                 1,
-                0.53,
+                0.84,
                 0,
                 0.78,
                 0.39,
-                0.73,
-                0.85,
                 0.26,
                 0.75,
                 0.96,
@@ -4113,8 +4057,6 @@
             ]
         },
         {
-            "url": "",
-            "description": "",
             "abs": [
                 11.39,
                 461736.16,
@@ -4133,12 +4075,10 @@
                 2441.34,
                 340.66,
                 26912.46,
-                4471941.5,
-                148946.42,
+                357.64,
+                5.2,
                 819.34,
                 148.39,
-                457.39,
-                461.66,
                 666.05,
                 36.63,
                 516.8,
@@ -4262,7 +4202,9 @@
                 0.85,
                 2.58
             ],
-            "color": "#7030a0",
+            "color": "#8c564b",
+            "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=pathway/p3607",
+            "description": "Structural configuration related to this pathway encompasses the realization of Koysha reservoir and power plant and the full realization of both Kuraz Irrigation Scheme and Private Commercial Agricoltural schemes in the lower Omo.",
             "name": "P6",
             "data": [
                 0.29,
@@ -4282,12 +4224,10 @@
                 0.58,
                 0.54,
                 0.54,
-                0.27,
-                0.46,
+                0.51,
+                0.65,
                 0,
                 1,
-                0.32,
-                0.31,
                 0,
                 1,
                 0,

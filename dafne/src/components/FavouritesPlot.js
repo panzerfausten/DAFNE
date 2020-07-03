@@ -10,7 +10,7 @@ let _ = require('underscore');
 function sectorToColor(sector){
     switch (sector.toLowerCase()) {
         case 'food':
-            return '#FF4D1D22';
+            return '#1B75BC24';
             break;
         case 'energy':
             return '#FFDE1722';
@@ -83,7 +83,7 @@ class FavouritesPlot extends React.Component {
                     "pathway":oKeys[i],
                     "value": pathways_obj[oKeys[i]],
                     "color": Data.pathways.find( p => p.name === oKeys[i]).color
-                })    
+                })
             }
 
         }

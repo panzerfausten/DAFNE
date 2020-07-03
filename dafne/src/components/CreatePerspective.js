@@ -23,7 +23,7 @@ class CreatePerspective extends React.Component {
   constructor(p){
     super(p);
     this.state = {
-      filteredIndicators:[],
+      filteredIndicators:Data.indicators.slice(),
       dafnePlotOptions:{
         showScales:true
       },
@@ -34,7 +34,7 @@ class CreatePerspective extends React.Component {
       selectedPerspectiveIndex:-1,
       hiddenPathways:[],
       favouritedPathways:[],
-      showFavs:true,
+      showFavs:false,
       showFavouritesModal:false,
       showCommentsModal:false,
       clickedPathway:{
@@ -45,7 +45,7 @@ class CreatePerspective extends React.Component {
     this.onDeleteIndicator            = this.onDeleteIndicator.bind(this);
     this.onPinIndicator               = this.onPinIndicator.bind(this);
     this.onSelectIndicators           = this.onSelectIndicators.bind(this);
-    this.filteredIndicators           = [];
+    this.filteredIndicators           = Data.indicators.slice();
     this.onOptionChanged              = this.onOptionChanged.bind(this);
     this.onFilterSelected             = this.onFilterSelected.bind(this);
     this.handleOpenPerspectiveModal   = this.handleOpenPerspectiveModal.bind(this);

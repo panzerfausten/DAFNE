@@ -44,7 +44,7 @@ class ComparePerspective extends React.Component {
       compareData:{...CompareData},
       hiddenPathways:[],
       favouritedPathways:[],
-      showFavs:true,
+      showFavs:false,
       showFavouritesModal:false,
       hiddenPathwaysA:[],
       hiddenPathwaysB:[],
