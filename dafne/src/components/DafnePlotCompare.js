@@ -9,13 +9,10 @@ const millify = require('millify');
 function sectorToColor(sector){
     switch (sector.toLowerCase()) {
         case 'food':
-            return '#1B75BC24';
+            return '#7AC94322';
             break;
         case 'energy':
             return '#FFDE1722';
-            break;
-        case 'water-environment':
-            return '#7AC94322';
             break;
         case 'water-ecosystem':
             return '#1B75BC24'
@@ -501,16 +498,18 @@ class DafnePlotCompare extends React.Component {
              .attr("fill","#c9ced1a3")
              .attr("transform",
                    `translate(0,${topOffset})`);
-   svg.append('g')
-         .attr("transform",
-                 `translate(0,${20})`)
-         .append("text")
-          .text(data.unit)
-          .attr("x",x)
-          .attr("text-anchor","middle")
-          .style("font-size", "12px")
-          .attr("transform",
-                `translate(15,-18)`);
+   if(this.props.mode !== 'satisfaction'){
+     svg.append('g')
+           .attr("transform",
+                   `translate(0,${20})`)
+           .append("text")
+            .text(data.unit)
+            .attr("x",x)
+            .attr("text-anchor","middle")
+            .style("font-size", "12px")
+            .attr("transform",
+                  `translate(15,-18)`);
+    }
     let tooltip_g = svg.append("g")
       .attr('visibility','hidden')
       .attr("x",x-20)

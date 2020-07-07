@@ -43,7 +43,7 @@ class IndicatorTools extends React.Component {
   }
   handleChange(checked) {
     this.setState({ checked });
-    let mode = checked ? "absolute" : "normalized";
+    let mode = checked ? "absolute" : "satisfaction";
     this.props.onOptionChanged({
       "option":"mode","value": mode
     });
@@ -96,7 +96,6 @@ class IndicatorTools extends React.Component {
     // }
     // if(region !== "all"){
 
-     debugger;
     // indicators = indicators.filter(i => {
          // return i.subbasin.toLowerCase() === region
     // });
