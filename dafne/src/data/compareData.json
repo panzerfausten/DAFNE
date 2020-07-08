@@ -4,52 +4,52 @@
   "pathways" :
   [
         {
-            "name"        : "P1.176",
+            "name"        : "P1",
             "data"        : [],
             "abs"         : [],
-            "color"       : "#00d2d2",
+            "color":"#1f77b4",
             "description" : ""
         },
         {
-            "name"        : "P2.89",
+            "name"        : "P2",
             "data"        : [],
             "abs"         : [],
-            "color"       : "#92d051",
+            "color":"#ff7f0e",
             "description" : ""
         },
         {
-            "name"        : "P3.53",
+            "name"        : "P3",
             "data"        : [],
             "abs"         : [],
-            "color"       : "#b00000",
+            "color":"#2ca02c",
             "description" : ""
         },
         {
-            "name"        : "P3.64",
+            "name"        : "P4",
             "data"        : [],
             "abs"         : [],
-            "color"       : "#fdc100",
+            "color":"#d62728",
             "description" : ""
         },
         {
-            "name"        : "P3.70",
+            "name"        : "P5",
             "data"        : [],
             "abs"         : [],
-            "color"       : "#227b71",
+            "color":"#9467bd",
             "description" : ""
         },
         {
-          "name"        : "P3.74",
+          "name"        : "P6",
           "data"        : [],
           "abs"         : [],
-          "color"       : "#7030a0",
+          "color":"#8c564b",
           "description" : ""
         },
         {
-          "name"        : "P3.92",
+          "name"        : "P7",
           "data"        : [],
           "abs"         : [],
-          "color"       : "red",
+          "color":"#e377c2",
           "description" : ""
         }
 
