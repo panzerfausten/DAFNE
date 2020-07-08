@@ -67,6 +67,9 @@ class DafneView extends React.Component {
   redirectHome(){
     this.props.history.push('/');
   }
+  goToSettings(){
+    this.props.history.push('/app/settings');
+  }
   logout(){
     DafneApi.logout().then((res) => {
       if(res.success){
@@ -92,6 +95,7 @@ class DafneView extends React.Component {
               <HelpModal type='header' />
 
               <NavDropdown alignRight className="circle_menu_btn m-l-10" title={this.state.initials} id="basic-nav-dropdown">
+                <NavDropdown.Item onClick={() => this.goToSettings()}>Settings</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => this.logout()}>Log out</NavDropdown.Item>
               </NavDropdown>
 
