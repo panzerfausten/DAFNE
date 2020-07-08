@@ -7,44 +7,53 @@
             "name"        : "P1",
             "data"        : [],
             "abs"         : [],
-            "color"       : "#1f77b4",
+            "color":"#1f77b4",
             "description" : ""
         },
         {
             "name"        : "P2",
             "data"        : [],
             "abs"         : [],
-            "color"       : "#ff7f0e",
+            "color":"#ff7f0e",
             "description" : ""
         },
         {
             "name"        : "P3",
             "data"        : [],
             "abs"         : [],
-            "color"       : "#2ca02c",
+            "color":"#2ca02c",
             "description" : ""
         },
         {
             "name"        : "P4",
             "data"        : [],
             "abs"         : [],
-            "color"       : "#d62728",
+            "color":"#d62728",
             "description" : ""
         },
         {
             "name"        : "P5",
             "data"        : [],
             "abs"         : [],
-            "color"       : "#9467bd",
+            "color":"#9467bd",
             "description" : ""
         },
         {
           "name"        : "P6",
           "data"        : [],
           "abs"         : [],
-          "color"       : "#8c564b",
+          "color":"#8c564b",
+          "description" : ""
+        },
+        {
+          "name"        : "P7",
+          "data"        : [],
+          "abs"         : [],
+          "color":"#e377c2",
           "description" : ""
         }
+
+
 
   ],
   "metadata" : {

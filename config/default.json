@@ -2,8 +2,8 @@
   "Database":{
     "password":"e!2YqM*qbOMKzS5Z",
     "url":"h2823152.stratoserver.net",
-    "username":"dafne-dev",
-    "database":"dafne-dev",
+    "username":"dafne-zambezi",
+    "database":"dafne-zambezi",
     "port":"27017"
   },
   "Cors":{

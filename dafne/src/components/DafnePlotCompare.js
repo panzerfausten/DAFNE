@@ -14,7 +14,7 @@ function sectorToColor(sector){
         case 'energy':
             return '#FFDE1722';
             break;
-        case 'water-ecosystem':
+        case 'water-environment':
             return '#1B75BC24'
             break;
         default:
