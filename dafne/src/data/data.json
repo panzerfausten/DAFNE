@@ -1,24 +1,6 @@
 {
     "indicators": [
         {
-            "label": "i_E_EnProdSum_DEV",
-            "name": "i_E_EnProdSum_DEV",
-            "very_short": "Energy Devil Gorge",
-            "short_description": "Energy production Devil Gorge",
-            "long_description": "Energy production Devil Gorge",
-            "location": "",
-            "subbasin": "Zambezi",
-            "country": "Zambia-Zimbabwe",
-            "unit": "['[TWh]']",
-            "origin": "DAFNE project: Juy 2019 NSL intermediate results",
-            "sector": "Energy",
-            "scenario": "zrbnsl",
-            "url": "http://xake.deib.polimi.it:8081/drupal/zambezi/?q=indicators/ieenprodsum",
-            "funDirection": "maximize",
-            "max": 166.97,
-            "min": 0
-        },
-        {
             "label": "i_E_EnProdSum_ITT",
             "name": "i_E_EnProdSum_ITT",
             "very_short": "Energy Itezhi-Tezhi",
@@ -35,6 +17,24 @@
             "funDirection": "maximize",
             "max": 12.94,
             "min": 12.56
+        },
+        {
+            "label": "i_E_EnDefSum_ITT",
+            "name": "i_E_EnDefSum_ITT",
+            "very_short": "En deficit Itezhi-Tezhi",
+            "short_description": "Energy deficit Itezhi-Tezhi",
+            "long_description": "Energy deficit Itezhi-Tezhi",
+            "location": "",
+            "subbasin": "Kafue",
+            "country": "Zambia",
+            "unit": "['[TWh]/y']",
+            "origin": "DAFNE project: Juy 2019 NSL intermediate results",
+            "sector": "Energy",
+            "scenario": "zrbnsl",
+            "url": "http://xake.deib.polimi.it:8081/drupal/zambezi/?q=indicators/ieendefsum",
+            "funDirection": "minimize",
+            "max": 24.02,
+            "min": 23.64
         },
         {
             "label": "i_E_EnProdSum_KGU",
@@ -217,22 +217,22 @@
             "min": 111.12
         },
         {
-            "label": "i_E_EnDefSum_ITT",
-            "name": "i_E_EnDefSum_ITT",
-            "very_short": "En deficit Itezhi-Tezhi",
-            "short_description": "Energy deficit Itezhi-Tezhi",
-            "long_description": "Energy deficit Itezhi-Tezhi",
+            "label": "i_E_EnProdSum_DEV",
+            "name": "i_E_EnProdSum_DEV",
+            "very_short": "Energy Devil Gorge",
+            "short_description": "Energy production Devil Gorge",
+            "long_description": "Energy production Devil Gorge",
             "location": "",
-            "subbasin": "Kafue",
-            "country": "Zambia",
-            "unit": "['[TWh]/y']",
+            "subbasin": "Zambezi",
+            "country": "Zambia-Zimbabwe",
+            "unit": "['[TWh]']",
             "origin": "DAFNE project: Juy 2019 NSL intermediate results",
             "sector": "Energy",
             "scenario": "zrbnsl",
-            "url": "http://xake.deib.polimi.it:8081/drupal/zambezi/?q=indicators/ieendefsum",
-            "funDirection": "minimize",
-            "max": 24.02,
-            "min": 23.64
+            "url": "http://xake.deib.polimi.it:8081/drupal/zambezi/?q=indicators/ieenprodsum",
+            "funDirection": "maximize",
+            "max": 166.97,
+            "min": 0
         },
         {
             "label": "i_E_EnDefSum_DEV",
