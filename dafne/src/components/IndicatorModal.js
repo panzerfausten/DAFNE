@@ -79,7 +79,7 @@ class IndicatorModal extends React.Component {
       }
       else{
           indicators = indicators.filter(i => {
-               return i.sector.toString().toLowerCase() === sector || i.subbasin.toString().toLowerCase() === region
+               return i.sector.toString().toLowerCase() === sector && i.subbasin.toString().toLowerCase() === region
           });
       }
       this.setState({
