@@ -17,6 +17,9 @@ function sectorToColor(sector){
         case 'water-environment':
             return '#1B75BC24'
             break;
+        case 'socio-economic':
+            return '#F9B5FF'
+            break;
         default:
             return 'black';
 
