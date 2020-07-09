@@ -11,6 +11,7 @@ import CreatePerspective from '../../components/CreatePerspective';
 import ComparePerspective from '../../components/ComparePerspective';
 import CommentsModal from '../../components/CommentsModal';
 import HelpModal from "../../components/HelpModal";
+import WelcomeModal from "../../components/WelcomeModal";
 
 
 class DafneView extends React.Component {
@@ -93,7 +94,7 @@ class DafneView extends React.Component {
               </Nav>
 
               <HelpModal type='header' />
-
+              <WelcomeModal/>
               <NavDropdown alignRight className="circle_menu_btn m-l-10" title={this.state.initials} id="basic-nav-dropdown">
                 <NavDropdown.Item onClick={() => this.goToSettings()}>Settings</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => this.logout()}>Log out</NavDropdown.Item>
