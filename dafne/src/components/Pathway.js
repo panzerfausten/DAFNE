@@ -18,7 +18,7 @@ class Pathway extends React.Component {
       isCollapseOpen:false,
       isPathwayHidden:false,
       isFavorited:false,
-      isHovered:false
+      isHovered:true
     }
     this.setOpen           = this.setOpen.bind(this);
     this.onClick           = this.onClick.bind(this);
@@ -37,15 +37,15 @@ class Pathway extends React.Component {
     this.setOpen(!this.state.isCollapseOpen);
   }
   onMouseOver(){
-    this.setState({
-      isHovered:true
-    })
+    // this.setState({
+    //   isHovered:true
+    // })
     this.props.onClick(this.props.item);
   }
   onMouseLeave(){
-    this.setState({
-      isHovered:false
-    })
+    // this.setState({
+    //   isHovered:false
+    // })
   }
   toggleEye(){
     this.setState({
