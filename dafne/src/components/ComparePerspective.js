@@ -634,7 +634,7 @@ class ComparePerspective extends React.Component {
                         checked={this.state.showFavs}
                         disabled={false}
                       />
-                        Show favourite pathways
+                        show my favourite pathways
                       </label>
                       <div><img src={GraphA} style={{height:25}}></img></div>
                       <HelpModal type='pathway_tools' />

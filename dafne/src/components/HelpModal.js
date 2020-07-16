@@ -177,7 +177,7 @@ class HelpModal extends React.Component {
         </p>
         <p className='wrapper_description'>
           Favourite pathways <br/>
-          If the “show favourite pathways” is activated, the pathways which were
+          If the “show my favourite pathways” is activated, the pathways which were
           favorited in this session are shown as dashed line on the graph.
           There is an additional functionality to view all the pathways which
           were favorited by all users of the tool. You can access this function

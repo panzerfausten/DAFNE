@@ -376,7 +376,7 @@
             "url": "http://xake.deib.polimi.it:8081/drupal/omo-turkana/?q=indicators/ifirrdistneg",
             "funDirection": "minimize",
             "max": 280.17,
-            "min": 148.39
+            "min": 0
         },
         {
             "label": "i_F_IrrFishProd_Sum_TUR",

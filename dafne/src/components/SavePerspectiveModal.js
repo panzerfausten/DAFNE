@@ -3,6 +3,8 @@ import "../style/style.scss";
 import { Modal, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import DafneApi from "../api/DafneApi"
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+
 class SavePerspectiveModal extends React.Component {
   constructor (props) {
     super(props);
@@ -40,19 +42,19 @@ class SavePerspectiveModal extends React.Component {
         //GO
           if(res.success){
             this.props.onSave(res);
-            alert("Perspective saved");
+            Swal.fire('Saved','Perspective Saved', 'success')
           }else{
-            alert("We couldn't save your perspective. Please try again later");
+            Swal.fire('Error','We could not save your perspective. Please try again later', 'error')
           }
         }else{
-          alert("Connection error");
+          Swal.fire('Error','Connection error', 'error')
         }
 
       }).catch(err => {
-        alert("Connection error");
+        Swal.fire('Error','Connection error', 'error')
       })
     }else{
-      alert('The name can not be empty');
+      Swal.fire('Error','The name can not be empty', 'error')
     }
   }
 

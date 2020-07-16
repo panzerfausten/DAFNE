@@ -37,15 +37,9 @@ class Pathway extends React.Component {
     this.setOpen(!this.state.isCollapseOpen);
   }
   onMouseOver(){
-    // this.setState({
-    //   isHovered:true
-    // })
     this.props.onClick(this.props.item);
   }
   onMouseLeave(){
-    // this.setState({
-    //   isHovered:false
-    // })
   }
   toggleEye(){
     this.setState({

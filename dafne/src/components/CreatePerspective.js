@@ -315,7 +315,7 @@ class CreatePerspective extends React.Component {
                           checked={this.state.showFavs}
                           disabled={false}
                         />
-                        Show favourite pathways
+                        show my favourite pathways
                       </label>
 
 
