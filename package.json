@@ -7,7 +7,7 @@
     "users.import": "node tools/importUsers.js"
   },
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "config": "^3.2.2",
     "cookie-parser": "~1.4.3",
     "cookies": "^0.7.3",
